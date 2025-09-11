@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _("服务器错误") }} - {{ _("多语言网站") }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .error-container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            margin: 20px;
+        }
+        
+        .error-icon {
+            text-align: center;
+            font-size: 64px;
+            color: #ff4757;
+            margin-bottom: 20px;
+        }
+        
+        .error-title {
+            color: #2d3436;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .error-message {
+            color: #636e72;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .error-details {
+            background: #f8f9fa;
+            border-left: 4px solid #74b9ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .error-id {
+            background: #ffeaa7;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .actions-list {
+            background: #dfe6e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .actions-list h3 {
+            margin-top: 0;
+            color: #2d3436;
+        }
+        
+        .actions-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .actions-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .home-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+        
+        .home-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tech-info {
+            font-size: 12px;
+            color: #b2bec3;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">⚠️</div>
+        <h1 class="error-title">{{ _("服务器遇到问题") }}</h1>
+        
+        <p class="error-message">{{ error_message }}</p>
+        
+        <div class="error-id">
+            {{ _("错误ID") }}: <strong>{{ error_id }}</strong><br>
+            {{ _("时间") }}: {{ error_details.timestamp or '' }}
+        </div>
+        
+        <div class="actions-list">
+            <h3>{{ _("建议操作") }}</h3>
+            <ul>
+                {% for action in user_actions %}
+                <li>{{ action }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="error-details">
+            <h3>{{ _("技术信息") }}</h3>
+            <p><strong>{{ _("状态码") }}</strong>: {{ error_details.status_code }}</p>
+            <p><strong>{{ _("错误类型") }}</strong>: {{ error_details.error_type }}</p>
+            <p><strong>{{ _("可能原因") }}</strong>:</p>
+            <ul>
+                {% for cause in error_details.possible_causes %}
+                <li>{{ cause }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <a href="{{ url_for('index') }}" class="home-button">
+            {{ _("返回首页") }}
+        </a>
+        
+        <p class="tech-info">
+            {{ _("如果您是技术支持人员，请记录此错误ID以便排查问题") }}
+        </p>
+    </div>
+</body>
+</html>
