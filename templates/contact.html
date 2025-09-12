@@ -21,27 +21,94 @@
             
             <section>
                 <h2 class="text-2xl font-semibold mb-4">{{ _('留言板') }}</h2>
-                <form method="POST" class="space-y-4">
+                <form id="contactForm" method="POST" class="space-y-4">
                     <div>
-                        <label class="block mb-1">{{ _('姓名') }}</label>
-                        <input type="text" name="name" class="w-full px-4 py-2 border rounded">
+                        <label class="block mb-1">{{ _('姓名') }} <span class="text-red-500">*</span></label>
+                        <input type="text" name="name" class="w-full px-4 py-2 border rounded" placeholder="{{ _('请输入您的姓名') }}" required>
                     </div>
                     <div>
-                        <label class="block mb-1">{{ _('邮箱') }}</label>
-                        <input type="email" name="email" class="w-full px-4 py-2 border rounded">
+                        <label class="block mb-1">{{ _('邮箱') }} <span class="text-red-500">*</span></label>
+                        <input type="email" name="email" class="w-full px-4 py-2 border rounded" placeholder="{{ _('请输入您的邮箱') }}" required>
                     </div>
                     <div>
-                        <label class="block mb-1">{{ _('留言内容') }}</label>
-                        <textarea name="message" rows="4" class="w-full px-4 py-2 border rounded"></textarea>
+                        <label class="block mb-1">{{ _('留言内容') }} <span class="text-red-500">*</span></label>
+                        <textarea name="message" rows="4" class="w-full px-4 py-2 border rounded" placeholder="{{ _('请输入您的留言') }}" required></textarea>
                     </div>
                     <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-secondary transition">
                         {{ _('提交') }}
                     </button>
+                    
+                    <!-- 提交结果消息 -->
+                    <div id="formMessage" class="mt-4 hidden"></div>
                 </form>
             </section>
         </div>
     </main>
     
         <!-- Footer (same as in index.html) -->
+    <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
+    
+    <!-- 添加处理联系表单提交的JavaScript -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const formData = new FormData(this);
+            
+            // 显示加载状态
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = '{{ _("提交中...") }}';
+            submitButton.disabled = true;
+            
+            // 发送AJAX请求
+            fetch('/submit_consultation', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 显示结果消息
+                const messageDiv = document.getElementById('formMessage');
+                if (data.success) {
+                    messageDiv.className = 'mt-4 p-4 bg-green-100 text-green-700 rounded-lg';
+                    messageDiv.textContent = data.message;
+                    // 清空表单
+                    this.reset();
+                } else {
+                    messageDiv.className = 'mt-4 p-4 bg-red-100 text-red-700 rounded-lg';
+                    messageDiv.textContent = data.message;
+                }
+                messageDiv.classList.remove('hidden');
+                
+                // 恢复按钮状态
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // 3秒后隐藏消息
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // 显示错误消息
+                const messageDiv = document.getElementById('formMessage');
+                messageDiv.className = 'mt-4 p-4 bg-red-100 text-red-700 rounded-lg';
+                messageDiv.textContent = '{{ _("提交留言时发生错误，请稍后再试") }}';
+                messageDiv.classList.remove('hidden');
+                
+                // 恢复按钮状态
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // 3秒后隐藏消息
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 3000);
+            });
+        });
+    </script>
 </body>
 </html>

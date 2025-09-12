@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-11 10:49+0800\n"
+"POT-Creation-Date: 2025-09-12 19:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -14,42 +14,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app.py:45
+#: app.py:51
 msgid "这是一个测试错误，用于验证错误处理功能是否正常工作"
 msgstr ""
+"This is a test error to verify that the error handling functionality is "
+"working properly"
 
-#: app.py:64
-msgid "抱歉，服务器遇到了意外错误。我们的技术团队已收到通知并正在处理此问题。"
-msgstr ""
+#: debug_app.py:34 templates/index.html:415 templates/test.html:8
+#: test_translation_quick.py:23
+#, python-format
+msgid "我们的AI解决方案平均为客户带来35%% 的业务增长"
+msgstr "Our AI solutions bring an average of 35%% business growth to clients"
 
-#: app.py:71
-msgid "服务器暂时过载"
-msgstr ""
+#: simple_app.py:43 templates/index.html:286 translation_test.py:31
+#: translation_test.py:54 translation_test.py:55
+msgid "探索解决方案"
+msgstr "Explore Solutions"
 
-#: app.py:72
-msgid "应用程序代码错误"
-msgstr ""
+# 成功案例指标翻译
+#: templates/index.html:634 test_new_translations.py:32
+msgid "审批效率提升"
+msgstr "Approval Efficiency Improvement"
 
-#: app.py:73
-msgid "数据库连接问题"
-msgstr ""
+#: templates/index.html:644 test_new_translations.py:33
+msgid "不良贷款率降低"
+msgstr "Non-performing Loan Rate Reduction"
 
-#: app.py:74
-msgid "第三方服务不可用"
-msgstr ""
+#: templates/index.html:671 test_new_translations.py:34
+msgid "点击率提升"
+msgstr "Click-through Rate Improvement"
 
-#: app.py:82
-msgid "请稍后重试操作"
-msgstr ""
+#: templates/index.html:681 test_new_translations.py:35
+msgid "客单价提升"
+msgstr "Average Order Value Improvement"
 
-#: app.py:83
-msgid "如果问题持续存在，请联系技术支持"
-msgstr ""
+#: templates/index.html:691 test_new_translations.py:36
+msgid "用户满意度"
+msgstr "User Satisfaction"
 
-#: app.py:84
-#, python-brace-format
-msgid "提供错误ID以便我们更快定位问题: {}"
-msgstr ""
+#: templates/index.html:887 templates/test.html:9 test_translation_quick.py:29
+#, python-format
+msgid "平均业务增长(%%)"
+msgstr "Average Business Growth (%%)"
+
+#: templates/index.html:891 templates/test.html:10 test_translation_quick.py:35
+#, python-format
+msgid "客户成本降低(%%)"
+msgstr "Customer Cost Reduction (%%)"
 
 #: templates/about.html:6 templates/about.html:14 templates/index.html:225
 #: templates/index.html:253 templates/index.html:302 templates/index.html:1059
@@ -64,24 +75,27 @@ msgstr "Shanghai Weicheng Information Technology Co., Ltd."
 
 #: templates/about.html:17
 msgid "公司简介"
-msgstr ""
+msgstr "Company Overview"
 
 #: templates/about.html:18
 msgid "上海葳澄信息科技有限公司是一家专注于人工智能和大数据技术的高科技企业..."
 msgstr ""
+"Shanghai Weicheng Information Technology Co., Ltd. is a high-tech "
+"enterprise focusing on artificial intelligence and big data technology..."
 
 #: templates/about.html:22
 msgid "团队介绍"
-msgstr ""
+msgstr "Team Introduction"
 
 #: templates/contact.html:6 templates/contact.html:14 templates/index.html:228
-#: templates/index.html:256 templates/index.html:289 templates/index.html:1078
+#: templates/index.html:256 templates/index.html:289 templates/index.html:1062
+#: templates/index.html:1078
 msgid "联系我们"
 msgstr "Contact Us"
 
 #: templates/contact.html:18 templates/index.html:949
 msgid "联系方式"
-msgstr ""
+msgstr "Contact Information"
 
 #: templates/contact.html:23
 #, fuzzy
@@ -92,14 +106,27 @@ msgstr "Message"
 msgid "姓名"
 msgstr "Name"
 
+#: templates/contact.html:27 templates/index.html:918
+msgid "请输入您的姓名"
+msgstr "Please enter your name"
+
 #: templates/contact.html:30 templates/index.html:927
 msgid "邮箱"
 msgstr "Email"
 
+#: templates/contact.html:31 templates/index.html:928
+msgid "请输入您的邮箱"
+msgstr "Please enter your email address"
+
 #: templates/contact.html:34
 #, fuzzy
 msgid "留言内容"
-msgstr "Message"
+msgstr "Message Content"
+
+#: templates/contact.html:35
+#, fuzzy
+msgid "请输入您的留言"
+msgstr "Please enter your email address"
 
 #: templates/contact.html:38
 msgid "提交"
@@ -107,52 +134,54 @@ msgstr "Submit"
 
 #: templates/error.html:6
 msgid "服务器错误"
-msgstr ""
+msgstr "Server Error"
 
 #: templates/error.html:6
 msgid "多语言网站"
-msgstr ""
+msgstr "Multilingual Website"
 
 #: templates/error.html:122
 msgid "服务器遇到问题"
-msgstr ""
+msgstr "Server Encountered a Problem"
 
 #: templates/error.html:127
 msgid "错误ID"
-msgstr ""
+msgstr "Error ID"
 
 #: templates/error.html:128
 msgid "时间"
-msgstr ""
+msgstr "Time"
 
 #: templates/error.html:132
 msgid "建议操作"
-msgstr ""
+msgstr "Suggested Actions"
 
 #: templates/error.html:141
 msgid "技术信息"
-msgstr ""
+msgstr "Technical Information"
 
 #: templates/error.html:142
 msgid "状态码"
-msgstr ""
+msgstr "Status Code"
 
 #: templates/error.html:143
 msgid "错误类型"
-msgstr ""
+msgstr "Error Type"
 
 #: templates/error.html:144
 msgid "可能原因"
-msgstr ""
+msgstr "Possible Causes"
 
 #: templates/error.html:153
 #, fuzzy
 msgid "返回首页"
-msgstr "Home"
+msgstr "Return to Homepage"
 
 #: templates/error.html:157
 msgid "如果您是技术支持人员，请记录此错误ID以便排查问题"
 msgstr ""
+"If you are a technical support person, please record this error ID for "
+"troubleshooting"
 
 #: templates/index.html:4
 #, fuzzy
@@ -161,31 +190,36 @@ msgstr "Shanghai Weicheng Information Technology (WSAI)"
 
 #: templates/index.html:49
 msgid "主橙色"
-msgstr ""
+msgstr "Primary Orange"
 
 #: templates/index.html:50
 msgid "浅橙色"
-msgstr ""
+msgstr "Light Orange"
 
 #: templates/index.html:51
 msgid "深色文本"
-msgstr ""
+msgstr "Dark Text"
 
 #: templates/index.html:52
 msgid "浅色背景"
-msgstr ""
+msgstr "Light Background"
 
 #: templates/index.html:158
 msgid "地图加载状态样式"
-msgstr ""
+msgstr "Map loading state styles"
 
 #: templates/index.html:178
 msgid "地图图片悬停效果"
-msgstr ""
+msgstr "Map image hover effects"
+
+#: templates/index.html:217 templates/index.html:1046 templates/index.html:1097
+#, fuzzy
+msgid "WSAI"
+msgstr "AI"
 
 #: templates/index.html:222
 msgid "桌面导航"
-msgstr ""
+msgstr "Desktop Navigation"
 
 #: templates/index.html:224 templates/index.html:252 templates/index.html:1058
 msgid "首页"
@@ -203,7 +237,7 @@ msgstr "Success Cases"
 
 #: templates/index.html:231
 msgid "联系按钮"
-msgstr ""
+msgstr "Contact Button"
 
 #: templates/index.html:233 templates/index.html:258
 msgid "咨询专家"
@@ -211,43 +245,43 @@ msgstr "Consult Expert"
 
 #: templates/index.html:236
 msgid "语言切换按钮"
-msgstr ""
+msgstr "Language Switch Button"
 
 #: templates/index.html:238 templates/index.html:263
 msgid "中文"
-msgstr ""
+msgstr "Chinese"
 
 #: templates/index.html:238
 msgid "中"
-msgstr ""
+msgstr "CN"
 
 #: templates/index.html:239 templates/index.html:264
 msgid "English"
-msgstr ""
+msgstr "English"
 
 #: templates/index.html:239
 msgid "EN"
-msgstr ""
+msgstr "EN"
 
 #: templates/index.html:240 templates/index.html:265
 msgid "日本語"
-msgstr ""
+msgstr "Japanese"
 
 #: templates/index.html:240
 msgid "日"
-msgstr ""
+msgstr "JP"
 
 #: templates/index.html:243
 msgid "移动端菜单按钮"
-msgstr ""
+msgstr "Mobile Menu Button"
 
 #: templates/index.html:249
 msgid "移动端导航菜单"
-msgstr ""
+msgstr "Mobile Navigation Menu"
 
 #: templates/index.html:271
 msgid "英雄区域"
-msgstr ""
+msgstr "Hero Section"
 
 #: templates/index.html:279
 msgid "人工智能驱动"
@@ -267,56 +301,65 @@ msgstr ""
 "Specializing in providing professional, customized AI solutions to help "
 "businesses achieve growth and value creation"
 
-#: templates/index.html:286
-#, fuzzy
-msgid "探索解决方案"
-msgstr "Solutions"
-
 #: templates/index.html:306
-#, fuzzy
 msgid "关于"
-msgstr "About Us"
+msgstr "About"
 
 #: templates/index.html:306
 msgid "葳澄科技"
-msgstr ""
+msgstr "Weicheng Technology"
 
 #: templates/index.html:308
 msgid "专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家"
 msgstr ""
+"A high-tech enterprise focused on AI solutions, committed to becoming a "
+"trusted AI solution expert for clients"
 
 #: templates/index.html:315
 msgid "葳澄科技办公环境"
-msgstr ""
+msgstr "Weicheng Technology Office Environment"
 
 #: templates/index.html:321 templates/index.html:361
-#, fuzzy
 msgid "我们的"
-msgstr "Our Services"
+msgstr "Our"
 
 #: templates/index.html:321
 msgid "故事"
-msgstr ""
+msgstr "Story"
 
 #: templates/index.html:323
 msgid "上海葳澄信息科技有限公司成立于2019年，是一家专注于人工智能解决方案的高科技企业。我们的核心使命是通过前沿的人工智能(AI)技术，赋能企业实现数字化转型，从而驱动业务增长并创造更大价值。"
 msgstr ""
+"Shanghai Weicheng Information Technology Co., Ltd. was founded in 2019 as"
+" a high-tech enterprise focused on AI solutions. Our core mission is to "
+"empower enterprises to achieve digital transformation through cutting-"
+"edge artificial intelligence (AI) technology, driving business growth and"
+" creating greater value.Shanghai Weicheng Information Technology Co., "
+"Ltd. was founded in 2019 as a high-tech enterprise focused on AI "
+"solutions. Our core mission is to empower enterprises to achieve digital "
+"transformation through cutting-edge AI technology, driving business "
+"growth and creating greater value."
 
 #: templates/index.html:326
 msgid "葳澄科技为企业提供专业、定制化的AI解决方案。我们的服务已帮助众多客户在关键的业务指标上取得了显著提升，有力证明了AI技术在实际应用中的巨大价值和商业效益。"
 msgstr ""
+"Weicheng Technology provides professional, customized AI solutions for "
+"enterprises. Our services have helped numerous clients achieve "
+"significant improvements in key business metrics, demonstrating the "
+"immense value and commercial benefits of AI technology in practical "
+"applications."
 
 #: templates/index.html:332
 msgid "公司成立"
-msgstr ""
+msgstr "Company Founded"
 
 #: templates/index.html:340
 msgid "AI专家"
-msgstr ""
+msgstr "AI Experts"
 
 #: templates/index.html:344
 msgid "客户满意度"
-msgstr ""
+msgstr "Customer Satisfaction"
 
 #: templates/index.html:349
 msgid "了解更多"
@@ -324,241 +367,309 @@ msgstr "Learn More"
 
 #: templates/index.html:361
 msgid "使命"
-msgstr ""
+msgstr "Mission"
 
 #: templates/index.html:363
 msgid "通过前沿的人工智能技术，赋能企业实现数字化转型，驱动业务增长并创造更大价值。我们专注于理解企业需求，利用AI技术解决核心业务挑战，是企业在智能化时代寻求创新与突破的理想合作伙伴。"
 msgstr ""
+"Through cutting-edge AI technology, we empower enterprises to achieve "
+"digital transformation, driving business growth and creating greater "
+"value. We focus on understanding enterprise needs, using AI technology to"
+" solve core business challenges, and are the ideal partner for "
+"enterprises seeking innovation and breakthroughs in the intelligent "
+"era.Through cutting-edge AI technology, we empower enterprises to achieve"
+" digital transformation, drive business growth and create greater value. "
+"We focus on understanding enterprise needs, using AI technology to solve "
+"core business challenges, and are the ideal partner for enterprises "
+"seeking innovation and breakthroughs in the intelligent era."
 
 #: templates/index.html:372
 msgid "创新技术"
-msgstr ""
+msgstr "Innovative Technology"
 
 #: templates/index.html:373
 msgid "不断探索前沿AI技术，为客户提供最先进的解决方案"
 msgstr ""
+"Continuously explore cutting-edge AI technology to provide clients with "
+"the most advanced solutions"
 
 #: templates/index.html:382
 msgid "客户至上"
-msgstr ""
+msgstr "Customer First"
 
 #: templates/index.html:383
 msgid "深入理解客户需求，提供定制化解决方案，创造实际价值"
 msgstr ""
+"Deeply understand customer needs, provide customized solutions, and "
+"create real value"
 
 #: templates/index.html:392
 msgid "卓越服务"
-msgstr ""
+msgstr "Excellence Service"
 
 #: templates/index.html:393
 msgid "从咨询到实施的全流程服务，确保项目成功落地"
 msgstr ""
+"Full-process service from consultation to implementation, ensuring "
+"successful project delivery"
 
 #: templates/index.html:406
 msgid "AI技术应用场景"
-msgstr ""
+msgstr "AI Technology Application Scenarios"
 
 #: templates/index.html:413
 msgid "业务增长"
-msgstr ""
-
-#: templates/index.html:415
-msgid "我们的AI解决方案平均为客户带来35% 的业务增长"
-msgstr ""
+msgstr "Business Growth"
 
 #: templates/index.html:429
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: templates/index.html:431
 msgid "我们提供专业、定制化的人工智能解决方案，帮助企业解决核心业务挑战，实现数字化转型"
 msgstr ""
+"We provide professional, customized AI solutions to help enterprises "
+"solve core business challenges and achieve digital transformation"
 
 #: templates/index.html:438 templates/index.html:444 templates/index.html:1069
 msgid "智能数据分析"
-msgstr ""
+msgstr "Intelligent Data Analysis"
 
 #: templates/index.html:445
 msgid "利用AI技术深度分析企业数据，挖掘潜在价值，提供数据驱动的决策支持"
 msgstr ""
+"Utilizing AI technology for deep analysis of enterprise data, mining "
+"potential value, and providing data-driven decision support"
 
 #: templates/index.html:447 templates/index.html:464 templates/index.html:481
 #: templates/index.html:498 templates/index.html:515 templates/index.html:532
 msgid "了解详情"
-msgstr ""
+msgstr "Learn More"
 
 #: templates/index.html:455 templates/index.html:461 templates/index.html:1070
 msgid "自然语言处理"
-msgstr ""
+msgstr "Natural Language Processing"
 
 #: templates/index.html:462
 msgid "开发智能客服、文本分析等应用，提升客户体验和业务处理效率"
 msgstr ""
+"Develop intelligent customer service, text analysis and other "
+"applications to improve customer experience and business processing "
+"efficiency"
 
 #: templates/index.html:472 templates/index.html:478 templates/index.html:1071
 msgid "计算机视觉"
-msgstr ""
+msgstr "Computer Vision"
 
 #: templates/index.html:479
 msgid "实现图像识别、视频分析等功能，应用于智能制造、安防监控等领域"
 msgstr ""
+"Implement image recognition, video analysis and other functions, applied "
+"in intelligent manufacturing, security monitoring and other fields"
 
 #: templates/index.html:489 templates/index.html:495 templates/index.html:1072
 msgid "预测性分析"
-msgstr ""
+msgstr "Predictive Analytics"
 
 #: templates/index.html:496
 msgid "基于历史数据预测未来趋势，帮助企业提前规划，降低风险"
 msgstr ""
+"Predict future trends based on historical data, help enterprises plan "
+"ahead and reduce risks"
 
 #: templates/index.html:506 templates/index.html:512 templates/index.html:1073
 msgid "智能自动化"
-msgstr ""
+msgstr "Intelligent Automation"
 
 #: templates/index.html:513
 msgid "结合RPA和AI技术，实现业务流程自动化，提高效率降低成本"
 msgstr ""
+"Combine RPA and AI technology to achieve business process automation, "
+"improving efficiency and reducing costs"
 
 #: templates/index.html:523 templates/index.html:529
 msgid "定制化AI模型开发"
-msgstr ""
+msgstr "Custom AI Model Development"
 
 #: templates/index.html:530
 msgid "根据企业特定需求，开发定制化AI模型，解决独特业务挑战"
 msgstr ""
+"Develop customized AI models according to specific enterprise needs, "
+"solving unique business challenges"
 
 #: templates/index.html:544
-#, fuzzy
 msgid "成功"
-msgstr "Success Cases"
+msgstr "Success"
 
 #: templates/index.html:544
-#, fuzzy
 msgid "案例"
-msgstr "Success Cases"
+msgstr "Cases"
 
 #: templates/index.html:546
 msgid "我们的AI解决方案已帮助众多客户在关键业务指标上取得显著提升，创造实际价值"
 msgstr ""
+"Our AI solutions have helped numerous clients achieve significant "
+"improvements in key business metrics, creating real value"
 
 #: templates/index.html:552 templates/index.html:615 templates/index.html:662
 #: templates/index.html:725 templates/index.html:772 templates/index.html:835
 msgid "案例分析"
-msgstr ""
+msgstr "Case Study"
 
 #: templates/index.html:553 templates/index.html:598
 msgid "制造业智能质检系统"
-msgstr ""
+msgstr "Manufacturing Intelligent Quality Inspection System"
 
 #: templates/index.html:555
 msgid "为某大型制造企业开发的基于计算机视觉的智能质检系统，替代传统人工质检，提高检测精度和效率。"
 msgstr ""
+"An intelligent quality inspection system based on computer vision "
+"developed for a large manufacturing enterprise, replacing traditional "
+"manual inspection and improving detection accuracy and efficiency."
 
 #: templates/index.html:561
 msgid "检测精度提升"
-msgstr ""
+msgstr "Detection Accuracy Improvement"
 
 #: templates/index.html:571
 msgid "检测效率提升"
-msgstr ""
+msgstr "Detection Efficiency Improvement"
 
 #: templates/index.html:581
 msgid "人工成本降低"
-msgstr ""
+msgstr "Labor Cost Reduction"
 
-#: templates/index.html:591 templates/index.html:811
+#: templates/index.html:591 templates/index.html:654 templates/index.html:701
+#: templates/index.html:764 templates/index.html:811 templates/index.html:874
 msgid "查看完整案例"
-msgstr ""
+msgstr "View Full Case Study"
 
 #: templates/index.html:609 templates/index.html:616
 msgid "金融行业智能风控系统"
-msgstr ""
+msgstr "Financial Industry Intelligent Risk Control System"
 
 #: templates/index.html:618
 msgid "为某商业银行开发的智能风控系统，通过机器学习算法分析客户数据，精准识别风险，提高贷款审批效率。"
 msgstr ""
+"An intelligent risk control system developed for a commercial bank that "
+"analyzes customer data through machine learning algorithms, accurately "
+"identifies risks, and improves loan approval efficiency."
 
 #: templates/index.html:624
 msgid "风险识别准确率"
-msgstr ""
+msgstr "Risk Identification Accuracy"
 
 #: templates/index.html:663 templates/index.html:708
 msgid "零售业智能推荐系统"
-msgstr ""
+msgstr "Retail Industry Intelligent Recommendation System"
 
 #: templates/index.html:665
 msgid "为连锁零售企业开发的智能推荐系统，基于用户行为分析和商品特征，实现个性化商品推荐，提升销售转化率。"
 msgstr ""
+"An intelligent recommendation system developed for retail chain "
+"enterprises, based on user behavior analysis and product features, "
+"achieving personalized product recommendations and improving sales "
+"conversion rates."
 
 #: templates/index.html:719 templates/index.html:726
 msgid "医疗影像智能诊断系统"
-msgstr ""
+msgstr "Medical Imaging Intelligent Diagnosis System"
 
 #: templates/index.html:728
 msgid "为医疗机构开发的基于深度学习的医疗影像诊断系统，辅助医生快速准确识别病灶，提高诊断效率和准确性。"
 msgstr ""
+"A deep learning-based medical imaging diagnosis system developed for "
+"medical institutions, assisting doctors in quickly and accurately "
+"identifying lesions, improving diagnostic efficiency and accuracy."
+
+#: templates/index.html:734
+msgid "诊断准确率"
+msgstr "Diagnostic Accuracy"
+
+#: templates/index.html:744
+msgid "诊断时间缩短"
+msgstr "Diagnostic Time Reduction"
+
+#: templates/index.html:754
+msgid "早期检出率提升"
+msgstr "Early Detection Rate Improvement"
 
 #: templates/index.html:773 templates/index.html:818
 msgid "物流行业智能调度系统"
-msgstr ""
+msgstr "Logistics Industry Intelligent Scheduling System"
 
 #: templates/index.html:775
 msgid "为大型物流企业开发的智能调度系统，通过AI算法优化配送路线和资源分配，降低运营成本，提高配送效率。"
 msgstr ""
+"An intelligent scheduling system developed for large logistics "
+"enterprises, optimizing delivery routes and resource allocation through "
+"AI algorithms, reducing operating costs and improving delivery "
+"efficiency."
+
+#: templates/index.html:781
+msgid "配送效率提升"
+msgstr "Delivery Efficiency Improvement"
+
+#: templates/index.html:791
+msgid "运输成本降低"
+msgstr "Transportation Cost Reduction"
+
+#: templates/index.html:801
+msgid "准时送达率"
+msgstr "On-time Delivery Rate"
 
 #: templates/index.html:829 templates/index.html:836
 msgid "教育行业个性化学习系统"
-msgstr ""
+msgstr "Education Industry Personalized Learning System"
 
 #: templates/index.html:838
 msgid "为教育机构开发的个性化学习系统，通过分析学生学习行为和能力特征，提供定制化学习路径和内容推荐。"
 msgstr ""
+"A personalized learning system developed for educational institutions, "
+"analyzing student learning behaviors and ability characteristics to "
+"provide customized learning paths and content recommendations."
 
-#: templates/index.html:887
-msgid "平均业务增长(%)"
-msgstr ""
+#: templates/index.html:844
+msgid "学习效率提升"
+msgstr "Learning Efficiency Improvement"
 
-#: templates/index.html:891
-msgid "客户成本降低(%)"
-msgstr ""
+#: templates/index.html:854
+msgid "知识掌握率"
+msgstr "Knowledge Retention Rate"
+
+#: templates/index.html:864
+msgid "学生满意度"
+msgstr "Student Satisfaction"
 
 #: templates/index.html:895
 msgid "行业覆盖"
-msgstr ""
+msgstr "Industry Coverage"
 
 #: templates/index.html:906
-#, fuzzy
 msgid "联系"
-msgstr "Contact Us"
+msgstr "Contact"
 
 #: templates/index.html:906
-#, fuzzy
 msgid "我们"
-msgstr "Contact Us"
+msgstr "Us"
 
 #: templates/index.html:908
 msgid "无论您有任何疑问或需求，我们的团队都将为您提供专业的咨询服务"
 msgstr ""
+"Whatever questions or needs you may have, our team will provide you with "
+"professional consulting services"
 
 #: templates/index.html:914
 msgid "发送咨询"
-msgstr ""
-
-#: templates/index.html:918
-msgid "请输入您的姓名"
-msgstr ""
+msgstr "Send Inquiry"
 
 #: templates/index.html:922
 msgid "公司名称"
-msgstr ""
+msgstr "Company Name"
 
 #: templates/index.html:923
 msgid "请输入您的公司名称"
-msgstr ""
-
-#: templates/index.html:928
-msgid "请输入您的邮箱"
-msgstr ""
+msgstr "Please enter your company name"
 
 #: templates/index.html:932
 msgid "电话"
@@ -566,28 +677,29 @@ msgstr "Phone"
 
 #: templates/index.html:933
 msgid "请输入您的电话"
-msgstr ""
+msgstr "Please enter your phone number"
 
 #: templates/index.html:937
 msgid "咨询内容"
-msgstr ""
+msgstr "Inquiry Content"
 
 #: templates/index.html:938
 msgid "请输入您的咨询内容"
-msgstr ""
+msgstr "Please enter your inquiry content"
 
 #: templates/index.html:942
-#, fuzzy
 msgid "提交咨询"
-msgstr "Submit"
+msgstr "Submit Inquiry"
 
 #: templates/index.html:957
 msgid "公司地址"
-msgstr ""
+msgstr "Company Address"
 
 #: templates/index.html:958 templates/index.html:1082
 msgid "上海市静安区共和新路4718弄10号1楼"
 msgstr ""
+"1st Floor, Building 10, Lane 4718, Gonghe New Road, Jing'an District, "
+"Shanghai"
 
 #: templates/index.html:964
 msgid "公司位置"
@@ -601,32 +713,37 @@ msgstr "Shanghai Weicheng Information Technology Co., Ltd."
 msgid "在高德地图中查看"
 msgstr "View on Amap"
 
-#: templates/index.html:995
-#, fuzzy
+#: templates/index.html:995 templates/index.html:996 templates/index.html:1086
 msgid "联系电话"
-msgstr "Phone"
+msgstr "Contact Phone"
 
-#: templates/index.html:1005
-#, fuzzy
+#: templates/index.html:1005 templates/index.html:1006
+#: templates/index.html:1090
 msgid "电子邮箱"
-msgstr "Email"
+msgstr "Email Address"
 
 #: templates/index.html:1030
-#, fuzzy
 msgid "关注我们"
-msgstr "About Us"
+msgstr "Follow Us"
 
 #: templates/index.html:1031
 msgid "通过社交媒体获取更多AI行业资讯和公司动态"
+msgstr "Get more AI industry insights and company updates through social media"
+
+#: templates/index.html:1051
+#, fuzzy
+msgid "专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家。"
 msgstr ""
+"A high-tech enterprise focused on AI solutions, committed to becoming a "
+"trusted AI solution expert for clients"
 
 #: templates/index.html:1056
 msgid "快速链接"
-msgstr ""
+msgstr "Quick Links"
 
 #: templates/index.html:1097
 msgid "版权所有"
-msgstr ""
+msgstr "All Rights Reserved"
 
 #~ msgid "欢迎来到我们的网站"
 #~ msgstr "Welcome to our website"
@@ -660,4 +777,32 @@ msgstr ""
 
 #~ msgid "产品更新"
 #~ msgstr "Product Updates"
+
+#~ msgid "抱歉，服务器遇到了意外错误。我们的技术团队已收到通知并正在处理此问题。"
+#~ msgstr ""
+#~ "Sorry, the server encountered an "
+#~ "unexpected error. Our technical team has"
+#~ " been notified and is working on "
+#~ "this issue."
+
+#~ msgid "服务器暂时过载"
+#~ msgstr "Server temporarily overloaded"
+
+#~ msgid "应用程序代码错误"
+#~ msgstr "Application code error"
+
+#~ msgid "数据库连接问题"
+#~ msgstr "Database connection issue"
+
+#~ msgid "第三方服务不可用"
+#~ msgstr "Third-party service unavailable"
+
+#~ msgid "请稍后重试操作"
+#~ msgstr "Please try again later"
+
+#~ msgid "如果问题持续存在，请联系技术支持"
+#~ msgstr "If the problem persists, please contact technical support"
+
+#~ msgid "提供错误ID以便我们更快定位问题: {}"
+#~ msgstr "Please provide the error ID for faster problem identification: {}"
 

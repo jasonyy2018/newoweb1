@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-11 10:49+0800\n"
+"POT-Creation-Date: 2025-09-12 19:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,41 +17,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app.py:45
+#: app.py:51
 msgid "这是一个测试错误，用于验证错误处理功能是否正常工作"
 msgstr ""
 
-#: app.py:64
-msgid "抱歉，服务器遇到了意外错误。我们的技术团队已收到通知并正在处理此问题。"
+#: debug_app.py:34 templates/index.html:415 templates/test.html:8
+#: test_translation_quick.py:23
+#, python-format
+msgid "我们的AI解决方案平均为客户带来35%% 的业务增长"
 msgstr ""
 
-#: app.py:71
-msgid "服务器暂时过载"
+#: simple_app.py:43 templates/index.html:286 translation_test.py:31
+#: translation_test.py:54 translation_test.py:55
+msgid "探索解决方案"
 msgstr ""
 
-#: app.py:72
-msgid "应用程序代码错误"
+#: templates/index.html:634 test_new_translations.py:32
+msgid "审批效率提升"
 msgstr ""
 
-#: app.py:73
-msgid "数据库连接问题"
+#: templates/index.html:644 test_new_translations.py:33
+msgid "不良贷款率降低"
 msgstr ""
 
-#: app.py:74
-msgid "第三方服务不可用"
+#: templates/index.html:671 test_new_translations.py:34
+msgid "点击率提升"
 msgstr ""
 
-#: app.py:82
-msgid "请稍后重试操作"
+#: templates/index.html:681 test_new_translations.py:35
+msgid "客单价提升"
 msgstr ""
 
-#: app.py:83
-msgid "如果问题持续存在，请联系技术支持"
+#: templates/index.html:691 test_new_translations.py:36
+msgid "用户满意度"
 msgstr ""
 
-#: app.py:84
-#, python-brace-format
-msgid "提供错误ID以便我们更快定位问题: {}"
+#: templates/index.html:887 templates/test.html:9 test_translation_quick.py:29
+#, python-format
+msgid "平均业务增长(%%)"
+msgstr ""
+
+#: templates/index.html:891 templates/test.html:10 test_translation_quick.py:35
+#, python-format
+msgid "客户成本降低(%%)"
 msgstr ""
 
 #: templates/about.html:6 templates/about.html:14 templates/index.html:225
@@ -77,7 +85,8 @@ msgid "团队介绍"
 msgstr ""
 
 #: templates/contact.html:6 templates/contact.html:14 templates/index.html:228
-#: templates/index.html:256 templates/index.html:289 templates/index.html:1078
+#: templates/index.html:256 templates/index.html:289 templates/index.html:1062
+#: templates/index.html:1078
 msgid "联系我们"
 msgstr ""
 
@@ -93,12 +102,24 @@ msgstr ""
 msgid "姓名"
 msgstr ""
 
+#: templates/contact.html:27 templates/index.html:918
+msgid "请输入您的姓名"
+msgstr ""
+
 #: templates/contact.html:30 templates/index.html:927
 msgid "邮箱"
 msgstr ""
 
+#: templates/contact.html:31 templates/index.html:928
+msgid "请输入您的邮箱"
+msgstr ""
+
 #: templates/contact.html:34
 msgid "留言内容"
+msgstr ""
+
+#: templates/contact.html:35
+msgid "请输入您的留言"
 msgstr ""
 
 #: templates/contact.html:38
@@ -181,6 +202,10 @@ msgstr ""
 msgid "地图图片悬停效果"
 msgstr ""
 
+#: templates/index.html:217 templates/index.html:1046 templates/index.html:1097
+msgid "WSAI"
+msgstr ""
+
 #: templates/index.html:222
 msgid "桌面导航"
 msgstr ""
@@ -261,10 +286,6 @@ msgstr ""
 
 #: templates/index.html:282
 msgid "专注于为企业提供专业、定制化的AI解决方案，助力企业实现业务增长与价值创造"
-msgstr ""
-
-#: templates/index.html:286
-msgid "探索解决方案"
 msgstr ""
 
 #: templates/index.html:306
@@ -353,10 +374,6 @@ msgstr ""
 
 #: templates/index.html:413
 msgid "业务增长"
-msgstr ""
-
-#: templates/index.html:415
-msgid "我们的AI解决方案平均为客户带来35% 的业务增长"
 msgstr ""
 
 #: templates/index.html:429
@@ -457,7 +474,8 @@ msgstr ""
 msgid "人工成本降低"
 msgstr ""
 
-#: templates/index.html:591 templates/index.html:811
+#: templates/index.html:591 templates/index.html:654 templates/index.html:701
+#: templates/index.html:764 templates/index.html:811 templates/index.html:874
 msgid "查看完整案例"
 msgstr ""
 
@@ -489,12 +507,36 @@ msgstr ""
 msgid "为医疗机构开发的基于深度学习的医疗影像诊断系统，辅助医生快速准确识别病灶，提高诊断效率和准确性。"
 msgstr ""
 
+#: templates/index.html:734
+msgid "诊断准确率"
+msgstr ""
+
+#: templates/index.html:744
+msgid "诊断时间缩短"
+msgstr ""
+
+#: templates/index.html:754
+msgid "早期检出率提升"
+msgstr ""
+
 #: templates/index.html:773 templates/index.html:818
 msgid "物流行业智能调度系统"
 msgstr ""
 
 #: templates/index.html:775
 msgid "为大型物流企业开发的智能调度系统，通过AI算法优化配送路线和资源分配，降低运营成本，提高配送效率。"
+msgstr ""
+
+#: templates/index.html:781
+msgid "配送效率提升"
+msgstr ""
+
+#: templates/index.html:791
+msgid "运输成本降低"
+msgstr ""
+
+#: templates/index.html:801
+msgid "准时送达率"
 msgstr ""
 
 #: templates/index.html:829 templates/index.html:836
@@ -505,12 +547,16 @@ msgstr ""
 msgid "为教育机构开发的个性化学习系统，通过分析学生学习行为和能力特征，提供定制化学习路径和内容推荐。"
 msgstr ""
 
-#: templates/index.html:887
-msgid "平均业务增长(%)"
+#: templates/index.html:844
+msgid "学习效率提升"
 msgstr ""
 
-#: templates/index.html:891
-msgid "客户成本降低(%)"
+#: templates/index.html:854
+msgid "知识掌握率"
+msgstr ""
+
+#: templates/index.html:864
+msgid "学生满意度"
 msgstr ""
 
 #: templates/index.html:895
@@ -533,20 +579,12 @@ msgstr ""
 msgid "发送咨询"
 msgstr ""
 
-#: templates/index.html:918
-msgid "请输入您的姓名"
-msgstr ""
-
 #: templates/index.html:922
 msgid "公司名称"
 msgstr ""
 
 #: templates/index.html:923
 msgid "请输入您的公司名称"
-msgstr ""
-
-#: templates/index.html:928
-msgid "请输入您的邮箱"
 msgstr ""
 
 #: templates/index.html:932
@@ -589,11 +627,12 @@ msgstr ""
 msgid "在高德地图中查看"
 msgstr ""
 
-#: templates/index.html:995
+#: templates/index.html:995 templates/index.html:996 templates/index.html:1086
 msgid "联系电话"
 msgstr ""
 
-#: templates/index.html:1005
+#: templates/index.html:1005 templates/index.html:1006
+#: templates/index.html:1090
 msgid "电子邮箱"
 msgstr ""
 
@@ -603,6 +642,10 @@ msgstr ""
 
 #: templates/index.html:1031
 msgid "通过社交媒体获取更多AI行业资讯和公司动态"
+msgstr ""
+
+#: templates/index.html:1051
+msgid "专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家。"
 msgstr ""
 
 #: templates/index.html:1056

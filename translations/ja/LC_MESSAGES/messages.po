@@ -1,55 +1,64 @@
-
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-11 10:49+0800\n"
+"POT-Creation-Date: 2025-09-12 19:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: ja\n"
 "Language-Team: ja <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app.py:45
+#: app.py:51
 msgid "这是一个测试错误，用于验证错误处理功能是否正常工作"
-msgstr ""
+msgstr "これはエラー処理機能が正常に動作しているかを検証するためのテストエラーです"
 
-#: app.py:64
-msgid "抱歉，服务器遇到了意外错误。我们的技术团队已收到通知并正在处理此问题。"
-msgstr ""
+#: debug_app.py:34 templates/index.html:415 templates/test.html:8
+#: test_translation_quick.py:23
+#, python-format
+msgid "我们的AI解决方案平均为客户带来35%% 的业务增长"
+msgstr "私たちのAIソリューションはお客様に平均35%%のビジネス成長をもたらします"
 
-#: app.py:71
-msgid "服务器暂时过载"
-msgstr ""
+#: simple_app.py:43 templates/index.html:286 translation_test.py:31
+#: translation_test.py:54 translation_test.py:55
+msgid "探索解决方案"
+msgstr "ソリューションを探索"
 
-#: app.py:72
-msgid "应用程序代码错误"
-msgstr ""
+#: templates/index.html:634 test_new_translations.py:32
+msgid "审批效率提升"
+msgstr "審査効率向上"
 
-#: app.py:73
-msgid "数据库连接问题"
-msgstr ""
+#: templates/index.html:644 test_new_translations.py:33
+msgid "不良贷款率降低"
+msgstr "不良債権率削減"
 
-#: app.py:74
-msgid "第三方服务不可用"
-msgstr ""
+#: templates/index.html:671 test_new_translations.py:34
+msgid "点击率提升"
+msgstr "クリック率向上"
 
-#: app.py:82
-msgid "请稍后重试操作"
-msgstr ""
+#: templates/index.html:681 test_new_translations.py:35
+msgid "客单价提升"
+msgstr "客単価向上"
 
-#: app.py:83
-msgid "如果问题持续存在，请联系技术支持"
-msgstr ""
+#: templates/index.html:691 test_new_translations.py:36
+msgid "用户满意度"
+msgstr "ユーザー満足度"
 
-#: app.py:84
-#, python-brace-format
-msgid "提供错误ID以便我们更快定位问题: {}"
-msgstr ""
+#: templates/index.html:887 templates/test.html:9 test_translation_quick.py:29
+#, python-format
+msgid "平均业务增长(%%)"
+msgstr "平均業務成長(%%)"
+
+#: templates/index.html:891 templates/test.html:10
+#: test_translation_quick.py:35
+#, python-format
+msgid "客户成本降低(%%)"
+msgstr "お客様コスト削減(%%)"
 
 #: templates/about.html:6 templates/about.html:14 templates/index.html:225
 #: templates/index.html:253 templates/index.html:302 templates/index.html:1059
@@ -58,134 +67,147 @@ msgstr "私たちについて"
 
 #: templates/about.html:6 templates/contact.html:6 templates/index.html:219
 #: templates/index.html:1048
-#, fuzzy
 msgid "上海葳澄信息科技"
-msgstr "上海葳澄信息科技有限公司"
+msgstr "上海葳澄情報科技"
 
 #: templates/about.html:17
 msgid "公司简介"
-msgstr ""
+msgstr "会社概要"
 
 #: templates/about.html:18
 msgid "上海葳澄信息科技有限公司是一家专注于人工智能和大数据技术的高科技企业..."
-msgstr ""
+msgstr "上海葳澄情報科技有限公司は人工知能とビッグデータ技術に特化したハイテク企業です..."
 
 #: templates/about.html:22
 msgid "团队介绍"
-msgstr ""
+msgstr "チーム紹介"
 
 #: templates/contact.html:6 templates/contact.html:14 templates/index.html:228
-#: templates/index.html:256 templates/index.html:289 templates/index.html:1078
+#: templates/index.html:256 templates/index.html:289 templates/index.html:1062
+#: templates/index.html:1078
 msgid "联系我们"
 msgstr "お問い合わせ"
 
 #: templates/contact.html:18 templates/index.html:949
 msgid "联系方式"
-msgstr ""
+msgstr "連絡先"
 
 #: templates/contact.html:23
 msgid "留言板"
-msgstr ""
+msgstr "メッセージボード"
 
-# 表单文本
 #: templates/contact.html:26 templates/index.html:917
 msgid "姓名"
 msgstr "お名前"
 
+#: templates/contact.html:27 templates/index.html:918
+msgid "请输入您的姓名"
+msgstr "お名前をご入力ください"
+
 #: templates/contact.html:30 templates/index.html:927
 msgid "邮箱"
-msgstr ""
+msgstr "メールアドレス"
+
+#: templates/contact.html:31 templates/index.html:928
+msgid "请输入您的邮箱"
+msgstr "メールアドレスをご入力ください"
 
 #: templates/contact.html:34
 msgid "留言内容"
-msgstr ""
+msgstr "メッセージ内容"
+
+#: templates/contact.html:35
+msgid "请输入您的留言"
+msgstr "メッセージをご入力ください"
 
 #: templates/contact.html:38
-#, fuzzy
 msgid "提交"
-msgstr "問い合わせを送信"
+msgstr "送信"
 
 #: templates/error.html:6
 msgid "服务器错误"
-msgstr ""
+msgstr "サーバーエラー"
 
 #: templates/error.html:6
 msgid "多语言网站"
-msgstr ""
+msgstr "多言語ウェブサイト"
 
 #: templates/error.html:122
 msgid "服务器遇到问题"
-msgstr ""
+msgstr "サーバーで問題が発生しました"
 
 #: templates/error.html:127
 msgid "错误ID"
-msgstr ""
+msgstr "エラーID"
 
 #: templates/error.html:128
 msgid "时间"
-msgstr ""
+msgstr "時間"
 
 #: templates/error.html:132
 msgid "建议操作"
-msgstr ""
+msgstr "推奨操作"
 
 #: templates/error.html:141
 msgid "技术信息"
-msgstr ""
+msgstr "技術情報"
 
 #: templates/error.html:142
 msgid "状态码"
-msgstr ""
+msgstr "ステータスコード"
 
 #: templates/error.html:143
 msgid "错误类型"
-msgstr ""
+msgstr "エラーの種類"
 
 #: templates/error.html:144
 msgid "可能原因"
-msgstr ""
+msgstr "考えられる原因"
 
 #: templates/error.html:153
-#, fuzzy
 msgid "返回首页"
 msgstr "ホーム"
 
 #: templates/error.html:157
 msgid "如果您是技术支持人员，请记录此错误ID以便排查问题"
-msgstr ""
+msgstr "技術サポートの方は、問題調査のためこのエラーIDを記録してください"
 
 #: templates/index.html:4
-#, fuzzy
 msgid "上海葳澄信息科技有限公司 - WSAI"
-msgstr "上海葳澄信息科技有限公司(WSAI)"
+msgstr "上海葳澄情報科技有限公司 - WSAI"
 
 #: templates/index.html:49
 msgid "主橙色"
-msgstr ""
+msgstr "メインオレンジ色"
 
 #: templates/index.html:50
 msgid "浅橙色"
-msgstr ""
+msgstr "ライトオレンジ色"
 
 #: templates/index.html:51
 msgid "深色文本"
-msgstr ""
+msgstr "ダークテキスト"
 
 #: templates/index.html:52
 msgid "浅色背景"
-msgstr ""
+msgstr "ライト背景"
 
 #: templates/index.html:158
 msgid "地图加载状态样式"
-msgstr ""
+msgstr "マップロード状態スタイル"
 
 #: templates/index.html:178
 msgid "地图图片悬停效果"
-msgstr ""
+msgstr "マップ画像ホバーエフェクト"
+
+#: templates/index.html:217 templates/index.html:1046
+#: templates/index.html:1097
+msgid "WSAI"
+msgstr "WSAI"
 
 #: templates/index.html:222
 msgid "桌面导航"
-msgstr ""
+msgstr "デスクトップナビゲーション"
 
 #: templates/index.html:224 templates/index.html:252 templates/index.html:1058
 msgid "首页"
@@ -203,7 +225,7 @@ msgstr "成功事例"
 
 #: templates/index.html:231
 msgid "联系按钮"
-msgstr ""
+msgstr "連絡ボタン"
 
 #: templates/index.html:233 templates/index.html:258
 msgid "咨询专家"
@@ -211,45 +233,44 @@ msgstr "専門家に相談"
 
 #: templates/index.html:236
 msgid "语言切换按钮"
-msgstr ""
+msgstr "言語切り替えボタン"
 
 #: templates/index.html:238 templates/index.html:263
 msgid "中文"
-msgstr ""
+msgstr "中国語"
 
 #: templates/index.html:238
 msgid "中"
-msgstr ""
+msgstr "中"
 
 #: templates/index.html:239 templates/index.html:264
 msgid "English"
-msgstr ""
+msgstr "English"
 
 #: templates/index.html:239
 msgid "EN"
-msgstr ""
+msgstr "EN"
 
 #: templates/index.html:240 templates/index.html:265
 msgid "日本語"
-msgstr ""
+msgstr "日本語"
 
 #: templates/index.html:240
 msgid "日"
-msgstr ""
+msgstr "日"
 
 #: templates/index.html:243
 msgid "移动端菜单按钮"
-msgstr ""
+msgstr "モバイルメニューボタン"
 
 #: templates/index.html:249
 msgid "移动端导航菜单"
-msgstr ""
+msgstr "モバイルメニューボタン"
 
 #: templates/index.html:271
 msgid "英雄区域"
-msgstr ""
+msgstr "ヒーローエリア"
 
-# 核心文本
 #: templates/index.html:279
 msgid "人工智能驱动"
 msgstr "AI駆動"
@@ -260,117 +281,114 @@ msgstr "企業のデジタルトランスフォーメーション"
 
 #: templates/index.html:282
 msgid "上海葳澄信息科技有限公司(WSAI)"
-msgstr "上海葳澄信息科技有限公司(WSAI)"
+msgstr "上海葳澄情報科技有限公司(WSAI)"
 
 #: templates/index.html:282
 msgid "专注于为企业提供专业、定制化的AI解决方案，助力企业实现业务增长与价值创造"
-msgstr "専門的でカスタマイズされたAIソリューションを企業に提供し、ビジネスの成長と価値創造を支援することに特化"
-
-#: templates/index.html:286
-#, fuzzy
-msgid "探索解决方案"
-msgstr "ソリューション"
+msgstr "企業に専門的でカスタマイズされたAIソリューションを提供し、ビジネスの成長と価値創造を支援"
 
 #: templates/index.html:306
-#, fuzzy
 msgid "关于"
 msgstr "私たちについて"
 
 #: templates/index.html:306
 msgid "葳澄科技"
-msgstr ""
+msgstr "ウェイチェンテクノロジー"
 
 #: templates/index.html:308
 msgid "专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家"
-msgstr ""
+msgstr "AIソリューションに特化したハイテク企業で、お客様から信頼されるAIソリューションの専門家になることを目指しています"
 
 #: templates/index.html:315
 msgid "葳澄科技办公环境"
-msgstr ""
+msgstr "葳澄科技オフィス環境"
 
 #: templates/index.html:321 templates/index.html:361
 msgid "我们的"
-msgstr ""
+msgstr "私たちの"
 
 #: templates/index.html:321
 msgid "故事"
-msgstr ""
+msgstr "ストーリー"
 
 #: templates/index.html:323
-msgid "上海葳澄信息科技有限公司成立于2019年，是一家专注于人工智能解决方案的高科技企业。我们的核心使命是通过前沿的人工智能(AI)技术，赋能企业实现数字化转型，从而驱动业务增长并创造更大价值。"
+msgid ""
+"上海葳澄信息科技有限公司成立于2019年，是一家专注于人工智能解决方案的高科技企业。我们的核心使命是通过前沿的人工智能(AI)技术，赋能企业实现数字化转型，从而驱动业务增长并创造更大价值。"
 msgstr ""
+"上海葳澄情報科技有限公司は2019年に設立されたAIソリューションに特化したハイテク企業です。私たちの中核使命は、最先端のAI技術を通じて企業のデジタルトランスフォーメーションを可能にし、ビジネスの成長とより大きな価値創造を推進することです。"
 
 #: templates/index.html:326
-msgid "葳澄科技为企业提供专业、定制化的AI解决方案。我们的服务已帮助众多客户在关键的业务指标上取得了显著提升，有力证明了AI技术在实际应用中的巨大价值和商业效益。"
+msgid ""
+"葳澄科技为企业提供专业、定制化的AI解决方案。我们的服务已帮助众多客户在关键的业务指标上取得了显著提升，有力证明了AI技术在实际应用中的巨大价值和商业效益。"
 msgstr ""
+"葳澄科技は企業に専門的でカスタマイズされたAIソリューションを提供しています。私たちのサービスは、多くのお客様の重要なビジネス指標において顕著な改善を達成し、AI技術の実用的な巨大な価値と商業的メリットを証明しています。"
 
 #: templates/index.html:332
 msgid "公司成立"
-msgstr ""
+msgstr "会社設立"
 
 #: templates/index.html:340
 msgid "AI专家"
-msgstr ""
+msgstr "AI専門家"
 
 #: templates/index.html:344
 msgid "客户满意度"
-msgstr ""
+msgstr "お客様満足度"
 
 #: templates/index.html:349
 msgid "了解更多"
-msgstr ""
+msgstr "詳細を見る"
 
 #: templates/index.html:361
 msgid "使命"
-msgstr ""
+msgstr "ミッション"
 
 #: templates/index.html:363
-msgid "通过前沿的人工智能技术，赋能企业实现数字化转型，驱动业务增长并创造更大价值。我们专注于理解企业需求，利用AI技术解决核心业务挑战，是企业在智能化时代寻求创新与突破的理想合作伙伴。"
+msgid ""
+"通过前沿的人工智能技术，赋能企业实现数字化转型，驱动业务增长并创造更大价值。我们专注于理解企业需求，利用AI技术解决核心业务挑战，是企业在智能化时代寻求创新与突破的理想合作伙伴。"
 msgstr ""
+"最先端のAI技術を通じて、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
 
 #: templates/index.html:372
 msgid "创新技术"
-msgstr ""
+msgstr "革新技術"
 
 #: templates/index.html:373
 msgid "不断探索前沿AI技术，为客户提供最先进的解决方案"
-msgstr ""
+msgstr "常に最新のAI技術を探求し、お客様に最も先進的なソリューションを提供します"
 
 #: templates/index.html:382
 msgid "客户至上"
-msgstr ""
+msgstr "お客様第一"
 
 #: templates/index.html:383
 msgid "深入理解客户需求，提供定制化解决方案，创造实际价值"
-msgstr ""
+msgstr "お客様のニーズを深く理解し、カスタマイズされたソリューションを提供し、実用的な価値を創造します"
 
 #: templates/index.html:392
 msgid "卓越服务"
-msgstr ""
+msgstr "優秀なサービス"
 
 #: templates/index.html:393
 msgid "从咨询到实施的全流程服务，确保项目成功落地"
-msgstr ""
+msgstr "コンサルティングから実装までの全プロセスサービスで、プロジェクトの成功を保証します"
 
 #: templates/index.html:406
 msgid "AI技术应用场景"
-msgstr ""
+msgstr "AI技術の応用シナリオ"
 
 #: templates/index.html:413
 msgid "业务增长"
-msgstr ""
-
-#: templates/index.html:415
-msgid "我们的AI解决方案平均为客户带来35% 的业务增长"
-msgstr ""
+msgstr "ビジネス成長"
 
 #: templates/index.html:429
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: templates/index.html:431
 msgid "我们提供专业、定制化的人工智能解决方案，帮助企业解决核心业务挑战，实现数字化转型"
 msgstr ""
+"私たちはプロフェッショナルでカスタマイズされたAIソリューションを提供し、企業の主要なビジネス課題を解決し、デジタルトランスフォーメーションを実現します"
 
 #: templates/index.html:438 templates/index.html:444 templates/index.html:1069
 msgid "智能数据分析"
@@ -378,12 +396,12 @@ msgstr "インテリジェントデータ分析"
 
 #: templates/index.html:445
 msgid "利用AI技术深度分析企业数据，挖掘潜在价值，提供数据驱动的决策支持"
-msgstr ""
+msgstr "AI技術を利用して企業データを深く分析し、潜在価値を発掘し、データ駆動の意思決定サポートを提供します"
 
 #: templates/index.html:447 templates/index.html:464 templates/index.html:481
 #: templates/index.html:498 templates/index.html:515 templates/index.html:532
 msgid "了解详情"
-msgstr ""
+msgstr "詳細を見る"
 
 #: templates/index.html:455 templates/index.html:461 templates/index.html:1070
 msgid "自然语言处理"
@@ -391,204 +409,222 @@ msgstr "自然言語処理"
 
 #: templates/index.html:462
 msgid "开发智能客服、文本分析等应用，提升客户体验和业务处理效率"
-msgstr ""
+msgstr "インテリジェントカスタマーサービス、テキスト分析などのアプリケーションを開発し、顧客体験とビジネス処理効率を向上させます"
 
 #: templates/index.html:472 templates/index.html:478 templates/index.html:1071
 msgid "计算机视觉"
-msgstr ""
+msgstr "コンピュータビジョン"
 
 #: templates/index.html:479
 msgid "实现图像识别、视频分析等功能，应用于智能制造、安防监控等领域"
-msgstr ""
+msgstr "画像認識、動画分析などの機能を実現し、スマート製造、セキュリティ監視などの領域に応用します"
 
 #: templates/index.html:489 templates/index.html:495 templates/index.html:1072
 msgid "预测性分析"
-msgstr ""
+msgstr "予測分析"
 
 #: templates/index.html:496
 msgid "基于历史数据预测未来趋势，帮助企业提前规划，降低风险"
-msgstr ""
+msgstr "過去のデータに基づいて将来のトレンドを予測し、企業の事前計画を支援し、リスクを低減します"
 
 #: templates/index.html:506 templates/index.html:512 templates/index.html:1073
 msgid "智能自动化"
-msgstr ""
+msgstr "インテリジェント自動化"
 
 #: templates/index.html:513
 msgid "结合RPA和AI技术，实现业务流程自动化，提高效率降低成本"
-msgstr ""
+msgstr "RPAとAI技術を組み合わせてビジネスプロセスの自動化を実現し、効率を向上させコストを削減します"
 
 #: templates/index.html:523 templates/index.html:529
 msgid "定制化AI模型开发"
-msgstr ""
+msgstr "カスタムAIモデル開発"
 
 #: templates/index.html:530
 msgid "根据企业特定需求，开发定制化AI模型，解决独特业务挑战"
-msgstr ""
+msgstr "企業の特定のニーズに応じて、カスタムAIモデルを開発し、独特のビジネス課題を解決します"
 
 #: templates/index.html:544
-#, fuzzy
 msgid "成功"
-msgstr "成功事例"
+msgstr "成功"
 
 #: templates/index.html:544
-#, fuzzy
 msgid "案例"
-msgstr "成功事例"
+msgstr "事例"
 
 #: templates/index.html:546
 msgid "我们的AI解决方案已帮助众多客户在关键业务指标上取得显著提升，创造实际价值"
-msgstr ""
+msgstr "私たちのAIソリューションは、多くのお客様の重要なビジネス指標において顕著な向上を実現し、実際の価値を創造しています"
 
 #: templates/index.html:552 templates/index.html:615 templates/index.html:662
 #: templates/index.html:725 templates/index.html:772 templates/index.html:835
 msgid "案例分析"
-msgstr ""
+msgstr "事例分析"
 
 #: templates/index.html:553 templates/index.html:598
 msgid "制造业智能质检系统"
-msgstr ""
+msgstr "製造業インテリジェント品質検査システム"
 
 #: templates/index.html:555
 msgid "为某大型制造企业开发的基于计算机视觉的智能质检系统，替代传统人工质检，提高检测精度和效率。"
 msgstr ""
+"大手製造企業向けに開発されたコンピュータビジョンベースのインテリジェント品質検査システムで、従来の人手による検査に代わって検出精度と効率を向上させます。"
 
 #: templates/index.html:561
 msgid "检测精度提升"
-msgstr ""
+msgstr "検出精度向上"
 
 #: templates/index.html:571
 msgid "检测效率提升"
-msgstr ""
+msgstr "審査効率向上"
 
 #: templates/index.html:581
 msgid "人工成本降低"
-msgstr ""
+msgstr "人件費削減"
 
-#: templates/index.html:591 templates/index.html:811
+#: templates/index.html:591 templates/index.html:654 templates/index.html:701
+#: templates/index.html:764 templates/index.html:811 templates/index.html:874
 msgid "查看完整案例"
-msgstr ""
+msgstr "完全な事例を見る"
 
 #: templates/index.html:609 templates/index.html:616
 msgid "金融行业智能风控系统"
-msgstr ""
+msgstr "金融業界インテリジェントリスク管理システム"
 
 #: templates/index.html:618
 msgid "为某商业银行开发的智能风控系统，通过机器学习算法分析客户数据，精准识别风险，提高贷款审批效率。"
 msgstr ""
+"商業銀行向けに開発されたインテリジェントリスク管理システムで、機械学習アルゴリズムを通じて顧客データを分析し、リスクを正確に識別し、融資審査効率を向上させます。"
 
 #: templates/index.html:624
 msgid "风险识别准确率"
-msgstr ""
+msgstr "リスク識別精度"
 
 #: templates/index.html:663 templates/index.html:708
 msgid "零售业智能推荐系统"
-msgstr ""
+msgstr "小売業インテリジェント推薦システム"
 
 #: templates/index.html:665
 msgid "为连锁零售企业开发的智能推荐系统，基于用户行为分析和商品特征，实现个性化商品推荐，提升销售转化率。"
 msgstr ""
+"チェーン小売企業向けに開発されたインテリジェント推薦システムで、ユーザー行動分析と商品特性に基づいてパーソナライズされた商品推薦を実現し、販売転換率を向上させます。"
 
 #: templates/index.html:719 templates/index.html:726
 msgid "医疗影像智能诊断系统"
-msgstr ""
+msgstr "医療画像インテリジェント診断システム"
 
 #: templates/index.html:728
 msgid "为医疗机构开发的基于深度学习的医疗影像诊断系统，辅助医生快速准确识别病灶，提高诊断效率和准确性。"
-msgstr ""
+msgstr "医療機関向けに開発された深層学習ベースの医療画像診断システムで、医師の迅速で正確な病変識別を支援し、診断効率と精度を向上させます。"
+
+#: templates/index.html:734
+msgid "诊断准确率"
+msgstr "診断精度"
+
+#: templates/index.html:744
+msgid "诊断时间缩短"
+msgstr "診断時間短縮"
+
+#: templates/index.html:754
+msgid "早期检出率提升"
+msgstr "早期検出率向上"
 
 #: templates/index.html:773 templates/index.html:818
 msgid "物流行业智能调度系统"
-msgstr ""
+msgstr "金融業界インテリジェントリスク管理システム"
 
 #: templates/index.html:775
 msgid "为大型物流企业开发的智能调度系统，通过AI算法优化配送路线和资源分配，降低运营成本，提高配送效率。"
 msgstr ""
+"大手物流企業向けに開発されたインテリジェント配車システムで、AIアルゴリズムを通じて配送ルートとリソース配分を最適化し、運営コストを削減し、配送効率を向上させます。"
+
+#: templates/index.html:781
+msgid "配送效率提升"
+msgstr "審査効率向上"
+
+#: templates/index.html:791
+msgid "运输成本降低"
+msgstr "輸送コスト削減"
+
+#: templates/index.html:801
+msgid "准时送达率"
+msgstr "定刻配達率"
 
 #: templates/index.html:829 templates/index.html:836
 msgid "教育行业个性化学习系统"
-msgstr ""
+msgstr "教育業界パーソナライズ学習システム"
 
 #: templates/index.html:838
 msgid "为教育机构开发的个性化学习系统，通过分析学生学习行为和能力特征，提供定制化学习路径和内容推荐。"
 msgstr ""
+"教育機関向けに開発されたパーソナライズ学習システムで、学生の学習行動と能力特性を分析し、カスタマイズされた学習パスとコンテンツ推薦を提供します。"
 
-#: templates/index.html:887
-msgid "平均业务增长(%)"
-msgstr ""
+#: templates/index.html:844
+msgid "学习效率提升"
+msgstr "審査効率向上"
 
-#: templates/index.html:891
-msgid "客户成本降低(%)"
-msgstr ""
+#: templates/index.html:854
+msgid "知识掌握率"
+msgstr "知識習得率"
+
+#: templates/index.html:864
+msgid "学生满意度"
+msgstr "ユーザー満足度"
 
 #: templates/index.html:895
 msgid "行业覆盖"
-msgstr ""
+msgstr "業界カバー"
 
 #: templates/index.html:906
-#, fuzzy
 msgid "联系"
-msgstr "お問い合わせ"
+msgstr "連絡先"
 
 #: templates/index.html:906
-#, fuzzy
 msgid "我们"
-msgstr "お問い合わせ"
+msgstr "私たちの"
 
 #: templates/index.html:908
 msgid "无论您有任何疑问或需求，我们的团队都将为您提供专业的咨询服务"
-msgstr ""
+msgstr "どのような疑問やニーズをお持ちでも、私たちのチームが専門的なコンサルティングサービスを提供いたします"
 
 #: templates/index.html:914
 msgid "发送咨询"
-msgstr ""
-
-#: templates/index.html:918
-msgid "请输入您的姓名"
-msgstr ""
+msgstr "問い合わせを送信"
 
 #: templates/index.html:922
 msgid "公司名称"
 msgstr "会社名"
 
 #: templates/index.html:923
-#, fuzzy
 msgid "请输入您的公司名称"
-msgstr "会社名"
-
-# 错误消息
-#: templates/index.html:928
-#, fuzzy
-msgid "请输入您的邮箱"
-msgstr "有効なメールアドレスを入力してください"
+msgstr "お名前をご入力ください"
 
 #: templates/index.html:932
 msgid "电话"
-msgstr ""
+msgstr "電話"
 
 #: templates/index.html:933
-#, fuzzy
 msgid "请输入您的电话"
-msgstr "電話番号を入力してください"
+msgstr "メールアドレスをご入力ください"
 
 #: templates/index.html:937
 msgid "咨询内容"
-msgstr ""
+msgstr "問い合わせ内容"
 
 #: templates/index.html:938
 msgid "请输入您的咨询内容"
-msgstr ""
+msgstr "問い合わせ内容をご入力ください"
 
 #: templates/index.html:942
 msgid "提交咨询"
-msgstr "問い合わせを送信"
+msgstr "送信"
 
 #: templates/index.html:957
 msgid "公司地址"
-msgstr ""
+msgstr "会社住所"
 
 #: templates/index.html:958 templates/index.html:1082
 msgid "上海市静安区共和新路4718弄10号1楼"
-msgstr ""
+msgstr "上海市静安区共和新路4718弄10号1楼"
 
 #: templates/index.html:964
 msgid "公司位置"
@@ -596,35 +632,647 @@ msgstr "会社の所在地"
 
 #: templates/index.html:967 templates/index.html:974 templates/index.html:1097
 msgid "上海葳澄信息科技有限公司"
-msgstr "上海葳澄信息科技有限公司"
+msgstr "上海葳澄情報科技有限公司"
 
 #: templates/index.html:978
 msgid "在高德地图中查看"
 msgstr "Amapで表示"
 
-#: templates/index.html:995
-#, fuzzy
+#: templates/index.html:995 templates/index.html:996 templates/index.html:1086
 msgid "联系电话"
-msgstr "電話番号を入力してください"
+msgstr "連絡電話"
 
-#: templates/index.html:1005
+#: templates/index.html:1005 templates/index.html:1006
+#: templates/index.html:1090
 msgid "电子邮箱"
-msgstr ""
+msgstr "メールアドレス"
 
 #: templates/index.html:1030
-#, fuzzy
 msgid "关注我们"
 msgstr "私たちについて"
 
 #: templates/index.html:1031
 msgid "通过社交媒体获取更多AI行业资讯和公司动态"
-msgstr ""
+msgstr "ソーシャルメディアでAI業界のニュースと会社の最新情報を入手してください"
+
+#: templates/index.html:1051
+msgid "专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家。"
+msgstr "AIソリューションに特化したハイテク企業で、お客様から信頼されるAIソリューションの専門家になることを目指しています"
 
 #: templates/index.html:1056
 msgid "快速链接"
-msgstr ""
+msgstr "クイックリンク"
 
 #: templates/index.html:1097
 msgid "版权所有"
-msgstr ""
+msgstr "著作権所有"
 
+#~ msgid "探索解決策"
+#~ msgstr "ソリューションを探索"
+
+# 成功案例指標翻訳
+#~ msgid "審査効率向上"
+#~ msgstr "審査効率向上"
+
+#~ msgid "不良債権率削減"
+#~ msgstr "不良債権率削減"
+
+#~ msgid "クリック率向上"
+#~ msgstr "クリック率向上"
+
+#~ msgid "客単価向上"
+#~ msgstr "客単価向上"
+
+#~ msgid "平均業務成長(%%)"
+#~ msgstr "平均35%%のビジネス成長"
+
+#~ msgid "お客様コスト削減(%%)"
+#~ msgstr "お客様コスト削減(%%)"
+
+#~ msgid "会社概要"
+#~ msgstr "会社概要"
+
+#~ msgid "上海葳澄情報科技有限公司是一家专注于人工智能とビッグデータ技術に特化したハイテク企業..."
+#~ msgstr "上海葳澄情報科技有限公司は人工知能とビッグデータ技術に特化したハイテク企業です..."
+
+#~ msgid "团队介绍"
+#~ msgstr "チーム紹介"
+
+#~ msgid "連絡先"
+#~ msgstr "連絡先"
+
+#~ msgid "メッセージボード"
+#~ msgstr "メッセージボード"
+
+#~ msgid "お名前"
+#~ msgstr "お名前"
+
+#~ msgid "お名前をご入力ください"
+#~ msgstr "お名前をご入力ください"
+
+#~ msgid "メールアドレス"
+#~ msgstr "メールアドレス"
+
+# 错误メッセージ
+#~ msgid "メールアドレスをご入力ください"
+#~ msgstr "メールアドレスをご入力ください"
+
+#~ msgid "メッセージ内容"
+#~ msgstr "メッセージ内容"
+
+# 错误メッセージ
+#~ msgid "メッセージをご入力ください"
+#~ msgstr "メッセージをご入力ください"
+
+#~ msgid "送信"
+#~ msgstr "問い合わせを送信"
+
+#~ msgid "服务器错误"
+#~ msgstr "サーバーエラー"
+
+#~ msgid "多语言网站"
+#~ msgstr "多言語ウェブサイト"
+
+#~ msgid "服务器遇到问题"
+#~ msgstr "サーバーで問題が発生しました"
+
+#~ msgid "错误ID"
+#~ msgstr "エラーID"
+
+#~ msgid "时间"
+#~ msgstr "時間"
+
+#~ msgid "建议操作"
+#~ msgstr "推奨操作"
+
+#~ msgid "技术信息"
+#~ msgstr "技術情報"
+
+#~ msgid "状态码"
+#~ msgstr "ステータスコード"
+
+#~ msgid "错误类型"
+#~ msgstr "エラーの種類"
+
+#~ msgid "可能原因"
+#~ msgstr "考えられる原因"
+
+#~ msgid "ホームページに戻る"
+#~ msgstr "ホームページに戻る"
+
+#~ msgid "如果您是技术支持人员，请记录此错误ID以便排查问题"
+#~ msgstr "技術サポートの方は、問題調査のためこのエラーIDを記録してください"
+
+#~ msgid "メインオレンジ色"
+#~ msgstr "メインオレンジ色"
+
+#~ msgid "ライトオレンジ色"
+#~ msgstr "ライトオレンジ色"
+
+#~ msgid "ダークテキスト"
+#~ msgstr "ダークテキスト"
+
+#~ msgid "ライト背景"
+#~ msgstr "ライト背景"
+
+#~ msgid "マップロード状態スタイル"
+#~ msgstr "マップロード状態スタイル"
+
+#~ msgid "マップ画像ホバーエフェクト"
+#~ msgstr "マップ画像ホバーエフェクト"
+
+#~ msgid "WSAI"
+#~ msgstr "AI"
+
+#~ msgid "デスクトップナビゲーション"
+#~ msgstr "デスクトップナビゲーション"
+
+#~ msgid "連絡ボタン"
+#~ msgstr "連絡ボタン"
+
+#~ msgid "专家咨询"
+#~ msgstr "専門家に相談"
+
+#~ msgid "言語切り替えボタン"
+#~ msgstr "言語切り替えボタン"
+
+#~ msgid "モバイルメニューボタン"
+#~ msgstr "モバイルメニューボタン"
+
+#~ msgid "モバイルナビゲーションメニュー"
+#~ msgstr "モバイルメニューボタン"
+
+#~ msgid "ヒーローエリア"
+#~ msgstr "ヒーローエリア"
+
+#~ msgid "AI駆動"
+#~ msgstr "AI駆動"
+
+#~ msgid "企業のデジタルトランスフォーメーション"
+#~ msgstr "企業のデジタルトランスフォーメーション"
+
+#~ msgid "専門的でカスタマイズされたAIソリューションを企業に提供し、ビジネスの成長と価値創造を支援することに特化"
+#~ msgstr "企業に専門的でカスタマイズされたAIソリューションを提供し、ビジネスの成長と価値創造を支援することに特化"
+
+#~ msgid "ストーリー"
+#~ msgstr "ストーリー"
+
+#~ msgid "AIソリューションに特化したハイテク企業で、お客様から信頼されるAIソリューションの専門家としてありたいと思っています"
+#~ msgstr "AIソリューションに特化したハイテク企業で、お客様から信頼されるAIソリューションの専門家になることを目指しています"
+
+#~ msgid "葳澄テクノロジーオフィス環境"
+#~ msgstr "葳澄テクノロジーオフィス環境"
+
+#~ msgid "私たちの"
+#~ msgstr "私たちの"
+
+#~ msgid ""
+#~ "上海葳澄情報科技有限公司は2019年に設立されたAIソリューションに特化したハイテク企業です。私たちの中核使命は、最先端のAI技術を通じて企業のデジタルトランスフォーメーションを可能にし、ビジネスの成長とより大きな価値創造を推進することです。"
+#~ msgstr ""
+#~ "上海葳澄情報科技有限公司は2019年に設立されたAIソリューションに特化したハイテク企業です。私たちの中核使命は、最先端のAI技術を通じて企業のデジタルトランスフォーメーションを可能にし、ビジネスの成長とより大きな価値創造を推進することです。"
+
+#~ msgid ""
+#~ "葳澄テクノロジーは企業に専門的でカスタマイズされたAIソリューションを提供しています。私たちのサービスは、多くのお客様の重要なビジネス指標において顕著な改善を達成し、AI技術の実用的な巨大な価値と商業的メリットを証明しています。"
+#~ msgstr ""
+#~ "葳澄テクノロジーは企業に専門的でカスタマイズされたAIソリューションを提供しています。私たちのサービスは、多くのお客様の重要なビジネス指標において顕著な改善を達成し、AI技術の実用的な巨大な価値と商業的メリットを証明しています。"
+
+#~ msgid "会社設立"
+#~ msgstr "会社設立"
+
+#~ msgid "お客様満足度"
+#~ msgstr "お客様満足度"
+
+#~ msgid "詳細を見る"
+#~ msgstr "詳細を見る"
+
+#~ msgid "ミッション"
+#~ msgstr "ミッション"
+
+#~ msgid ""
+#~ "最先端のAI技術を通じて、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+#~ msgstr ""
+#~ "最先端のAI技術を通じて、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+
+#~ msgid "革新技術"
+#~ msgstr "革新技術"
+
+#~ msgid "常に最新のAI技術を探求し、お客様に最も先進的なソリューションを提供します"
+#~ msgstr "常に最新のAI技術を探求し、お客様に最も先進的なソリューションを提供します"
+
+#~ msgid "お客様第一"
+#~ msgstr "お客様第一"
+
+#~ msgid "お客様のニーズを深く理解し、カスタマイズされたソリューションを提供し、実用的な価値を創造します"
+#~ msgstr "お客様のニーズを深く理解し、カスタマイズされたソリューションを提供し、実用的な価値を創造します"
+
+#~ msgid "優秀なサービス"
+#~ msgstr "優秀なサービス"
+
+#~ msgid "コンサルティングから実装までの全プロセスサービスで、プロジェクトの成功を保証します"
+#~ msgstr "コンサルティングから実装までの全プロセスサービスで、プロジェクトの成功を保証します"
+
+#~ msgid "AI技術の応用シナリオ"
+#~ msgstr "AI技術の応用シナリオ"
+
+#~ msgid "ビジネス成長"
+#~ msgstr "ビジネス成長"
+
+#~ msgid ""
+#~ "私たちはプロフェッショナルでカスタマイズされたAIソリューションを提供し、企業の主要なビジネス課題を解決し、デジタルトランスフォーメーションを実現します"
+#~ msgstr ""
+#~ "私たちはプロフェッショナルでカスタマイズされたAIソリューションを提供し、企業の主要なビジネス課題を解決し、デジタルトランスフォーメーションを実現します"
+
+#~ msgid "インテリジェントデータ分析"
+#~ msgstr "インテリジェントデータ分析"
+
+#~ msgid "AI技術を利用して企業データを深く分析し、潜在価値を揘出し、データ駆動の意思決定サポートを提供します"
+#~ msgstr "AI技術を利用して企業データを深く分析し、潜在価値を揘出し、データ駆動の意思決定サポートを提供します"
+
+#~ msgid "インテリジェントカスタマーサービス、テキスト分析などのアプリケーションを開発し、顧客体験とビジネス処理効率を向上させます"
+#~ msgstr "インテリジェントカスタマーサービス、テキスト分析などのアプリケーションを開発し、顧客体験とビジネス処理効率を向上させます"
+
+#~ msgid "コンピュータビジョン"
+#~ msgstr "コンピュータビジョン"
+
+#~ msgid "画像認識、動画分析などの機能を実現し、スマート製造、セキュリティ監視などの領域に応用します"
+#~ msgstr "画像認識、動画分析などの機能を実現し、スマート製造、セキュリティ監視などの領域に応用します"
+
+#~ msgid "予測分析"
+#~ msgstr "予測分析"
+
+#~ msgid "過去のデータに基づいて将来のトレンドを予測し、企業の事前計画を支援し、リスクを低減します"
+#~ msgstr "過去のデータに基づいて将来のトレンドを予測し、企業の事前計画を支援し、リスクを低減します"
+
+#~ msgid "インテリジェント自動化"
+#~ msgstr "インテリジェント自動化"
+
+#~ msgid "RPAとAI技術を組み合わせてビジネスプロセスの自動化を実現し、効率を向上させコストを削減します"
+#~ msgstr "RPAとAI技術を組み合わせてビジネスプロセスの自動化を実現し、効率を向上させコストを削減します"
+
+#~ msgid "カスタムAIモデル開発"
+#~ msgstr "カスタムAIモデル開発"
+
+#~ msgid "企業の特定のニーズに応じて、カスタムAIモデルを開発し、独特のビジネス課題を解決します"
+#~ msgstr "企業の特定のニーズに応じて、カスタムAIモデルを開発し、独特のビジネス課題を解決します"
+
+#~ msgid "私たちのAIソリューションは、多くのお客様の重要なビジネス指標において顕著な向上を実現し、実際の価値を創造しています"
+#~ msgstr "私たちのAIソリューションは、多くのお客様の重要なビジネス指標において顕著な向上を実現し、実際の価値を創造しています"
+
+#~ msgid "製造業インテリジェント品質検査システム"
+#~ msgstr "製造業インテリジェント品質検査システム"
+
+#~ msgid ""
+#~ "大手製造企業向けに開発されたコンピュータビジョンベースのインテリジェント品質検査システムで、従来の人手による検査に代わって検出精度と効率を向上させます。"
+#~ msgstr ""
+#~ "大手製造企業向けに開発されたコンピュータビジョンベースのインテリジェント品質検査システムで、従来の人手による検査に代わって検出精度と効率を向上させます。"
+
+#~ msgid "検出精度向上"
+#~ msgstr "検出精度向上"
+
+#~ msgid "検出効率向上"
+#~ msgstr "検出精度向上"
+
+#~ msgid "人件費削減"
+#~ msgstr "人件費削減"
+
+#~ msgid "完全な事例を見る"
+#~ msgstr "完全な事例を見る"
+
+#~ msgid "金融業界インテリジェントリスク管理システム"
+#~ msgstr "金融業界インテリジェントリスク管理システム"
+
+#~ msgid ""
+#~ "商業銀行向けに開発されたインテリジェントリスク管理システムで、機械学習アルゴリズムを通じて顧客データを分析し、リスクを正確に識別し、融資審査効率を向上させます。"
+#~ msgstr ""
+#~ "商業銀行向けに開発されたインテリジェントリスク管理システムで、機械学習アルゴリズムを通じて顧客データを分析し、リスクを正確に識別し、融資審査効率を向上させます。"
+
+#~ msgid "リスク識別精度"
+#~ msgstr "リスク識別精度"
+
+#~ msgid "小売業インテリジェント推薦システム"
+#~ msgstr "小売業インテリジェント推薦システム"
+
+#~ msgid ""
+#~ "チェーン小売企業向けに開発されたインテリジェント推薦システムで、ユーザー行動分析と商品特性に基づいてパーソナライズされた商品推薦を実現し、販売転換率を向上させます。"
+#~ msgstr ""
+#~ "チェーン小売企業向けに開発されたインテリジェント推薦システムで、ユーザー行動分析と商品特性に基づいてパーソナライズされた商品推薦を実現し、販売転換率を向上させます。"
+
+#~ msgid "医療画像インテリジェント診断システム"
+#~ msgstr "医療画像インテリジェント診断システム"
+
+#~ msgid "医療機関向けに開発された深層学習ベースの医療画像診断システムで、医師の迅速で正確な病変識別を支援し、診断効率と精度を向上させます。"
+#~ msgstr "医療機関向けに開発された深層学習ベースの医療画像診断システムで、医師の迅速で正確な病変識別を支援し、診断効率と精度を向上させます。"
+
+#~ msgid "診断精度"
+#~ msgstr "診断精度"
+
+#~ msgid "診断時間短縮"
+#~ msgstr "診断時間短縮"
+
+#~ msgid "早期検出率向上"
+#~ msgstr "早期検出率向上"
+
+#~ msgid "物流業界インテリジェント配車システム"
+#~ msgstr "物流業界インテリジェント配車システム"
+
+#~ msgid ""
+#~ "大手物流企業向けに開発されたインテリジェント配車システムで、AIアルゴリズムを通じて配送ルートとリソース配分を最適化し、運営コストを削減し、配送効率を向上させます。"
+#~ msgstr ""
+#~ "大手物流企業向けに開発されたインテリジェント配車システムで、AIアルゴリズムを通じて配送ルートとリソース配分を最適化し、運営コストを削減し、配送効率を向上させます。"
+
+#~ msgid "配送効率向上"
+#~ msgstr "審査効率向上"
+
+#~ msgid "輸送コスト削減"
+#~ msgstr "輸送コスト削減"
+
+#~ msgid "定刻配達率"
+#~ msgstr "定刻配達率"
+
+#~ msgid "教育業界パーソナライズ学習システム"
+#~ msgstr "教育業界パーソナライズ学習システム"
+
+#~ msgid ""
+#~ "教育機関向けに開発されたパーソナライズ学習システムで、学生の学習行動と能力特性を分析し、カスタマイズされた学習パスとコンテンツ推薦を提供します。"
+#~ msgstr ""
+#~ "教育機関向けに開発されたパーソナライズ学習システムで、学生の学習行動と能力特性を分析し、カスタマイズされた学習パスとコンテンツ推薦を提供します。"
+
+#~ msgid "学習効率向上"
+#~ msgstr "審査効率向上"
+
+#~ msgid "知識習得率"
+#~ msgstr "知識習得率"
+
+#~ msgid "業界カバー"
+#~ msgstr "業界カバー"
+
+#~ msgid "連絡"
+#~ msgstr "連絡"
+
+#~ msgid "无论您有任何疑问或需求，私たちのチーム都将为您提供专业的咨询服务"
+#~ msgstr ""
+
+#~ msgid "会社名"
+#~ msgstr "会社名"
+
+#~ msgid "電話"
+#~ msgstr "電話"
+
+#~ msgid "電話番号を入力してください"
+#~ msgstr "メールアドレスをご入力ください"
+
+#~ msgid "問い合わせ内容"
+#~ msgstr "問い合わせ内容"
+
+# 错误メッセージ
+#~ msgid "请输入您的問い合わせ内容"
+#~ msgstr "問い合わせ内容をご入力ください"
+
+#~ msgid "問い合わせを送信"
+#~ msgstr "問い合わせを送信"
+
+#~ msgid "会社住所"
+#~ msgstr "会社住所"
+
+#~ msgid "会社の所在地"
+#~ msgstr "会社の所在地"
+
+#~ msgid "電子メール"
+#~ msgstr "メールアドレス"
+
+#~ msgid "クイックリンク"
+#~ msgstr "クイックリンク"
+
+#~ msgid "著作権所有"
+#~ msgstr "著作権所有"
+
+#~ msgid "抱歉、サーバ遇到了意外错误。私たちの技術チームは既に通知を受け取り、問題を処理しています。"
+#~ msgstr ""
+
+#~ msgid "サーバ暂时過載"
+#~ msgstr "サーバー一時過負荷"
+
+#~ msgid "应用程序代码错误"
+#~ msgstr "アプリケーションコードエラー"
+
+#~ msgid "数据库连接问题"
+#~ msgstr "データベース接続問題"
+
+#~ msgid "第三方服务不可用"
+#~ msgstr "サードパーティサービス利用不可"
+
+#~ msgid "もう少し後で再度試してみてください"
+#~ msgstr ""
+
+#~ msgid "もし問題が継続する場合は、技術サポートに連絡してください"
+#~ msgstr ""
+
+#~ msgid "提供エラーID以便 we faster locate問題: {}"
+#~ msgstr ""
+
+#~ msgid "平均業務成長(%)"
+#~ msgstr ""
+
+#~ msgid "お客様コスト削減(%)"
+#~ msgstr ""
+
+#~ msgid "サーバー遇到問題"
+#~ msgstr "サーバーで問題が発生しました"
+
+#~ msgid ""
+#~ "通過先端のAI技術、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+#~ msgstr ""
+#~ "最先端のAI技術を通じて、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+
+#~ msgid "AI技術を利用して企業データを深く分析し、潜在価値を発掘し、データ駆動の意思決定サポートを提供します"
+#~ msgstr "AI技術を利用して企業データを深く分析し、潜在価値を発掘し、データ駆動の意思決定サポートを提供します"
+
+#~ msgid "学生満足度"
+#~ msgstr "ユーザー満足度"
+
+#~ msgid "私たち"
+#~ msgstr "お問い合わせ"
+
+#~ msgid "どのような疑問やニーズをお持ちでも、私たちのチームが専門的なコンサルティングサービスを提供いたします"
+#~ msgstr "どのような疑問やニーズをお持ちでも、私たちのチームが専門的なコンサルティングサービスを提供いたします"
+
+#~ msgid "请输入您的会社名"
+#~ msgstr "お名前をご入力ください"
+
+#~ msgid "Amapで表示"
+#~ msgstr "Amapで表示"
+
+#~ msgid "連絡電話"
+#~ msgstr "連絡電話"
+
+#~ msgid "フォローしてください"
+#~ msgstr "私たちについて"
+
+#~ msgid "ソーシャルメディアでAI業界のニュースと会社の最新情報を入手してください"
+#~ msgstr "ソーシャルメディアでAI業界のニュースと会社の最新情報を入手してください"
+
+#~ msgid "AIソリューションに特化したハイテク企業で、お客様から信頼されるAIソリューションの専門家になることを目指しています"
+#~ msgstr "AIソリューションに特化したハイテク企業で、お客様から信頼されるAIソリューションの専門家になることを目指しています"
+
+# 以下是在英文ファイル中存在但在日文ファイル中完全缺失の条目
+#~ msgid "产品更新"
+#~ msgstr "製品更新"
+
+#~ msgid "全部"
+#~ msgstr "すべて"
+
+#~ msgid "公司新闻"
+#~ msgstr "会社ニュース"
+
+#~ msgid "发送消息"
+#~ msgstr "メッセージを送信"
+
+#~ msgid "技术博客"
+#~ msgstr "技術ブログ"
+
+#~ msgid "探索更多"
+#~ msgstr "さらに探す"
+
+#~ msgid "最新动态"
+#~ msgstr "最新ニュース"
+
+#~ msgid "查看详情"
+#~ msgstr "詳細を見る"
+
+#~ msgid "欢迎来到我们的网站"
+#~ msgstr "私たちのウェブサイトへようこそ"
+
+#~ msgid "立即咨询"
+#~ msgstr "今すぐ相談"
+
+#~ msgid "阅读更多"
+#~ msgstr "続きを読む"
+
+#~ msgid "如果您はサポート人员，请記録このエラーID以便排查問題"
+#~ msgstr "技術サポートの方は、問題調査のためこのエラーIDを記録してください"
+
+#~ msgid "深色テキスト"
+#~ msgstr "ダークテキスト"
+
+#~ msgid "ホーム"
+#~ msgstr "ホーム"
+
+#~ msgid "ソリューション"
+#~ msgstr "ソリューション"
+
+#~ msgid "専門家に相談"
+#~ msgstr "専門家に相談"
+
+#~ msgid "中国語"
+#~ msgstr "中国語"
+
+#~ msgid "私たちについて"
+#~ msgstr "私たちについて"
+
+#~ msgid "葳澄テクノロジー"
+#~ msgstr "葳澄テクノロジー"
+
+#~ msgid ""
+#~ "上海葳澄情報科技有限公司成立于2019年，是一家专注于AIソリューションのハイテク企業。私たちの中核使命は、最先端のAI技術を通じて企業のデジタルトランスフォーメーションを可能にし、ビジネスの成長とより大きな価値創造を推進することです。"
+#~ msgstr ""
+#~ "上海葳澄情報科技有限公司は2019年に設立されたAIソリューションに特化したハイテク企業です。私たちの中核使命は、最先端のAI技術を通じて企業のデジタルトランスフォーメーションを可能にし、ビジネスの成長とより大きな価値創造を推進することです。"
+
+#~ msgid "事例"
+#~ msgstr "事例"
+
+#~ msgid "会社名をご入力ください"
+#~ msgstr "会社名をご入力ください"
+
+#~ msgid "電話番号をご入力ください"
+#~ msgstr "電話番号をご入力ください"
+
+#~ msgid "問い合わせ内容をご入力ください"
+#~ msgstr "問い合わせ内容をご入力ください"
+
+#~ msgid "サーバーに問題が発生しました"
+#~ msgstr "サーバーで問題が発生しました"
+
+#~ msgid ""
+#~ "上海葳澄情報科技有限公司成立于2019年，是一家专注于人工智能解決方案の高科技企業。私たちの中核使命は、最先端のAI技術を通じて企業のデジタルトランスフォーメーションを可能にし、ビジネスの成長とより大きな価値創造を推進することです。"
+#~ msgstr ""
+#~ "上海葳澄情報科技有限公司は2019年に設立されたAIソリューションに特化したハイテク企業です。私たちの中核使命は、最先端のAI技術を通じて企業のデジタルトランスフォーメーションを可能にし、ビジネスの成長とより大きな価値創造を推進することです。"
+
+#~ msgid ""
+#~ "葳澄科技为企业提供专业、定制化的AI解決策。Our service "
+#~ "は、多くのお客様の重要なビジネス指標において顕著な向上を達成し、AI技術の実用的な巨大な価値と商業的メリットを証明しています。"
+#~ msgstr ""
+#~ "葳澄科技は企業に専門的でカスタマイズされたAIソリューションを提供しています。私たちのサービスは、多くのお客様の重要なビジネス指標において顕著な改善を達成し、AI技術の実用的な巨大な価値と商業的メリットを証明しています。"
+
+#~ msgid "会社成立"
+#~ msgstr "会社設立"
+
+#~ msgid ""
+#~ "通過前沿的人工智能技術、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+#~ msgstr ""
+#~ "最先端のAI技術を通じて、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+
+#~ msgid "卓越サービス"
+#~ msgstr "優秀なサービス"
+
+#~ msgid "定制化AIモデル開発"
+#~ msgstr "カスタムAIモデル開発"
+
+#~ msgid "人工コスト削減"
+#~ msgstr "人件費削減"
+
+#~ msgid "零售業智能推薦システム"
+#~ msgstr "小売業インテリジェント推薦システム"
+
+#~ msgid ""
+#~ "为连锁零售企業開発されたインテリジェント推薦システムで、ユーザー行動分析と商品特性に基づいてパーソナライズされた商品推薦を実現し、販売転換率を向上させます。"
+#~ msgstr ""
+#~ "チェーン小売企業向けに開発されたインテリジェント推薦システムで、ユーザー行動分析と商品特性に基づいてパーソナライズされた商品推薦を実現し、販売転換率を向上させます。"
+
+#~ msgid ""
+#~ "为大型物流企业開発されたインテリジェント配車システムで、AIアルゴリズムを通じて配送ルートとリソース配分を最適化し、運営コストを削減し、配送効率を向上させます。"
+#~ msgstr ""
+#~ "大手物流企業向けに開発されたインテリジェント配車システムで、AIアルゴリズムを通じて配送ルートとリソース配分を最適化し、運営コストを削減し、配送効率を向上させます。"
+
+#~ msgid "为教育機構開発されたパーソナライズ学習システムで、学生の学習行動と能力特性を分析し、カスタマイズされた学習パスとコンテンツ推薦を提供します。"
+#~ msgstr ""
+#~ "教育機関向けに開発されたパーソナライズ学習システムで、学生の学習行動と能力特性を分析し、カスタマイズされた学習パスとコンテンツ推薦を提供します。"
+
+#~ msgid "会社名称"
+#~ msgstr "会社名"
+
+#~ msgid "会社位置"
+#~ msgstr "会社の所在地"
+
+#~ msgid "移动端导航メニュー"
+#~ msgstr "モバイルメニューボタン"
+
+#~ msgid "葳澄科技为企业提供专业、定制化的AI解决方案。Our service "
+#~ msgstr ""
+#~ "葳澄科技は企業に専門的でカスタマイズされたAIソリューションを提供しています。私たちのサービスは、多くのお客様の重要なビジネス指標において顕著な改善を達成し、AI技術の実用的な巨大な価値と商業的メリットを証明しています。"
+
+#~ msgid ""
+#~ "通過前沿的人工智能技術，企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+#~ msgstr ""
+#~ "最先端のAI技術を通じて、企業のデジタルトランスフォーメーションを実現し、ビジネスの成長とより大きな価値創造を推進します。私たちは企業のニーズを理解し、AI技術で主要なビジネス課題を解決し、インテリジェント時代においてイノベーションとブレークスルーを求める企業の理想的なパートナーです。"
+
+#~ msgid "利用AI技術深度分析企業データ，挖掘潜在価値，提供データ駆動の意思決定サポート"
+#~ msgstr "AI技術を利用して企業データを深く分析し、潜在価値を発掘し、データ駆動の意思決定サポートを提供します"
+
+#~ msgid "根据企業特定需求，開発カスタムAIモデル，解決独特ビジネス課題"
+#~ msgstr "企業の特定のニーズに応じて、カスタムAIモデルを開発し、独特のビジネス課題を解決します"
+
+#~ msgid ""
+#~ "为某大型制造企業開発されたコンピュータビジョンベースのインテリジェント品質検査システムで、従来の人手による検査に代わって検出精度と効率を向上させます。"
+#~ msgstr ""
+#~ "大手製造企業向けに開発されたコンピュータビジョンベースのインテリジェント品質検査システムで、従来の人手による検査に代わって検出精度と効率を向上させます。"
+
+#~ msgid ""
+#~ "为某商业银行開発されたインテリジェントリスク管理システムで、機械学習アルゴリズムを通じて顧客データを分析し、リスクを正確に識別し、融資審査効率を向上させます。"
+#~ msgstr ""
+#~ "商業銀行向けに開発されたインテリジェントリスク管理システムで、機械学習アルゴリズムを通じて顧客データを分析し、リスクを正確に識別し、融資審査効率を向上させます。"
+
+#~ msgid "为医疗机构開発された深層学習ベースの医療画像診断システムで、医師の迅速で正確な病変識別を支援し、診断効率と精度を向上させます。"
+#~ msgstr "医療機関向けに開発された深層学習ベースの医療画像診断システムで、医師の迅速で正確な病変識別を支援し、診断効率と精度を向上させます。"
+
+#~ msgid "物流行业智能配車システム"
+#~ msgstr "金融業界インテリジェントリスク管理システム"

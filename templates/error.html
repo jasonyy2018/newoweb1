@@ -132,19 +132,19 @@
             <h3>{{ _("建议操作") }}</h3>
             <ul>
                 {% for action in user_actions %}
-                <li>{{ action }}</li>
+                <li>{{ _(action) }}</li>
                 {% endfor %}
             </ul>
         </div>
         
         <div class="error-details">
-            <h3>{{ _("技术信息") }}</h3>
-            <p><strong>{{ _("状态码") }}</strong>: {{ error_details.status_code }}</p>
-            <p><strong>{{ _("错误类型") }}</strong>: {{ error_details.error_type }}</p>
-            <p><strong>{{ _("可能原因") }}</strong>:</p>
+            <h3>{{ _('技术信息') }}</h3>
+            <p><strong>{{ _('状态码') }}</strong>: {{ error_details.status_code }}</p>
+            <p><strong>{{ _('错误类型') }}</strong>: {{ error_details.error_type }}</p>
+            <p><strong>{{ _('可能原因') }}</strong>:</p>
             <ul>
                 {% for cause in error_details.possible_causes %}
-                <li>{{ cause }}</li>
+                <li>{{ _(cause) }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -157,5 +157,6 @@
             {{ _("如果您是技术支持人员，请记录此错误ID以便排查问题") }}
         </p>
     </div>
+    <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
 </body>
 </html>

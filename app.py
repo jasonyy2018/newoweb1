@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, session, make_response, jsonify
 from flask_babel import Babel, gettext as _
-import os
 import time
 import uuid
+import traceback
+
+# 添加数据库模块导入
+from database import init_db, add_consultation, get_all_consultations, get_consultation_by_id
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'
@@ -20,8 +23,14 @@ def get_locale():
         return lang
     return app.config['BABEL_DEFAULT_LOCALE']
 
-babel = Babel()
-babel.init_app(app, locale_selector=get_locale)
+babel = Babel(app, locale_selector=get_locale)
+
+# 为模板提供get_locale函数
+@app.context_processor
+def inject_conf_vars():
+    return dict(
+        get_locale=get_locale
+    )
 
 @app.route('/')
 def index():
@@ -34,6 +43,60 @@ def about():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+# 添加处理咨询表单提交的路由
+@app.route('/submit_consultation', methods=['POST'])
+def submit_consultation():
+    try:
+        # 从表单获取数据
+        name = request.form.get('name', '').strip()
+        company = request.form.get('company', '').strip()
+        email = request.form.get('email', '').strip()
+        phone = request.form.get('phone', '').strip()
+        message = request.form.get('message', '').strip()
+        
+        # 验证必填字段
+        if not name or not email or not message:
+            return jsonify({
+                'success': False,
+                'message': _('请填写所有必填字段')
+            }), 400
+        
+        # 验证邮箱格式
+        if '@' not in email:
+            return jsonify({
+                'success': False,
+                'message': _('请输入有效的邮箱地址')
+            }), 400
+        
+        # 保存到数据库
+        consultation_id = add_consultation(name, company, email, phone, message)
+        
+        return jsonify({
+            'success': True,
+            'message': _('您的咨询已成功提交，我们会尽快与您联系！'),
+            'consultation_id': consultation_id
+        })
+        
+    except Exception as e:
+        error_msg = f"提交咨询时出错: {str(e)}"
+        print(error_msg)
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'message': _('提交咨询时发生错误，请稍后再试')
+        }), 500
+
+# 添加管理页面路由（可选，用于查看咨询请求）
+@app.route('/admin/consultations')
+def admin_consultations():
+    try:
+        consultations = get_all_consultations()
+        return render_template('admin_consultations.html', consultations=consultations)
+    except Exception as e:
+        print(f"获取咨询列表时出错: {str(e)}")
+        return "获取咨询列表时发生错误", 500
 
 @app.route('/test-error')
 def test_error():
@@ -50,63 +113,7 @@ def set_language(lang):
         session['lang'] = lang
     return make_response('', 204)
 
-@app.errorhandler(500)
-def internal_server_error(error):
-    """
-    处理内部服务器错误 (500)
-    提供用户友好的错误信息和详细的JSON响应
-    """
-    # 生成唯一的错误ID和时间戳
-    error_id = str(uuid.uuid4())
-    timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-    
-    # 用户友好的错误消息
-    user_message = _("抱歉，服务器遇到了意外错误。我们的技术团队已收到通知并正在处理此问题。")
-    
-    # 技术细节
-    technical_details = {
-        "status_code": 500,
-        "error_type": "Internal Server Error",
-        "possible_causes": [
-            _("服务器暂时过载"),
-            _("应用程序代码错误"),
-            _("数据库连接问题"),
-            _("第三方服务不可用")
-        ],
-        "error_id": error_id,
-        "timestamp": timestamp
-    }
-    
-    # 建议用户操作
-    user_actions = [
-        _("请稍后重试操作"),
-        _("如果问题持续存在，请联系技术支持"),
-        _("提供错误ID以便我们更快定位问题: {}").format(error_id)
-    ]
-    
-    # 结构化JSON响应
-    json_response = {
-        "error": {
-            "code": "INTERNAL_SERVER_ERROR",
-            "message": user_message,
-            "details": technical_details,
-            "suggested_actions": user_actions,
-            "request_id": error_id,
-            "timestamp": timestamp
-        }
-    }
-    
-    # 根据请求的Accept头返回相应格式
-    if request.accept_mimetypes.accept_json and not request.accept_mimetypes.accept_html:
-        return jsonify(json_response), 500
-    else:
-        # 返回HTML错误页面
-        return render_template('error.html', 
-                             error_message=user_message,
-                             error_details=technical_details,
-                             user_actions=user_actions,
-                             error_id=error_id,
-                             locale=get_locale()), 500
-
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # 初始化数据库
+    init_db()
+    app.run(debug=True, host='0.0.0.0', port=5001)
