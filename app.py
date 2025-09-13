@@ -14,9 +14,16 @@ from datetime import datetime
 import logging
 from logging.handlers import RotatingFileHandler
 from typing import Any, Optional
+import mimetypes
+
+# 添加SVG MIME类型支持
+mimetypes.add_type('image/svg+xml', '.svg')
 
 def create_app():
-    app = Flask(__name__)
+    # 明确指定静态文件夹和模板文件夹
+    app = Flask(__name__, 
+                static_folder='static',
+                template_folder='templates')
     
     # 配置应用
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'dev-secret-key'
@@ -219,6 +226,10 @@ def create_app():
     def case_studies_index():
         return render_template('case-studies/index.html')
     
+    @app.route('/static/<path:filename>')
+    def static_files(filename):
+        return send_from_directory(app.static_folder, filename)
+
     @app.route('/robots.txt')
     def robots_txt():
         return send_from_directory(str(app.static_folder), 'robots.txt')

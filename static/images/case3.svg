@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="manufacturingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#faf7ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f3f0ff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="machineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <filter id="manufacturingShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="url(#manufacturingGradient)"/>
+  
+  <!-- 装饰性网格 -->
+  <g stroke="#8B5CF6" stroke-width="0.5" opacity="0.1">
+    <line x1="0" y1="60" x2="400" y2="60"/>
+    <line x1="0" y1="120" x2="400" y2="120"/>
+    <line x1="0" y1="180" x2="400" y2="180"/>
+    <line x1="0" y1="240" x2="400" y2="240"/>
+    <line x1="80" y1="0" x2="80" y2="300"/>
+    <line x1="160" y1="0" x2="160" y2="300"/>
+    <line x1="240" y1="0" x2="240" y2="300"/>
+    <line x1="320" y1="0" x2="320" y2="300"/>
+  </g>
+  
+  <!-- 工厂主体 -->
+  <g transform="translate(50, 90)">
+    <!-- 工厂建筑 -->
+    <rect x="0" y="0" width="200" height="120" rx="8" fill="white" filter="url(#manufacturingShadow)"/>
+    <rect x="0" y="0" width="200" height="30" rx="8" fill="url(#machineGradient)"/>
+    
+    <!-- 工厂标识 -->
+    <text x="100" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">智能制造工厂</text>
+    
+    <!-- 生产线 -->
+    <g transform="translate(20, 45)">
+      <!-- 传送带 -->
+      <rect x="0" y="30" width="160" height="8" rx="4" fill="#e9ecef"/>
+      <rect x="0" y="30" width="160" height="8" rx="4" fill="url(#machineGradient)" opacity="0.3"/>
+      
+      <!-- 机器设备 -->
+      <g fill="#f8f9fa" stroke="#8B5CF6" stroke-width="2">
+        <rect x="10" y="10" width="30" height="40" rx="4"/>
+        <rect x="60" y="10" width="30" height="40" rx="4"/>
+        <rect x="110" y="10" width="30" height="40" rx="4"/>
+      </g>
+      
+      <!-- 设备指示器 -->
+      <g fill="#36D399">
+        <circle cx="25" cy="20" r="3"/>
+        <circle cx="75" cy="20" r="3"/>
+        <circle cx="125" cy="20" r="3"/>
+      </g>
+      
+      <!-- 产品 -->
+      <g fill="#FFC107" opacity="0.8">
+        <rect x="5" y="32" width="6" height="4" rx="1"/>
+        <rect x="20" y="32" width="6" height="4" rx="1"/>
+        <rect x="35" y="32" width="6" height="4" rx="1"/>
+        <rect x="80" y="32" width="6" height="4" rx="1"/>
+        <rect x="100" y="32" width="6" height="4" rx="1"/>
+        <rect x="130" y="32" width="6" height="4" rx="1"/>
+      </g>
+    </g>
+    
+    <!-- 运动效果 -->
+    <g>
+      <circle r="2" fill="#8B5CF6" opacity="0.6">
+        <animateMotion dur="4s" repeatCount="indefinite">
+          <path d="M20,75 L180,75"/>
+        </animateMotion>
+      </circle>
+    </g>
+  </g>
+  
+  <!-- AI质检系统 -->
+  <g transform="translate(300, 50)">
+    <!-- AI相机 -->
+    <rect x="0" y="0" width="60" height="60" rx="8" fill="white" filter="url(#manufacturingShadow)"/>
+    <rect x="5" y="5" width="50" height="50" rx="6" fill="url(#machineGradient)"/>
+    
+    <!-- 镜头 -->
+    <circle cx="30" cy="25" r="12" fill="white" opacity="0.9"/>
+    <circle cx="30" cy="25" r="8" fill="#8B5CF6"/>
+    <circle cx="30" cy="25" r="4" fill="white"/>
+    
+    <!-- 扫描光线 -->
+    <g opacity="0.6">
+      <line x1="30" y1="50" x2="30" y2="80" stroke="#FF7D00" stroke-width="2">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+      </line>
+      <line x1="25" y1="50" x2="25" y2="80" stroke="#FF7D00" stroke-width="1" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" repeatCount="indefinite" begin="0.3s"/>
+      </line>
+      <line x1="35" y1="50" x2="35" y2="80" stroke="#FF7D00" stroke-width="1" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
+      </line>
+    </g>
+    
+    <text x="30" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#8B5CF6">AI质检</text>
+  </g>
+  
+  <!-- 数据流动 -->
+  <g>
+    <!-- 数据传输线 -->
+    <path d="M250 150 Q275 130 300 150" stroke="#8B5CF6" stroke-width="3" fill="none" opacity="0.7">
+      <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- 数据粒子 -->
+    <circle r="3" fill="#8B5CF6" opacity="0.8">
+      <animateMotion dur="2s" repeatCount="indefinite">
+        <path d="M250,150 Q275,130 300,150"/>
+      </animateMotion>
+    </circle>
+  </g>
+  
+  <!-- 质量检测统计 -->
+  <g transform="translate(50, 230)">
+    <rect x="0" y="0" width="150" height="60" rx="8" fill="white" filter="url(#manufacturingShadow)"/>
+    
+    <!-- 标题 -->
+    <text x="75" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#495057">缺陷检出率提升</text>
+    
+    <!-- 统计图表 -->
+    <g transform="translate(20, 25)">
+      <!-- 传统检测 -->
+      <rect x="0" y="0" width="40" height="20" rx="4" fill="#dee2e6"/>
+      <text x="20" y="13" text-anchor="middle" font-size="9" fill="#6c757d">传统</text>
+      <text x="20" y="30" text-anchor="middle" font-size="12" font-weight="bold" fill="#6c757d">65%</text>
+      
+      <!-- AI检测 -->
+      <rect x="70" y="0" width="40" height="20" rx="4" fill="url(#machineGradient)"/>
+      <text x="90" y="13" text-anchor="middle" font-size="9" fill="white">AI检测</text>
+      <text x="90" y="30" text-anchor="middle" font-size="12" font-weight="bold" fill="#8B5CF6">95%</text>
+    </g>
+  </g>
+  
+  <!-- 生产效率仪表盘 -->
+  <g transform="translate(230, 200)">
+    <rect x="0" y="0" width="120" height="80" rx="8" fill="white" filter="url(#manufacturingShadow)"/>
+    
+    <!-- 标题 -->
+    <text x="60" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#495057">实时生产状态</text>
+    
+    <!-- 仪表盘 -->
+    <g transform="translate(60, 40)">
+      <!-- 仪表外圈 -->
+      <circle cx="0" cy="0" r="20" fill="none" stroke="#dee2e6" stroke-width="3"/>
+      <!-- 进度弧 -->
+      <circle cx="0" cy="0" r="20" fill="none" stroke="url(#machineGradient)" stroke-width="3" 
+              stroke-dasharray="94.2" stroke-dashoffset="18.8" transform="rotate(-90)">
+        <animate attributeName="stroke-dashoffset" values="94.2;18.8;18.8" dur="3s" begin="0s" fill="freeze"/>
+      </circle>
+      <!-- 中心数值 -->
+      <text x="0" y="4" text-anchor="middle" font-size="12" font-weight="bold" fill="#8B5CF6">85%</text>
+    </g>
+    
+    <text x="60" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#6c757d">设备正常运行率</text>
+  </g>
+  
+  <!-- 装饰性元素 -->
+  <g opacity="0.2">
+    <!-- 齿轮 -->
+    <g transform="translate(30, 40)">
+      <circle cx="0" cy="0" r="8" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+      <circle cx="0" cy="0" r="4" fill="#8B5CF6"/>
+      <g stroke="#8B5CF6" stroke-width="1">
+        <line x1="0" y1="-10" x2="0" y2="-8"/>
+        <line x1="0" y1="8" x2="0" y2="10"/>
+        <line x1="-10" y1="0" x2="-8" y2="0"/>
+        <line x1="8" y1="0" x2="10" y2="0"/>
+      </g>
+    </g>
+    
+    <!-- 机器手臂 -->
+    <g transform="translate(370, 260)">
+      <rect x="0" y="0" width="15" height="4" rx="2" fill="#8B5CF6"/>
+      <rect x="12" y="-3" width="4" height="10" rx="2" fill="#8B5CF6"/>
+    </g>
+  </g>
+</svg>
