@@ -173,7 +173,18 @@ def create_app():
         ]
         
         if solution_name not in valid_solutions:
-            return render_template('error.html', message=_('未找到指定的解决方案')), 404
+            return render_template('error.html', 
+                                 message=_('未找到指定的解决方案'),
+                                 error_details={
+                                     'status_code': 404,
+                                     'error_type': _('页面未找到'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                     'possible_causes': [
+                                         _('URL输入错误'),
+                                         _('页面已被移除'),
+                                         _('链接已过期')
+                                     ]
+                                 }), 404
             
         template_path = f'solutions/{solution_name}.html'
         return render_template(template_path)
@@ -184,7 +195,18 @@ def create_app():
         valid_cases = ['manufacturing-quality-control']
         
         if case_name not in valid_cases:
-            return render_template('error.html', message=_('未找到指定的案例研究')), 404
+            return render_template('error.html', 
+                                 message=_('未找到指定的案例研究'),
+                                 error_details={
+                                     'status_code': 404,
+                                     'error_type': _('页面未找到'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                     'possible_causes': [
+                                         _('URL输入错误'),
+                                         _('页面已被移除'),
+                                         _('链接已过期')
+                                     ]
+                                 }), 404
             
         template_path = f'case-studies/{case_name}.html'
         return render_template(template_path)
