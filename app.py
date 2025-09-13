@@ -332,10 +332,8 @@ def create_app():
     return app
 
 # 为Gunicorn创建应用实例
-application = create_app()
-
-# 为了向后兼容，也创建app变量
-app = application
+# 使用更标准的方式暴露Flask应用实例
+app = create_app()
 
 if __name__ == '__main__':
-    application.run(host='0.0.0.0', port=5001, debug=False)
+    app.run(host='0.0.0.0', port=5001, debug=False)
