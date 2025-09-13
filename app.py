@@ -315,7 +315,7 @@ def create_app():
     
     return app
 
-# 创建应用实例，供Gunicorn使用
+# Create application instance for Gunicorn
 app = create_app()
 
 if __name__ == '__main__':
