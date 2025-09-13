@@ -34,8 +34,8 @@ def create_app():
     # 数据库配置
     app.config['DATABASE'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'consultations.db')
     
-    # Redis配置
-    app.config['REDIS_URL'] = os.environ.get('REDIS_URL') or 'redis://redis:6379/0'
+    # Redis配置 - 使用环境变量或默认的外部Redis配置
+    app.config['REDIS_URL'] = os.environ.get('REDIS_URL') or 'redis://redis_C7DGKB@156.238.249.149:6379/0'
     
     # 添加自定义属性
     setattr(app, 'redis_client', None)

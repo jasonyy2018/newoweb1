@@ -22,7 +22,7 @@ AI Solutions for Business
 - Python 3.8+
 - Flask Web框架
 - SQLite数据库
-- Redis缓存
+- Redis缓存（外部服务器）
 - Nginx反向代理
 - Jinja2模板引擎
 - Tailwind CSS
@@ -105,7 +105,7 @@ AI Solutions for Business
    docker-compose up -d
    ```
 
-2. 在浏览器中访问 `http://localhost:8090` (注意：端口已更改为8090)
+2. 在浏览器中访问 `http://localhost:8090`
 
 3. 查看日志：
    ```
@@ -124,12 +124,21 @@ AI Solutions for Business
    docker build -t wisdomitc-website .
    ```
 
-2. 运行容器：
+2. 运行容器（需要配置外部Redis）：
    ```
-   docker run -d -p 5001:5001 --name wisdomitc-website wisdomitc-website
+   docker run -d -p 5001:5001 \
+     -e REDIS_URL=redis://redis_C7DGKB@156.238.249.149:6379/0 \
+     --name wisdomitc-website wisdomitc-website
    ```
 
 3. 在浏览器中访问 `http://localhost:5001`
+
+## Redis缓存配置
+
+项目现在使用外部Redis服务器进行缓存：
+- 服务器地址: 156.238.249.149
+- 端口: 6379
+- 密码: redis_C7DGKB
 
 ## SEO和GEO优化
 
@@ -191,7 +200,7 @@ python auto_geo_optimizer.py
 
 ## 缓存系统
 
-项目使用Redis作为缓存系统，提供以下功能：
+项目使用外部Redis服务器作为缓存系统，提供以下功能：
 - 页面缓存
 - 会话存储
 - 临时数据存储
@@ -242,6 +251,11 @@ python auto_geo_optimizer.py
    - 查看容器日志：`docker-compose logs`
    - 确认端口未被占用
    - 检查Docker配置文件
+
+5. **Redis连接问题**
+   - 确认外部Redis服务器可访问
+   - 检查Redis连接配置是否正确
+   - 确认防火墙设置允许访问Redis端口
 
 ### 日志查看
 应用日志输出到`logs/`目录，Docker容器日志可通过以下命令查看：
