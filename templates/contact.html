@@ -214,9 +214,7 @@
     </main>
     
         <!-- Footer (same as in index.html) -->
-    {% include 'components/ai_assistant.html' %}
     {% include 'components/keywords.html' %}
-    <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
     
     <!-- 添加处理联系表单提交的JavaScript -->
     <script>
@@ -280,5 +278,12 @@
             });
         });
     </script>
+    
+    <!-- 回到首页按钮 -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <a href="/" class="bg-primary text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:bg-primary/90 transition-all">
+            <i class="fa fa-home text-xl"></i>
+        </a>
+    </div>
 </body>
 </html>
