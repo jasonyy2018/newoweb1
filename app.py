@@ -287,6 +287,7 @@ def create_app():
     def page_not_found(e):
         return render_template('error.html', 
                              message=_('页面未找到'),
+                             error_id='ERR_404_' + datetime.now().strftime('%Y%m%d_%H%M%S'),
                              error_details={
                                  'status_code': 404,
                                  'error_type': _('页面未找到'),
@@ -300,8 +301,10 @@ def create_app():
     
     @app.errorhandler(500)
     def internal_error(e):
+        app.logger.error(f'服务器内部错误: {e}')
         return render_template('error.html', 
                              message=_('服务器内部错误'),
+                             error_id='ERR_500_' + datetime.now().strftime('%Y%m%d_%H%M%S'),
                              error_details={
                                  'status_code': 500,
                                  'error_type': _('服务器内部错误'),

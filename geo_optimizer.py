@@ -11,8 +11,21 @@ import time
 from datetime import datetime
 from typing import Dict, List, Any
 from pathlib import Path
-import requests
-from bs4 import BeautifulSoup
+
+# Pyright类型检查注释
+# pyright: reportMissingImports=false
+# pyright: reportMissingModuleSource=false
+# pyright: reportAttributeAccessIssue=false
+
+try:
+    import requests
+    from bs4 import BeautifulSoup, NavigableString
+    MODULES_AVAILABLE = True
+except ImportError:
+    MODULES_AVAILABLE = False
+    requests = None
+    BeautifulSoup = None
+    NavigableString = None
 
 class GEOOptimizer:
     def __init__(self, project_path: str):
@@ -193,10 +206,16 @@ Disallow: /private/
         """检查网站健康状况"""
         try:
             # 检查网站是否可访问
+            if not requests:
+                raise ImportError("requests module not available")
+                
             response = requests.get("https://www.wisdomitc.com", timeout=10)
             status_code = response.status_code
             
             # 使用BeautifulSoup解析页面内容
+            if not BeautifulSoup:
+                raise ImportError("BeautifulSoup module not available")
+                
             soup = BeautifulSoup(response.content, 'html.parser')
             
             # 检查页面标题
@@ -205,7 +224,13 @@ Disallow: /private/
             
             # 检查meta描述
             meta_desc = soup.find('meta', attrs={'name': 'description'})
-            meta_desc_content = meta_desc.get('content') if meta_desc else "无描述"
+            meta_desc_content = "无描述"
+            if meta_desc:
+                # 确保meta_desc不是NavigableString类型并且有get方法
+                is_valid_element = (hasattr(meta_desc, 'get') and 
+                                  (not NavigableString or not isinstance(meta_desc, NavigableString)))
+                if is_valid_element:
+                    meta_desc_content = meta_desc.get('content', "无描述")
             
             # 检查结构化数据
             scripts = soup.find_all('script', attrs={'type': 'application/ld+json'})

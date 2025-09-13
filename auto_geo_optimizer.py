@@ -10,10 +10,25 @@ import json
 import time
 from datetime import datetime
 from pathlib import Path
-import schedule
+from typing import Any, Dict, Optional
 import threading
-import requests
-from bs4 import BeautifulSoup
+
+# Pyright类型检查注释
+# pyright: reportMissingImports=false
+# pyright: reportMissingModuleSource=false
+# pyright: reportAttributeAccessIssue=false
+
+try:
+    import schedule
+    import requests
+    from bs4 import BeautifulSoup, NavigableString
+    MODULES_AVAILABLE = True
+except ImportError:
+    MODULES_AVAILABLE = False
+    schedule = None
+    requests = None
+    BeautifulSoup = None
+    NavigableString = None
 
 class AutoGEOOptimizer:
     def __init__(self, project_path: str):
@@ -78,10 +93,16 @@ class AutoGEOOptimizer:
         """检查网站健康状况"""
         try:
             # 检查网站是否可访问
+            if not requests:
+                raise ImportError("requests module not available")
+                
             response = requests.get("https://www.wisdomitc.com", timeout=10)
             status_code = response.status_code
             
             # 使用BeautifulSoup解析页面内容
+            if not BeautifulSoup:
+                raise ImportError("BeautifulSoup module not available")
+                
             soup = BeautifulSoup(response.content, 'html.parser')
             
             # 检查页面标题
@@ -90,7 +111,13 @@ class AutoGEOOptimizer:
             
             # 检查meta描述
             meta_desc = soup.find('meta', attrs={'name': 'description'})
-            meta_desc_content = meta_desc.get('content') if meta_desc else "无描述"
+            meta_desc_content = "无描述"
+            if meta_desc:
+                # 确保meta_desc不是NavigableString类型并且有get方法
+                is_valid_element = (hasattr(meta_desc, 'get') and 
+                                  (not NavigableString or not isinstance(meta_desc, NavigableString)))
+                if is_valid_element:
+                    meta_desc_content = meta_desc.get('content', "无描述")
             
             # 检查结构化数据
             scripts = soup.find_all('script', attrs={'type': 'application/ld+json'})
@@ -164,13 +191,15 @@ class AutoGEOOptimizer:
             
     def schedule_daily_optimization(self):
         """安排每日自动优化"""
-        schedule.every().day.at("02:00").do(self.run_full_optimization_sequence)
-        self.log_activity("安排定时任务", "成功", "已安排每日02:00自动执行优化")
+        if schedule:
+            schedule.every().day.at("02:00").do(self.run_full_optimization_sequence)
+            self.log_activity("安排定时任务", "成功", "已安排每日02:00自动执行优化")
         
         # 在单独的线程中运行调度器
         def run_scheduler():
             while True:
-                schedule.run_pending()
+                if schedule:
+                    schedule.run_pending()
                 time.sleep(60)  # 每分钟检查一次
                 
         scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
@@ -179,8 +208,9 @@ class AutoGEOOptimizer:
         
     def schedule_weekly_optimization(self):
         """安排每周自动优化"""
-        schedule.every().sunday.at("03:00").do(self.run_full_optimization_sequence)
-        self.log_activity("安排定时任务", "成功", "已安排每周日凌晨03:00自动执行优化")
+        if schedule:
+            schedule.every().sunday.at("03:00").do(self.run_full_optimization_sequence)
+            self.log_activity("安排定时任务", "成功", "已安排每周日凌晨03:00自动执行优化")
 
 def main():
     """主函数"""
