@@ -1730,7 +1730,13 @@
                         method: 'POST',
                         body: formData
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        // 检查响应状态
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok: ' + response.status);
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         // 显示结果消息
                         const messageDiv = document.getElementById('formMessage');
@@ -1759,7 +1765,7 @@
                         // 显示错误消息
                         const messageDiv = document.getElementById('formMessage');
                         messageDiv.className = 'mt-4 p-4 bg-red-100 text-red-700 rounded-lg';
-                        messageDiv.textContent = '{{ _("提交咨询时发生错误，请稍后再试") }}';
+                        messageDiv.textContent = '{{ _("提交咨询时发生错误，请稍后再试") }} (' + error.message + ')';
                         messageDiv.classList.remove('hidden');
                         
                         // 恢复按钮状态
@@ -1774,6 +1780,7 @@
                 });
             }
         });
+
     </script>
 
     

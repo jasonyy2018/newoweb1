@@ -210,6 +210,8 @@ def create_app():
             service = request.form.get('service', '')
             message = request.form.get('message', '')
             
+            app.logger.info(f'接收到咨询表单提交: name={name}, email={email}, company={company}, phone={phone}, service={service}')
+            
             # 保存到数据库
             db = get_db()
             db.execute(
@@ -217,6 +219,8 @@ def create_app():
                 (name, email, company, phone, service, message)
             )
             db.commit()
+            
+            app.logger.info('咨询信息已成功保存到数据库')
             
             # 如果Redis可用，缓存咨询信息
             if getattr(app, 'redis_client', None) and REDIS_AVAILABLE and redis_module:
@@ -233,6 +237,7 @@ def create_app():
                     app.redis_client.lpush('recent_consultations', json.dumps(consultation_data))  # type: ignore
                     # 只保留最近的100条咨询记录
                     app.redis_client.ltrim('recent_consultations', 0, 99)  # type: ignore
+                    app.logger.info('咨询信息已成功缓存到Redis')
                 except Exception as e:
                     app.logger.error(f'Redis缓存失败: {e}')
             
@@ -241,7 +246,7 @@ def create_app():
                 'message': _('感谢您的咨询！我们的专家团队会尽快与您联系。')
             })
         except Exception as e:
-            app.logger.error(f'提交咨询失败: {e}')
+            app.logger.error(f'提交咨询失败: {e}', exc_info=True)
             return jsonify({
                 'success': False,
                 'message': _('提交咨询时发生错误，请稍后再试。')
