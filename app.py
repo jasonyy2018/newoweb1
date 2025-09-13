@@ -228,7 +228,9 @@ def create_app():
     
     @app.route('/static/<path:filename>')
     def static_files(filename):
-        return send_from_directory(app.static_folder, filename)
+        # 确保static_folder不是None
+        static_folder = app.static_folder or 'static'
+        return send_from_directory(static_folder, filename)
 
     @app.route('/robots.txt')
     def robots_txt():
