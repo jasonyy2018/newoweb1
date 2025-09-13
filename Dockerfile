@@ -31,17 +31,21 @@ RUN pip install --upgrade pip && \
 # 复制应用代码（除了在.dockerignore中忽略的文件）
 COPY . .
 
-# 创建非root用户并设置正确的权限
+# 创建非root用户
 RUN addgroup --gid 1000 appgroup && \
-    adduser --uid 1000 --gid 1000 --disabled-password --gecos '' appuser && \
-    chown -R 1000:1000 /app
-USER appuser
+    adduser --uid 1000 --gid 1000 --disabled-password --gecos '' appuser
 
 # 确保日志和数据目录存在并有正确权限
 RUN mkdir -p /app/data && \
     mkdir -p /app/logs && \
-    touch /app/data/consultations.db && \
-    chown -R 1000:1000 /app/data /app/logs
+    chown -R 1000:1000 /app/data /app/logs && \
+    chmod -R 755 /app/data /app/logs
+
+# 更改整个应用目录的所有者
+RUN chown -R 1000:1000 /app
+
+# 切换到非root用户
+USER appuser
 
 # 暴露端口
 EXPOSE 5001

@@ -11,14 +11,14 @@ services:
       # 添加Redis连接信息
       - REDIS_URL=redis://redis_C7DGKB@156.238.249.149:6379/0
     volumes:
-      - ./data:/app/data
-      - ./logs:/app/logs
+      # 使用Docker命名卷而不是绑定挂载来避免权限问题
+      - consultations-data:/app/data
+      - logs-data:/app/logs
     restart: unless-stopped
     networks:
       - wisdomitc-network
     # 移除了depends_on中的redis，因为我们现在使用外部Redis
     command: gunicorn --bind 0.0.0.0:5001 --workers 3 --chdir /app app:app
-    user: "1000:1000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
       interval: 30s
@@ -48,8 +48,9 @@ services:
 # 移除了redis服务定义，因为我们现在使用外部Redis
 
 volumes:
-  # 移除了redis-data卷，因为我们现在使用外部Redis
+  # 使用Docker命名卷
   consultations-data:
+  logs-data:
 
 networks:
   wisdomitc-network:

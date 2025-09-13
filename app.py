@@ -47,6 +47,9 @@ def create_app():
             if not os.path.exists(logs_dir):
                 os.mkdir(logs_dir)
             
+            # 确保日志目录有正确的权限
+            os.chmod(logs_dir, 0o755)
+            
             # 检查是否有写入权限
             log_file_path = os.path.join(logs_dir, 'wisdomitc.log')
             file_handler = RotatingFileHandler(log_file_path, maxBytes=10240, backupCount=10)
