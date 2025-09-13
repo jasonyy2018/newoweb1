@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('成功案例') }} - {{ _('上海葳澄信息科技') }}</title>
+    <meta name="description" content="{{ _('查看上海葳澄信息科技有限公司在人工智能和大数据领域的成功案例，了解我们如何帮助客户实现业务增长和数字化转型。') }}">
+    <meta name="keywords" content="{{ _('成功案例,AI案例研究,人工智能应用,大数据案例,数字化转型案例') }}">
+    <meta name="author" content="{{ _('上海葳澄信息科技有限公司') }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- GEO Meta Tags -->
+    <meta name="geo.region" content="CN-SH">
+    <meta name="geo.placename" content="{{ _('上海') }}">
+    <meta name="geo.position" content="31.318493;121.446212">
+    <meta name="ICBM" content="31.318493, 121.446212">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wisdomitc.com/case-studies">
+    <meta property="og:title" content="{{ _('成功案例') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="og:description" content="{{ _('查看上海葳澄信息科技有限公司在人工智能和大数据领域的成功案例。') }}">
+    <meta property="og:image" content="https://www.wisdomitc.com/static/images/case-studies.jpg">
+    <meta property="og:site_name" content="{{ _('上海葳澄信息科技有限公司') }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.wisdomitc.com/case-studies">
+    <meta property="twitter:title" content="{{ _('成功案例') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="twitter:description" content="{{ _('查看上海葳澄信息科技有限公司在人工智能和大数据领域的成功案例。') }}">
+    <meta property="twitter:image" content="https://www.wisdomitc.com/static/images/case-studies.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.wisdomitc.com/case-studies">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- Navigation bar (same as in index.html) -->
+    {% include 'components/navbar.html' %}
+    
+    <main class="container mx-auto px-4 py-20">
+        {% include 'components/breadcrumb.html' %}
+        
+        <h1 class="text-4xl font-bold text-primary mb-8">{{ _('成功案例') }}</h1>
+        
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- 案例1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://picsum.photos/id/9/600/400" alt="{{ _('制造业智能质检系统') }}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <span class="text-primary font-medium">{{ _('案例分析') }}</span>
+                    <h3 class="text-2xl font-bold mb-3 text-dark">{{ _('制造业智能质检系统') }}</h3>
+                    <p class="text-gray-600 mb-6">
+                        {{ _('为某大型制造企业开发的基于计算机视觉的智能质检系统，替代传统人工质检，提高检测精度和效率。') }}
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('检测精度提升') }}:</span>
+                                <span class="font-bold text-primary">98%</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('检测效率提升') }}:</span>
+                                <span class="font-bold text-primary">300%</span>
+                            </div>
+                        </div>
+                        <a href="/case-studies/manufacturing-quality-control" class="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center">
+                            {{ _('查看详情') }} <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 案例2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://picsum.photos/id/10/600/400" alt="{{ _('金融行业智能风控系统') }}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <span class="text-primary font-medium">{{ _('案例分析') }}</span>
+                    <h3 class="text-2xl font-bold mb-3 text-dark">{{ _('金融行业智能风控系统') }}</h3>
+                    <p class="text-gray-600 mb-6">
+                        {{ _('为某商业银行开发的智能风控系统，通过机器学习算法分析客户数据，精准识别风险，提高贷款审批效率。') }}
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('风险识别准确率') }}:</span>
+                                <span class="font-bold text-primary">92%</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('审批效率提升') }}:</span>
+                                <span class="font-bold text-primary">250%</span>
+                            </div>
+                        </div>
+                        <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center">
+                            {{ _('查看详情') }} <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 案例3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://picsum.photos/id/12/600/400" alt="{{ _('零售业智能推荐系统') }}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <span class="text-primary font-medium">{{ _('案例分析') }}</span>
+                    <h3 class="text-2xl font-bold mb-3 text-dark">{{ _('零售业智能推荐系统') }}</h3>
+                    <p class="text-gray-600 mb-6">
+                        {{ _('为连锁零售企业开发的智能推荐系统，基于用户行为分析和商品特征，实现个性化商品推荐，提升销售转化率。') }}
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('点击率提升') }}:</span>
+                                <span class="font-bold text-primary">85%</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('客单价提升') }}:</span>
+                                <span class="font-bold text-primary">32%</span>
+                            </div>
+                        </div>
+                        <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center">
+                            {{ _('查看详情') }} <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 案例4 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://picsum.photos/id/13/600/400" alt="{{ _('医疗影像智能诊断系统') }}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                </div>
+                <div class="p-6">
+                    <span class="text-primary font-medium">{{ _('案例分析') }}</span>
+                    <h3 class="text-2xl font-bold mb-3 text-dark">{{ _('医疗影像智能诊断系统') }}</h3>
+                    <p class="text-gray-600 mb-6">
+                        {{ _('为医疗机构开发的基于深度学习的医疗影像诊断系统，辅助医生快速准确识别病灶，提高诊断效率和准确性。') }}
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('诊断准确率') }}:</span>
+                                <span class="font-bold text-primary">96%</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <span class="text-gray-500 mr-2">{{ _('诊断时间缩短') }}:</span>
+                                <span class="font-bold text-primary">75%</span>
+                            </div>
+                        </div>
+                        <a href="#" class="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center">
+                            {{ _('查看详情') }} <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Structured Data for Case Studies Index -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "{{ _('成功案例') }}",
+          "description": "{{ _('了解葳澄科技如何通过人工智能和大数据技术帮助客户解决实际业务问题，提升业务效率和竞争力') }}",
+          "url": "https://www.wisdomitc.com/case-studies",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "{{ _('首页') }}",
+              "item": "https://www.wisdomitc.com/"
+            },{
+              "@type": "ListItem",
+              "position": 2,
+              "name": "{{ _('成功案例') }}",
+              "item": "https://www.wisdomitc.com/case-studies"
+            }]
+          }
+        }
+        </script>
+        
+        <!-- Knowledge Graph Markup for Case Studies Collection -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "{{ _('成功案例集合') }}",
+          "description": "{{ _('葳澄科技实施的人工智能和大数据项目案例') }}",
+          "url": "https://www.wisdomitc.com/case-studies",
+          "mainEntity": {
+            "@type": "ItemList",
+            "name": "{{ _('成功案例') }}",
+            "itemListElement": [
+              {
+                "@type": "CaseStudy",
+                "position": 1,
+                "name": "{{ _('制造业智能质检系统') }}",
+                "url": "https://www.wisdomitc.com/case-studies/manufacturing-quality-control"
+              }
+            ]
+          }
+        }
+        </script>
+    </main>
+    
+    <!-- Footer (same as in index.html) -->
+    {% include 'components/keywords.html' %}
+</body>
+</html>

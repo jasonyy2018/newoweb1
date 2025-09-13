@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('自然语言处理') }} - {{ _('上海葳澄信息科技') }}</title>
+    <meta name="description" content="{{ _('开发智能客服、文本分析等应用，提升客户体验和业务处理效率。上海葳澄信息科技有限公司为您提供专业的自然语言处理服务。') }}">
+    <meta name="keywords" content="{{ _('自然语言处理,NLP,智能客服,文本分析,语音识别,机器翻译') }}">
+    <meta name="author" content="{{ _('上海葳澄信息科技有限公司') }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- GEO Meta Tags -->
+    <meta name="geo.region" content="CN-SH">
+    <meta name="geo.placename" content="{{ _('上海') }}">
+    <meta name="geo.position" content="31.318493;121.446212">
+    <meta name="ICBM" content="31.318493, 121.446212">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wisdomitc.com/solutions/nlp">
+    <meta property="og:title" content="{{ _('自然语言处理') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="og:description" content="{{ _('开发智能客服、文本分析等应用，提升客户体验和业务处理效率。') }}">
+    <meta property="og:image" content="https://www.wisdomitc.com/static/images/nlp.jpg">
+    <meta property="og:site_name" content="{{ _('上海葳澄信息科技有限公司') }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.wisdomitc.com/solutions/nlp">
+    <meta property="twitter:title" content="{{ _('自然语言处理') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="twitter:description" content="{{ _('开发智能客服、文本分析等应用，提升客户体验和业务处理效率。') }}">
+    <meta property="twitter:image" content="https://www.wisdomitc.com/static/images/nlp.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.wisdomitc.com/solutions/nlp">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- Navigation bar (same as in index.html) -->
+    
+    <main class="container mx-auto px-4 py-20">
+        {% include 'components/breadcrumb.html' %}
+        
+        <h1 class="text-4xl font-bold text-primary mb-8">{{ _('自然语言处理') }}</h1>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <img src="https://picsum.photos/id/4/600/400" alt="{{ _('自然语言处理') }}" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+            <div>
+                <h2 class="text-2xl font-semibold mb-4">{{ _('解决方案概述') }}</h2>
+                <p class="text-gray-700 mb-6">{{ _('我们的自然语言处理解决方案利用深度学习和语言学技术，使计算机能够理解、解释、生成和与人类语言交互。通过先进的NLP技术，我们帮助企业开发智能客服系统、进行文本情感分析、实现自动文档分类和信息提取，大幅提升客户体验和业务处理效率。') }}</p>
+                
+                <h3 class="text-xl font-semibold mb-3">{{ _('核心能力') }}</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>{{ _('智能客服机器人') }}</li>
+                    <li>{{ _('文本情感分析') }}</li>
+                    <li>{{ _('自动文档分类') }}</li>
+                    <li>{{ _('关键词提取') }}</li>
+                    <li>{{ _('语言翻译服务') }}</li>
+                </ul>
+            </div>
+        </div>
+        
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">{{ _('应用场景') }}</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ _('智能客服') }}</h3>
+                    <p class="text-gray-600">{{ _('7x24小时全天候服务，快速响应客户咨询，降低人工客服成本。') }}</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ _('文档分析') }}</h3>
+                    <p class="text-gray-600">{{ _('自动处理大量文档，提取关键信息，提高文档处理效率。') }}</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ _('舆情监控') }}</h3>
+                    <p class="text-gray-600">{{ _('实时监控社交媒体和新闻，分析公众情感倾向，及时发现品牌风险。') }}</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">{{ _('技术优势') }}</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">{{ _('我们的自然语言处理技术具备以下优势') }}</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>{{ _('多语言支持，包括中文、英文、日文等') }}</li>
+                    <li>{{ _('上下文理解能力，提供更自然的对话体验') }}</li>
+                    <li>{{ _('持续学习机制，不断提升理解和回答准确率') }}</li>
+                    <li>{{ _('可定制化模型，适应不同行业和业务场景') }}</li>
+                    <li>{{ _('高并发处理能力，支持大规模用户同时访问') }}</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="text-2xl font-semibold mb-6">{{ _('成功案例') }}</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">{{ _('电商平台智能客服') }}</h3>
+                <p class="text-gray-700 mb-4">{{ _('为某大型电商平台开发智能客服系统，能够处理80%以上的常见客户咨询，客户满意度达到95%，人工客服工作量减少60%，显著提升了客服效率和用户体验。') }}</p>
+                <div class="flex items-center text-primary">
+                    <span class="font-bold mr-4">{{ _('咨询处理率') }}: 80%</span>
+                    <span class="font-bold mr-4">{{ _('客户满意度') }}: 95%</span>
+                    <span class="font-bold">{{ _('人工客服工作量减少') }}: 60%</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Structured Data for Solution Page -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "{{ _('自然语言处理') }}",
+          "description": "{{ _('开发智能客服、文本分析等应用，提升客户体验和业务处理效率。') }}",
+          "url": "https://www.wisdomitc.com/solutions/nlp",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "{{ _('首页') }}",
+              "item": "https://www.wisdomitc.com/"
+            },{
+              "@type": "ListItem",
+              "position": 2,
+              "name": "{{ _('解决方案') }}",
+              "item": "https://www.wisdomitc.com/solutions"
+            },{
+              "@type": "ListItem",
+              "position": 3,
+              "name": "{{ _('自然语言处理') }}",
+              "item": "https://www.wisdomitc.com/solutions/nlp"
+            }]
+          }
+        }
+        </script>
+        
+        <!-- Enhanced Structured Data for Service -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "{{ _('自然语言处理') }}",
+          "provider": {
+            "@type": "Organization",
+            "name": "{{ _('上海葳澄信息科技有限公司') }}",
+            "url": "https://www.wisdomitc.com/"
+          },
+          "description": "{{ _('开发智能客服、文本分析等应用，提升客户体验和业务处理效率。') }}",
+          "category": "{{ _('自然语言处理') }}",
+          "audience": {
+            "@type": "BusinessAudience",
+            "audienceType": "{{ _('企业客户') }}"
+          },
+          "offers": {
+            "@type": "Offer",
+            "category": "Business to Business"
+          },
+          "serviceArea": {
+            "@type": "Place",
+            "name": "{{ _('中国') }}"
+          }
+        }
+        </script>
+        
+        <!-- Knowledge Graph Markup for NLP Solution -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "{{ _('自然语言处理平台') }}",
+          "description": "{{ _('企业级NLP平台，提供智能客服、文本分析、情感识别等功能') }}",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "featureList": [
+            "{{ _('智能客服机器人') }}",
+            "{{ _('文本情感分析') }}",
+            "{{ _('自动文档分类') }}",
+            "{{ _('关键词提取') }}",
+            "{{ _('多语言支持') }}"
+          ],
+          "softwareHelp": {
+            "@type": "CreativeWork",
+            "url": "https://www.wisdomitc.com/faq"
+          },
+          "creator": {
+            "@type": "Organization",
+            "name": "{{ _('上海葳澄信息科技有限公司') }}",
+            "url": "https://www.wisdomitc.com/"
+          }
+        }
+        </script>
+    </main>
+    
+    <!-- Footer (same as in index.html) -->
+    {% include 'components/keywords.html' %}
+</body>
+</html>

@@ -58,69 +58,91 @@
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "AboutPage",
+          "@type": "WebPage",
           "name": "{{ _('关于我们') }}",
-          "description": "{{ _('了解上海葳澄信息科技有限公司，一家专注于人工智能和大数据技术的高科技企业。') }}",
-          "url": "https://www.wisdomitc.com/about"
-        }
-        </script>
-        
-        <!-- Enhanced Structured Data for Organization -->
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "{{ _('上海葳澄信息科技有限公司') }}",
-          "alternateName": "WSAI",
-          "url": "https://www.wisdomitc.com/",
-          "logo": "https://www.wisdomitc.com/static/images/company-logo.png",
-          "description": "{{ _('上海葳澄信息科技有限公司是一家专注于人工智能和大数据技术的高科技企业，致力于通过前沿的AI技术赋能企业实现数字化转型。') }}",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "{{ _('上海市静安区共和新路4718弄10号1楼') }}",
-            "addressLocality": "{{ _('上海') }}",
-            "postalCode": "200070",
-            "addressCountry": "{{ _('中国') }}",
-            "addressRegion": "{{ _('上海市') }}"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+86-18964673689",
-            "contactType": "{{ _('客户咨询') }}",
-            "email": "jyu@wisdomitc.com",
-            "availableLanguage": ["zh", "en", "ja"]
-          },
-          "sameAs": [
-            "https://weibo.com/wisdomitc",
-            "https://linkedin.com/company/wisdomitc"
-          ],
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 31.318493,
-            "longitude": 121.446212
+          "description": "{{ _('了解上海葳澄信息科技有限公司，一家专注于人工智能和大数据技术的高科技企业') }}",
+          "url": "https://www.wisdomitc.com/about",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "{{ _('首页') }}",
+              "item": "https://www.wisdomitc.com/"
+            },{
+              "@type": "ListItem",
+              "position": 2,
+              "name": "{{ _('关于我们') }}",
+              "item": "https://www.wisdomitc.com/about"
+            }]
           }
         }
         </script>
         
-        <!-- Knowledge Graph Markup for Company Information -->
+        <!-- Enhanced Structured Data for About Page -->
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "Corporation",
+          "@type": "AboutPage",
+          "name": "{{ _('关于上海葳澄信息科技有限公司') }}",
+          "description": "{{ _('了解我们的团队、使命和愿景，以及我们如何通过人工智能技术为客户创造价值') }}",
+          "url": "https://www.wisdomitc.com/about",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "{{ _('上海葳澄信息科技有限公司') }}",
+            "alternateName": "WSAI",
+            "description": "{{ _('专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家') }}",
+            "url": "https://www.wisdomitc.com/",
+            "logo": "https://www.wisdomitc.com/static/images/company-logo.png",
+            "foundingDate": "2019",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "{{ _('上海市静安区共和新路4718弄10号1楼') }}",
+              "addressLocality": "{{ _('上海') }}",
+              "postalCode": "200070",
+              "addressCountry": "{{ _('中国') }}"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+86-18964673689",
+              "contactType": "Customer Service",
+              "email": "jyu@wisdomitc.com"
+            },
+            "sameAs": [
+              "https://weibo.com/wisdomitc",
+              "https://linkedin.com/company/wisdomitc"
+            ]
+          }
+        }
+        </script>
+        
+        <!-- Knowledge Graph Markup for Company Team -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
           "name": "{{ _('上海葳澄信息科技有限公司') }}",
-          "alternateName": "WSAI",
-          "description": "{{ _('专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家') }}",
-          "url": "https://www.wisdomitc.com/",
-          "foundingDate": "2019",
-          "industry": "{{ _('人工智能') }}",
-          "employeeCount": "20+"
+          "description": "{{ _('专业的AI解决方案提供商，拥有20多名AI专家组成的团队') }}",
+          "serviceType": "Artificial Intelligence Consulting",
+          "provider": {
+            "@type": "Organization",
+            "name": "{{ _('上海葳澄信息科技有限公司') }}",
+            "employee": [
+              {
+                "@type": "Person",
+                "name": "{{ _('于剑') }}",
+                "jobTitle": "{{ _('创始人兼CEO') }}",
+                "description": "{{ _('拥有丰富的AI项目实施经验，领导团队为客户提供创新的AI解决方案') }}"
+              }
+            ]
+          }
         }
         </script>
     </main>
     
-    <!-- Footer (same as in index.html) -->
     {% include 'components/ai_assistant.html' %}
+    
+    <!-- Footer (same as in index.html) -->
     {% include 'components/keywords.html' %}
-    <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
 </body>
 </html>

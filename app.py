@@ -65,13 +65,114 @@ def faq():
                          breadcrumb_items=breadcrumb_items,
                          page_title=_('常见问题'))
 
+# 添加解决方案页面路由
+@app.route('/solutions/data-analytics')
+def data_analytics():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('解决方案'), 'url': '/#services'},
+        {'name': _('智能数据分析'), 'url': None}
+    ]
+    return render_template('solutions/data-analytics.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('智能数据分析'))
+
+@app.route('/solutions/nlp')
+def nlp():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('解决方案'), 'url': '/#services'},
+        {'name': _('自然语言处理'), 'url': None}
+    ]
+    return render_template('solutions/nlp.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('自然语言处理'))
+
+@app.route('/solutions/computer-vision')
+def computer_vision():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('解决方案'), 'url': '/#services'},
+        {'name': _('计算机视觉'), 'url': None}
+    ]
+    return render_template('solutions/computer-vision.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('计算机视觉'))
+
+@app.route('/solutions/predictive-analytics')
+def predictive_analytics():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('解决方案'), 'url': '/#services'},
+        {'name': _('预测性分析'), 'url': None}
+    ]
+    return render_template('solutions/predictive-analytics.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('预测性分析'))
+
+@app.route('/solutions/intelligent-automation')
+def intelligent_automation():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('解决方案'), 'url': '/#services'},
+        {'name': _('智能自动化'), 'url': None}
+    ]
+    return render_template('solutions/intelligent-automation.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('智能自动化'))
+
+@app.route('/solutions/custom-ai-models')
+def custom_ai_models():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('解决方案'), 'url': '/#services'},
+        {'name': _('定制化AI模型开发'), 'url': None}
+    ]
+    return render_template('solutions/custom-ai-models.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('定制化AI模型开发'))
+
+# 添加案例研究页面路由
+@app.route('/case-studies/manufacturing-quality-control')
+def manufacturing_quality_control():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('成功案例'), 'url': '/#cases'},
+        {'name': _('制造业智能质检系统'), 'url': None}
+    ]
+    return render_template('case-studies/manufacturing-quality-control.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('制造业智能质检系统'))
+
+# 添加解决方案通用路由
+@app.route('/solutions')
+def solutions():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('解决方案'), 'url': None}
+    ]
+    return render_template('solutions/index.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('AI解决方案'))
+
+# 添加案例研究通用路由
+@app.route('/case-studies')
+def case_studies():
+    breadcrumb_items = [
+        {'name': _('首页'), 'url': '/'},
+        {'name': _('成功案例'), 'url': None}
+    ]
+    return render_template('case-studies/index.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('成功案例'))
+
 @app.route('/robots.txt')
 def robots_txt():
-    return send_from_directory('static', 'robots.txt')
+    return send_from_directory(str(app.static_folder), 'robots.txt')
 
 @app.route('/sitemap.xml')
 def sitemap_xml():
-    return send_from_directory('static', 'sitemap.xml')
+    return send_from_directory(str(app.static_folder), 'sitemap.xml')
 
 # 添加处理咨询表单提交的路由
 @app.route('/submit_consultation', methods=['POST'])

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('智能数据分析') }} - {{ _('上海葳澄信息科技') }}</title>
+    <meta name="description" content="{{ _('利用AI技术深度分析企业数据，挖掘潜在价值，提供数据驱动的决策支持。上海葳澄信息科技有限公司为您提供专业的智能数据分析服务。') }}">
+    <meta name="keywords" content="{{ _('智能数据分析,AI数据分析,数据挖掘,商业智能,决策支持,大数据分析') }}">
+    <meta name="author" content="{{ _('上海葳澄信息科技有限公司') }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- GEO Meta Tags -->
+    <meta name="geo.region" content="CN-SH">
+    <meta name="geo.placename" content="{{ _('上海') }}">
+    <meta name="geo.position" content="31.318493;121.446212">
+    <meta name="ICBM" content="31.318493, 121.446212">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wisdomitc.com/solutions/data-analytics">
+    <meta property="og:title" content="{{ _('智能数据分析') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="og:description" content="{{ _('利用AI技术深度分析企业数据，挖掘潜在价值，提供数据驱动的决策支持。') }}">
+    <meta property="og:image" content="https://www.wisdomitc.com/static/images/data-analytics.jpg">
+    <meta property="og:site_name" content="{{ _('上海葳澄信息科技有限公司') }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.wisdomitc.com/solutions/data-analytics">
+    <meta property="twitter:title" content="{{ _('智能数据分析') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="twitter:description" content="{{ _('利用AI技术深度分析企业数据，挖掘潜在价值，提供数据驱动的决策支持。') }}">
+    <meta property="twitter:image" content="https://www.wisdomitc.com/static/images/data-analytics.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.wisdomitc.com/solutions/data-analytics">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- Navigation bar (same as in index.html) -->
+    
+    <main class="container mx-auto px-4 py-20">
+        {% include 'components/breadcrumb.html' %}
+        
+        <h1 class="text-4xl font-bold text-primary mb-8">{{ _('智能数据分析') }}</h1>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <img src="https://picsum.photos/id/3/600/400" alt="{{ _('智能数据分析') }}" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+            <div>
+                <h2 class="text-2xl font-semibold mb-4">{{ _('解决方案概述') }}</h2>
+                <p class="text-gray-700 mb-6">{{ _('我们的智能数据分析解决方案利用先进的AI技术，深度分析企业数据，挖掘潜在价值，为企业提供数据驱动的决策支持。通过机器学习算法和统计分析模型，我们帮助客户从海量数据中提取有价值的信息，识别业务趋势，预测市场变化，并制定科学的商业策略。') }}</p>
+                
+                <h3 class="text-xl font-semibold mb-3">{{ _('核心优势') }}</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>{{ _('先进的机器学习算法') }}</li>
+                    <li>{{ _('实时数据处理能力') }}</li>
+                    <li>{{ _('可视化数据报告') }}</li>
+                    <li>{{ _('可定制的分析模型') }}</li>
+                    <li>{{ _('专业的数据科学团队') }}</li>
+                </ul>
+            </div>
+        </div>
+        
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">{{ _('应用场景') }}</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-line-chart"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ _('业务趋势分析') }}</h3>
+                    <p class="text-gray-600">{{ _('识别业务增长趋势，发现潜在市场机会，为战略决策提供数据支持。') }}</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ _('客户行为分析') }}</h3>
+                    <p class="text-gray-600">{{ _('深入了解客户偏好和行为模式，优化产品和服务，提升客户满意度。') }}</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">{{ _('运营优化') }}</h3>
+                    <p class="text-gray-600">{{ _('分析运营数据，识别效率瓶颈，优化资源配置，降低运营成本。') }}</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">{{ _('技术架构') }}</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">{{ _('我们的智能数据分析平台采用先进的技术架构') }}</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>{{ _('分布式数据处理引擎，支持PB级数据处理') }}</li>
+                    <li>{{ _('多种机器学习算法库，包括深度学习模型') }}</li>
+                    <li>{{ _('实时数据流处理能力') }}</li>
+                    <li>{{ _('交互式数据可视化工具') }}</li>
+                    <li>{{ _('安全的数据存储和传输机制') }}</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="text-2xl font-semibold mb-6">{{ _('成功案例') }}</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">{{ _('零售业销售预测') }}</h3>
+                <p class="text-gray-700 mb-4">{{ _('为某大型零售连锁企业构建销售预测模型，通过分析历史销售数据、季节性因素、市场趋势等多维度信息，实现未来30天销售量的精准预测，预测准确率达到92%，帮助企业优化库存管理，减少25%的库存成本。') }}</p>
+                <div class="flex items-center text-primary">
+                    <span class="font-bold mr-4">{{ _('预测准确率提升') }}: 92%</span>
+                    <span class="font-bold mr-4">{{ _('库存成本降低') }}: 25%</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Structured Data for Solution Page -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "{{ _('智能数据分析') }}",
+          "description": "{{ _('利用AI技术深度分析企业数据，挖掘潜在价值，提供数据驱动的决策支持。') }}",
+          "url": "https://www.wisdomitc.com/solutions/data-analytics",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "{{ _('首页') }}",
+              "item": "https://www.wisdomitc.com/"
+            },{
+              "@type": "ListItem",
+              "position": 2,
+              "name": "{{ _('解决方案') }}",
+              "item": "https://www.wisdomitc.com/solutions"
+            },{
+              "@type": "ListItem",
+              "position": 3,
+              "name": "{{ _('智能数据分析') }}",
+              "item": "https://www.wisdomitc.com/solutions/data-analytics"
+            }]
+          }
+        }
+        </script>
+        
+        <!-- Enhanced Structured Data for Service -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "{{ _('智能数据分析') }}",
+          "provider": {
+            "@type": "Organization",
+            "name": "{{ _('上海葳澄信息科技有限公司') }}",
+            "url": "https://www.wisdomitc.com/"
+          },
+          "description": "{{ _('利用AI技术深度分析企业数据，挖掘潜在价值，提供数据驱动的决策支持。') }}",
+          "category": "{{ _('数据分析') }}",
+          "audience": {
+            "@type": "BusinessAudience",
+            "audienceType": "{{ _('企业客户') }}"
+          },
+          "offers": {
+            "@type": "Offer",
+            "category": "Business to Business"
+          },
+          "serviceArea": {
+            "@type": "Place",
+            "name": "{{ _('中国') }}"
+          }
+        }
+        </script>
+        
+        <!-- Knowledge Graph Markup for Data Analytics Solution -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "{{ _('智能数据分析平台') }}",
+          "description": "{{ _('基于AI技术的企业级数据分析平台，提供数据挖掘、趋势分析和预测建模功能') }}",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "featureList": [
+            "{{ _('机器学习算法') }}",
+            "{{ _('实时数据处理') }}",
+            "{{ _('可视化数据报告') }}",
+            "{{ _('可定制分析模型') }}",
+            "{{ _('API集成') }}"
+          ],
+          "softwareHelp": {
+            "@type": "CreativeWork",
+            "url": "https://www.wisdomitc.com/faq"
+          },
+          "creator": {
+            "@type": "Organization",
+            "name": "{{ _('上海葳澄信息科技有限公司') }}",
+            "url": "https://www.wisdomitc.com/"
+          }
+        }
+        </script>
+    </main>
+    
+    <!-- Footer (same as in index.html) -->
+    {% include 'components/keywords.html' %}
+</body>
+</html>
