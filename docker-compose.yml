@@ -16,7 +16,7 @@ services:
       - wisdomitc-network
     depends_on:
       - redis
-    command: gunicorn --bind 0.0.0.0:5001 --workers 3 app:app
+    command: gunicorn --bind 0.0.0.0:5001 --workers 3 --chdir /app app:application
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
       interval: 30s

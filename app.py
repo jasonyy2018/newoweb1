@@ -331,8 +331,11 @@ def create_app():
 
     return app
 
-# Create application instance for Gunicorn
-app = create_app()
+# 为Gunicorn创建应用实例
+application = create_app()
+
+# 为了向后兼容，也创建app变量
+app = application
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=False)
+    application.run(host='0.0.0.0', port=5001, debug=False)
