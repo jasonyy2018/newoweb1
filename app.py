@@ -253,13 +253,43 @@ def create_app():
                 "message": f"自动GEO优化失败: {str(e)}"
             })
     
+    @app.route('/health')
+    def health_check():
+        """健康检查端点"""
+        return jsonify({
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat()
+        })
+    
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template('error.html', message=_('页面未找到')), 404
+        return render_template('error.html', 
+                             message=_('页面未找到'),
+                             error_details={
+                                 'status_code': 404,
+                                 'error_type': _('页面未找到'),
+                                 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                 'possible_causes': [
+                                     _('URL输入错误'),
+                                     _('页面已被移除'),
+                                     _('链接已过期')
+                                 ]
+                             }), 404
     
     @app.errorhandler(500)
     def internal_error(e):
-        return render_template('error.html', message=_('服务器内部错误')), 500
+        return render_template('error.html', 
+                             message=_('服务器内部错误'),
+                             error_details={
+                                 'status_code': 500,
+                                 'error_type': _('服务器内部错误'),
+                                 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                 'possible_causes': [
+                                     _('服务器暂时不可用'),
+                                     _('系统正在维护'),
+                                     _('程序出现异常')
+                                 ]
+                             }), 500
     
     return app
 

@@ -121,13 +121,18 @@
         <div class="error-icon">⚠️</div>
         <h1 class="error-title">{{ _("服务器遇到问题") }}</h1>
         
-        <p class="error-message">{{ error_message }}</p>
+        <p class="error-message">{{ message }}</p>
         
+        {% if error_id %}
         <div class="error-id">
             {{ _("错误ID") }}: <strong>{{ error_id }}</strong><br>
-            {{ _("时间") }}: {{ error_details.timestamp or '' }}
+            {% if error_details and error_details.timestamp %}
+            {{ _("时间") }}: {{ error_details.timestamp }}
+            {% endif %}
         </div>
+        {% endif %}
         
+        {% if user_actions %}
         <div class="actions-list">
             <h3>{{ _("建议操作") }}</h3>
             <ul>
@@ -136,18 +141,25 @@
                 {% endfor %}
             </ul>
         </div>
+        {% endif %}
         
+        {% if error_details %}
         <div class="error-details">
             <h3>{{ _('技术信息') }}</h3>
-            <p><strong>{{ _('状态码') }}</strong>: {{ error_details.status_code }}</p>
+            <p><strong>{{ _('状态码') }}</strong>: {{ error_details.status_code or 'N/A' }}</p>
+            {% if error_details.error_type %}
             <p><strong>{{ _('错误类型') }}</strong>: {{ error_details.error_type }}</p>
+            {% endif %}
+            {% if error_details.possible_causes %}
             <p><strong>{{ _('可能原因') }}</strong>:</p>
             <ul>
                 {% for cause in error_details.possible_causes %}
                 <li>{{ _(cause) }}</li>
                 {% endfor %}
             </ul>
+            {% endif %}
         </div>
+        {% endif %}
         
         <a href="{{ url_for('index') }}" class="home-button">
             {{ _("返回首页") }}
