@@ -40,18 +40,31 @@ def create_app():
     # 添加自定义属性
     setattr(app, 'redis_client', None)
     
-    # 日志配置
+    # 日志配置 - 添加权限检查和更安全的处理方式
     if not app.debug:
-        if not os.path.exists('logs'):
-            os.mkdir('logs')
-        file_handler = RotatingFileHandler('logs/wisdomitc.log', maxBytes=10240, backupCount=10)
-        file_handler.setFormatter(logging.Formatter(
-            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
-        ))
-        file_handler.setLevel(logging.INFO)
-        app.logger.addHandler(file_handler)
-        app.logger.setLevel(logging.INFO)
-        app.logger.info('上海葳澄信息科技有限公司网站启动')
+        try:
+            logs_dir = 'logs'
+            if not os.path.exists(logs_dir):
+                os.mkdir(logs_dir)
+            
+            # 检查是否有写入权限
+            log_file_path = os.path.join(logs_dir, 'wisdomitc.log')
+            file_handler = RotatingFileHandler(log_file_path, maxBytes=10240, backupCount=10)
+            file_handler.setFormatter(logging.Formatter(
+                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+            ))
+            file_handler.setLevel(logging.INFO)
+            app.logger.addHandler(file_handler)
+            app.logger.setLevel(logging.INFO)
+            app.logger.info('上海葳澄信息科技有限公司网站启动')
+        except PermissionError:
+            # 如果没有权限写入文件，只使用控制台日志
+            app.logger.setLevel(logging.INFO)
+            app.logger.warning('无法创建日志文件，使用控制台日志')
+        except Exception as e:
+            # 其他异常情况
+            app.logger.setLevel(logging.INFO)
+            app.logger.error(f'日志配置失败: {e}')
     
     # 初始化Babel
     babel = Babel(app)

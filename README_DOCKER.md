@@ -61,7 +61,7 @@ AI Solutions for Business
 │   ├── solutions/         # 解决方案页面文件夹
 │   └── case-studies/      # 案例研究页面文件夹
 ├── data/                  # 数据文件夹
-│   └── consultations.db   # SQLite数据库文件
+│   └── consultations.db   # SQLite数据库
 ├── logs/                  # 日志文件夹
 └── translations/          # 翻译文件夹
     ├── en/                # 英文翻译
@@ -105,7 +105,7 @@ AI Solutions for Business
    docker-compose up -d
    ```
 
-2. 在浏览器中访问 `http://localhost`
+2. 在浏览器中访问 `http://localhost:8090` (注意：端口已更改为8090)
 
 3. 查看日志：
    ```

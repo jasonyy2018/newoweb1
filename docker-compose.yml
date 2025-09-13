@@ -17,6 +17,8 @@ services:
     depends_on:
       - redis
     command: gunicorn --bind 0.0.0.0:5001 --workers 3 --chdir /app app:app
+    # 添加用户权限配置，解决日志写入权限问题
+    user: "1000:1000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
       interval: 30s
@@ -35,8 +37,9 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"
-      - "443:443"
+      # 修改Nginx端口为8090
+      - "8090:80"
+      - "8091:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./static:/app/static:ro
