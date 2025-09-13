@@ -24,18 +24,35 @@ python app.py
 
 ## Docker部署
 
-### 构建和运行
+### 快速开始
 ```bash
-docker-compose up --build
+# 启动所有服务
+docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
 ```
 
 应用将在以下端口上运行：
-- `http://localhost:80` - 通过Nginx访问
+- `http://localhost` - 通过Nginx访问（推荐）
 - `http://localhost:5001` - 直接访问Flask应用
 
-### 停止服务
+### 详细部署指南
+请查看 [DOCKER_DEPLOYMENT_GUIDE.md](DOCKER_DEPLOYMENT_GUIDE.md) 获取完整的Docker部署说明。
+
+### 常用命令
 ```bash
+# 查看日志
+docker-compose logs -f
+
+# 停止服务
 docker-compose down
+
+# 重建镜像
+docker-compose build
+
+# 重启特定服务
+docker-compose restart web
 ```
 
 ## 项目结构
