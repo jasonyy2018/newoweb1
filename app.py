@@ -8,12 +8,12 @@ AI Solutions for Business
 import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, g
-from flask_babel import Babel, _, get_locale
+from flask_babel import Babel, _
 import json
 from datetime import datetime
-import redis
 import logging
 from logging.handlers import RotatingFileHandler
+from typing import Any, Optional
 
 def create_app():
     app = Flask(__name__)
@@ -29,6 +29,9 @@ def create_app():
     
     # Redis配置
     app.config['REDIS_URL'] = os.environ.get('REDIS_URL') or 'redis://redis:6379/0'
+    
+    # 添加自定义属性
+    setattr(app, 'redis_client', None)
     
     # 日志配置
     if not app.debug:
@@ -46,15 +49,22 @@ def create_app():
     # 初始化Babel
     babel = Babel(app)
     
-    # 初始化Redis
+    # 尝试初始化Redis
+    REDIS_AVAILABLE = False
+    redis_module = None
     try:
-        app.redis = redis.from_url(app.config['REDIS_URL'])
+        import importlib
+        redis_module = importlib.import_module('redis')
+        REDIS_AVAILABLE = True
+        redis_client = redis_module.from_url(app.config['REDIS_URL'])  # type: ignore
+        setattr(app, 'redis_client', redis_client)
         app.logger.info('Redis连接成功')
+    except ImportError:
+        app.logger.warning('Redis库未安装，缓存功能将不可用')
     except Exception as e:
+        setattr(app, 'redis_client', None)
         app.logger.error(f'Redis连接失败: {e}')
-        app.redis = None
     
-    @babel.localeselector
     def get_locale():
         # 检查URL参数
         locale = request.args.get('lang')
@@ -62,6 +72,9 @@ def create_app():
             return locale
         # 否则使用浏览器默认语言
         return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES']) or app.config['BABEL_DEFAULT_LOCALE']
+    
+    # 使用装饰器注册localeselector
+    babel.init_app(app, locale_selector=get_locale)
     
     def get_db():
         """获取数据库连接"""
@@ -123,7 +136,7 @@ def create_app():
             db.commit()
             
             # 如果Redis可用，缓存咨询信息
-            if app.redis:
+            if getattr(app, 'redis_client', None) and REDIS_AVAILABLE and redis_module:
                 try:
                     consultation_data = {
                         'name': name,
@@ -134,9 +147,9 @@ def create_app():
                         'message': message,
                         'timestamp': datetime.now().isoformat()
                     }
-                    app.redis.lpush('recent_consultations', json.dumps(consultation_data))
+                    app.redis_client.lpush('recent_consultations', json.dumps(consultation_data))  # type: ignore
                     # 只保留最近的100条咨询记录
-                    app.redis.ltrim('recent_consultations', 0, 99)
+                    app.redis_client.ltrim('recent_consultations', 0, 99)  # type: ignore
                 except Exception as e:
                     app.logger.error(f'Redis缓存失败: {e}')
             
