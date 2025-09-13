@@ -13,3 +13,13 @@ Sitemap: https://www.wisdomitc.com/sitemap.xml
 User-agent: Baiduspider
 Allow: /
 Sitemap: https://www.wisdomitc.com/sitemap.xml
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /private/

@@ -1778,4 +1778,74 @@
 
     
     <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
+    
+    <!-- GEO Optimization Trigger for Admin -->
+    <script>
+    // 检查是否为管理员用户，如果是则显示GEO优化按钮
+    document.addEventListener('DOMContentLoaded', function() {
+        // 这里可以添加检查用户权限的逻辑
+        // 例如检查cookie或localStorage中的管理员标识
+        const isAdmin = false; // 默认不是管理员
+        
+        if (isAdmin) {
+            // 创建GEO优化按钮
+            const geoButton = document.createElement('div');
+            geoButton.id = 'geo-optimization-btn';
+            geoButton.innerHTML = `
+                <button id="run-geo-optimization" 
+                        class="fixed bottom-20 right-6 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all z-50"
+                        title="运行GEO优化">
+                    <i class="fa fa-rocket"></i>
+                </button>
+                <button id="run-auto-geo-optimization" 
+                        class="fixed bottom-32 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all z-50"
+                        title="运行自动GEO优化">
+                    <i class="fa fa-cogs"></i>
+                </button>
+            `;
+            
+            document.body.appendChild(geoButton);
+            
+            // 添加GEO优化点击事件
+            document.getElementById('run-geo-optimization').addEventListener('click', function() {
+                if (confirm('确定要运行GEO优化吗？这将更新网站的SEO和GEO设置。')) {
+                    fetch('/run_geo_optimization')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('GEO优化已完成！' + (data.message || ''));
+                            } else {
+                                alert('GEO优化失败：' + (data.message || '未知错误'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('GEO优化请求失败：' + error.message);
+                        });
+                }
+            });
+            
+            // 添加自动GEO优化点击事件
+            document.getElementById('run-auto-geo-optimization').addEventListener('click', function() {
+                if (confirm('确定要运行自动GEO优化吗？这将按SEO和GEO顺序执行优化任务。')) {
+                    fetch('/run_auto_geo_optimization')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('自动GEO优化已完成！' + (data.message || ''));
+                            } else {
+                                alert('自动GEO优化失败：' + (data.message || '未知错误'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('自动GEO优化请求失败：' + error.message);
+                        });
+                }
+            });
+        }
+    });
+    </script>
+</body></html>
+
     </body></html>

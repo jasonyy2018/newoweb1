@@ -1,253 +1,255 @@
-from flask import Flask, render_template, request, session, make_response, jsonify, send_from_directory
-from flask_babel import Babel, gettext as _
-import time
-import uuid
-import traceback
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+上海葳澄信息科技有限公司网站
+AI Solutions for Business
+"""
+
 import os
+import sqlite3
+from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, g
+from flask_babel import Babel, _, get_locale
+import json
+from datetime import datetime
+import redis
+import logging
+from logging.handlers import RotatingFileHandler
 
-# 添加数据库模块导入
-from database import init_db, add_consultation, get_all_consultations, get_consultation_by_id
-
-app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-here')
-
-# Configuration for Flask-Babel
-app.config['LANGUAGES'] = ['zh', 'en', 'ja']
-app.config['BABEL_DEFAULT_LOCALE'] = 'zh'
-app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
-app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
-
-def get_locale():
-    # Simple language detection from URL parameter
-    lang = request.args.get('lang')
-    if lang in app.config['LANGUAGES']:
-        return lang
-    return app.config['BABEL_DEFAULT_LOCALE']
-
-babel = Babel(app, locale_selector=get_locale)
-
-# 为模板提供get_locale函数
-@app.context_processor
-def inject_conf_vars():
-    return dict(
-        get_locale=get_locale
-    )
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/about')
-def about():
-    breadcrumb_items = [
-        {'name': _('关于我们'), 'url': None}
-    ]
-    return render_template('about.html', 
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('关于我们'))
-
-@app.route('/contact')
-def contact():
-    breadcrumb_items = [
-        {'name': _('联系我们'), 'url': None}
-    ]
-    return render_template('contact.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('联系我们'))
-
-# 添加FAQ页面路由
-@app.route('/faq')
-def faq():
-    breadcrumb_items = [
-        {'name': _('常见问题'), 'url': None}
-    ]
-    return render_template('faq.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('常见问题'))
-
-# 添加解决方案页面路由
-@app.route('/solutions/data-analytics')
-def data_analytics():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('解决方案'), 'url': '/#services'},
-        {'name': _('智能数据分析'), 'url': None}
-    ]
-    return render_template('solutions/data-analytics.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('智能数据分析'))
-
-@app.route('/solutions/nlp')
-def nlp():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('解决方案'), 'url': '/#services'},
-        {'name': _('自然语言处理'), 'url': None}
-    ]
-    return render_template('solutions/nlp.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('自然语言处理'))
-
-@app.route('/solutions/computer-vision')
-def computer_vision():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('解决方案'), 'url': '/#services'},
-        {'name': _('计算机视觉'), 'url': None}
-    ]
-    return render_template('solutions/computer-vision.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('计算机视觉'))
-
-@app.route('/solutions/predictive-analytics')
-def predictive_analytics():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('解决方案'), 'url': '/#services'},
-        {'name': _('预测性分析'), 'url': None}
-    ]
-    return render_template('solutions/predictive-analytics.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('预测性分析'))
-
-@app.route('/solutions/intelligent-automation')
-def intelligent_automation():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('解决方案'), 'url': '/#services'},
-        {'name': _('智能自动化'), 'url': None}
-    ]
-    return render_template('solutions/intelligent-automation.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('智能自动化'))
-
-@app.route('/solutions/custom-ai-models')
-def custom_ai_models():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('解决方案'), 'url': '/#services'},
-        {'name': _('定制化AI模型开发'), 'url': None}
-    ]
-    return render_template('solutions/custom-ai-models.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('定制化AI模型开发'))
-
-# 添加案例研究页面路由
-@app.route('/case-studies/manufacturing-quality-control')
-def manufacturing_quality_control():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('成功案例'), 'url': '/#cases'},
-        {'name': _('制造业智能质检系统'), 'url': None}
-    ]
-    return render_template('case-studies/manufacturing-quality-control.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('制造业智能质检系统'))
-
-# 添加解决方案通用路由
-@app.route('/solutions')
-def solutions():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('解决方案'), 'url': None}
-    ]
-    return render_template('solutions/index.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('AI解决方案'))
-
-# 添加案例研究通用路由
-@app.route('/case-studies')
-def case_studies():
-    breadcrumb_items = [
-        {'name': _('首页'), 'url': '/'},
-        {'name': _('成功案例'), 'url': None}
-    ]
-    return render_template('case-studies/index.html',
-                         breadcrumb_items=breadcrumb_items,
-                         page_title=_('成功案例'))
-
-@app.route('/robots.txt')
-def robots_txt():
-    return send_from_directory(str(app.static_folder), 'robots.txt')
-
-@app.route('/sitemap.xml')
-def sitemap_xml():
-    return send_from_directory(str(app.static_folder), 'sitemap.xml')
-
-# 添加处理咨询表单提交的路由
-@app.route('/submit_consultation', methods=['POST'])
-def submit_consultation():
+def create_app():
+    app = Flask(__name__)
+    
+    # 配置应用
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'dev-secret-key'
+    app.config['BABEL_DEFAULT_LOCALE'] = 'zh'
+    app.config['BABEL_SUPPORTED_LOCALES'] = ['zh', 'en', 'ja']
+    app.config['BABEL_DEFAULT_TIMEZONE'] = 'Asia/Shanghai'
+    
+    # 数据库配置
+    app.config['DATABASE'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'consultations.db')
+    
+    # Redis配置
+    app.config['REDIS_URL'] = os.environ.get('REDIS_URL') or 'redis://redis:6379/0'
+    
+    # 日志配置
+    if not app.debug:
+        if not os.path.exists('logs'):
+            os.mkdir('logs')
+        file_handler = RotatingFileHandler('logs/wisdomitc.log', maxBytes=10240, backupCount=10)
+        file_handler.setFormatter(logging.Formatter(
+            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+        ))
+        file_handler.setLevel(logging.INFO)
+        app.logger.addHandler(file_handler)
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('上海葳澄信息科技有限公司网站启动')
+    
+    # 初始化Babel
+    babel = Babel(app)
+    
+    # 初始化Redis
     try:
-        # 从表单获取数据
-        name = request.form.get('name', '').strip()
-        company = request.form.get('company', '').strip()
-        email = request.form.get('email', '').strip()
-        phone = request.form.get('phone', '').strip()
-        message = request.form.get('message', '').strip()
-        
-        # 验证必填字段
-        if not name or not email or not message:
-            return jsonify({
-                'success': False,
-                'message': _('请填写所有必填字段')
-            }), 400
-        
-        # 验证邮箱格式
-        if '@' not in email:
-            return jsonify({
-                'success': False,
-                'message': _('请输入有效的邮箱地址')
-            }), 400
-        
-        # 保存到数据库
-        consultation_id = add_consultation(name, company, email, phone, message)
-        
-        return jsonify({
-            'success': True,
-            'message': _('您的咨询已成功提交，我们会尽快与您联系！'),
-            'consultation_id': consultation_id
-        })
-        
+        app.redis = redis.from_url(app.config['REDIS_URL'])
+        app.logger.info('Redis连接成功')
     except Exception as e:
-        error_msg = f"提交咨询时出错: {str(e)}"
-        print(error_msg)
-        import traceback
-        traceback.print_exc()
-        return jsonify({
-            'success': False,
-            'message': _('提交咨询时发生错误，请稍后再试')
-        }), 500
-
-# 添加管理页面路由（可选，用于查看咨询请求）
-@app.route('/admin/consultations')
-def admin_consultations():
-    try:
-        consultations = get_all_consultations()
+        app.logger.error(f'Redis连接失败: {e}')
+        app.redis = None
+    
+    @babel.localeselector
+    def get_locale():
+        # 检查URL参数
+        locale = request.args.get('lang')
+        if locale in app.config['BABEL_SUPPORTED_LOCALES']:
+            return locale
+        # 否则使用浏览器默认语言
+        return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES']) or app.config['BABEL_DEFAULT_LOCALE']
+    
+    def get_db():
+        """获取数据库连接"""
+        if 'db' not in g:
+            g.db = sqlite3.connect(app.config['DATABASE'])
+            g.db.row_factory = sqlite3.Row
+        return g.db
+    
+    def close_db(e=None):
+        """关闭数据库连接"""
+        db = g.pop('db', None)
+        if db is not None:
+            db.close()
+    
+    @app.teardown_appcontext
+    def close_db_error(e=None):
+        close_db(e)
+    
+    @app.route('/')
+    def index():
+        return render_template('index.html')
+    
+    @app.route('/about')
+    def about():
+        return render_template('about.html')
+    
+    @app.route('/contact')
+    def contact():
+        return render_template('contact.html')
+    
+    @app.route('/faq')
+    def faq():
+        return render_template('faq.html')
+    
+    @app.route('/admin/consultations')
+    def admin_consultations():
+        # 这里应该添加身份验证
+        db = get_db()
+        consultations = db.execute('SELECT * FROM consultations ORDER BY timestamp DESC').fetchall()
         return render_template('admin_consultations.html', consultations=consultations)
-    except Exception as e:
-        print(f"获取咨询列表时出错: {str(e)}")
-        return "获取咨询列表时发生错误", 500
-
-@app.route('/test-error')
-def test_error():
-    """
-    测试错误处理功能的路由
-    访问此路由会触发一个模拟的服务器错误
-    """
-    # 模拟一个服务器错误
-    raise RuntimeError(_("这是一个测试错误，用于验证错误处理功能是否正常工作"))
-
-@app.route('/set_language/<lang>')
-def set_language(lang):
-    if lang in app.config['LANGUAGES']:
-        session['lang'] = lang
-    return make_response('', 204)
+    
+    @app.route('/submit_consultation', methods=['POST'])
+    def submit_consultation():
+        try:
+            # 获取表单数据
+            name = request.form['name']
+            email = request.form['email']
+            company = request.form.get('company', '')
+            phone = request.form.get('phone', '')
+            service = request.form.get('service', '')
+            message = request.form.get('message', '')
+            
+            # 保存到数据库
+            db = get_db()
+            db.execute(
+                'INSERT INTO consultations (name, email, company, phone, service, message) VALUES (?, ?, ?, ?, ?, ?)',
+                (name, email, company, phone, service, message)
+            )
+            db.commit()
+            
+            # 如果Redis可用，缓存咨询信息
+            if app.redis:
+                try:
+                    consultation_data = {
+                        'name': name,
+                        'email': email,
+                        'company': company,
+                        'phone': phone,
+                        'service': service,
+                        'message': message,
+                        'timestamp': datetime.now().isoformat()
+                    }
+                    app.redis.lpush('recent_consultations', json.dumps(consultation_data))
+                    # 只保留最近的100条咨询记录
+                    app.redis.ltrim('recent_consultations', 0, 99)
+                except Exception as e:
+                    app.logger.error(f'Redis缓存失败: {e}')
+            
+            return jsonify({
+                'success': True,
+                'message': _('感谢您的咨询！我们的专家团队会尽快与您联系。')
+            })
+        except Exception as e:
+            app.logger.error(f'提交咨询失败: {e}')
+            return jsonify({
+                'success': False,
+                'message': _('提交咨询时发生错误，请稍后再试。')
+            }), 400
+    
+    @app.route('/solution/<solution_name>')
+    def solution(solution_name):
+        # 验证解决方案名称
+        valid_solutions = [
+            'data-analytics', 'nlp', 'computer-vision', 
+            'predictive-analytics', 'intelligent-automation', 'custom-ai-models'
+        ]
+        
+        if solution_name not in valid_solutions:
+            return render_template('error.html', message=_('未找到指定的解决方案')), 404
+            
+        template_path = f'solutions/{solution_name}.html'
+        return render_template(template_path)
+    
+    @app.route('/case-study/<case_name>')
+    def case_study(case_name):
+        # 验证案例名称
+        valid_cases = ['manufacturing-quality-control']
+        
+        if case_name not in valid_cases:
+            return render_template('error.html', message=_('未找到指定的案例研究')), 404
+            
+        template_path = f'case-studies/{case_name}.html'
+        return render_template(template_path)
+    
+    @app.route('/solutions')
+    def solutions_index():
+        return render_template('solutions/index.html')
+    
+    @app.route('/case-studies')
+    def case_studies_index():
+        return render_template('case-studies/index.html')
+    
+    @app.route('/robots.txt')
+    def robots_txt():
+        return send_from_directory(str(app.static_folder), 'robots.txt')
+    
+    @app.route('/sitemap.xml')
+    def sitemap_xml():
+        return send_from_directory(str(app.static_folder), 'sitemap.xml')
+    
+    @app.route('/run_geo_optimization')
+    def run_geo_optimization():
+        """手动触发GEO优化"""
+        try:
+            # 导入GEO优化器
+            import sys
+            sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+            from geo_optimizer import GEOOptimizer
+            
+            # 创建优化器实例并运行优化
+            optimizer = GEOOptimizer(os.path.dirname(os.path.abspath(__file__)))
+            report = optimizer.run_optimization_sequence()
+            
+            return jsonify({
+                "success": True,
+                "message": "GEO优化已完成",
+                "report": report
+            })
+        except Exception as e:
+            return jsonify({
+                "success": False,
+                "message": f"GEO优化失败: {str(e)}"
+            })
+    
+    @app.route('/run_auto_geo_optimization')
+    def run_auto_geo_optimization():
+        """手动触发自动GEO优化"""
+        try:
+            # 导入自动GEO优化器
+            import sys
+            sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+            from auto_geo_optimizer import AutoGEOOptimizer
+            
+            # 创建优化器实例并运行优化
+            auto_optimizer = AutoGEOOptimizer(os.path.dirname(os.path.abspath(__file__)))
+            report = auto_optimizer.run_full_optimization_sequence()
+            
+            return jsonify({
+                "success": True,
+                "message": "自动GEO优化已完成",
+                "report": report
+            })
+        except Exception as e:
+            return jsonify({
+                "success": False,
+                "message": f"自动GEO优化失败: {str(e)}"
+            })
+    
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('error.html', message=_('页面未找到')), 404
+    
+    @app.errorhandler(500)
+    def internal_error(e):
+        return render_template('error.html', message=_('服务器内部错误')), 500
+    
+    return app
 
 if __name__ == '__main__':
-    # 初始化数据库
-    init_db()
-    # 从环境变量获取主机和端口配置，如果没有则使用默认值
-    host = os.environ.get('HOST', '0.0.0.0')
-    port = int(os.environ.get('PORT', 5001))
-    debug = os.environ.get('FLASK_ENV') != 'production'
-    app.run(debug=debug, host=host, port=port)
+    app = create_app()
+    app.run(host='0.0.0.0', port=5001, debug=False)

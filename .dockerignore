@@ -50,3 +50,13 @@ Thumbs.db
 
 # CodeBuddy files
 .codebuddy/
+
+# Log files
+*.log
+logs/
+
+# Data files
+data/
+
+# Environment files
+.env

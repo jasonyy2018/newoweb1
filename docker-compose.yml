@@ -7,6 +7,48 @@ services:
       - "5001:5001"
     environment:
       - FLASK_ENV=production
+      - FLASK_APP=app.py
     volumes:
-      - ./consultations.db:/app/consultations.db
+      - ./data:/app/data
+      - ./logs:/app/logs
     restart: unless-stopped
+    networks:
+      - wisdomitc-network
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    networks:
+      - wisdomitc-network
+    volumes:
+      - redis-data:/data
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./static:/app/static
+    depends_on:
+      - web
+    restart: unless-stopped
+    networks:
+      - wisdomitc-network
+
+volumes:
+  redis-data:
+  consultations-data:
+
+networks:
+  wisdomitc-network:
+    driver: bridge

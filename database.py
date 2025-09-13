@@ -1,145 +1,100 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+数据库操作模块
+处理咨询表单数据的存储和检索
+"""
 
 import sqlite3
 import os
 from datetime import datetime
+from contextlib import contextmanager
 
 # 数据库文件路径
-DB_PATH = 'consultations.db'
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'consultations.db')
 
 def init_db():
-    """初始化数据库，创建咨询表"""
+    """初始化数据库"""
+    # 确保data目录存在
+    data_dir = os.path.dirname(DB_PATH)
+    if not os.path.exists(data_dir):
+        os.makedirs(data_dir)
+    
+    # 创建数据库连接
     conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
+    c = conn.cursor()
     
     # 创建咨询表
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS consultations (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            company TEXT,
-            email TEXT NOT NULL,
-            phone TEXT,
-            message TEXT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            status TEXT DEFAULT 'pending'
-        )
-    ''')
-    
-    # 创建索引以提高查询性能
-    cursor.execute('''
-        CREATE INDEX IF NOT EXISTS idx_consultations_email 
-        ON consultations (email)
-    ''')
-    
-    cursor.execute('''
-        CREATE INDEX IF NOT EXISTS idx_consultations_created_at 
-        ON consultations (created_at)
-    ''')
+    c.execute('''CREATE TABLE IF NOT EXISTS consultations
+                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  name TEXT NOT NULL,
+                  email TEXT NOT NULL,
+                  company TEXT,
+                  phone TEXT,
+                  service TEXT,
+                  message TEXT,
+                  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
     
     conn.commit()
     conn.close()
-    print(f"数据库已初始化: {DB_PATH}")
 
-def add_consultation(name, company, email, phone, message):
-    """添加新的咨询请求"""
+@contextmanager
+def get_db_connection():
+    """数据库连接上下文管理器"""
     conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    cursor.execute('''
-        INSERT INTO consultations (name, company, email, phone, message)
-        VALUES (?, ?, ?, ?, ?)
-    ''', (name, company, email, phone, message))
-    
-    consultation_id = cursor.lastrowid
-    conn.commit()
-    conn.close()
-    
-    return consultation_id
+    try:
+        yield conn
+    finally:
+        conn.close()
+
+def save_consultation(name, email, company, phone, service, message):
+    """保存咨询信息"""
+    try:
+        with get_db_connection() as conn:
+            c = conn.cursor()
+            c.execute("INSERT INTO consultations (name, email, company, phone, service, message) VALUES (?, ?, ?, ?, ?, ?)",
+                     (name, email, company, phone, service, message))
+            conn.commit()
+            return c.lastrowid
+    except Exception as e:
+        print(f"保存咨询信息时出错: {e}")
+        return None
 
 def get_all_consultations():
-    """获取所有咨询请求"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    cursor.execute('''
-        SELECT id, name, company, email, phone, message, created_at, status
-        FROM consultations
-        ORDER BY created_at DESC
-    ''')
-    
-    consultations = cursor.fetchall()
-    conn.close()
-    
-    return consultations
+    """获取所有咨询信息"""
+    try:
+        with get_db_connection() as conn:
+            c = conn.cursor()
+            c.execute("SELECT * FROM consultations ORDER BY timestamp DESC")
+            return c.fetchall()
+    except Exception as e:
+        print(f"获取咨询信息时出错: {e}")
+        return []
 
 def get_consultation_by_id(consultation_id):
-    """根据ID获取咨询请求"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    cursor.execute('''
-        SELECT id, name, company, email, phone, message, created_at, status
-        FROM consultations
-        WHERE id = ?
-    ''', (consultation_id,))
-    
-    consultation = cursor.fetchone()
-    conn.close()
-    
-    return consultation
-
-def update_consultation_status(consultation_id, status):
-    """更新咨询请求状态"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    cursor.execute('''
-        UPDATE consultations
-        SET status = ?
-        WHERE id = ?
-    ''', (status, consultation_id))
-    
-    conn.commit()
-    conn.close()
+    """根据ID获取咨询信息"""
+    try:
+        with get_db_connection() as conn:
+            c = conn.cursor()
+            c.execute("SELECT * FROM consultations WHERE id = ?", (consultation_id,))
+            return c.fetchone()
+    except Exception as e:
+        print(f"获取咨询信息时出错: {e}")
+        return None
 
 def delete_consultation(consultation_id):
-    """删除咨询请求"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    cursor.execute('''
-        DELETE FROM consultations
-        WHERE id = ?
-    ''', (consultation_id,))
-    
-    conn.commit()
-    conn.close()
-
-def get_consultations_count():
-    """获取咨询请求数量"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    cursor.execute('SELECT COUNT(*) FROM consultations')
-    count = cursor.fetchone()[0]
-    
-    conn.close()
-    return count
-
-def get_pending_consultations_count():
-    """获取待处理的咨询请求数量"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT COUNT(*) FROM consultations WHERE status = 'pending'")
-    count = cursor.fetchone()[0]
-    
-    conn.close()
-    return count
+    """删除咨询信息"""
+    try:
+        with get_db_connection() as conn:
+            c = conn.cursor()
+            c.execute("DELETE FROM consultations WHERE id = ?", (consultation_id,))
+            conn.commit()
+            return c.rowcount > 0
+    except Exception as e:
+        print(f"删除咨询信息时出错: {e}")
+        return False
 
 # 初始化数据库
-if __name__ == '__main__':
+if __name__ == "__main__":
     init_db()
     print("数据库初始化完成")
