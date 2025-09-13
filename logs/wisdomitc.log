@@ -52,3 +52,5 @@ Traceback (most recent call last):
 jinja2.exceptions.UndefinedError: 'error_details' is undefined
 2025-09-13 11:35:32,263 INFO: 上海葳澄信息科技有限公司网站启动 [in C:\Users\jason\Documents\projects\newoweb1\app.py:47]
 2025-09-13 11:35:32,271 WARNING: Redis库未安装，缓存功能将不可用 [in C:\Users\jason\Documents\projects\newoweb1\app.py:63]
+2025-09-13 12:32:24,410 INFO: 上海葳澄信息科技有限公司网站启动 [in C:\Users\jason\Documents\projects\newoweb1\app.py:47]
+2025-09-13 12:32:24,435 WARNING: Redis库未安装，缓存功能将不可用 [in C:\Users\jason\Documents\projects\newoweb1\app.py:63]
