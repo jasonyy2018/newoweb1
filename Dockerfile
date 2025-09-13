@@ -14,11 +14,12 @@ ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
-# 安装系统依赖
+# 安装系统依赖，包括sqlite3用于调试
 RUN apt-get update && apt-get install -y \
     gcc \
     curl \
     wget \
+    sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制依赖文件

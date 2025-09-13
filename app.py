@@ -40,6 +40,21 @@ def create_app():
     # 添加自定义属性
     setattr(app, 'redis_client', None)
     
+    # 初始化Babel
+    babel = Babel(app)
+    
+    def init_database():
+        """确保数据库已初始化"""
+        try:
+            from database import init_db
+            init_db()
+            app.logger.info('数据库初始化成功')
+        except Exception as e:
+            app.logger.error(f'数据库初始化失败: {e}')
+    
+    # 确保数据库已初始化
+    init_database()
+    
     # 日志配置 - 添加权限检查和更安全的处理方式
     if not app.debug:
         try:
@@ -68,9 +83,6 @@ def create_app():
             # 其他异常情况
             app.logger.setLevel(logging.INFO)
             app.logger.error(f'日志配置失败: {e}')
-    
-    # 初始化Babel
-    babel = Babel(app)
     
     # 尝试初始化Redis
     REDIS_AVAILABLE = False
