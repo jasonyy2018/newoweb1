@@ -7,7 +7,7 @@ AI Solutions for Business
 
 import os
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, g
+from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, g, session, flash
 from flask_babel import Babel, _
 import json
 from datetime import datetime
@@ -15,6 +15,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from typing import Any, Optional
 import mimetypes
+import hashlib
 
 # 添加SVG MIME类型支持
 mimetypes.add_type('image/svg+xml', '.svg')
@@ -26,7 +27,7 @@ def create_app():
                 template_folder='templates')
     
     # 配置应用
-    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'dev-secret-key'
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
     app.config['BABEL_DEFAULT_LOCALE'] = 'zh'
     app.config['BABEL_SUPPORTED_LOCALES'] = ['zh', 'en', 'ja']
     app.config['BABEL_DEFAULT_TIMEZONE'] = 'Asia/Shanghai'
@@ -124,6 +125,21 @@ def create_app():
         if db is not None:
             db.close()
     
+    def hash_password(password):
+        """密码哈希处理"""
+        return hashlib.sha256((password + 'wisdomitc_salt').encode('utf-8')).hexdigest()
+    
+    def check_admin_auth():
+        """检查管理员权限"""
+        if 'admin_logged_in' not in session or not session['admin_logged_in']:
+            return False
+        return True
+    
+    @app.before_request
+    def before_request():
+        # 为所有请求初始化数据库连接
+        pass
+    
     @app.teardown_appcontext
     def close_db_error(e=None):
         close_db(e)
@@ -144,8 +160,40 @@ def create_app():
     def faq():
         return render_template('faq.html')
     
+    @app.route('/admin/login', methods=['GET', 'POST'])
+    def admin_login():
+        if request.method == 'POST':
+            username = request.form.get('username')
+            password = request.form.get('password')
+            
+            # 从环境变量获取管理员凭据，如果没有则使用默认值
+            admin_username = os.environ.get('ADMIN_USERNAME', 'admin')
+            admin_password = os.environ.get('ADMIN_PASSWORD', 'wisdomitc2025')
+            
+            # 验证管理员账号
+            if username == admin_username and hash_password(password) == hash_password(admin_password):
+                session['admin_logged_in'] = True
+                session['admin_username'] = username
+                return redirect(url_for('admin_consultations'))
+            else:
+                flash(_('用户名或密码错误'), 'error')
+        
+        return render_template('admin_login.html')
+    
+    @app.route('/admin/logout')
+    def admin_logout():
+        session.pop('admin_logged_in', None)
+        session.pop('admin_username', None)
+        flash(_('您已成功退出登录'), 'info')
+        return redirect(url_for('admin_login'))
+    
     @app.route('/admin/consultations')
     def admin_consultations():
+        # 检查管理员权限
+        if not check_admin_auth():
+            flash(_('请先登录管理员账号'), 'warning')
+            return redirect(url_for('admin_login'))
+        
         # 这里应该添加身份验证
         db = get_db()
         consultations = db.execute('SELECT * FROM consultations ORDER BY timestamp DESC').fetchall()

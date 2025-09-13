@@ -30,9 +30,9 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ _('公司') }}</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ _('邮箱') }}</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ _('电话') }}</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ _('服务类型') }}</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ _('咨询内容') }}</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ _('提交时间') }}</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ _('状态') }}</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -40,21 +40,12 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[0] }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ consultation[1] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[2] or '-' }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[3] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[3] or '-' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[2] }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[4] or '-' }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate" title="{{ consultation[5] }}">{{ consultation[5] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[6] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                    {% if consultation[7] == 'pending' %}bg-yellow-100 text-yellow-800
-                                    {% elif consultation[7] == 'processed' %}bg-green-100 text-green-800
-                                    {% else %}bg-gray-100 text-gray-800{% endif %}">
-                                    {% if consultation[7] == 'pending' %}{{ _('待处理') }}
-                                    {% elif consultation[7] == 'processed' %}{{ _('已处理') }}
-                                    {% else %}{{ consultation[7] }}{% endif %}
-                                </span>
-                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[5] or '-' }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate" title="{{ consultation[6] }}">{{ consultation[6] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[7] }}</td>
                         </tr>
                         {% else %}
                         <tr>
