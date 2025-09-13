@@ -298,7 +298,7 @@ def create_app():
                                      _('链接已过期')
                                  ]
                              }), 404
-    
+
     @app.errorhandler(500)
     def internal_error(e):
         app.logger.error(f'服务器内部错误: {e}')
@@ -315,7 +315,7 @@ def create_app():
                                      _('程序出现异常')
                                  ]
                              }), 500
-    
+
     return app
 
 # Create application instance for Gunicorn
