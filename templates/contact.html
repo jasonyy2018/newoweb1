@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ _('联系我们') }} - {{ _('上海葳澄信息科技') }}</title>
+    <meta name="description" content="{{ _('联系我们，上海葳澄信息科技有限公司为您提供专业的人工智能和大数据技术咨询服务。地址：上海市静安区共和新路4718弄10号1楼，电话：18964673689。') }}">
+    <meta name="keywords" content="{{ _('联系我们,联系方式,在线咨询,人工智能咨询,大数据咨询,上海科技公司') }}">
+    <meta name="author" content="{{ _('上海葳澄信息科技有限公司') }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- GEO Meta Tags -->
+    <meta name="geo.region" content="CN-SH">
+    <meta name="geo.placename" content="{{ _('上海') }}">
+    <meta name="geo.position" content="31.318493;121.446212">
+    <meta name="ICBM" content="31.318493, 121.446212">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wisdomitc.com/contact">
+    <meta property="og:title" content="{{ _('联系我们') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="og:description" content="{{ _('联系我们，上海葳澄信息科技有限公司为您提供专业的人工智能和大数据技术咨询服务。') }}">
+    <meta property="og:image" content="https://www.wisdomitc.com/static/images/contact-us.jpg">
+    <meta property="og:site_name" content="{{ _('上海葳澄信息科技有限公司') }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.wisdomitc.com/contact">
+    <meta property="twitter:title" content="{{ _('联系我们') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="twitter:description" content="{{ _('联系我们，上海葳澄信息科技有限公司为您提供专业的人工智能和大数据技术咨询服务。') }}">
+    <meta property="twitter:image" content="https://www.wisdomitc.com/static/images/contact-us.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.wisdomitc.com/contact">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -11,12 +40,65 @@
         <!-- Navigation bar (same as in index.html) -->
     
     <main class="container mx-auto px-4 py-20">
+        {% include 'components/breadcrumb.html' %}
+        
         <h1 class="text-4xl font-bold text-primary mb-8">{{ _('联系我们') }}</h1>
         
         <div class="grid md:grid-cols-2 gap-8">
             <section>
                 <h2 class="text-2xl font-semibold mb-4">{{ _('联系方式') }}</h2>
-                    <!-- Contact information -->
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary mr-4">
+                            <i class="fa fa-map-marker text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-1">{{ _('公司地址') }}</h3>
+                            <p class="text-gray-600">{{ _('上海市静安区共和新路4718弄10号1楼') }}</p>
+                            <p class="text-gray-500 text-sm mt-1">{{ _('邮编: 200070') }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary mr-4">
+                            <i class="fa fa-phone text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-1">{{ _('联系电话') }}</h3>
+                            <p class="text-gray-600">18964673689</p>
+                            <p class="text-gray-500 text-sm mt-1">{{ _('工作时间: 周一至周五 9:00-18:00') }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-primary/10 p-3 rounded-full text-primary mr-4">
+                            <i class="fa fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-1">{{ _('电子邮箱') }}</h3>
+                            <p class="text-gray-600">jyu@wisdomitc.com</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">{{ _('公司位置') }}</h2>
+                <div style="text-align: center; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <p>{{ _('我们在高德地图上的位置') }}</p>
+                        <img src="https://restapi.amap.com/v3/staticmap?location=121.446212,31.318493&zoom=15&size=600*300" 
+                             style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: 4px;" 
+                             alt="{{ _('公司位置地图') }}"
+                             onerror="this.src='https://via.placeholder.com/600x300.png?text=地图加载失败';">
+                    </div>
+                    <a href="https://uri.amap.com/marker?position=121.446212,31.318493&name=上海葳澄信息科技有限公司" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-block mt-2 px-6 py-3 bg-primary text-white rounded hover:bg-secondary transition-colors">
+                        <i class="fa fa-map-marker mr-2"></i>{{ _('在高德地图中查看详细位置') }}
+                    </a>
+                </div>
             </section>
             
             <section>
@@ -43,9 +125,97 @@
                 </form>
             </section>
         </div>
+        
+        <!-- Structured Data for Contact Page -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "{{ _('联系我们') }}",
+          "description": "{{ _('联系我们，上海葳澄信息科技有限公司为您提供专业的人工智能和大数据技术咨询服务。') }}",
+          "url": "https://www.wisdomitc.com/contact",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ _('上海市静安区共和新路4718弄10号1楼') }}",
+            "addressLocality": "{{ _('上海') }}",
+            "postalCode": "200070",
+            "addressCountry": "{{ _('中国') }}"
+          },
+          "telephone": "+86-18964673689",
+          "email": "jyu@wisdomitc.com"
+        }
+        </script>
+        
+        <!-- Enhanced Structured Data for Local Business Contact -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "{{ _('上海葳澄信息科技有限公司') }}",
+          "image": "https://www.wisdomitc.com/static/images/company-logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ _('上海市静安区共和新路4718弄10号1楼') }}",
+            "addressLocality": "{{ _('上海') }}",
+            "postalCode": "200070",
+            "addressCountry": "{{ _('中国') }}",
+            "addressRegion": "{{ _('上海市') }}"
+          },
+          "telephone": "+86-18964673689",
+          "email": "jyu@wisdomitc.com",
+          "url": "https://www.wisdomitc.com/",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+86-18964673689",
+            "contactType": "{{ _('销售咨询') }}",
+            "email": "jyu@wisdomitc.com",
+            "availableLanguage": ["zh", "en", "ja"]
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 31.318493,
+            "longitude": 121.446212,
+            "elevation": "5"
+          },
+          "hasMap": "https://uri.amap.com/marker?position=121.446212,31.318493&name={{ _('上海葳澄信息科技有限公司') }}",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "09:00",
+              "closes": "18:00"
+            }
+          ],
+          "publicAccess": true
+        }
+        </script>
+        
+        <!-- Knowledge Graph Markup for Contact Point -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPoint",
+          "telephone": "+86-18964673689",
+          "contactType": "{{ _('销售咨询') }}",
+          "email": "jyu@wisdomitc.com",
+          "availableLanguage": ["zh", "en", "ja"],
+          "areaServed": {
+            "@type": "Place",
+            "name": "{{ _('中国') }}"
+          }
+        }
+        </script>
     </main>
     
         <!-- Footer (same as in index.html) -->
+    {% include 'components/ai_assistant.html' %}
+    {% include 'components/keywords.html' %}
     <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
     
     <!-- 添加处理联系表单提交的JavaScript -->

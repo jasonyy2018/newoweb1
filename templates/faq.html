@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('常见问题') }} - {{ _('上海葳澄信息科技') }}</title>
+    <meta name="description" content="{{ _('常见问题解答，了解上海葳澄信息科技有限公司的人工智能和大数据技术服务常见问题。') }}">
+    <meta name="keywords" content="{{ _('常见问题,FAQ,AI常见问题,大数据常见问题,人工智能咨询') }}">
+    <meta name="author" content="{{ _('上海葳澄信息科技有限公司') }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- GEO Meta Tags -->
+    <meta name="geo.region" content="CN-SH">
+    <meta name="geo.placename" content="{{ _('上海') }}">
+    <meta name="geo.position" content="31.318493;121.446212">
+    <meta name="ICBM" content="31.318493, 121.446212">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wisdomitc.com/faq">
+    <meta property="og:title" content="{{ _('常见问题') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="og:description" content="{{ _('常见问题解答，了解上海葳澄信息科技有限公司的人工智能和大数据技术服务常见问题。') }}">
+    <meta property="og:image" content="https://www.wisdomitc.com/static/images/faq.jpg">
+    <meta property="og:site_name" content="{{ _('上海葳澄信息科技有限公司') }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.wisdomitc.com/faq">
+    <meta property="twitter:title" content="{{ _('常见问题') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="twitter:description" content="{{ _('常见问题解答，了解上海葳澄信息科技有限公司的人工智能和大数据技术服务常见问题。') }}">
+    <meta property="twitter:image" content="https://www.wisdomitc.com/static/images/faq.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.wisdomitc.com/faq">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- Navigation bar (same as in index.html) -->
+    
+    <main class="container mx-auto px-4 py-20">
+        {% include 'components/breadcrumb.html' %}
+        
+        <h1 class="text-4xl font-bold text-primary mb-8">{{ _('常见问题') }}</h1>
+        
+        <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-primary">{{ _('什么是人工智能？') }}</h3>
+                <p class="text-gray-700">{{ _('人工智能（AI）是计算机科学的一个分支，旨在创建能够执行通常需要人类智能的任务的系统，如视觉感知、语音识别、决策制定和语言翻译。') }}</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-primary">{{ _('葳澄科技提供哪些AI服务？') }}</h3>
+                <p class="text-gray-700">{{ _('我们提供多种AI服务，包括智能数据分析、自然语言处理、计算机视觉、预测性分析、智能自动化和定制化AI模型开发等。') }}</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-primary">{{ _('AI解决方案如何帮助我的业务？') }}</h3>
+                <p class="text-gray-700">{{ _('我们的AI解决方案可以帮助您的业务提高效率、降低成本、改善客户体验、优化决策制定，并在关键业务指标上实现显著提升。') }}</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-primary">{{ _('实施AI解决方案需要多长时间？') }}</h3>
+                <p class="text-gray-700">{{ _('实施时间取决于项目复杂性和具体需求。简单项目可能需要几周时间，而复杂的企业级解决方案可能需要几个月。我们会根据您的具体情况提供详细的时间规划。') }}</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3 text-primary">{{ _('如何开始使用葳澄科技的AI服务？') }}</h3>
+                <p class="text-gray-700">{{ _('您可以通过我们的联系页面提交咨询请求，我们的专家团队会与您联系，了解您的需求并提供定制化的解决方案建议。') }}</p>
+            </div>
+        </div>
+        
+        <!-- Structured Data for FAQ -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "{{ _('什么是人工智能？') }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ _('人工智能（AI）是计算机科学的一个分支，旨在创建能够执行通常需要人类智能的任务的系统，如视觉感知、语音识别、决策制定和语言翻译。') }}"
+            }
+          }, {
+            "@type": "Question",
+            "name": "{{ _('葳澄科技提供哪些AI服务？') }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ _('我们提供多种AI服务，包括智能数据分析、自然语言处理、计算机视觉、预测性分析、智能自动化和定制化AI模型开发等。') }}"
+            }
+          }, {
+            "@type": "Question",
+            "name": "{{ _('AI解决方案如何帮助我的业务？') }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ _('我们的AI解决方案可以帮助您的业务提高效率、降低成本、改善客户体验、优化决策制定，并在关键业务指标上实现显著提升。') }}"
+            }
+          }, {
+            "@type": "Question",
+            "name": "{{ _('实施AI解决方案需要多长时间？') }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ _('实施时间取决于项目复杂性和具体需求。简单项目可能需要几周时间，而复杂的企业级解决方案可能需要几个月。我们会根据您的具体情况提供详细的时间规划。') }}"
+            }
+          }, {
+            "@type": "Question",
+            "name": "{{ _('如何开始使用葳澄科技的AI服务？') }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ _('您可以通过我们的联系页面提交咨询请求，我们的专家团队会与您联系，了解您的需求并提供定制化的解决方案建议。') }}"
+            }
+          }]
+        }
+        </script>
+        
+        <!-- Enhanced Structured Data for Organization with FAQ -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "{{ _('上海葳澄信息科技有限公司') }}",
+          "alternateName": "WSAI",
+          "url": "https://www.wisdomitc.com/",
+          "logo": "https://www.wisdomitc.com/static/images/company-logo.png",
+          "description": "{{ _('上海葳澄信息科技有限公司是一家专注于人工智能和大数据技术的高科技企业，致力于通过前沿的AI技术赋能企业实现数字化转型。') }}",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ _('上海市静安区共和新路4718弄10号1楼') }}",
+            "addressLocality": "{{ _('上海') }}",
+            "postalCode": "200070",
+            "addressCountry": "{{ _('中国') }}",
+            "addressRegion": "{{ _('上海市') }}"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+86-18964673689",
+            "contactType": "{{ _('客户咨询') }}",
+            "email": "jyu@wisdomitc.com",
+            "availableLanguage": ["zh", "en", "ja"]
+          },
+          "sameAs": [
+            "https://weibo.com/wisdomitc",
+            "https://linkedin.com/company/wisdomitc"
+          ],
+          "faqPage": "https://www.wisdomitc.com/faq",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 31.318493,
+            "longitude": 121.446212
+          }
+        }
+        </script>
+        
+        <!-- Knowledge Graph Markup for AI Services -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Artificial Intelligence Solutions",
+          "provider": {
+            "@type": "Organization",
+            "name": "{{ _('上海葳澄信息科技有限公司') }}"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "{{ _('中国') }}"
+          },
+          "category": [
+            "{{ _('智能数据分析') }}",
+            "{{ _('自然语言处理') }}",
+            "{{ _('计算机视觉') }}",
+            "{{ _('预测性分析') }}",
+            "{{ _('智能自动化') }}",
+            "{{ _('定制化AI模型开发') }}"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "category": "Business to Business"
+          }
+        }
+        </script>
+    </main>
+    
+    <!-- Footer (same as in index.html) -->
+    {% include 'components/ai_assistant.html' %}
+    {% include 'components/keywords.html' %}
+    <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
+</body>
+</html>

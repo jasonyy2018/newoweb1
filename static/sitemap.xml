@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.wisdomitc.com/</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.wisdomitc.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wisdomitc.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.wisdomitc.com/?lang=ja"/>
+  </url>
+  
+  <url>
+    <loc>https://www.wisdomitc.com/about</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.wisdomitc.com/about?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wisdomitc.com/about?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.wisdomitc.com/about?lang=ja"/>
+  </url>
+  
+  <url>
+    <loc>https://www.wisdomitc.com/contact</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.wisdomitc.com/contact?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wisdomitc.com/contact?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.wisdomitc.com/contact?lang=ja"/>
+  </url>
+  
+  <url>
+    <loc>https://www.wisdomitc.com/faq</loc>
+    <lastmod>2025-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.wisdomitc.com/faq?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wisdomitc.com/faq?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.wisdomitc.com/faq?lang=ja"/>
+  </url>
+  
+</urlset>

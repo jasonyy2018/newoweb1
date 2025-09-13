@@ -1,0 +1,24 @@
+<nav class="breadcrumb text-gray-600 mb-6" aria-label="breadcrumb">
+    <ol class="flex items-center space-x-2">
+        <li>
+            <a href="/" class="text-primary hover:underline">{{ _('首页') }}</a>
+        </li>
+        {% if breadcrumb_items %}
+            {% for item in breadcrumb_items %}
+                <li class="flex items-center">
+                    <span class="mx-2">/</span>
+                    {% if item.url %}
+                        <a href="{{ item.url }}" class="text-primary hover:underline">{{ item.name }}</a>
+                    {% else %}
+                        <span class="text-gray-500">{{ item.name }}</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="flex items-center">
+                <span class="mx-2">/</span>
+                <span class="text-gray-500">{{ page_title or _('页面') }}</span>
+            </li>
+        {% endif %}
+    </ol>
+</nav>

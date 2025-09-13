@@ -1,14 +1,15 @@
-from flask import Flask, render_template, request, session, make_response, jsonify
+from flask import Flask, render_template, request, session, make_response, jsonify, send_from_directory
 from flask_babel import Babel, gettext as _
 import time
 import uuid
 import traceback
+import os
 
 # 添加数据库模块导入
 from database import init_db, add_consultation, get_all_consultations, get_consultation_by_id
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'
+app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-here')
 
 # Configuration for Flask-Babel
 app.config['LANGUAGES'] = ['zh', 'en', 'ja']
@@ -38,11 +39,39 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    breadcrumb_items = [
+        {'name': _('关于我们'), 'url': None}
+    ]
+    return render_template('about.html', 
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('关于我们'))
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    breadcrumb_items = [
+        {'name': _('联系我们'), 'url': None}
+    ]
+    return render_template('contact.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('联系我们'))
+
+# 添加FAQ页面路由
+@app.route('/faq')
+def faq():
+    breadcrumb_items = [
+        {'name': _('常见问题'), 'url': None}
+    ]
+    return render_template('faq.html',
+                         breadcrumb_items=breadcrumb_items,
+                         page_title=_('常见问题'))
+
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory('static', 'robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    return send_from_directory('static', 'sitemap.xml')
 
 # 添加处理咨询表单提交的路由
 @app.route('/submit_consultation', methods=['POST'])
@@ -116,4 +145,8 @@ def set_language(lang):
 if __name__ == '__main__':
     # 初始化数据库
     init_db()
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    # 从环境变量获取主机和端口配置，如果没有则使用默认值
+    host = os.environ.get('HOST', '0.0.0.0')
+    port = int(os.environ.get('PORT', 5001))
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    app.run(debug=debug, host=host, port=port)

@@ -1,0 +1,112 @@
+<!-- AI Assistant Integration -->
+<div id="ai-assistant-container" class="fixed bottom-6 right-6 z-50">
+    <div id="ai-assistant-toggle" class="bg-primary text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg cursor-pointer hover:bg-primary/90 transition-all">
+        <i class="fa fa-robot text-xl"></i>
+    </div>
+    
+    <div id="ai-assistant-panel" class="hidden absolute bottom-16 right-0 w-80 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden">
+        <div class="bg-primary text-white p-4 flex justify-between items-center">
+            <h3 class="font-bold">{{ _('AI助手') }}</h3>
+            <button id="ai-assistant-close" class="text-white hover:text-gray-200">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+        
+        <div id="ai-assistant-content" class="p-4 h-64 overflow-y-auto">
+            <div class="text-center text-gray-500 py-8">
+                <i class="fa fa-robot text-3xl mb-2"></i>
+                <p>{{ _('您好！我是AI助手，我可以帮助您解答关于人工智能和大数据技术的问题。') }}</p>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 p-4">
+            <div class="flex">
+                <input type="text" id="ai-assistant-input" class="flex-1 border border-gray-300 rounded-l px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="{{ _('输入您的问题...') }}">
+                <button id="ai-assistant-send" class="bg-primary text-white px-4 py-2 rounded-r hover:bg-primary/90 transition-colors">
+                    <i class="fa fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('ai-assistant-toggle');
+    const panel = document.getElementById('ai-assistant-panel');
+    const closeBtn = document.getElementById('ai-assistant-close');
+    const sendBtn = document.getElementById('ai-assistant-send');
+    const input = document.getElementById('ai-assistant-input');
+    const content = document.getElementById('ai-assistant-content');
+    
+    // Toggle panel visibility
+    toggleBtn.addEventListener('click', function() {
+        panel.classList.toggle('hidden');
+    });
+    
+    // Close panel
+    closeBtn.addEventListener('click', function() {
+        panel.classList.add('hidden');
+    });
+    
+    // Send message
+    sendBtn.addEventListener('click', sendMessage);
+    input.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    // Predefined AI responses for common questions
+    const aiResponses = {
+        "人工智能": "{{ _('人工智能（AI）是计算机科学的一个分支，旨在创建能够执行通常需要人类智能的任务的系统，如视觉感知、语音识别、决策制定和语言翻译。') }}",
+        "ai": "{{ _('人工智能（AI）是计算机科学的一个分支，旨在创建能够执行通常需要人类智能的任务的系统，如视觉感知、语音识别、决策制定和语言翻译。') }}",
+        "大数据": "{{ _('大数据是指传统数据处理应用软件不足以处理的大或复杂的数据集。它通常具有体量大、速度快、多样性、价值密度低和真实性等特点。') }}",
+        "服务": "{{ _('我们提供多种AI服务，包括智能数据分析、自然语言处理、计算机视觉、预测性分析、智能自动化和定制化AI模型开发等。') }}",
+        "解决方案": "{{ _('我们的AI解决方案可以帮助您的业务提高效率、降低成本、改善客户体验、优化决策制定，并在关键业务指标上实现显著提升。') }}",
+        "联系": "{{ _('您可以通过我们的联系页面提交咨询请求，我们的专家团队会与您联系，了解您的需求并提供定制化的解决方案建议。') }}",
+        "价格": "{{ _('我们的AI解决方案价格根据项目复杂度和具体需求而定。简单项目可能需要几万元，而复杂的企业级解决方案可能需要几十万元。我们会根据您的具体情况提供详细的价格方案。') }}",
+        "时间": "{{ _('实施时间取决于项目复杂性和具体需求。简单项目可能需要几周时间，而复杂的企业级解决方案可能需要几个月。我们会根据您的具体情况提供详细的时间规划。') }}",
+        "团队": "{{ _('我们拥有一支由20多名AI专家组成的团队，包括数据科学家、机器学习工程师、软件开发工程师等，具有丰富的AI项目实施经验。') }}"
+    };
+    
+    function sendMessage() {
+        const message = input.value.trim();
+        if (message) {
+            // Add user message to chat
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Find relevant AI response
+            let response = "{{ _('感谢您的提问。我是AI助手，可以为您提供关于人工智能和大数据技术的专业解答。如需更详细的咨询，请联系我们的专家团队。') }}";
+            
+            // Check for keywords in the message
+            const lowerMessage = message.toLowerCase();
+            for (const [keyword, aiResponse] of Object.entries(aiResponses)) {
+                if (lowerMessage.includes(keyword)) {
+                    response = aiResponse;
+                    break;
+                }
+            }
+            
+            // Simulate AI response (in a real implementation, this would call your AI API)
+            setTimeout(() => {
+                addMessage(response, 'ai');
+            }, 1000);
+        }
+    }
+    
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `mb-3 ${sender === 'user' ? 'text-right' : 'text-left'}`;
+        
+        const messageContent = document.createElement('div');
+        messageContent.className = `inline-block p-3 rounded-lg max-w-xs ${sender === 'user' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-800'}`;
+        messageContent.textContent = text;
+        
+        messageDiv.appendChild(messageContent);
+        content.appendChild(messageDiv);
+        content.scrollTop = content.scrollHeight;
+    }
+});
+</script>

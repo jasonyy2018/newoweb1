@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ _('关于我们') }} - {{ _('上海葳澄信息科技') }}</title>
+    <meta name="description" content="{{ _('了解上海葳澄信息科技有限公司，一家专注于人工智能和大数据技术的高科技企业。我们的使命是通过前沿的AI技术赋能企业实现数字化转型。') }}">
+    <meta name="keywords" content="{{ _('关于我们,公司简介,团队介绍,企业文化,人工智能公司,大数据技术,数字化转型') }}">
+    <meta name="author" content="{{ _('上海葳澄信息科技有限公司') }}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- GEO Meta Tags -->
+    <meta name="geo.region" content="CN-SH">
+    <meta name="geo.placename" content="{{ _('上海') }}">
+    <meta name="geo.position" content="31.318493;121.446212">
+    <meta name="ICBM" content="31.318493, 121.446212">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.wisdomitc.com/about">
+    <meta property="og:title" content="{{ _('关于我们') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="og:description" content="{{ _('了解上海葳澄信息科技有限公司，一家专注于人工智能和大数据技术的高科技企业。我们的使命是通过前沿的AI技术赋能企业实现数字化转型。') }}">
+    <meta property="og:image" content="https://www.wisdomitc.com/static/images/about-us.jpg">
+    <meta property="og:site_name" content="{{ _('上海葳澄信息科技有限公司') }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.wisdomitc.com/about">
+    <meta property="twitter:title" content="{{ _('关于我们') }} - {{ _('上海葳澄信息科技') }}">
+    <meta property="twitter:description" content="{{ _('了解上海葳澄信息科技有限公司，一家专注于人工智能和大数据技术的高科技企业。我们的使命是通过前沿的AI技术赋能企业实现数字化转型。') }}">
+    <meta property="twitter:image" content="https://www.wisdomitc.com/static/images/about-us.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.wisdomitc.com/about">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -11,6 +40,8 @@
     <!-- Navigation bar (same as in index.html) -->
     
     <main class="container mx-auto px-4 py-20">
+        {% include 'components/breadcrumb.html' %}
+        
         <h1 class="text-4xl font-bold text-primary mb-8">{{ _('关于我们') }}</h1>
         
         <section class="mb-12">
@@ -22,9 +53,74 @@
             <h2 class="text-2xl font-semibold mb-4">{{ _('团队介绍') }}</h2>
             <!-- Team member showcase -->
         </section>
+        
+        <!-- Structured Data for About Page -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "{{ _('关于我们') }}",
+          "description": "{{ _('了解上海葳澄信息科技有限公司，一家专注于人工智能和大数据技术的高科技企业。') }}",
+          "url": "https://www.wisdomitc.com/about"
+        }
+        </script>
+        
+        <!-- Enhanced Structured Data for Organization -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "{{ _('上海葳澄信息科技有限公司') }}",
+          "alternateName": "WSAI",
+          "url": "https://www.wisdomitc.com/",
+          "logo": "https://www.wisdomitc.com/static/images/company-logo.png",
+          "description": "{{ _('上海葳澄信息科技有限公司是一家专注于人工智能和大数据技术的高科技企业，致力于通过前沿的AI技术赋能企业实现数字化转型。') }}",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ _('上海市静安区共和新路4718弄10号1楼') }}",
+            "addressLocality": "{{ _('上海') }}",
+            "postalCode": "200070",
+            "addressCountry": "{{ _('中国') }}",
+            "addressRegion": "{{ _('上海市') }}"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+86-18964673689",
+            "contactType": "{{ _('客户咨询') }}",
+            "email": "jyu@wisdomitc.com",
+            "availableLanguage": ["zh", "en", "ja"]
+          },
+          "sameAs": [
+            "https://weibo.com/wisdomitc",
+            "https://linkedin.com/company/wisdomitc"
+          ],
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 31.318493,
+            "longitude": 121.446212
+          }
+        }
+        </script>
+        
+        <!-- Knowledge Graph Markup for Company Information -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Corporation",
+          "name": "{{ _('上海葳澄信息科技有限公司') }}",
+          "alternateName": "WSAI",
+          "description": "{{ _('专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家') }}",
+          "url": "https://www.wisdomitc.com/",
+          "foundingDate": "2019",
+          "industry": "{{ _('人工智能') }}",
+          "employeeCount": "20+"
+        }
+        </script>
     </main>
     
     <!-- Footer (same as in index.html) -->
+    {% include 'components/ai_assistant.html' %}
+    {% include 'components/keywords.html' %}
     <script async defer src="https://mk.wisdomitc.com/chat/api/embed?protocol=https&host=mk.wisdomitc.com&token=dfacb5320257c918"></script>
 </body>
 </html>

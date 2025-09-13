@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.wisdomitc.com/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: *
+Disallow: /admin/
+Disallow: /static/css/
+Disallow: /static/js/
