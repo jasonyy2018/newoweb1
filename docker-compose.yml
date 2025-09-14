@@ -23,7 +23,7 @@ services:
     restart: unless-stopped
     networks:
       - wisdomitc-network
-    command: gunicorn --config gunicorn.conf.py app:app
+    command: gunicorn --config ./gunicorn.conf.py app:app
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
       interval: 30s

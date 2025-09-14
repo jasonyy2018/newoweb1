@@ -31,6 +31,12 @@ RUN pip install --upgrade pip && \
 # 复制应用代码（除了在.dockerignore中忽略的文件）
 COPY . .
 
+# 验证关键文件是否存在
+RUN echo "验证文件存在性:" && \
+    ls -la gunicorn.conf.py && \
+    ls -la app.py && \
+    ls -la requirements.txt
+
 # 创建非root用户
 RUN addgroup --gid 1000 appgroup && \
     adduser --uid 1000 --gid 1000 --disabled-password --gecos '' appuser
@@ -50,9 +56,14 @@ USER appuser
 # 暴露端口
 EXPOSE 5001
 
+# 健证工作目录和文件
+RUN echo "工作目录内容:" && \
+    pwd && \
+    ls -la
+
 # 健康检查
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:5001/health || exit 1
 
 # 启动应用
-CMD ["gunicorn", "--config", "gunicorn.conf.py", "app:app"]
+CMD ["gunicorn", "--config", "./gunicorn.conf.py", "app:app"]
