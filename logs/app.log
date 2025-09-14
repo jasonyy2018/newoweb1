@@ -1,0 +1,12 @@
+2025-09-14 09:08:56,186 WARNING: Redis¿âÎ´°²×°£¬»º´æ¹¦ÄÜ½«²»¿ÉÓÃ
+2025-09-14 09:08:56,202 INFO: === Éú²ú»·¾³Æô¶¯ ===
+2025-09-14 09:08:56,202 INFO: µ±Ç°¹¤×÷Ä¿Â¼: C:\Users\jason\Documents\projects\newoweb1
+2025-09-14 09:08:56,202 INFO: ¾²Ì¬ÎÄ¼þ¼Ð: C:\Users\jason\Documents\projects\newoweb1\static
+2025-09-14 09:08:56,202 INFO: Ä£°åÎÄ¼þ¼Ð: C:\Users\jason\Documents\projects\newoweb1\templates
+2025-09-14 09:08:56,202 INFO: Python°æ±¾: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
+2025-09-14 09:08:56,226 INFO: Æô¶¯FlaskÓ¦ÓÃ...
+2025-09-14 09:08:56,252 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.100.101:5001
+2025-09-14 09:08:56,252 INFO: [33mPress CTRL+C to quit[0m

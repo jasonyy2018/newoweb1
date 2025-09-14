@@ -18,10 +18,12 @@ import hashlib
 mimetypes.add_type('image/svg+xml', '.svg')
 
 def create_app():
-    # 明确指定静态文件夹和模板文件夹
+    # 明确指定静态文件夹和模板文件夹的绝对路径
+    import os
+    basedir = os.path.abspath(os.path.dirname(__file__))
     app = Flask(__name__, 
-                static_folder='static',
-                template_folder='templates')
+                static_folder=os.path.join(basedir, 'static'),
+                template_folder=os.path.join(basedir, 'templates'))
     
     # 配置应用
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
@@ -386,6 +388,12 @@ def create_app():
 # 为Gunicorn创建应用实例
 # 使用更标准的方式暴露Flask应用实例
 app = create_app()
+
+# 添加调试信息 - 使用新的Flask方式
+with app.app_context():
+    app.logger.info(f"应用启动完成，静态文件夹: {app.static_folder}")
+    app.logger.info(f"模板文件夹: {app.template_folder}")
+    app.logger.info(f"当前工作目录: {os.getcwd()}")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=False)
