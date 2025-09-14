@@ -41,6 +41,10 @@ def create_app():
     # 添加自定义属性
     setattr(app, 'redis_client', None)
     
+    # Redis可用性标志
+    REDIS_AVAILABLE = False
+    redis_module = None
+    
     # 初始化Babel
     babel = Babel(app)
     
@@ -53,41 +57,7 @@ def create_app():
         except Exception as e:
             app.logger.error(f'数据库初始化失败: {e}')
     
-    # 确保数据库已初始化
-    init_database()
-    
-    # 日志配置 - 添加权限检查和更安全的处理方式
-    if not app.debug:
-        try:
-            logs_dir = 'logs'
-            if not os.path.exists(logs_dir):
-                os.mkdir(logs_dir)
-            
-            # 确保日志目录有正确的权限
-            os.chmod(logs_dir, 0o755)
-            
-            # 检查是否有写入权限
-            log_file_path = os.path.join(logs_dir, 'wisdomitc.log')
-            file_handler = RotatingFileHandler(log_file_path, maxBytes=10240, backupCount=10)
-            file_handler.setFormatter(logging.Formatter(
-                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
-            ))
-            file_handler.setLevel(logging.INFO)
-            app.logger.addHandler(file_handler)
-            app.logger.setLevel(logging.INFO)
-            app.logger.info('上海葳澄信息科技有限公司网站启动')
-        except PermissionError:
-            # 如果没有权限写入文件，只使用控制台日志
-            app.logger.setLevel(logging.INFO)
-            app.logger.warning('无法创建日志文件，使用控制台日志')
-        except Exception as e:
-            # 其他异常情况
-            app.logger.setLevel(logging.INFO)
-            app.logger.error(f'日志配置失败: {e}')
-    
     # 尝试初始化Redis
-    REDIS_AVAILABLE = False
-    redis_module = None
     try:
         import importlib
         redis_module = importlib.import_module('redis')
@@ -101,20 +71,12 @@ def create_app():
         setattr(app, 'redis_client', None)
         app.logger.error(f'Redis连接失败: {e}')
     
-    def get_locale():
-        # 检查URL参数
-        locale = request.args.get('lang')
-        if locale in app.config['BABEL_SUPPORTED_LOCALES']:
-            return locale
-        # 否则使用浏览器默认语言
-        return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES']) or app.config['BABEL_DEFAULT_LOCALE']
-    
-    # 使用装饰器注册localeselector
-    babel.init_app(app, locale_selector=get_locale)
-    
     def get_db():
         """获取数据库连接"""
         if 'db' not in g:
+            # 确保数据库已初始化
+            init_database()
+            
             g.db = sqlite3.connect(app.config['DATABASE'])
             g.db.row_factory = sqlite3.Row
         return g.db
