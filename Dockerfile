@@ -31,11 +31,27 @@ RUN pip install --upgrade pip && \
 # 复制应用代码（除了在.dockerignore中忽略的文件）
 COPY . .
 
-# 验证关键文件是否存在
+# 验证关键文件是否存在（修改为更健壮的方式）
 RUN echo "验证文件存在性:" && \
-    ls -la gunicorn.conf.py && \
-    ls -la app.py && \
-    ls -la requirements.txt
+    if [ -f "gunicorn.conf.py" ]; then \
+        echo "✅ gunicorn.conf.py 存在"; \
+    else \
+        echo "❌ gunicorn.conf.py 不存在"; \
+        ls -la; \
+        exit 1; \
+    fi && \
+    if [ -f "app.py" ]; then \
+        echo "✅ app.py 存在"; \
+    else \
+        echo "❌ app.py 不存在"; \
+        exit 1; \
+    fi && \
+    if [ -f "requirements.txt" ]; then \
+        echo "✅ requirements.txt 存在"; \
+    else \
+        echo "❌ requirements.txt 不存在"; \
+        exit 1; \
+    fi
 
 # 创建非root用户
 RUN addgroup --gid 1000 appgroup && \

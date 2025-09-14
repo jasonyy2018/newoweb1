@@ -38,14 +38,14 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         {% for consultation in consultations %}
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[0] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ consultation[1] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[3] or '-' }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[2] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[4] or '-' }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[5] or '-' }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate" title="{{ consultation[6] }}">{{ consultation[6] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation[7] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation.id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ consultation.name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation.company or '-' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation.email }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation.phone or '-' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation.service or '-' }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate" title="{{ consultation.message }}">{{ consultation.message }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ consultation.timestamp }}</td>
                         </tr>
                         {% else %}
                         <tr>

@@ -280,6 +280,165 @@ docker-compose logs -f web
 
 本项目为上海葳澄信息科技有限公司专有软件，保留所有权利。
 
+## Docker 部署说明
+
+## 项目概述
+
+本项目是一个基于Flask的网站，展示上海葳澄信息科技有限公司的人工智能解决方案。项目已完全Docker化，包含以下服务：
+
+## 系统要求
+
+- Docker 20.10+
+- Docker Compose 1.29+
+
+## 部署步骤
+
+### 1. 克隆项目
+
+```bash
+git clone <repository-url>
+cd newoweb1
+```
+
+### 2. 构建和启动服务
+
+```bash
+# 构建镜像
+docker-compose build
+
+# 启动所有服务
+docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
+```
+
+### 3. 访问应用
+
+- 主网站: http://localhost:8090
+- 直接访问Flask应用: http://localhost:5001
+- 健康检查: http://localhost:5001/health
+
+## 故障排除
+
+### 常见问题及解决方案
+
+#### 1. 'gunicorn.conf.py' 文件不存在错误
+
+**问题描述**: 在服务器部署时出现 "Error: 'gunicorn.conf.py' doesn't exist" 错误。
+
+**可能原因**:
+- 文件未正确复制到服务器
+- Docker 构建过程中文件被忽略
+- 路径引用错误
+
+**解决方案**:
+
+1. **检查文件是否存在**:
+   ```bash
+   # 在项目根目录执行
+   ls -la gunicorn.conf.py
+   ```
+
+2. **检查 .dockerignore 配置**:
+   确保 [gunicorn.conf.py](file:///c:/Users/jason/Documents/projects/newoweb1/gunicorn.conf.py) 文件没有被 [.dockerignore](file:///c:/Users/jason/Documents/projects/newoweb1/.dockerignore) 忽略。
+
+3. **重新构建镜像**:
+   ```bash
+   # 清理旧镜像
+   docker-compose down
+   docker rmi newoweb1_web
+   
+   # 重新构建
+   docker-compose build --no-cache
+   docker-compose up -d
+   ```
+
+4. **使用验证脚本检查环境**:
+   ```bash
+   python verify_deployment.py
+   ```
+
+#### 2. 端口冲突
+
+```bash
+# 查看占用端口的进程
+netstat -tuln | grep :5001
+netstat -tuln | grep :8090
+
+# 停止占用端口的进程或更改端口映射
+```
+
+#### 3. 容器无法启动
+
+```bash
+# 查看详细日志
+docker-compose logs web
+docker-compose logs nginx
+```
+
+#### 4. 健康检查失败
+
+```bash
+# 检查服务是否正常运行
+curl http://localhost:5001/health
+```
+
+### 高级故障排除
+
+#### 查看容器内部文件结构
+
+```bash
+# 进入容器
+docker-compose exec web bash
+
+# 在容器内检查文件
+ls -la /
+ls -la /app/
+```
+
+#### 手动测试 Gunicorn 启动
+
+```bash
+# 进入容器
+docker-compose exec web bash
+
+# 手动启动 Gunicorn
+cd /app
+gunicorn --config gunicorn.conf.py app:app
+```
+
+## 性能调优
+
+### 资源限制
+
+在 `docker-compose.yml` 中可以配置资源限制：
+
+```yaml
+web:
+  deploy:
+    resources:
+      limits:
+        memory: 512M
+        cpus: '0.5'
+```
+
+### 扩展服务
+
+可以调整 Gunicorn 工作进程数，在 [gunicorn.conf.py](file:///c:/Users/jason/Documents/projects/newoweb1/gunicorn.conf.py) 中修改:
+
+```python
+workers = 4  # 根据服务器CPU核心数调整
+```
+
+## 安全建议
+
+1. 使用非 root 用户运行容器
+2. 定期更新基础镜像
+3. 限制容器资源使用
+4. 配置 HTTPS 证书
+5. 定期备份数据卷
+
 ## 联系信息
 
 如有任何问题，请联系：

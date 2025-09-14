@@ -105,7 +105,14 @@ def create_app():
         import importlib
         redis_module = importlib.import_module('redis')
         REDIS_AVAILABLE = True
-        redis_client = redis_module.from_url(app.config['REDIS_URL'])  # type: ignore
+        # 使用更安全的连接方式
+        redis_options = {
+            'retry_on_timeout': True,
+            'health_check_interval': 30,
+            'socket_keepalive': True,
+            'socket_keepalive_options': {2: 30}
+        }
+        redis_client = redis_module.from_url(app.config['REDIS_URL'], **redis_options)  # type: ignore
         setattr(app, 'redis_client', redis_client)
         app.logger.info('Redis连接成功')
     except ImportError:
@@ -322,6 +329,8 @@ def create_app():
                         'message': message,
                         'timestamp': datetime.now().isoformat()
                     }
+                    # 测试Redis连接
+                    app.redis_client.ping()  # type: ignore
                     app.redis_client.lpush('recent_consultations', json.dumps(consultation_data))  # type: ignore
                     # 只保留最近的100条咨询记录
                     app.redis_client.ltrim('recent_consultations', 0, 99)  # type: ignore
@@ -329,6 +338,8 @@ def create_app():
                 except Exception as e:
                     app.logger.error(f'Redis缓存失败: {e}')
                     app.logger.error(traceback.format_exc())
+            else:
+                app.logger.info('Redis不可用，跳过缓存')
             
             return jsonify({
                 'success': True,

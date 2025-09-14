@@ -23,7 +23,16 @@ services:
     restart: unless-stopped
     networks:
       - wisdomitc-network
-    command: gunicorn --config gunicorn.conf.py app:app
+    command: >
+      sh -c "
+        if [ -f gunicorn.conf.py ]; then
+          echo '使用 gunicorn.conf.py 配置文件';
+          exec gunicorn --config gunicorn.conf.py app:app;
+        else
+          echo 'gunicorn.conf.py 不存在，使用默认配置';
+          exec gunicorn --bind 0.0.0.0:5001 --workers 3 app:app;
+        fi
+      "
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
       interval: 30s
