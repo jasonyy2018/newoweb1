@@ -51,8 +51,7 @@ Thumbs.db
 # CodeBuddy files
 .codebuddy/
 
-# Log files (排除gunicorn.conf.py)
-!gunicorn.conf.py
+# Log files
 *.log
 logs/
 
