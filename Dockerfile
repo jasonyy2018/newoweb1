@@ -4,6 +4,7 @@ FROM python:3.9-slim
 # 设置标签
 LABEL maintainer="jyu@wisdomitc.com"
 LABEL description="上海葳澄信息科技有限公司网站 - AI Solutions for Business"
+LABEL version="1.0"
 
 # 设置工作目录
 WORKDIR /app
@@ -14,12 +15,10 @@ ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
-# 安装系统依赖，包括sqlite3用于调试
+# 安装系统依赖，包括curl用于健康检查
 RUN apt-get update && apt-get install -y \
     gcc \
     curl \
-    wget \
-    sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制依赖文件
@@ -56,4 +55,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:5001/health || exit 1
 
 # 启动应用
-CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "3", "--chdir", "/app", "app:app"]
+CMD ["gunicorn", "--config", "gunicorn.conf.py", "app:app"]

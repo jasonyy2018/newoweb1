@@ -11,18 +11,17 @@ preload_app = True
 reload = False
 
 # 日志配置
-accesslog = "logs/access.log"
-errorlog = "logs/error.log"
+accesslog = "/app/logs/access.log"
+errorlog = "/app/logs/error.log"
 loglevel = "info"
 access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
 
 # 进程配置
 daemon = False
-pidfile = "logs/gunicorn.pid"
+pidfile = "/app/logs/gunicorn.pid"
 user = None
 group = None
 tmp_upload_dir = None
 
-# SSL配置（如果需要）
-# keyfile = "ssl/private/server.key"
-# certfile = "ssl/certs/server.crt"
+# 性能配置
+worker_tmp_dir = "/dev/shm"

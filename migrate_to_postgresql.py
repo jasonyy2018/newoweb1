@@ -5,11 +5,13 @@ SQLite到PostgreSQL数据库迁移工具
 """
 
 import sqlite3
-import psycopg2
 import os
 import json
 from datetime import datetime
 from contextlib import contextmanager
+
+# 导入新的数据库管理器
+from db_manager import db_manager
 
 # PostgreSQL连接配置
 PG_CONFIG = {
@@ -29,13 +31,14 @@ class DatabaseMigrator:
         """测试PostgreSQL连接"""
         try:
             print("🔗 测试PostgreSQL连接...")
-            conn = psycopg2.connect(**PG_CONFIG)
-            cursor = conn.cursor()
-            cursor.execute("SELECT version();")
-            version = cursor.fetchone()
-            print(f"✅ PostgreSQL连接成功: {version[0]}")
-            conn.close()
-            return True
+            conn = db_manager.get_connection()
+            if conn:
+                print("✅ PostgreSQL连接成功")
+                conn.close()
+                return True
+            else:
+                print("❌ PostgreSQL连接失败")
+                return False
         except Exception as e:
             print(f"❌ PostgreSQL连接失败: {e}")
             return False
@@ -88,41 +91,14 @@ class DatabaseMigrator:
         print("🏗️  创建PostgreSQL表结构...")
         
         try:
-            conn = psycopg2.connect(**PG_CONFIG)
-            cursor = conn.cursor()
-            
-            # 删除现有表（如果存在）
-            cursor.execute("DROP TABLE IF EXISTS consultations;")
-            
-            # 创建新表 - 统一字段结构
-            create_table_sql = """
-            CREATE TABLE consultations (
-                id SERIAL PRIMARY KEY,
-                name VARCHAR(255) NOT NULL,
-                email VARCHAR(255) NOT NULL,
-                company VARCHAR(255),
-                phone VARCHAR(50),
-                service VARCHAR(255),
-                message TEXT,
-                timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            );
-            """
-            
-            cursor.execute(create_table_sql)
-            conn.commit()
-            
-            print("✅ PostgreSQL表创建成功")
-            
-            # 创建索引
-            cursor.execute("CREATE INDEX idx_consultations_email ON consultations(email);")
-            cursor.execute("CREATE INDEX idx_consultations_timestamp ON consultations(timestamp);")
-            conn.commit()
-            
-            print("✅ 索引创建成功")
-            
-            conn.close()
-            return True
-            
+            # 使用新的数据库管理器初始化数据库
+            success = db_manager.init_database()
+            if success:
+                print("✅ PostgreSQL表创建成功")
+                return True
+            else:
+                print("❌ PostgreSQL表创建失败")
+                return False
         except Exception as e:
             print(f"❌ 创建表失败: {e}")
             return False
@@ -136,9 +112,6 @@ class DatabaseMigrator:
             return True
         
         try:
-            conn = psycopg2.connect(**PG_CONFIG)
-            cursor = conn.cursor()
-            
             migrated_count = 0
             for record in self.backup_data:
                 # 映射字段 - 处理不同的字段名
@@ -160,17 +133,10 @@ class DatabaseMigrator:
                 if not timestamp:
                     timestamp = datetime.now()
                 
-                # 插入数据
-                insert_sql = """
-                INSERT INTO consultations (name, email, company, phone, service, message, timestamp)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-                """
-                
-                cursor.execute(insert_sql, (name, email, company, phone, service, message, timestamp))
-                migrated_count += 1
-            
-            conn.commit()
-            conn.close()
+                # 使用新的数据库管理器保存数据
+                consultation_id = db_manager.save_consultation(name, email, company, phone, service, message)
+                if consultation_id:
+                    migrated_count += 1
             
             print(f"✅ 成功迁移 {migrated_count} 条记录")
             return True
@@ -184,23 +150,16 @@ class DatabaseMigrator:
         print("🔍 验证迁移结果...")
         
         try:
-            conn = psycopg2.connect(**PG_CONFIG)
-            cursor = conn.cursor()
-            
-            # 检查记录数
-            cursor.execute("SELECT COUNT(*) FROM consultations;")
-            count = cursor.fetchone()[0]
+            consultations = db_manager.get_all_consultations()
+            count = len(consultations)
             print(f"📊 PostgreSQL中的记录数: {count}")
             
-            # 检查最新记录
-            cursor.execute("SELECT * FROM consultations ORDER BY id DESC LIMIT 3;")
-            recent_records = cursor.fetchall()
+            # 显示最新记录
+            if consultations:
+                print("📋 最新的3条记录:")
+                for i, record in enumerate(consultations[:3], 1):
+                    print(f"   {i}. ID:{record.get('id', 'N/A')}, 姓名:{record.get('name', 'N/A')}, 邮箱:{record.get('email', 'N/A')}")
             
-            print("📋 最新的3条记录:")
-            for i, record in enumerate(recent_records, 1):
-                print(f"   {i}. ID:{record[0]}, 姓名:{record[1]}, 邮箱:{record[2]}")
-            
-            conn.close()
             return True
             
         except Exception as e:

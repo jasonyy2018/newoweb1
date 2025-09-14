@@ -13,13 +13,16 @@ import json
 from datetime import datetime
 import mimetypes
 import hashlib
+import logging
 
 # 添加SVG MIME类型支持
 mimetypes.add_type('image/svg+xml', '.svg')
 
+# 导入统一数据库管理器
+from db_manager import db_manager
+
 def create_app():
     # 明确指定静态文件夹和模板文件夹的绝对路径
-    import os
     basedir = os.path.abspath(os.path.dirname(__file__))
     app = Flask(__name__, 
                 static_folder=os.path.join(basedir, 'static'),
@@ -56,9 +59,11 @@ def create_app():
     def init_database():
         """确保PostgreSQL数据库已初始化"""
         try:
-            from database_postgresql import init_database
-            init_database()
-            app.logger.info('PostgreSQL数据库初始化成功')
+            success = db_manager.init_database()
+            if success:
+                app.logger.info('PostgreSQL数据库初始化成功')
+            else:
+                app.logger.error('PostgreSQL数据库初始化失败')
         except Exception as e:
             app.logger.error(f'PostgreSQL数据库初始化失败: {e}')
     
@@ -103,31 +108,39 @@ def create_app():
     
     @app.before_request
     def before_request():
-        # 为所有请求初始化数据库连接
+        """在每个请求之前执行"""
         pass
     
     @app.teardown_appcontext
     def close_db_error(e=None):
+        """在应用上下文结束时关闭数据库连接"""
         close_db(e)
+    
+    # ==================== 路由定义 ====================
     
     @app.route('/')
     def index():
+        """首页"""
         return render_template('index.html')
     
     @app.route('/about')
     def about():
+        """关于我们页面"""
         return render_template('about.html')
     
     @app.route('/contact')
     def contact():
+        """联系我们页面"""
         return render_template('contact.html')
     
     @app.route('/faq')
     def faq():
+        """常见问题页面"""
         return render_template('faq.html')
     
     @app.route('/admin/login', methods=['GET', 'POST'])
     def admin_login():
+        """管理员登录页面"""
         if request.method == 'POST':
             username = request.form.get('username')
             password = request.form.get('password')
@@ -148,6 +161,7 @@ def create_app():
     
     @app.route('/admin/logout')
     def admin_logout():
+        """管理员退出登录"""
         session.pop('admin_logged_in', None)
         session.pop('admin_username', None)
         flash(_('您已成功退出登录'), 'info')
@@ -155,15 +169,14 @@ def create_app():
     
     @app.route('/admin/consultations')
     def admin_consultations():
+        """管理员查看咨询信息页面"""
         # 检查管理员权限
         if not check_admin_auth():
             flash(_('请先登录管理员账号'), 'warning')
             return redirect(url_for('admin_login'))
         
-        # 这里应该添加身份验证
         try:
-            from database_postgresql import get_all_consultations
-            consultations = get_all_consultations()
+            consultations = db_manager.get_all_consultations()
             return render_template('admin_consultations.html', consultations=consultations)
         except Exception as e:
             app.logger.error(f'获取咨询信息失败: {e}')
@@ -172,6 +185,7 @@ def create_app():
     
     @app.route('/submit_consultation', methods=['POST'])
     def submit_consultation():
+        """提交咨询表单"""
         try:
             # 获取表单数据
             name = request.form['name']
@@ -185,8 +199,7 @@ def create_app():
             
             # 保存到PostgreSQL数据库
             try:
-                from database_postgresql import save_consultation
-                consultation_id = save_consultation(name, email, company, phone, service, message)
+                consultation_id = db_manager.save_consultation(name, email, company, phone, service, message)
                 if consultation_id:
                     app.logger.info(f'咨询信息已成功保存到PostgreSQL数据库，ID: {consultation_id}')
                 else:
@@ -227,6 +240,7 @@ def create_app():
     
     @app.route('/solution/<solution_name>')
     def solution(solution_name):
+        """解决方案详情页面"""
         # 验证解决方案名称
         valid_solutions = [
             'data-analytics', 'nlp', 'computer-vision', 
@@ -252,6 +266,7 @@ def create_app():
     
     @app.route('/case-study/<case_name>')
     def case_study(case_name):
+        """案例研究详情页面"""
         # 验证案例名称
         valid_cases = ['manufacturing-quality-control']
         
@@ -274,24 +289,28 @@ def create_app():
     
     @app.route('/solutions')
     def solutions_index():
+        """解决方案索引页面"""
         return render_template('solutions/index.html')
     
     @app.route('/case-studies')
     def case_studies_index():
+        """案例研究索引页面"""
         return render_template('case-studies/index.html')
     
     @app.route('/static/<path:filename>')
     def static_files(filename):
-        # 确保static_folder不是None
+        """静态文件服务"""
         static_folder = app.static_folder or 'static'
         return send_from_directory(static_folder, filename)
 
     @app.route('/robots.txt')
     def robots_txt():
+        """robots.txt文件"""
         return send_from_directory(str(app.static_folder), 'robots.txt')
     
     @app.route('/sitemap.xml')
     def sitemap_xml():
+        """sitemap.xml文件"""
         return send_from_directory(str(app.static_folder), 'sitemap.xml')
     
     @app.route('/run_geo_optimization')
@@ -352,6 +371,7 @@ def create_app():
     
     @app.errorhandler(404)
     def page_not_found(e):
+        """404错误处理"""
         return render_template('error.html', 
                              message=_('页面未找到'),
                              error_id='ERR_404_' + datetime.now().strftime('%Y%m%d_%H%M%S'),
@@ -368,6 +388,7 @@ def create_app():
 
     @app.errorhandler(500)
     def internal_error(e):
+        """500错误处理"""
         app.logger.error(f'服务器内部错误: {e}')
         return render_template('error.html', 
                              message=_('服务器内部错误'),

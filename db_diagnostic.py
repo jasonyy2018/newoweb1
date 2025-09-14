@@ -11,6 +11,9 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+# 导入新的数据库管理器
+from db_manager import db_manager
+
 class DatabaseDiagnostic:
     def __init__(self, project_root="."):
         self.project_root = Path(project_root)
@@ -121,6 +124,21 @@ class DatabaseDiagnostic:
         
         return config_info
     
+    def test_database_connections(self):
+        """测试数据库连接"""
+        print("\n🔌 测试数据库连接...")
+        
+        # 测试PostgreSQL连接
+        try:
+            conn = db_manager.get_connection()
+            if conn:
+                print("   ✅ PostgreSQL连接成功")
+                conn.close()
+            else:
+                print("   ❌ PostgreSQL连接失败")
+        except Exception as e:
+            print(f"   ❌ PostgreSQL连接失败: {e}")
+    
     def generate_diagnostic_report(self):
         """生成诊断报告"""
         print("\n" + "="*60)
@@ -136,7 +154,10 @@ class DatabaseDiagnostic:
         # 3. Flask配置检查
         config_info = self.check_flask_config()
         
-        # 4. 问题诊断
+        # 4. 数据库连接测试
+        self.test_database_connections()
+        
+        # 5. 问题诊断
         print("\n🔧 问题诊断:")
         issues = []
         

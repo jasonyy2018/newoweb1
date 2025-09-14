@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-数据库检查脚本
+数据库检查脚本（已简化）
 """
 
 import sqlite3
 import os
+
+# 导入新的数据库管理器
+from db_manager import db_manager
 
 def check_database(db_path):
     """检查数据库表结构"""
@@ -40,9 +43,25 @@ def check_database(db_path):
     except Exception as e:
         print(f"检查数据库时出错: {e}")
 
+def test_postgresql_connection():
+    """测试PostgreSQL连接"""
+    print("测试PostgreSQL连接...")
+    try:
+        conn = db_manager.get_connection()
+        if conn:
+            print("✅ PostgreSQL连接成功")
+            conn.close()
+        else:
+            print("❌ PostgreSQL连接失败")
+    except Exception as e:
+        print(f"❌ PostgreSQL连接失败: {e}")
+
 if __name__ == "__main__":
     # 检查根目录的数据库
     check_database("consultations.db")
     print("-" * 50)
     # 检查data目录的数据库
     check_database("data/consultations.db")
+    print("-" * 50)
+    # 测试PostgreSQL连接
+    test_postgresql_connection()

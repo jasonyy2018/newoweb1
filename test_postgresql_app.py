@@ -6,16 +6,22 @@
 
 import requests
 import json
-from database_postgresql import test_connection, get_all_consultations
+from db_manager import db_manager
 
 def test_database_connection():
     """测试数据库连接"""
     print("🔗 测试PostgreSQL数据库连接...")
-    if test_connection():
-        print("✅ 数据库连接成功")
-        return True
-    else:
-        print("❌ 数据库连接失败")
+    try:
+        conn = db_manager.get_connection()
+        if conn:
+            conn.close()
+            print("✅ 数据库连接成功")
+            return True
+        else:
+            print("❌ 数据库连接失败")
+            return False
+    except Exception as e:
+        print(f"❌ 数据库连接失败: {e}")
         return False
 
 def test_consultation_submission():
@@ -62,7 +68,7 @@ def test_admin_consultations():
     print("\n📋 测试咨询数据查询...")
     
     try:
-        consultations = get_all_consultations()
+        consultations = db_manager.get_all_consultations()
         print(f"✅ 成功获取 {len(consultations)} 条咨询记录")
         
         if consultations:
