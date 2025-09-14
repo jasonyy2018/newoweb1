@@ -56,8 +56,8 @@ def create_app():
     def init_database():
         """确保PostgreSQL数据库已初始化"""
         try:
-            from database_postgresql import init_db
-            init_db()
+            from database_postgresql import init_database
+            init_database()
             app.logger.info('PostgreSQL数据库初始化成功')
         except Exception as e:
             app.logger.error(f'PostgreSQL数据库初始化失败: {e}')
@@ -385,6 +385,8 @@ def create_app():
 
     
     # 导入CSP配置
+    csp_available = False
+    apply_csp_to_response = None
     try:
         from csp_config import apply_csp_to_response
         csp_available = True
@@ -396,7 +398,7 @@ def create_app():
     @app.after_request
     def add_security_headers(response):
         """添加安全头部，包括CSP"""
-        if csp_available:
+        if csp_available and apply_csp_to_response:
             # 使用宽松模式CSP以兼容现有代码
             response = apply_csp_to_response(response, strict=False)
         else:
