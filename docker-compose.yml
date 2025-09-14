@@ -8,6 +8,12 @@ services:
     environment:
       - FLASK_ENV=production
       - FLASK_APP=app.py
+      # PostgreSQL数据库配置
+      - POSTGRESQL_HOST=156.238.249.149
+      - POSTGRESQL_PORT=5432
+      - POSTGRESQL_DATABASE=aiow
+      - POSTGRESQL_USER=aiow
+      - POSTGRESQL_PASSWORD=EZH3HPYzy3QNGTEz
       # 添加Redis连接信息
       - REDIS_URL=redis://redis_C7DGKB@156.238.249.149:6379/0
     volumes:

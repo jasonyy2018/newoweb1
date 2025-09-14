@@ -31,13 +31,13 @@ def create_app():
     app.config['BABEL_SUPPORTED_LOCALES'] = ['zh', 'en', 'ja']
     app.config['BABEL_DEFAULT_TIMEZONE'] = 'Asia/Shanghai'
     
-    # PostgreSQL数据库配置
+    # PostgreSQL数据库配置 - 优先使用环境变量
     app.config['POSTGRESQL'] = {
-        'host': '156.238.249.149',
-        'port': 5432,
-        'database': 'aiow',
-        'user': 'aiow',
-        'password': 'EZH3HPYzy3QNGTEz'
+        'host': os.environ.get('POSTGRESQL_HOST', '156.238.249.149'),
+        'port': int(os.environ.get('POSTGRESQL_PORT', 5432)),
+        'database': os.environ.get('POSTGRESQL_DATABASE', 'aiow'),
+        'user': os.environ.get('POSTGRESQL_USER', 'aiow'),
+        'password': os.environ.get('POSTGRESQL_PASSWORD', 'EZH3HPYzy3QNGTEz')
     }
     
     # Redis配置 - 使用环境变量或默认的外部Redis配置
