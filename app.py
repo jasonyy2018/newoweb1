@@ -383,6 +383,31 @@ def create_app():
                                  ]
                              }), 500
 
+    
+    # 导入CSP配置
+    try:
+        from csp_config import apply_csp_to_response
+        csp_available = True
+    except ImportError:
+        csp_available = False
+        app.logger.warning("CSP配置模块未找到，将使用基本安全头部")
+    
+    # 添加安全头部中间件
+    @app.after_request
+    def add_security_headers(response):
+        """添加安全头部，包括CSP"""
+        if csp_available:
+            # 使用宽松模式CSP以兼容现有代码
+            response = apply_csp_to_response(response, strict=False)
+        else:
+            # 基本安全头部
+            response.headers['X-Content-Type-Options'] = 'nosniff'
+            response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+            response.headers['X-XSS-Protection'] = '1; mode=block'
+            response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+        
+        return response
+
     return app
 
 # 为Gunicorn创建应用实例
