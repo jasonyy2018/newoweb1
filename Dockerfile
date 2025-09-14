@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # 设置标签
-LABEL maintainer="jyu@wisdomitc.com"
+LABEL maintainer="jyu@wisdcomitc.com"
 LABEL description="上海葳澄信息科技有限公司网站 - AI Solutions for Business"
 LABEL version="1.0"
 
@@ -66,4 +66,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:5001/health || exit 1
 
 # 启动应用
-CMD ["gunicorn", "--config", "./gunicorn.conf.py", "app:app"]
+CMD ["gunicorn", "--config", "gunicorn.conf.py", "app:app"]
