@@ -13,6 +13,7 @@ from contextlib import contextmanager
 from typing import Optional, Dict, Any, List
 from datetime import datetime
 import logging
+import traceback
 
 class DatabaseManager:
     def __init__(self, db_type='postgresql'):
@@ -39,25 +40,24 @@ class DatabaseManager:
     
     def get_connection(self):
         """获取数据库连接"""
-        if self.db_type == 'postgresql':
-            try:
+        try:
+            if self.db_type == 'postgresql':
                 conn = psycopg2.connect(**self.config, cursor_factory=RealDictCursor)
+                self.logger.info("PostgreSQL数据库连接成功")
                 return conn
-            except Exception as e:
-                self.logger.error(f"PostgreSQL数据库连接失败: {e}")
-                return None
-        else:
-            try:
+            else:
                 # 确保data目录存在
                 data_dir = os.path.dirname(self.db_path)
                 if not os.path.exists(data_dir):
                     os.makedirs(data_dir)
                 conn = sqlite3.connect(self.db_path)
                 conn.row_factory = sqlite3.Row  # 使结果可以通过列名访问
+                self.logger.info("SQLite数据库连接成功")
                 return conn
-            except Exception as e:
-                self.logger.error(f"SQLite数据库连接失败: {e}")
-                return None
+        except Exception as e:
+            self.logger.error(f"数据库连接失败: {e}")
+            self.logger.error(traceback.format_exc())
+            return None
     
     def init_database(self):
         """初始化数据库表"""
@@ -67,15 +67,24 @@ class DatabaseManager:
                 return False
             
             if self.db_type == 'postgresql':
-                return self._init_postgresql(conn)
+                result = self._init_postgresql(conn)
             else:
-                return self._init_sqlite(conn)
+                result = self._init_sqlite(conn)
+            
+            if result:
+                self.logger.info(f"{self.db_type.upper()}数据库表初始化成功")
+            else:
+                self.logger.error(f"{self.db_type.upper()}数据库表初始化失败")
+            
+            return result
         except Exception as e:
             self.logger.error(f"数据库初始化失败: {e}")
+            self.logger.error(traceback.format_exc())
             return False
     
     def _init_postgresql(self, conn):
         """初始化PostgreSQL数据库"""
+        cursor = None
         try:
             cursor = conn.cursor()
             
@@ -116,15 +125,16 @@ class DatabaseManager:
             """)
             
             conn.commit()
-            self.logger.info("PostgreSQL数据库表初始化成功")
             return True
             
         except Exception as e:
             self.logger.error(f"PostgreSQL数据库初始化失败: {e}")
+            self.logger.error(traceback.format_exc())
             conn.rollback()
             return False
         finally:
-            cursor.close()
+            if cursor:
+                cursor.close()
             conn.close()
     
     def _init_sqlite(self, conn):
@@ -144,10 +154,10 @@ class DatabaseManager:
                               timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
             
             conn.commit()
-            self.logger.info("SQLite数据库表初始化成功")
             return True
         except Exception as e:
             self.logger.error(f"SQLite数据库初始化失败: {e}")
+            self.logger.error(traceback.format_exc())
             return False
         finally:
             conn.close()
@@ -160,15 +170,24 @@ class DatabaseManager:
                 return None
             
             if self.db_type == 'postgresql':
-                return self._save_consultation_postgresql(conn, name, email, company, phone, service, message)
+                result = self._save_consultation_postgresql(conn, name, email, company, phone, service, message)
             else:
-                return self._save_consultation_sqlite(conn, name, email, company, phone, service, message)
+                result = self._save_consultation_sqlite(conn, name, email, company, phone, service, message)
+            
+            if result:
+                self.logger.info(f"咨询信息保存成功，ID: {result}")
+            else:
+                self.logger.error("咨询信息保存失败")
+            
+            return result
         except Exception as e:
             self.logger.error(f"保存咨询信息失败: {e}")
+            self.logger.error(traceback.format_exc())
             return None
     
     def _save_consultation_postgresql(self, conn, name, email, company, phone, service, message):
         """保存咨询信息到PostgreSQL"""
+        cursor = None
         try:
             cursor = conn.cursor()
             cursor.execute("""
@@ -182,10 +201,12 @@ class DatabaseManager:
             return consultation_id
         except Exception as e:
             self.logger.error(f"保存咨询信息到PostgreSQL失败: {e}")
+            self.logger.error(traceback.format_exc())
             conn.rollback()
             return None
         finally:
-            cursor.close()
+            if cursor:
+                cursor.close()
             conn.close()
     
     def _save_consultation_sqlite(self, conn, name, email, company, phone, service, message):
@@ -198,6 +219,7 @@ class DatabaseManager:
             return cursor.lastrowid
         except Exception as e:
             self.logger.error(f"保存咨询信息到SQLite失败: {e}")
+            self.logger.error(traceback.format_exc())
             return None
         finally:
             conn.close()
@@ -210,15 +232,20 @@ class DatabaseManager:
                 return []
             
             if self.db_type == 'postgresql':
-                return self._get_all_consultations_postgresql(conn)
+                result = self._get_all_consultations_postgresql(conn)
             else:
-                return self._get_all_consultations_sqlite(conn)
+                result = self._get_all_consultations_sqlite(conn)
+            
+            self.logger.info(f"成功获取 {len(result)} 条咨询记录")
+            return result
         except Exception as e:
             self.logger.error(f"获取咨询信息失败: {e}")
+            self.logger.error(traceback.format_exc())
             return []
     
     def _get_all_consultations_postgresql(self, conn):
         """从PostgreSQL获取所有咨询信息"""
+        cursor = None
         try:
             cursor = conn.cursor()
             cursor.execute("""
@@ -230,9 +257,11 @@ class DatabaseManager:
             return [dict(row) for row in consultations]
         except Exception as e:
             self.logger.error(f"从PostgreSQL获取咨询信息失败: {e}")
+            self.logger.error(traceback.format_exc())
             return []
         finally:
-            cursor.close()
+            if cursor:
+                cursor.close()
             conn.close()
     
     def _get_all_consultations_sqlite(self, conn):
@@ -246,6 +275,7 @@ class DatabaseManager:
             return [dict(zip(columns, row)) for row in rows]
         except Exception as e:
             self.logger.error(f"从SQLite获取咨询信息失败: {e}")
+            self.logger.error(traceback.format_exc())
             return []
         finally:
             conn.close()
@@ -261,6 +291,7 @@ class DatabaseManager:
             if not conn:
                 return {}
             
+            cursor = None
             try:
                 cursor = conn.cursor()
                 
@@ -292,20 +323,26 @@ class DatabaseManager:
                 """)
                 status_stats = {row['status']: row['count'] for row in cursor.fetchall()}
                 
-                return {
+                result = {
                     'total': total,
                     'today': today,
                     'this_month': this_month,
                     'status_stats': status_stats
                 }
+                
+                self.logger.info("统计信息获取成功")
+                return result
             except Exception as e:
                 self.logger.error(f"获取统计信息失败: {e}")
+                self.logger.error(traceback.format_exc())
                 return {}
             finally:
-                cursor.close()
+                if cursor:
+                    cursor.close()
                 conn.close()
         except Exception as e:
             self.logger.error(f"数据库连接失败: {e}")
+            self.logger.error(traceback.format_exc())
             return {}
 
 # 创建全局数据库管理器实例

@@ -10,3 +10,8 @@
  * Running on http://127.0.0.1:5001
  * Running on http://192.168.100.101:5001
 2025-09-14 09:08:56,252 INFO: [33mPress CTRL+C to quit[0m
+2025-09-14 11:13:24,624 INFO: ÈÕÖ¾ÏµÍ³³õÊ¼»¯Íê³É [in C:\Users\jason\Documents\projects\newoweb1\app.py:51]
+2025-09-14 11:13:24,628 WARNING: Redis¿âÎ´°²×°£¬»º´æ¹¦ÄÜ½«²»¿ÉÓÃ [in C:\Users\jason\Documents\projects\newoweb1\app.py:112]
+2025-09-14 11:13:24,636 INFO: Ó¦ÓÃÆô¶¯Íê³É£¬¾²Ì¬ÎÄ¼þ¼Ð: C:\Users\jason\Documents\projects\newoweb1\static [in C:\Users\jason\Documents\projects\newoweb1\app.py:630]
+2025-09-14 11:13:24,638 INFO: Ä£°åÎÄ¼þ¼Ð: C:\Users\jason\Documents\projects\newoweb1\templates [in C:\Users\jason\Documents\projects\newoweb1\app.py:631]
+2025-09-14 11:13:24,638 INFO: µ±Ç°¹¤×÷Ä¿Â¼: C:\Users\jason\Documents\projects\newoweb1 [in C:\Users\jason\Documents\projects\newoweb1\app.py:632]

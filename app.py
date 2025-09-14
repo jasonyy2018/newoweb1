@@ -14,6 +14,7 @@ from datetime import datetime
 import mimetypes
 import hashlib
 import logging
+import traceback
 
 # 添加SVG MIME类型支持
 mimetypes.add_type('image/svg+xml', '.svg')
@@ -21,12 +22,43 @@ mimetypes.add_type('image/svg+xml', '.svg')
 # 导入统一数据库管理器
 from db_manager import db_manager
 
+def setup_logging(app):
+    """设置应用日志"""
+    if not os.path.exists('logs'):
+        os.makedirs('logs')
+    
+    # 创建文件处理器
+    file_handler = logging.FileHandler('logs/app.log')
+    file_handler.setLevel(logging.INFO)
+    
+    # 创建控制台处理器
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    
+    # 创建格式化器
+    formatter = logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
+    )
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+    
+    # 添加处理器到应用日志器
+    app.logger.addHandler(file_handler)
+    app.logger.addHandler(console_handler)
+    app.logger.setLevel(logging.INFO)
+    
+    # 确保日志器处于活动状态
+    app.logger.info('日志系统初始化完成')
+
 def create_app():
     # 明确指定静态文件夹和模板文件夹的绝对路径
     basedir = os.path.abspath(os.path.dirname(__file__))
     app = Flask(__name__, 
                 static_folder=os.path.join(basedir, 'static'),
                 template_folder=os.path.join(basedir, 'templates'))
+    
+    # 设置日志
+    setup_logging(app)
     
     # 配置应用
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
@@ -66,6 +98,7 @@ def create_app():
                 app.logger.error('PostgreSQL数据库初始化失败')
         except Exception as e:
             app.logger.error(f'PostgreSQL数据库初始化失败: {e}')
+            app.logger.error(traceback.format_exc())
     
     # 尝试初始化Redis
     try:
@@ -80,6 +113,7 @@ def create_app():
     except Exception as e:
         setattr(app, 'redis_client', None)
         app.logger.error(f'Redis连接失败: {e}')
+        app.logger.error(traceback.format_exc())
     
     def get_db():
         """获取PostgreSQL数据库连接"""
@@ -121,65 +155,132 @@ def create_app():
     @app.route('/')
     def index():
         """首页"""
-        return render_template('index.html')
+        try:
+            return render_template('index.html')
+        except Exception as e:
+            app.logger.error(f'首页加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/about')
     def about():
         """关于我们页面"""
-        return render_template('about.html')
+        try:
+            return render_template('about.html')
+        except Exception as e:
+            app.logger.error(f'关于我们页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/contact')
     def contact():
         """联系我们页面"""
-        return render_template('contact.html')
+        try:
+            return render_template('contact.html')
+        except Exception as e:
+            app.logger.error(f'联系我们页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/faq')
     def faq():
         """常见问题页面"""
-        return render_template('faq.html')
+        try:
+            return render_template('faq.html')
+        except Exception as e:
+            app.logger.error(f'常见问题页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/admin/login', methods=['GET', 'POST'])
     def admin_login():
         """管理员登录页面"""
-        if request.method == 'POST':
-            username = request.form.get('username')
-            password = request.form.get('password')
+        try:
+            if request.method == 'POST':
+                username = request.form.get('username')
+                password = request.form.get('password')
+                
+                # 从环境变量获取管理员凭据，如果没有则使用默认值
+                admin_username = os.environ.get('ADMIN_USERNAME', 'admin')
+                admin_password = os.environ.get('ADMIN_PASSWORD', 'wisdomitc2025')
+                
+                # 验证管理员账号
+                if username == admin_username and hash_password(password) == hash_password(admin_password):
+                    session['admin_logged_in'] = True
+                    session['admin_username'] = username
+                    return redirect(url_for('admin_consultations'))
+                else:
+                    flash(_('用户名或密码错误'), 'error')
             
-            # 从环境变量获取管理员凭据，如果没有则使用默认值
-            admin_username = os.environ.get('ADMIN_USERNAME', 'admin')
-            admin_password = os.environ.get('ADMIN_PASSWORD', 'wisdomitc2025')
-            
-            # 验证管理员账号
-            if username == admin_username and hash_password(password) == hash_password(admin_password):
-                session['admin_logged_in'] = True
-                session['admin_username'] = username
-                return redirect(url_for('admin_consultations'))
-            else:
-                flash(_('用户名或密码错误'), 'error')
-        
-        return render_template('admin_login.html')
+            return render_template('admin_login.html')
+        except Exception as e:
+            app.logger.error(f'管理员登录页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/admin/logout')
     def admin_logout():
         """管理员退出登录"""
-        session.pop('admin_logged_in', None)
-        session.pop('admin_username', None)
-        flash(_('您已成功退出登录'), 'info')
-        return redirect(url_for('admin_login'))
+        try:
+            session.pop('admin_logged_in', None)
+            session.pop('admin_username', None)
+            flash(_('您已成功退出登录'), 'info')
+            return redirect(url_for('admin_login'))
+        except Exception as e:
+            app.logger.error(f'管理员退出登录失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('操作失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/admin/consultations')
     def admin_consultations():
         """管理员查看咨询信息页面"""
-        # 检查管理员权限
-        if not check_admin_auth():
-            flash(_('请先登录管理员账号'), 'warning')
-            return redirect(url_for('admin_login'))
-        
         try:
+            # 检查管理员权限
+            if not check_admin_auth():
+                flash(_('请先登录管理员账号'), 'warning')
+                return redirect(url_for('admin_login'))
+            
             consultations = db_manager.get_all_consultations()
             return render_template('admin_consultations.html', consultations=consultations)
         except Exception as e:
             app.logger.error(f'获取咨询信息失败: {e}')
+            app.logger.error(traceback.format_exc())
             flash(_('获取咨询信息失败'), 'error')
             return render_template('admin_consultations.html', consultations=[])
     
@@ -206,6 +307,7 @@ def create_app():
                     raise Exception("保存失败")
             except Exception as e:
                 app.logger.error(f'保存到PostgreSQL失败: {e}')
+                app.logger.error(traceback.format_exc())
                 raise e
             
             # 如果Redis可用，缓存咨询信息
@@ -226,6 +328,7 @@ def create_app():
                     app.logger.info('咨询信息已成功缓存到Redis')
                 except Exception as e:
                     app.logger.error(f'Redis缓存失败: {e}')
+                    app.logger.error(traceback.format_exc())
             
             return jsonify({
                 'success': True,
@@ -233,6 +336,7 @@ def create_app():
             })
         except Exception as e:
             app.logger.error(f'提交咨询失败: {e}', exc_info=True)
+            app.logger.error(traceback.format_exc())
             return jsonify({
                 'success': False,
                 'message': _('提交咨询时发生错误，请稍后再试。')
@@ -241,77 +345,142 @@ def create_app():
     @app.route('/solution/<solution_name>')
     def solution(solution_name):
         """解决方案详情页面"""
-        # 验证解决方案名称
-        valid_solutions = [
-            'data-analytics', 'nlp', 'computer-vision', 
-            'predictive-analytics', 'intelligent-automation', 'custom-ai-models'
-        ]
-        
-        if solution_name not in valid_solutions:
-            return render_template('error.html', 
-                                 message=_('未找到指定的解决方案'),
-                                 error_details={
-                                     'status_code': 404,
-                                     'error_type': _('页面未找到'),
-                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                                     'possible_causes': [
-                                         _('URL输入错误'),
-                                         _('页面已被移除'),
-                                         _('链接已过期')
-                                     ]
-                                 }), 404
+        try:
+            # 验证解决方案名称
+            valid_solutions = [
+                'data-analytics', 'nlp', 'computer-vision', 
+                'predictive-analytics', 'intelligent-automation', 'custom-ai-models'
+            ]
             
-        template_path = f'solutions/{solution_name}.html'
-        return render_template(template_path)
+            if solution_name not in valid_solutions:
+                return render_template('error.html', 
+                                     message=_('未找到指定的解决方案'),
+                                     error_details={
+                                         'status_code': 404,
+                                         'error_type': _('页面未找到'),
+                                         'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                         'possible_causes': [
+                                             _('URL输入错误'),
+                                             _('页面已被移除'),
+                                             _('链接已过期')
+                                         ]
+                                     }), 404
+                
+            template_path = f'solutions/{solution_name}.html'
+            return render_template(template_path)
+        except Exception as e:
+            app.logger.error(f'解决方案页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/case-study/<case_name>')
     def case_study(case_name):
         """案例研究详情页面"""
-        # 验证案例名称
-        valid_cases = ['manufacturing-quality-control']
-        
-        if case_name not in valid_cases:
-            return render_template('error.html', 
-                                 message=_('未找到指定的案例研究'),
-                                 error_details={
-                                     'status_code': 404,
-                                     'error_type': _('页面未找到'),
-                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                                     'possible_causes': [
-                                         _('URL输入错误'),
-                                         _('页面已被移除'),
-                                         _('链接已过期')
-                                     ]
-                                 }), 404
+        try:
+            # 验证案例名称
+            valid_cases = ['manufacturing-quality-control']
             
-        template_path = f'case-studies/{case_name}.html'
-        return render_template(template_path)
+            if case_name not in valid_cases:
+                return render_template('error.html', 
+                                     message=_('未找到指定的案例研究'),
+                                     error_details={
+                                         'status_code': 404,
+                                         'error_type': _('页面未找到'),
+                                         'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                         'possible_causes': [
+                                             _('URL输入错误'),
+                                             _('页面已被移除'),
+                                             _('链接已过期')
+                                         ]
+                                     }), 404
+                
+            template_path = f'case-studies/{case_name}.html'
+            return render_template(template_path)
+        except Exception as e:
+            app.logger.error(f'案例研究页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/solutions')
     def solutions_index():
         """解决方案索引页面"""
-        return render_template('solutions/index.html')
+        try:
+            return render_template('solutions/index.html')
+        except Exception as e:
+            app.logger.error(f'解决方案索引页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/case-studies')
     def case_studies_index():
         """案例研究索引页面"""
-        return render_template('case-studies/index.html')
+        try:
+            return render_template('case-studies/index.html')
+        except Exception as e:
+            app.logger.error(f'案例研究索引页面加载失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('页面加载失败'),
+                                 error_details={
+                                     'status_code': 500,
+                                     'error_type': _('服务器内部错误'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 500
     
     @app.route('/static/<path:filename>')
     def static_files(filename):
         """静态文件服务"""
-        static_folder = app.static_folder or 'static'
-        return send_from_directory(static_folder, filename)
+        try:
+            static_folder = app.static_folder or 'static'
+            return send_from_directory(static_folder, filename)
+        except Exception as e:
+            app.logger.error(f'静态文件服务失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return render_template('error.html', 
+                                 message=_('文件未找到'),
+                                 error_details={
+                                     'status_code': 404,
+                                     'error_type': _('文件未找到'),
+                                     'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                 }), 404
 
     @app.route('/robots.txt')
     def robots_txt():
         """robots.txt文件"""
-        return send_from_directory(str(app.static_folder), 'robots.txt')
+        try:
+            return send_from_directory(str(app.static_folder), 'robots.txt')
+        except Exception as e:
+            app.logger.error(f'robots.txt文件服务失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return '', 404
     
     @app.route('/sitemap.xml')
     def sitemap_xml():
         """sitemap.xml文件"""
-        return send_from_directory(str(app.static_folder), 'sitemap.xml')
+        try:
+            return send_from_directory(str(app.static_folder), 'sitemap.xml')
+        except Exception as e:
+            app.logger.error(f'sitemap.xml文件服务失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return '', 404
     
     @app.route('/run_geo_optimization')
     def run_geo_optimization():
@@ -332,6 +501,8 @@ def create_app():
                 "report": report
             })
         except Exception as e:
+            app.logger.error(f'GEO优化失败: {e}')
+            app.logger.error(traceback.format_exc())
             return jsonify({
                 "success": False,
                 "message": f"GEO优化失败: {str(e)}"
@@ -356,6 +527,8 @@ def create_app():
                 "report": report
             })
         except Exception as e:
+            app.logger.error(f'自动GEO优化失败: {e}')
+            app.logger.error(traceback.format_exc())
             return jsonify({
                 "success": False,
                 "message": f"自动GEO优化失败: {str(e)}"
@@ -364,14 +537,24 @@ def create_app():
     @app.route('/health')
     def health_check():
         """健康检查端点"""
-        return jsonify({
-            "status": "healthy",
-            "timestamp": datetime.now().isoformat()
-        })
+        try:
+            return jsonify({
+                "status": "healthy",
+                "timestamp": datetime.now().isoformat()
+            })
+        except Exception as e:
+            app.logger.error(f'健康检查失败: {e}')
+            app.logger.error(traceback.format_exc())
+            return jsonify({
+                "status": "unhealthy",
+                "timestamp": datetime.now().isoformat(),
+                "error": str(e)
+            }), 500
     
     @app.errorhandler(404)
     def page_not_found(e):
         """404错误处理"""
+        app.logger.warning(f'404错误: {request.url}')
         return render_template('error.html', 
                              message=_('页面未找到'),
                              error_id='ERR_404_' + datetime.now().strftime('%Y%m%d_%H%M%S'),
@@ -390,6 +573,7 @@ def create_app():
     def internal_error(e):
         """500错误处理"""
         app.logger.error(f'服务器内部错误: {e}')
+        app.logger.error(traceback.format_exc())
         return render_template('error.html', 
                              message=_('服务器内部错误'),
                              error_id='ERR_500_' + datetime.now().strftime('%Y%m%d_%H%M%S'),
@@ -419,15 +603,19 @@ def create_app():
     @app.after_request
     def add_security_headers(response):
         """添加安全头部，包括CSP"""
-        if csp_available and apply_csp_to_response:
-            # 使用宽松模式CSP以兼容现有代码
-            response = apply_csp_to_response(response, strict=False)
-        else:
-            # 基本安全头部
-            response.headers['X-Content-Type-Options'] = 'nosniff'
-            response.headers['X-Frame-Options'] = 'SAMEORIGIN'
-            response.headers['X-XSS-Protection'] = '1; mode=block'
-            response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+        try:
+            if csp_available and apply_csp_to_response:
+                # 使用宽松模式CSP以兼容现有代码
+                response = apply_csp_to_response(response, strict=False)
+            else:
+                # 基本安全头部
+                response.headers['X-Content-Type-Options'] = 'nosniff'
+                response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+                response.headers['X-XSS-Protection'] = '1; mode=block'
+                response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+        except Exception as e:
+            app.logger.error(f'添加安全头部失败: {e}')
+            app.logger.error(traceback.format_exc())
         
         return response
 

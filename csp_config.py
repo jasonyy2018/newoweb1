@@ -30,9 +30,10 @@ def get_csp_policy(strict=False):
         )
     else:
         # 宽松模式 - 允许内联脚本和样式，适合现有代码
+        # 但仍然限制不安全的eval和内联脚本
         return (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' "
+            "script-src 'self' 'unsafe-inline' "
             "https://cdn.tailwindcss.com "
             "https://cdn.jsdelivr.net "
             "https://mk.wisdomitc.com; "
@@ -61,7 +62,8 @@ def get_security_headers():
         'X-Frame-Options': 'SAMEORIGIN', 
         'X-XSS-Protection': '1; mode=block',
         'Referrer-Policy': 'strict-origin-when-cross-origin',
-        'Permissions-Policy': 'geolocation=(), microphone=(), camera=()'
+        'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+        'Strict-Transport-Security': 'max-age=31536000; includeSubDomains'
     }
 
 def apply_csp_to_response(response, strict=False):
@@ -75,11 +77,17 @@ def apply_csp_to_response(response, strict=False):
     Returns:
         response: 修改后的响应对象
     """
-    # 设置CSP头部
-    response.headers['Content-Security-Policy'] = get_csp_policy(strict)
-    
-    # 设置其他安全头部
-    for header, value in get_security_headers().items():
-        response.headers[header] = value
-    
-    return response
+    try:
+        # 设置CSP头部
+        response.headers['Content-Security-Policy'] = get_csp_policy(strict)
+        
+        # 设置其他安全头部
+        for header, value in get_security_headers().items():
+            response.headers[header] = value
+        
+        return response
+    except Exception as e:
+        # 如果设置安全头部失败，记录错误但不中断响应
+        import logging
+        logging.error(f"设置安全头部失败: {e}")
+        return response
