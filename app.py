@@ -88,6 +88,27 @@ def create_app():
     # 初始化Babel
     babel = Babel(app)
     
+    # 在Flask-Babel 3.1.0中，使用这种方式定义语言选择器
+    def get_locale():
+        # 首先检查URL参数
+        locale = request.args.get('lang')
+        if locale and locale in app.config['BABEL_SUPPORTED_LOCALES']:
+            session['language'] = locale
+            return locale
+        
+        # 检查session
+        if 'language' in session:
+            return session['language']
+        
+        # 尝试从浏览器Accept-Language头获取
+        try:
+            return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES']) or app.config['BABEL_DEFAULT_LOCALE']
+        except:
+            return app.config['BABEL_DEFAULT_LOCALE']
+    
+    # 注册语言选择器 - 使用新版本的正确方法
+    babel.init_app(app, locale_selector=get_locale)
+    
     def init_database():
         """确保PostgreSQL数据库已初始化"""
         try:
@@ -561,6 +582,18 @@ def create_app():
                 "timestamp": datetime.now().isoformat(),
                 "error": str(e)
             }), 500
+    
+    @app.route('/set_language/<language>')
+    def set_language(language=None):
+        """设置语言"""
+        if language and language in app.config['BABEL_SUPPORTED_LOCALES']:
+            session['language'] = language
+            flash(_('语言已切换为: %(language)s', language=language), 'info')
+        else:
+            flash(_('不支持的语言'), 'error')
+        
+        # 重定向回上一个页面或首页
+        return redirect(request.referrer or url_for('index'))
     
     @app.errorhandler(404)
     def page_not_found(e):
