@@ -6,14 +6,11 @@ AI Solutions for Business
 """
 
 import os
-import sqlite3
+import psycopg2
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, g, session, flash
 from flask_babel import Babel, _
 import json
 from datetime import datetime
-import logging
-from logging.handlers import RotatingFileHandler
-from typing import Any, Optional
 import mimetypes
 import hashlib
 
@@ -32,8 +29,14 @@ def create_app():
     app.config['BABEL_SUPPORTED_LOCALES'] = ['zh', 'en', 'ja']
     app.config['BABEL_DEFAULT_TIMEZONE'] = 'Asia/Shanghai'
     
-    # 数据库配置
-    app.config['DATABASE'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'consultations.db')
+    # PostgreSQL数据库配置
+    app.config['POSTGRESQL'] = {
+        'host': '156.238.249.149',
+        'port': 5432,
+        'database': 'aiow',
+        'user': 'aiow',
+        'password': 'EZH3HPYzy3QNGTEz'
+    }
     
     # Redis配置 - 使用环境变量或默认的外部Redis配置
     app.config['REDIS_URL'] = os.environ.get('REDIS_URL') or 'redis://redis_C7DGKB@156.238.249.149:6379/0'
@@ -49,13 +52,13 @@ def create_app():
     babel = Babel(app)
     
     def init_database():
-        """确保数据库已初始化"""
+        """确保PostgreSQL数据库已初始化"""
         try:
-            from database import init_db
+            from database_postgresql import init_db
             init_db()
-            app.logger.info('数据库初始化成功')
+            app.logger.info('PostgreSQL数据库初始化成功')
         except Exception as e:
-            app.logger.error(f'数据库初始化失败: {e}')
+            app.logger.error(f'PostgreSQL数据库初始化失败: {e}')
     
     # 尝试初始化Redis
     try:
@@ -72,17 +75,16 @@ def create_app():
         app.logger.error(f'Redis连接失败: {e}')
     
     def get_db():
-        """获取数据库连接"""
+        """获取PostgreSQL数据库连接"""
         if 'db' not in g:
             # 确保数据库已初始化
             init_database()
             
-            g.db = sqlite3.connect(app.config['DATABASE'])
-            g.db.row_factory = sqlite3.Row
+            g.db = psycopg2.connect(**app.config['POSTGRESQL'])
         return g.db
     
     def close_db(e=None):
-        """关闭数据库连接"""
+        """关闭PostgreSQL数据库连接"""
         db = g.pop('db', None)
         if db is not None:
             db.close()
@@ -157,9 +159,14 @@ def create_app():
             return redirect(url_for('admin_login'))
         
         # 这里应该添加身份验证
-        db = get_db()
-        consultations = db.execute('SELECT * FROM consultations ORDER BY timestamp DESC').fetchall()
-        return render_template('admin_consultations.html', consultations=consultations)
+        try:
+            from database_postgresql import get_all_consultations
+            consultations = get_all_consultations()
+            return render_template('admin_consultations.html', consultations=consultations)
+        except Exception as e:
+            app.logger.error(f'获取咨询信息失败: {e}')
+            flash(_('获取咨询信息失败'), 'error')
+            return render_template('admin_consultations.html', consultations=[])
     
     @app.route('/submit_consultation', methods=['POST'])
     def submit_consultation():
@@ -174,15 +181,17 @@ def create_app():
             
             app.logger.info(f'接收到咨询表单提交: name={name}, email={email}, company={company}, phone={phone}, service={service}')
             
-            # 保存到数据库
-            db = get_db()
-            db.execute(
-                'INSERT INTO consultations (name, email, company, phone, service, message) VALUES (?, ?, ?, ?, ?, ?)',
-                (name, email, company, phone, service, message)
-            )
-            db.commit()
-            
-            app.logger.info('咨询信息已成功保存到数据库')
+            # 保存到PostgreSQL数据库
+            try:
+                from database_postgresql import save_consultation
+                consultation_id = save_consultation(name, email, company, phone, service, message)
+                if consultation_id:
+                    app.logger.info(f'咨询信息已成功保存到PostgreSQL数据库，ID: {consultation_id}')
+                else:
+                    raise Exception("保存失败")
+            except Exception as e:
+                app.logger.error(f'保存到PostgreSQL失败: {e}')
+                raise e
             
             # 如果Redis可用，缓存咨询信息
             if getattr(app, 'redis_client', None) and REDIS_AVAILABLE and redis_module:
