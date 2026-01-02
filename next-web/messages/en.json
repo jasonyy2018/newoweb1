@@ -1,0 +1,42 @@
+{
+    "Common": {
+        "title": "Shanghai Weicheng Info Tech - WSAI",
+        "home": "Home",
+        "about": "About",
+        "solutions": "Solutions",
+        "cases": "Case Studies",
+        "contact": "Contact",
+        "consult": "Consult Expert",
+        "learnMore": "Learn More",
+        "submit": "Submit",
+        "success": "Success",
+        "cases_title": "Cases"
+    },
+    "Index": {
+        "hero_title": "AI Driven Digital Transformation",
+        "hero_subtitle": "Focusing on providing professional, customized AI solutions to help enterprises achieve business growth and value creation",
+        "about_title": "About WSAI",
+        "about_desc": "A high-tech enterprise focusing on AI solutions, committed to becoming a trusted AI solution expert for customers",
+        "mission_title": "Our Mission",
+        "mission_desc": "Empower enterprises to achieve digital transformation through cutting-edge AI technology, drive business growth and create greater value.",
+        "solutions_title": "AI Solutions",
+        "solutions_subtitle": "We provide professional, customized AI solutions to help enterprises solve core business challenges and achieve digital transformation"
+    },
+    "Contact": {
+        "title": "Contact Us",
+        "name": "Name",
+        "email": "Email",
+        "company": "Company",
+        "phone": "Phone",
+        "message": "Inquiry",
+        "submit": "Submit Inquiry",
+        "address": "1F, Building 10, Lane 4718, Gonghexin Road, Jing'an District, Shanghai"
+    },
+    "Solutions": {
+        "hero_desc": "Explore how we leverage AI technology to provide customized digital transformation solutions for various industries."
+    },
+    "Cases": {
+        "hero_desc": "Empowering customers across different industries to achieve breakthrough growth through our AI solutions.",
+        "view_more": "View More"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "Common": {
+        "title": "上海葳澄信息科技有限公司 - WSAI",
+        "home": "首页",
+        "about": "关于我们",
+        "solutions": "解决方案",
+        "cases": "成功案例",
+        "contact": "联系我们",
+        "consult": "咨询专家",
+        "learnMore": "了解更多",
+        "submit": "提交",
+        "success": "成功",
+        "cases_title": "案例"
+    },
+    "Index": {
+        "hero_title": "人工智能驱动 企业数字化转型",
+        "hero_subtitle": "专注于为企业提供专业、定制化的AI解决方案，助力企业实现业务增长与价值创造",
+        "about_title": "关于葳澄科技",
+        "about_desc": "专注于人工智能解决方案的高科技企业，致力于成为客户信赖的人工智能解决方案专家",
+        "mission_title": "我们的使命",
+        "mission_desc": "通过前沿的人工智能技术，赋能企业实现数字化转型，驱动业务增长并创造更大价值。",
+        "solutions_title": "AI 解决方案",
+        "solutions_subtitle": "我们提供专业、定制化的人工智能解决方案，帮助企业解决核心业务挑战，实现数字化转型"
+    },
+    "Contact": {
+        "title": "联系我们",
+        "name": "姓名",
+        "email": "邮箱",
+        "company": "公司名称",
+        "phone": "电话",
+        "message": "咨询内容",
+        "submit": "提交咨询",
+        "address": "上海市静安区共和新路4718弄10号1楼"
+    },
+    "Solutions": {
+        "hero_desc": "探索我们如何利用人工智能技术，为各行业提供定制化的数字化转型方案。"
+    },
+    "Cases": {
+        "hero_desc": "通过我们的 AI 解决方案，助力不同行业的客户实现跨越式增长。",
+        "view_more": "查看完整案例"
+    }
+}
