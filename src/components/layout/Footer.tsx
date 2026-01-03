@@ -54,8 +54,13 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:row justify-between items-center text-gray-500 text-sm">
-                    <p>© {new Date().getFullYear()} WSAI. All Rights Reserved.</p>
+                <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                    <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                        <p>© {new Date().getFullYear()} WSAI. All Rights Reserved.</p>
+                        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                            沪ICP备19026127号-1
+                        </a>
+                    </div>
                     <div className="flex space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

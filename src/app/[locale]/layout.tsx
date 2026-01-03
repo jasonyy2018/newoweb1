@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import FloatingCTA from '@/components/ui/FloatingCTA';
+import Script from 'next/script';
 import ConditionalLayout from '@/components/layout/ConditionalLayout';
 import type { Metadata, Viewport } from 'next';
 
@@ -109,8 +109,11 @@ export default async function LocaleLayout({
             <main>{children}</main>
 
             <ConditionalLayout excludePaths={['/admin']}>
+                <Script
+                    src="http://156.238.249.149:8082/chat/api/embed?protocol=http&host=156.238.249.149:8082&token=dfacb5320257c918"
+                    strategy="afterInteractive"
+                />
                 <Footer />
-                <FloatingCTA />
             </ConditionalLayout>
         </NextIntlClientProvider>
     );
