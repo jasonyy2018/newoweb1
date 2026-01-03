@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   next-web:
     build:
-      context: ./next-web
+      context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
