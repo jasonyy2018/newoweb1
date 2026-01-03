@@ -1,85 +1,54 @@
-# 使用Python官方镜像作为基础镜像
-FROM python:3.9-slim
-
-# 设置标签
-LABEL maintainer="jyu@wisdcomitc.com"
-LABEL description="上海葳澄信息科技有限公司网站 - AI Solutions for Business"
-LABEL version="1.0"
-
-# 设置工作目录
+# Install dependencies only when needed
+FROM node:18-alpine AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# 设置环境变量
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=production
+# Install dependencies based on the preferred package manager
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-# 安装系统依赖，包括curl用于健康检查
-RUN apt-get update && apt-get install -y \
-    gcc \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# 复制依赖文件
-COPY requirements.txt .
-
-# 升级pip并安装依赖
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
-
-# 复制应用代码（除了在.dockerignore中忽略的文件）
+# Rebuild the source code only when needed
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# 验证关键文件是否存在（修改为更健壮的方式）
-RUN echo "验证文件存在性:" && \
-    if [ -f "gunicorn.conf.py" ]; then \
-        echo "✅ gunicorn.conf.py 存在"; \
-    else \
-        echo "❌ gunicorn.conf.py 不存在"; \
-        ls -la; \
-        exit 1; \
-    fi && \
-    if [ -f "app.py" ]; then \
-        echo "✅ app.py 存在"; \
-    else \
-        echo "❌ app.py 不存在"; \
-        exit 1; \
-    fi && \
-    if [ -f "requirements.txt" ]; then \
-        echo "✅ requirements.txt 存在"; \
-    else \
-        echo "❌ requirements.txt 不存在"; \
-        exit 1; \
-    fi
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+# ENV NEXT_TELEMETRY_DISABLED 1
 
-# 创建非root用户
-RUN addgroup --gid 1000 appgroup && \
-    adduser --uid 1000 --gid 1000 --disabled-password --gecos '' appuser
+RUN npx prisma generate
+RUN npm run build
 
-# 确保日志和数据目录存在并有正确权限
-RUN mkdir -p /app/data && \
-    mkdir -p /app/logs && \
-    chown -R 1000:1000 /app/data /app/logs && \
-    chmod -R 755 /app/data /app/logs
+# Production image, copy all the files and run next
+FROM node:18-alpine AS runner
+WORKDIR /app
 
-# 更改整个应用目录的所有者
-RUN chown -R 1000:1000 /app
+ENV NODE_ENV production
+# Uncomment the following line in case you want to disable telemetry during runtime.
+# ENV NEXT_TELEMETRY_DISABLED 1
 
-# 切换到非root用户
-USER appuser
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# 暴露端口
-EXPOSE 5001
+COPY --from=builder /app/public ./public
 
-# 健证工作目录和文件
-RUN echo "工作目录内容:" && \
-    pwd && \
-    ls -la
+# Set the correct permission for prerender cache
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
 
-# 健康检查
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5001/health || exit 1
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# 启动应用
-CMD ["gunicorn", "--config", "gunicorn.conf.py", "app:app"]
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+# server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/next-config-js/output
+CMD ["node", "server.js"]

@@ -1,74 +1,36 @@
-# 上海葳澄信息科技有限公司网站
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## 项目概述
-这是一个基于Flask的网站项目，专注于提供人工智能解决方案。
+## Getting Started
 
-## 环境要求
-- Python 3.9+
-- Docker (可选，用于容器化部署)
-- Redis (可选，用于缓存功能)
+First, run the development server:
 
-## 本地开发
-
-### 安装依赖
 ```bash
-pip install -r requirements.txt
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### 运行应用
-```bash
-python app.py
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-应用将在 `http://localhost:5001` 上运行。
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Docker部署
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 快速开始
-```bash
-# 启动所有服务
-docker-compose up -d
+## Learn More
 
-# 查看服务状态
-docker-compose ps
-```
+To learn more about Next.js, take a look at the following resources:
 
-应用将在以下端口上运行：
-- `http://localhost` - 通过Nginx访问（推荐）
-- `http://localhost:5001` - 直接访问Flask应用
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### 详细部署指南
-请查看 [DOCKER_DEPLOYMENT_GUIDE.md](DOCKER_DEPLOYMENT_GUIDE.md) 获取完整的Docker部署说明。
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 常用命令
-```bash
-# 查看日志
-docker-compose logs -f
+## Deploy on Vercel
 
-# 停止服务
-docker-compose down
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-# 重建镜像
-docker-compose build
-
-# 重启特定服务
-docker-compose restart web
-```
-
-## 项目结构
-- `app.py` - 主应用文件
-- `templates/` - HTML模板文件
-- `static/` - 静态资源文件（CSS, JS, 图片等）
-- `requirements.txt` - Python依赖
-- `Dockerfile` - Docker配置文件
-- `docker-compose.yml` - Docker Compose配置文件
-- `nginx.conf` - Nginx配置文件
-
-## 功能特性
-- 多语言支持（中文、英文、日文）
-- 响应式设计
-- SEO优化和GEO（生成式引擎优化）
-- 案例研究展示
-- 联系表单
-- 管理员咨询查看功能
-- Redis缓存支持
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
