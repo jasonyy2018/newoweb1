@@ -29,7 +29,7 @@ export default function CaseStudiesPage() {
                         {t('hero_desc')}
                     </p>
                 </div>
-            </div>
+            </section>
 
             <div className="py-24 bg-light">
                 <div className="container mx-auto px-4">
@@ -75,6 +75,6 @@ export default function CaseStudiesPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
