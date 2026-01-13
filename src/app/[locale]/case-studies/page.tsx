@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -17,8 +19,8 @@ export default function CaseStudiesPage() {
     }));
 
     return (
-        <div className="bg-white">
-            <div className="bg-dark pt-32 pb-24 text-center">
+        <main className="min-h-screen">
+            <section className="bg-dark pt-32 pb-24 relative overflow-hidden">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                         {t('success')} <span className="text-primary">{t('cases_title')}</span>
