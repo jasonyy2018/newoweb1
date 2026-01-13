@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
         {/* Matomo */}
         <script
@@ -46,7 +46,7 @@ export default function RootLayout({
         </noscript>
         {/* End Matomo Code */}
       </head>
-      <body className="font-sans antialiased text-dark bg-light">
+      <body className="font-sans antialiased text-dark bg-light" suppressHydrationWarning>
         {children}
       </body>
     </html>

@@ -3,27 +3,35 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 export default function CaseStudiesPage() {
     const t = useTranslations('Cases');
+    const tCommon = useTranslations('Common');
 
     const caseKeys = ['manufacturing-quality-control', 'smart-retail-recommendation', 'predictive-maintenance-wind-farm'];
 
-    const cases = caseKeys.map(slug => ({
-        slug,
-        title: t(`items.${slug}.title`),
-        category: t(`items.${slug}.category`),
-        desc: t(`items.${slug}.desc`),
-        image: `/cases-${slug.split('-')[0]}.png`
-    }));
+    const cases = caseKeys.map(slug => {
+        let image = '';
+        if (slug.includes('manufacturing')) image = '/cases-manufacturing.png';
+        else if (slug.includes('retail')) image = '/cases-retail.png';
+        else if (slug.includes('wind')) image = '/cases-wind.png';
+
+        return {
+            slug,
+            title: t(`items.${slug}.title`),
+            category: t(`items.${slug}.category`),
+            desc: t(`items.${slug}.desc`),
+            image
+        };
+    });
 
     return (
         <main className="min-h-screen">
             <section className="bg-dark pt-32 pb-24 relative overflow-hidden">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                        {t('success')} <span className="text-primary">{t('cases_title')}</span>
+                        {tCommon('success')} <span className="text-primary">{tCommon('cases_title')}</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                         {t('hero_desc')}
