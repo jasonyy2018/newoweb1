@@ -3,53 +3,24 @@ import { Link } from '@/i18n/routing';
 import { BarChart, MessageSquare, Eye, TrendingUp, Zap, Cpu } from 'lucide-react';
 
 export default function SolutionsSection() {
-    const t = useTranslations('Index');
+    const t = useTranslations('Solutions');
     const tCommon = useTranslations('Common');
 
-    const solutions = [
-        {
-            id: 'data-analytics',
-            icon: BarChart,
-            title: '智能数据分析',
-            desc: '利用AI技术深度分析企业数据，挖掘潜在价值',
-            benefit: '增强决策精准度'
-        },
-        {
-            id: 'nlp',
-            icon: MessageSquare,
-            title: '自然语言处理',
-            desc: '开发智能客服、文本分析等应用，提升客户体验',
-            benefit: '节省 60% 人力'
-        },
-        {
-            id: 'computer-vision',
-            icon: Eye,
-            title: '计算机视觉',
-            desc: '实现图像识别、视频分析等功能，应用于智能制造',
-            benefit: '质检准确率 99.9%'
-        },
-        {
-            id: 'predictive-analytics',
-            icon: TrendingUp,
-            title: '预测性分析',
-            desc: '基于历史数据预测未来趋势，帮助企业提前规划',
-            benefit: '降低运营风险'
-        },
-        {
-            id: 'intelligent-automation',
-            icon: Zap,
-            title: '智能自动化',
-            desc: '结合RPA和AI技术，实现业务流程自动化',
-            benefit: '提升 300% 效率'
-        },
-        {
-            id: 'custom-ai-models',
-            icon: Cpu,
-            title: '定制化AI模型开发',
-            desc: '根据企业特定需求，开发定制化AI模型',
-            benefit: '100% 场景匹配'
-        }
+    const solutionKeys = [
+        { id: 'data-analytics', icon: BarChart },
+        { id: 'nlp', icon: MessageSquare },
+        { id: 'computer-vision', icon: Eye },
+        { id: 'predictive-analytics', icon: TrendingUp },
+        { id: 'intelligent-automation', icon: Zap },
+        { id: 'custom-ai-models', icon: Cpu }
     ];
+
+    const solutions = solutionKeys.map(item => ({
+        ...item,
+        title: t(`items.${item.id}.title`),
+        desc: t(`items.${item.id}.desc`),
+        benefit: t(`items.${item.id}.benefit`)
+    }));
 
     return (
         <section id="services" className="py-24 bg-light">

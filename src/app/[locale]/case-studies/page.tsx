@@ -1,74 +1,74 @@
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import Link from 'next/link';
 
 export default function CaseStudiesPage() {
-    const t = useTranslations('Common');
-    const tCases = useTranslations('Cases');
+    const t = useTranslations('Cases');
 
-    const cases = [
-        {
-            slug: 'manufacturing-quality-control',
-            title: '制造业智能质检系统',
-            category: '智能制造',
-            desc: '为某大型制造企业开发的基于计算机视觉的智能质检系统，替代传统人工质检，提高检测精度和效率。',
-            image: '/cases-manufacturing.png'
-        },
-        {
-            slug: 'smart-retail-recommendation',
-            title: '智慧零售推荐引擎',
-            category: '新零售',
-            desc: '利用深度学习技术分析海量用户行为数据，构建高精度的个性化推荐系统，显著提升转化率。',
-            image: '/cases-retail.png'
-        },
-        {
-            slug: 'predictive-maintenance-wind-farm',
-            title: '风电场预测性维护',
-            category: '新能源',
-            desc: '通过传感器数据实时监控风机状态，预测潜在故障，通过AI调度优化维护成本，降低停机时间。',
-            image: '/cases-wind.png'
-        }
-    ];
+    const caseKeys = ['manufacturing-quality-control', 'smart-retail-recommendation', 'predictive-maintenance-wind-farm'];
+
+    const cases = caseKeys.map(slug => ({
+        slug,
+        title: t(`items.${slug}.title`),
+        category: t(`items.${slug}.category`),
+        desc: t(`items.${slug}.desc`),
+        image: `/cases-${slug.split('-')[0]}.png`
+    }));
 
     return (
         <div className="bg-white">
-            <div className="bg-dark pt-40 pb-20">
+            <div className="bg-dark pt-32 pb-24 text-center">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
                         {t('success')} <span className="text-primary">{t('cases_title')}</span>
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-2xl">
-                        {tCases('hero_desc')}
+                    <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                        {t('hero_desc')}
                     </p>
                 </div>
             </div>
 
-            <div className="py-24 bg-light min-h-screen">
+            <div className="py-24 bg-light">
                 <div className="container mx-auto px-4">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {cases.map((item) => (
-                            <Link
-                                key={item.slug}
-                                href={`/case-studies/${item.slug}`}
-                                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 flex flex-col h-full"
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {cases.map((item, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all group border border-gray-100 h-full flex flex-col"
                             >
-                                <div className="aspect-video overflow-hidden relative">
+                                <div className="aspect-[4/3] overflow-hidden relative text-left">
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                     />
-                                    <div className="absolute top-4 left-4 bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">
-                                        {item.category}
+                                    <div className="absolute top-6 left-6">
+                                        <span className="px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-xs font-bold text-primary shadow-lg uppercase tracking-wider">
+                                            {item.category}
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="p-8 flex-grow flex flex-col">
-                                    <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
-                                    <p className="text-gray-500 mb-6 line-clamp-3 text-sm flex-grow">{item.desc}</p>
-                                    <span className="text-primary font-bold inline-flex items-center mt-auto">
-                                        {tCases('view_more')} <span className="ml-2">→</span>
-                                    </span>
+                                <div className="p-8 text-left flex flex-col flex-grow">
+                                    <h3 className="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-gray-500 mb-8 line-clamp-3 leading-relaxed flex-grow">
+                                        {item.desc}
+                                    </p>
+                                    <Link
+                                        href={`/case-studies/${item.slug}`}
+                                        className="inline-flex items-center font-bold text-primary group/link"
+                                    >
+                                        {t('view_more')}
+                                        <ArrowRight size={20} className="ml-2 group-hover/link:translate-x-1 transition-transform" />
+                                    </Link>
                                 </div>
-                            </Link>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

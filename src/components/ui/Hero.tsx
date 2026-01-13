@@ -51,7 +51,7 @@ export default function Hero() {
                         href="/solutions"
                         className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center"
                     >
-                        探索解决方案
+                        {tCommon('solutions')}
                     </Link>
                 </motion.div>
             </div>

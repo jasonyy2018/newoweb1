@@ -20,23 +20,244 @@
         "mission_title": "Our Mission",
         "mission_desc": "Empower enterprises to achieve digital transformation through cutting-edge AI technology, drive business growth and create greater value.",
         "solutions_title": "AI Solutions",
-        "solutions_subtitle": "We provide professional, customized AI solutions to help enterprises solve core business challenges and achieve digital transformation"
+        "solutions_subtitle": "We provide professional, customized AI solutions to help enterprises solve core business challenges and achieve digital transformation",
+        "stats": {
+            "cases": "Case Studies",
+            "experts": "AI Experts",
+            "satisfaction": "Satisfaction",
+            "experience": "Experience"
+        }
     },
     "Contact": {
         "title": "Contact Us",
+        "subtitle": "Whatever questions or needs you have, our team will provide you with professional consulting services.",
         "name": "Name",
         "email": "Email",
         "company": "Company",
         "phone": "Phone",
         "message": "Inquiry",
         "submit": "Submit Inquiry",
-        "address": "1F, Building 10, Lane 4718, Gonghexin Road, Jing'an District, Shanghai"
+        "address": "1F, Building 10, Lane 4718, Gonghexin Road, Jing'an District, Shanghai",
+        "address_label": "Address",
+        "phone_label": "Phone",
+        "email_label": "Email",
+        "success_title": "Thank you for your inquiry!",
+        "success_desc": "Our expert team will contact you as soon as possible.",
+        "resubmit": "Resubmit",
+        "error_submit": "Submission failed, please try again later.",
+        "response_24h": "Response within 24h",
+        "secure_data": "Secure data encryption",
+        "free_tech_plan": "Free technical plan"
     },
     "Solutions": {
-        "hero_desc": "Explore how we leverage AI technology to provide customized digital transformation solutions for various industries."
+        "hero_desc": "Explore how we leverage AI technology to provide customized digital transformation solutions for various industries.",
+        "cta_title": "Ready to start your AI journey?",
+        "cta_subtitle": "Our expert team will provide you with professional technical support and business advice.",
+        "cta_button": "Consult Now",
+        "items": {
+            "data-analytics": {
+                "title": "Intelligent Data Analytics",
+                "desc": "Leverage AI to deeply analyze enterprise data and discover potential value.",
+                "full_desc": "Leverage AI technology to deeply analyze enterprise data, discover potential value, and provide data-driven decision support.",
+                "benefit": "Enhance Decision Accuracy",
+                "features": [
+                    "Multi-dimensional Modeling",
+                    "Real-time Dashboard",
+                    "Anomaly Detection",
+                    "Association Rule Mining"
+                ]
+            },
+            "nlp": {
+                "title": "Natural Language Processing",
+                "desc": "Develop intelligent customer service and text analysis applications to improve customer experience.",
+                "full_desc": "Develop intelligent customer service, text analysis and other applications to improve customer experience and business processing efficiency.",
+                "benefit": "Save 60% Manpower",
+                "features": [
+                    "Semantic Understanding",
+                    "Sentiment Analysis",
+                    "Machine Translation",
+                    "Auto Summarization"
+                ]
+            },
+            "computer-vision": {
+                "title": "Computer Vision",
+                "desc": "Implement image recognition and video analysis for smart manufacturing.",
+                "full_desc": "Implement image recognition, video analysis and other functions, applied in smart manufacturing, security monitoring and other fields.",
+                "benefit": "99.9% Accuracy",
+                "features": [
+                    "Defect Detection",
+                    "Face Recognition",
+                    "Object Tracking",
+                    "Scene Segmentation"
+                ]
+            },
+            "predictive-analytics": {
+                "title": "Predictive Analytics",
+                "desc": "Forecast future trends based on historical data to help enterprises plan ahead.",
+                "full_desc": "Predict future trends based on historical data to help enterprises plan ahead and reduce risks.",
+                "benefit": "Reduce Operational Risk",
+                "features": [
+                    "Sales Forecasting",
+                    "Financial Risk Control",
+                    "Churn Prediction",
+                    "Maintenance Prediction"
+                ]
+            },
+            "intelligent-automation": {
+                "title": "Intelligent Automation",
+                "desc": "Combine RPA and AI to achieve business process automation.",
+                "full_desc": "Combine RPA and AI technology to achieve business process automation, improve efficiency and reduce costs.",
+                "benefit": "300% Efficiency Boost",
+                "features": [
+                    "Auto Doc Processing",
+                    "Process Optimization",
+                    "Decision Automation",
+                    "System Integration"
+                ]
+            },
+            "custom-ai-models": {
+                "title": "Custom AI Model Development",
+                "desc": "Develop custom AI models according to specific enterprise needs.",
+                "full_desc": "Develop customized AI models according to specific enterprise needs to solve unique business challenges.",
+                "benefit": "100% Scenario Match",
+                "features": [
+                    "Private Deployment",
+                    "Model Fine-tuning",
+                    "High Performance Inference",
+                    "Lifecycle Management"
+                ]
+            }
+        }
     },
     "Cases": {
         "hero_desc": "Empowering customers across different industries to achieve breakthrough growth through our AI solutions.",
-        "view_more": "View More"
+        "view_more": "View More",
+        "client": "Client",
+        "challenge": "Challenge",
+        "solution": "Solution",
+        "results": "Results",
+        "core_tech": "Core Features & Tech",
+        "cta_title": "Ready for digital transformation?",
+        "cta_button": "Consult Expert",
+        "items": {
+            "manufacturing-quality-control": {
+                "title": "Smart Quality Control for Manufacturing",
+                "category": "Smart Manufacturing",
+                "desc": "AI vision system developed for a large manufacturer to replace manual inspection.",
+                "full_desc": "Computer vision-based intelligent quality inspection system developed for a large manufacturing enterprise, replacing traditional manual inspection and improving detection accuracy and efficiency.",
+                "client": "A Large Precision Parts Manufacturer",
+                "challenge": "Traditional manual inspection is inefficient, subjective factors affect accuracy, and it becomes a bottleneck as capacity increases.",
+                "solution": "Deep learning-based CV solution, multi-station auto image acquisition, edge real-time inference, millisecond response.",
+                "results": [
+                    {
+                        "label": "Accuracy",
+                        "value": "99.9%",
+                        "desc": "Replaced original manual sampling"
+                    },
+                    {
+                        "label": "Efficiency",
+                        "value": "300%",
+                        "desc": "Significantly reduced production wait time"
+                    },
+                    {
+                        "label": "Cost Reduced",
+                        "value": "60%",
+                        "desc": "Lowered labor costs in inspection"
+                    }
+                ],
+                "features": [
+                    "Industrial Image Acquisition",
+                    "Custom Defect Models",
+                    "Real-time Alerting",
+                    "System Integration"
+                ]
+            },
+            "smart-retail-recommendation": {
+                "title": "Smart Retail Recommendation Engine",
+                "category": "New Retail",
+                "desc": "Deep learning analyzed user data to build high-precision personalized recommendations.",
+                "full_desc": "Leverage deep learning to analyze massive user behavior data, build high-precision personalized recommendation systems, and significantly improve conversion rates.",
+                "client": "A Well-known FMCG Brand",
+                "challenge": "Large online traffic but low conversion, manual recommendation cannot achieve individual personalization.",
+                "solution": "Deep reinforcement learning recommendation system, integrating history, real-time path and inventory.",
+                "results": [
+                    {
+                        "label": "Conversion",
+                        "value": "45%",
+                        "desc": "User click and purchase intent enhanced"
+                    },
+                    {
+                        "label": "AOV",
+                        "value": "+20%",
+                        "desc": "Cross-selling via associated recommendations"
+                    },
+                    {
+                        "label": "Response",
+                        "value": "<50ms",
+                        "desc": "Millisecond support for high concurrency"
+                    }
+                ],
+                "features": [
+                    "User Profiling",
+                    "Dynamic Weight Adjustment",
+                    "High Concurrent Gateway",
+                    "Auto A/B Testing"
+                ]
+            },
+            "predictive-maintenance-wind-farm": {
+                "title": "Predictive Maintenance for Wind Farms",
+                "category": "New Energy",
+                "desc": "Real-time monitoring of turbine status via sensors to predict potential failures.",
+                "full_desc": "Real-time monitoring of wind turbine status through sensor data, predicting potential failures and optimizing maintenance costs through AI scheduling.",
+                "client": "A Large State-owned Power Group",
+                "challenge": "Remote wind turbines have high repair costs after failure, and unplanned downtime causes huge losses.",
+                "solution": "IIoT sensors for vibration, temperature, and acoustics, using time-series models to predict failures 7-14 days ahead.",
+                "results": [
+                    {
+                        "label": "Downtime Reduced",
+                        "value": "35%",
+                        "desc": "Avoided sudden major failures"
+                    },
+                    {
+                        "label": "O&M Cost",
+                        "value": "-25%",
+                        "desc": "Shifted from repair to demand maintenance"
+                    },
+                    {
+                        "label": "Asset Life",
+                        "value": "+3yr",
+                        "desc": "Extended life of core transmission parts"
+                    }
+                ],
+                "features": [
+                    "Multi-modal Sensor Fusion",
+                    "Time-series Anomaly Detection",
+                    "Intelligent Scheduling",
+                    "Digital Twin Viz"
+                ]
+            }
+        }
+    },
+    "Testimonials": {
+        "section_title": "Customer Reviews",
+        "title": "AI Experts Trusted by Clients",
+        "subtitle": "We provide tech support for over 50 companies globally, driving growth through AI.",
+        "items": [
+            {
+                "name": "Mr. Zhang",
+                "position": "CTO of a Large Manufacturing Enterprise",
+                "content": "WSAI's AI defect detection solution greatly improved our automation level, reducing false alarms by 85%, exceeding our expectations."
+            },
+            {
+                "name": "Manager Li",
+                "position": "Operations Director of a Leading Retail Brand",
+                "content": "By integrating WSAI's recommendation engine, our conversion rate increased by 40% in one quarter. Their expertise and response time impressed us."
+            },
+            {
+                "name": "David Chen",
+                "position": "CEO of Digital Solutions Lab",
+                "content": "Professional, innovative, and highly reliable. WSAI is our go-to partner for complex AI and IoT integration projects."
+            }
+        ]
     }
 }

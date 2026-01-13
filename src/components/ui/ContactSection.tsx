@@ -12,10 +12,10 @@ export default function ContactSection() {
                     <div className="space-y-8">
                         <div>
                             <h2 className="text-4xl font-bold text-dark mb-6">
-                                联系<span className="text-primary">我们</span>
+                                {t('title')}
                             </h2>
                             <p className="text-gray-600 mb-10 text-lg">
-                                无论您有任何疑问或需求，我们的团队都将为您提供专业的咨询服务。
+                                {t('subtitle')}
                             </p>
 
                             <div className="space-y-8">
@@ -24,7 +24,7 @@ export default function ContactSection() {
                                         <MapPin size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-lg mb-1">公司地址</h4>
+                                        <h4 className="font-bold text-lg mb-1">{t('address_label')}</h4>
                                         <p className="text-gray-600">{t('address')}</p>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@ export default function ContactSection() {
                                         <Phone size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-lg mb-1">联系电话</h4>
+                                        <h4 className="font-bold text-lg mb-1">{t('phone_label')}</h4>
                                         <p className="text-gray-600">+86-18964673689</p>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@ export default function ContactSection() {
                                         <Mail size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-lg mb-1">电子邮箱</h4>
+                                        <h4 className="font-bold text-lg mb-1">{t('email_label')}</h4>
                                         <p className="text-gray-600">jyu@wisdomitc.com</p>
                                     </div>
                                 </div>

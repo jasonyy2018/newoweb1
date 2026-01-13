@@ -1,30 +1,17 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import { Quote, Star } from 'lucide-react';
-
-const testimonials = [
-    {
-        name: '张总',
-        position: '某大型制造企业 CTO',
-        content: 'WSAI 为我们提供的 AI 缺陷检测方案极大地提升了生产线的自动化水平，误报率降低了 85%，超出了我们的预期。',
-        stars: 5
-    },
-    {
-        name: '李经理',
-        position: '领先零售品牌 运营总监',
-        content: '通过接入 WSAI 的智能推荐引擎，我们的用户点击转化率在一季度内提升了 40%。他们的专业技术和快速响应给我们留下了深刻印象。',
-        stars: 5
-    },
-    {
-        name: 'David Chen',
-        position: 'Digital Solutions Lab CEO',
-        content: 'Professional, innovative, and highly reliable. WSAI is our go-to partner for complex AI and IoT integration projects.',
-        stars: 5
-    }
-];
+import { useTranslations } from 'next-intl';
 
 export default function Testimonials() {
+    const t = useTranslations('Testimonials');
+
+    const testimonialItems = [0, 1, 2].map(i => ({
+        name: t(`items.${i}.name`),
+        position: t(`items.${i}.position`),
+        content: t(`items.${i}.content`),
+        stars: 5
+    }));
+
     return (
         <section className="py-24 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
@@ -34,18 +21,18 @@ export default function Testimonials() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         className="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-wider text-primary uppercase bg-primary/10 rounded-full"
                     >
-                        客户评价
+                        {t('section_title')}
                     </motion.div>
                     <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">
-                        深得客户信赖的 AI 专家
+                        {t('title')}
                     </h2>
                     <p className="text-gray-500 max-w-2xl mx-auto">
-                        我们为全球超过 50 家企业提供技术支持，致力于通过人工智能驱动业务增长
+                        {t('subtitle')}
                     </p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                    {testimonials.map((item, index) => (
+                    {testimonialItems.map((item, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}

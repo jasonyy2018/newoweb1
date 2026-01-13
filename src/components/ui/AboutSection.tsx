@@ -5,12 +5,19 @@ export default function AboutSection() {
     const t = useTranslations('Index');
     const tCommon = useTranslations('Common');
 
+    const stats = [
+        { label: t('stats.cases'), value: '50+' },
+        { label: t('stats.experts'), value: '20+' },
+        { label: t('stats.satisfaction'), value: '98%' },
+        { label: t('stats.experience'), value: '5yr' }
+    ];
+
     return (
         <section id="about" className="py-24 bg-white">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-dark mb-4">
-                        {t('about_title').split('葳澄')[0]}<span className="text-primary">葳澄科技</span>
+                        {t('about_title')}
                     </h2>
                     <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
                     <p className="text-gray-600 max-w-3xl mx-auto">{t('about_desc')}</p>
@@ -32,18 +39,13 @@ export default function AboutSection() {
                     </div>
 
                     <div className="space-y-6">
-                        <h3 className="text-2xl font-bold text-dark">我们的使命</h3>
+                        <h3 className="text-2xl font-bold text-dark">{t('mission_title')}</h3>
                         <p className="text-gray-600 leading-relaxed text-lg">
                             {t('mission_desc')}
                         </p>
 
                         <div className="grid grid-cols-2 gap-4">
-                            {[
-                                { label: '成功案例', value: '50+' },
-                                { label: 'AI专家', value: '20+' },
-                                { label: '满意度', value: '98%' },
-                                { label: '行业经验', value: '5yr' }
-                            ].map((stat, i) => (
+                            {stats.map((stat, i) => (
                                 <div key={i} className="bg-light p-4 rounded-xl">
                                     <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
                                     <div className="text-sm text-gray-500">{stat.label}</div>

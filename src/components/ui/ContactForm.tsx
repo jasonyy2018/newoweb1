@@ -25,13 +25,13 @@ export default function ContactForm() {
             {status === 'success' ? (
                 <div className="text-center py-12">
                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold mb-2">感谢您的咨询！</h3>
-                    <p className="text-gray-600">我们的专家团队会尽快与您联系。</p>
+                    <h3 className="text-2xl font-bold mb-2">{t('success_title')}</h3>
+                    <p className="text-gray-600">{t('success_desc')}</p>
                     <button
                         onClick={() => setStatus('idle')}
                         className="mt-6 text-primary font-medium hover:underline"
                     >
-                        再次提交
+                        {t('resubmit')}
                     </button>
                 </div>
             ) : (
@@ -93,7 +93,7 @@ export default function ContactForm() {
                     {status === 'error' && (
                         <div className="flex items-center text-red-500 bg-red-50 p-4 rounded-xl">
                             <AlertCircle className="w-5 h-5 mr-2" />
-                            <span>提交失败，请稍后再试。</span>
+                            <span>{t('error_submit')}</span>
                         </div>
                     )}
 
@@ -116,15 +116,15 @@ export default function ContactForm() {
                         <div className="flex flex-wrap justify-center gap-6 text-xs text-gray-400">
                             <div className="flex items-center">
                                 <CheckCircle size={14} className="mr-1 text-green-500" />
-                                24小时内极速响应
+                                {t('response_24h')}
                             </div>
                             <div className="flex items-center">
                                 <CheckCircle size={14} className="mr-1 text-green-500" />
-                                隐私数据安全加密
+                                {t('secure_data')}
                             </div>
                             <div className="flex items-center">
                                 <CheckCircle size={14} className="mr-1 text-green-500" />
-                                免费初步技术方案
+                                {t('free_tech_plan')}
                             </div>
                         </div>
                     </div>
