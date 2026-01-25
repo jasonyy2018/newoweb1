@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Users, Zap, ArrowRight } from 'lucide-react';
+import { AdBanner } from '@/components/ads';
 
 export default function CaseDetailClient({
     caseData,
@@ -85,6 +86,8 @@ export default function CaseDetailClient({
                                 <p className="text-xl text-gray-600 leading-relaxed italic">
                                     "{caseData.challenge}"
                                 </p>
+                                {/* 内容中广告位 */}
+                                <AdBanner position="in-content" className="mt-8" />
                             </div>
 
                             <div>
@@ -118,6 +121,10 @@ export default function CaseDetailClient({
                                     {tCommon('consult')}
                                     <ArrowRight size={20} className="ml-2 group-hover/link:translate-x-1 transition-transform" />
                                 </button>
+                            </div>
+                            {/* 侧边栏广告位 */}
+                            <div className="mt-8">
+                                <AdBanner position="sidebar" />
                             </div>
                         </div>
                     </div>

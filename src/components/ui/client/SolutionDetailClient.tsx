@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { AdBanner } from '@/components/ads';
 
 export default function SolutionDetailClient({
     solution,
@@ -90,6 +91,9 @@ export default function SolutionDetailClient({
                     </div>
                 </div>
             </section>
+
+            {/* 广告位: 内容和CTA之间 */}
+            <AdBanner position="between-sections" />
 
             {/* CTA Section */}
             <section className="py-24 bg-light">

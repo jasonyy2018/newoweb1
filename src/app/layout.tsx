@@ -45,6 +45,15 @@ export default function RootLayout({
           </p>
         </noscript>
         {/* End Matomo Code */}
+
+        {/* Google AdSense */}
+        <meta name="google-adsense-account" content="ca-pub-1986601466530113" />
+        <meta name="fo-verify" content="b23d1ac6-0c50-4708-ab48-60d467b87316" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986601466530113"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="font-sans antialiased text-dark bg-light" suppressHydrationWarning>
         {children}
