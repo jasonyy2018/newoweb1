@@ -60,7 +60,7 @@ export default function SolutionDetailClient({
                             <div className="grid grid-cols-1 gap-6">
                                 {solution.features && solution.features.map((feature: string, index: number) => (
                                     <div key={index} className="flex items-center p-6 bg-light rounded-2xl border border-gray-100">
-                                        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 shrink-0">
                                             <CheckCircle2 size={20} />
                                         </div>
                                         <span className="text-lg text-gray-700 font-medium">{feature}</span>

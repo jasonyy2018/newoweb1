@@ -110,7 +110,7 @@ export default function CaseDetailClient({
                                 <ul className="space-y-6">
                                     {caseData.features && caseData.features.map((feature: string, index: number) => (
                                         <li key={index} className="flex items-start">
-                                            <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center text-primary mr-4 mt-1 flex-shrink-0">
+                                            <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center text-primary mr-4 mt-1 shrink-0">
                                                 <div className="w-2 h-2 bg-primary rounded-full"></div>
                                             </div>
                                             <span className="text-gray-300 font-medium">{feature}</span>
