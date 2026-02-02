@@ -39,6 +39,7 @@ export default function Header() {
                     <Link href="/#about" className="text-white hover:text-secondary transition-colors">{t('about')}</Link>
                     <Link href="/solutions" className="text-white hover:text-secondary transition-colors">{t('solutions')}</Link>
                     <Link href="/case-studies" className="text-white hover:text-secondary transition-colors">{t('cases')}</Link>
+                    <Link href="/blog" className="text-white hover:text-secondary transition-colors">{t('blog')}</Link>
                     <Link href="/#contact" className="text-white hover:text-secondary transition-colors">{t('contact')}</Link>
                 </nav>
 
@@ -62,6 +63,7 @@ export default function Header() {
                     <Link href="/#about" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('about')}</Link>
                     <Link href="/solutions" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('solutions')}</Link>
                     <Link href="/case-studies" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('cases')}</Link>
+                    <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('blog')}</Link>
                     <Link href="/#contact" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('contact')}</Link>
                     <div className="flex justify-between items-center pt-2">
                         <LanguageSwitcher />

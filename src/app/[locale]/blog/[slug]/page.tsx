@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `${article.title} | Tech Insights`,
+        title: `${article.title} | Tech Blog`,
         description: article.description,
         openGraph: {
             title: article.title,
@@ -64,7 +64,7 @@ export default async function ArticlePage({ params }: Props) {
             <div className="bg-dark pt-32 pb-16 md:pt-40 md:pb-20">
                 <div className="container mx-auto px-4">
                     <Link
-                        href="/articles"
+                        href="/blog"
                         className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors"
                     >
                         <svg
@@ -80,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
                                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
                             />
                         </svg>
-                        Back to Articles
+                        Back to Blog
                     </Link>
                     <div className="flex flex-wrap items-center gap-4 mb-6">
                         <span className="bg-primary/20 text-primary px-4 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wider">

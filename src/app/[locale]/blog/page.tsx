@@ -3,8 +3,8 @@ import { Link } from '@/i18n/routing';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Articles | Tech Insights',
-    description: 'Explore our latest articles on web development, design, and technology.',
+    title: 'Blog | Tech Insights',
+    description: 'Explore our latest blog posts on web development, design, and technology.',
 };
 
 export default async function ArticlesPage({
@@ -20,7 +20,7 @@ export default async function ArticlesPage({
             <div className="bg-dark pt-40 pb-20">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                        Articles
+                        Blog
                     </h1>
                     <p className="text-xl text-gray-400 max-w-2xl">
                         Latest insights, tutorials, and guides from our tech team.
@@ -33,7 +33,7 @@ export default async function ArticlesPage({
                     {articles.map((article) => (
                         <Link
                             key={article.id}
-                            href={`/articles/${article.slug}`}
+                            href={`/blog/${article.slug}`}
                             className="group block bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                         >
                             <div className="p-8">
@@ -52,7 +52,7 @@ export default async function ArticlesPage({
                                     {article.description}
                                 </p>
                                 <div className="flex items-center text-primary font-semibold">
-                                    Read Article
+                                    Read Post
                                     <svg
                                         className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
                                         fill="none"
