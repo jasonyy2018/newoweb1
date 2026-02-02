@@ -1,0 +1,13 @@
+{
+  "id": "ja-10",
+  "title": "フロントエンド向けDocker",
+  "slug": "docker-for-frontend",
+  "description": "フロントエンド向けDocker の包括的なガイド。",
+  "content": "<h2>はじめに</h2><p>2024年の <strong>フロントエンド向けDocker</strong> について...</p><p>これが詳細な内容です。</p>",
+  "author": "Tech Team",
+  "date": "2026-01-24T09:19:43.730Z",
+  "tags": [
+    "Tech",
+    "Dev"
+  ]
+}

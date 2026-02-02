@@ -1,5 +1,6 @@
 import '@/app/globals.css';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -11,8 +12,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
+        {/* 预连接优化 - AdSense 和 Google */}
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://www.googletagservices.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="dns-prefetch" href="https://tpc.googlesyndication.com" />
+
         {/* Matomo */}
-        <script
+        <Script
+          id="matomo-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               var _paq = window._paq = window._paq || [];
@@ -34,6 +44,18 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Google AdSense */}
+        <meta name="google-adsense-account" content="ca-pub-1986601466530113" />
+        <meta name="fo-verify" content="b23d1ac6-0c50-4708-ab48-60d467b87316" />
+        <Script
+          id="adsbygoogle-script"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986601466530113"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
+      </head>
+      <body className="font-sans antialiased text-dark bg-light" suppressHydrationWarning>
         <noscript>
           <p>
             <img
@@ -44,18 +66,6 @@ export default function RootLayout({
             />
           </p>
         </noscript>
-        {/* End Matomo Code */}
-
-        {/* Google AdSense */}
-        <meta name="google-adsense-account" content="ca-pub-1986601466530113" />
-        <meta name="fo-verify" content="b23d1ac6-0c50-4708-ab48-60d467b87316" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986601466530113"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <body className="font-sans antialiased text-dark bg-light" suppressHydrationWarning>
         {children}
       </body>
     </html>

@@ -5,7 +5,20 @@ import { adminLogout } from '@/app/actions/auth';
 import { updateConsultationStatus, deleteConsultation } from '@/app/actions/consultation';
 import { LogOut, Mail, Phone, Building2, Calendar, MessageSquare, CheckCircle, Trash2, Clock, Users, PlusCircle } from 'lucide-react';
 
+interface Consultation {
+    id: number;
+    name: string;
+    email: string;
+    phone?: string | null;
+    company?: string | null;
+    message?: string | null;
+    service?: string | null;
+    status: string;
+    createdAt: Date;
+}
+
 export default async function AdminConsultationsPage({
+
     params
 }: {
     params: Promise<{ locale: string }>;
@@ -25,16 +38,17 @@ export default async function AdminConsultationsPage({
 
     // 计算统计数据
     const totalConsultations = consultations.length;
-    const pendingConsultations = consultations.filter(c => c.status === 'pending').length;
-    const processedConsultations = consultations.filter(c => c.status === 'processed').length;
+    const pendingConsultations = consultations.filter((c: Consultation) => c.status === 'pending').length;
+    const processedConsultations = consultations.filter((c: Consultation) => c.status === 'processed').length;
 
     // 获取今日新增数
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const todayNew = consultations.filter(c => new Date(c.createdAt) >= today).length;
+    const todayNew = consultations.filter((c: Consultation) => new Date(c.createdAt) >= today).length;
 
     return (
         <div className="min-h-screen bg-slate-50">
+
             {/* 顶部导航栏 */}
             <nav className="bg-white/80 backdrop-blur-md shadow-sm border-b sticky top-0 z-30">
                 <div className="container mx-auto px-4 h-16 flex justify-between items-center">
@@ -106,11 +120,12 @@ export default async function AdminConsultationsPage({
                                 <MessageSquare className="w-10 h-10 text-slate-300" />
                             </div>
                             <h3 className="text-lg font-bold text-slate-800 mb-2">暂无记录</h3>
-                            <p className="text-slate-500 max-w-xs mx-auto">目前还没有收到任何咨询信息，当有新咨询时会在这里显示。</p>
+                        <p className="text-slate-500 max-w-xs mx-auto">目前还没有收到任何咨询信息，当有新咨询时会在这里显示。</p>
                         </div>
                     ) : (
-                        consultations.map((item) => (
+                        consultations.map((item: Consultation) => (
                             <div key={item.id} className="bg-white rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-slate-100 overflow-hidden hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.1)] transition-all duration-300 group">
+
                                 <div className="p-6 md:p-8">
                                     <div className="flex flex-col md:flex-row justify-between items-start gap-6">
                                         {/* 用户基本信息 */}
