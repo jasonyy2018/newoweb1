@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     environment:
       - DATABASE_URL=postgresql://aiow:EZH3HPYzy3QNGTEz@156.238.249.149:5432/aiow?schema=public
       - ADMIN_USERNAME=admin
