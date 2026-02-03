@@ -36,6 +36,15 @@ export default async function ArticlesPage({
                             href={`/blog/${article.slug}`}
                             className="group block bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                         >
+                            {article.image && (
+                                <div className="aspect-video overflow-hidden bg-gray-100">
+                                    <img
+                                        src={article.image}
+                                        alt={article.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                </div>
+                            )}
                             <div className="p-8">
                                 <div className="flex items-center gap-2 mb-4">
                                     <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">

@@ -10,6 +10,7 @@ export interface Article {
     author: string;
     date: string;
     tags: string[];
+    image?: string;
 }
 
 const getArticlesDirectory = (locale: string) => path.join(process.cwd(), 'src/content/articles', locale);

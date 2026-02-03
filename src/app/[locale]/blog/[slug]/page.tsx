@@ -99,6 +99,15 @@ export default async function ArticlePage({ params }: Props) {
                     <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl">
                         {article.title}
                     </h1>
+                    {article.image && (
+                        <div className="mt-12 rounded-2xl overflow-hidden shadow-2xl bg-gray-800 aspect-21/9">
+                            <img
+                                src={article.image}
+                                alt={article.title}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
 
