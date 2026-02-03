@@ -1,13 +1,13 @@
 {
   "id": "zh-39",
-  "title": "Jest测试指南",
   "slug": "jest-testing",
-  "description": "关于 Jest测试指南 的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>Jest测试指南</strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-26T09:19:43.673Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Jest Testing",
+  "description": "A comprehensive guide to Jest Testing.",
+  "content": "<h2>Introduction</h2><p>About <strong>Jest Testing</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

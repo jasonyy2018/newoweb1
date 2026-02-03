@@ -1,13 +1,13 @@
 {
   "id": "zh-46",
-  "title": "无服务器函数详解",
   "slug": "serverless-intro",
-  "description": "关于 无服务器函数详解 的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>无服务器函数详解</strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-19T09:19:43.679Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Serverless Intro",
+  "description": "A comprehensive guide to Serverless Intro.",
+  "content": "<h2>Introduction</h2><p>About <strong>Serverless Intro</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

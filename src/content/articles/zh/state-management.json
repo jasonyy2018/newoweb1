@@ -1,13 +1,13 @@
 {
   "id": "zh-13",
-  "title": "React状态管�?,
   "slug": "state-management",
-  "description": "关于 React状态管�?的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>React状态管�?/strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-21T09:19:43.652Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "State Management",
+  "description": "A comprehensive guide to State Management.",
+  "content": "<h2>Introduction</h2><p>About <strong>State Management</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

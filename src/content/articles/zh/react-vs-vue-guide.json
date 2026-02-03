@@ -1,13 +1,13 @@
 {
   "id": "zh-2",
-  "title": "React与Vue全方位对�?,
   "slug": "react-vs-vue-guide",
-  "description": "关于 React与Vue全方位对�?的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>React与Vue全方位对�?/strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-02-01T09:19:43.642Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "React vs Vue Guide",
+  "description": "A comprehensive guide to React vs Vue Guide.",
+  "content": "<h2>Introduction</h2><p>About <strong>React vs Vue Guide</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

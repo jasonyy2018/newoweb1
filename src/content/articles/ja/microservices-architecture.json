@@ -1,13 +1,13 @@
 {
   "id": "ja-19",
-  "title": "マイクロサービスアーキテクチ�?,
   "slug": "microservices-architecture",
-  "description": "マイクロサービスアーキテクチ�?の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>マイクロサービスアーキテクチ�?/strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-15T09:19:43.737Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Microservices Architecture",
+  "description": "A comprehensive guide to Microservices Architecture.",
+  "content": "<h2>Introduction</h2><p>About <strong>Microservices Architecture</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

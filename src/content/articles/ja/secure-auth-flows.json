@@ -1,13 +1,13 @@
 {
   "id": "ja-12",
-  "title": "安全な認証フロー",
   "slug": "secure-auth-flows",
-  "description": "安全な認証フロー の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>安全な認証フロー</strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-22T09:19:43.732Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Secure Auth Flows",
+  "description": "A comprehensive guide to Secure Auth Flows.",
+  "content": "<h2>Introduction</h2><p>About <strong>Secure Auth Flows</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

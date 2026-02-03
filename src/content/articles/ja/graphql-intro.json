@@ -1,13 +1,13 @@
 {
   "id": "ja-9",
-  "title": "GraphQL入門",
   "slug": "graphql-intro",
-  "description": "GraphQL入門 の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>GraphQL入門</strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-25T09:19:43.730Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "GraphQL Intro",
+  "description": "A comprehensive guide to GraphQL Intro.",
+  "content": "<h2>Introduction</h2><p>About <strong>GraphQL Intro</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

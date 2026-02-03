@@ -1,13 +1,13 @@
 {
   "id": "ja-20",
-  "title": "Vercelでのデプロイ",
   "slug": "vercel-deployment",
-  "description": "Vercelでのデプロイ の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>Vercelでのデプロイ</strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-14T09:19:43.738Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Vercel Deployment",
+  "description": "A comprehensive guide to Vercel Deployment.",
+  "content": "<h2>Introduction</h2><p>About <strong>Vercel Deployment</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

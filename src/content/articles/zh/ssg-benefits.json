@@ -1,13 +1,13 @@
 {
   "id": "zh-15",
-  "title": "SSG静态生成的好处",
   "slug": "ssg-benefits",
-  "description": "关于 SSG静态生成的好处 的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>SSG静态生成的好处</strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-19T09:19:43.654Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "SSG Benefits",
+  "description": "A comprehensive guide to SSG Benefits.",
+  "content": "<h2>Introduction</h2><p>About <strong>SSG Benefits</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

@@ -1,13 +1,13 @@
 {
   "id": "ja-15",
-  "title": "SSGのメリッ�?,
   "slug": "ssg-benefits",
-  "description": "SSGのメリッ�?の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>SSGのメリッ�?/strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-19T09:19:43.734Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "SSG Benefits",
+  "description": "A comprehensive guide to SSG Benefits.",
+  "content": "<h2>Introduction</h2><p>About <strong>SSG Benefits</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

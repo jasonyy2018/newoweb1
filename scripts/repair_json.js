@@ -12,31 +12,33 @@ dirs.forEach(dir => {
         const filePath = path.join(fullDir, file);
         let content = fs.readFileSync(filePath, 'utf8');
 
-        // 1. Basic string level fixes
+        // 1. Basic pre-parsing fixes
+        // Replace 2024 with 2026 if not already done
         content = content.replace(/2024/g, '2026');
-        content = content.replace(/\"date\":\s*\"202[0-9]-[^\"]+\"/g, '\"date\": \"2026-02-03T08:55:00.000Z\"');
+
+        // 2. The critical fix for "Bad control character":
+        // This usually means raw newlines or other characters < 32 inside a string literal.
+        // We will replace all raw newlines/tabs with spaces.
+        // This is safe for THESE specific JSON files because content/description shouldn't have raw unescaped newlines anyway.
+        const sanitized = content.replace(/[\x00-\x1F]+/g, ' ');
 
         try {
-            // Attempt 1: Parse string as is
-            const json = JSON.parse(content);
+            const json = JSON.parse(sanitized);
+            // Re-stringify with proper formatting to fix any structural issues
             fs.writeFileSync(filePath, JSON.stringify(json, null, 2), 'utf8');
-            console.log(`Clean Fixed: ${filePath}`);
-        } catch (e1) {
-            console.warn(`Attempting deep repair for: ${filePath} - ${e1.message}`);
+            console.log(`Successfully Repaired: ${filePath}`);
+        } catch (err) {
+            console.error(`!!!! FAILED TO REPAIR ${filePath}: ${err.message}`);
+            // If still failing, it might be due to missing quotes or braces.
+            // Let's try to see if it's missing a closing bracket.
             try {
-                // Attempt 2: Strip all newlines and multiple spaces to fix "Bad control character"
-                // This assumes the JSON is mostly okay but has raw newlines inside strings or between properties
-                let sanitized = content.replace(/\r?\n/g, ' ').replace(/\s+/g, ' ').trim();
-
-                // Sometimes characters like "" are corrupted markers. 
-                // We'll replace common corruption patterns if found.
-                sanitized = sanitized.replace(/\ufffd/g, ''); // Remove replacement character
-
-                const json = JSON.parse(sanitized);
-                fs.writeFileSync(filePath, JSON.stringify(json, null, 2), 'utf8');
-                console.log(`Deep Restored: ${filePath}`);
-            } catch (e2) {
-                console.error(`!!!! TOTAL FAILURE FOR ${filePath}: ${e2.message}`);
+                let secondTry = sanitized.trim();
+                if (!secondTry.endsWith('}')) secondTry += ' }';
+                const json2 = JSON.parse(secondTry);
+                fs.writeFileSync(filePath, JSON.stringify(json2, null, 2), 'utf8');
+                console.log(`Restored with Brackets: ${filePath}`);
+            } catch (err2) {
+                console.error(`!!!! UNRECOVERABLE: ${filePath}`);
             }
         }
     });

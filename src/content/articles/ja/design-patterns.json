@@ -1,13 +1,13 @@
 {
   "id": "ja-38",
-  "title": "デザインパターン",
   "slug": "design-patterns",
-  "description": "デザインパターン の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>デザインパターン</strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-27T09:19:43.751Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Design Patterns",
+  "description": "A comprehensive guide to Design Patterns.",
+  "content": "<h2>Introduction</h2><p>About <strong>Design Patterns</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

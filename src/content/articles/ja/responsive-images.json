@@ -1,13 +1,13 @@
 {
   "id": "ja-27",
-  "title": "レスポンシブ画像ガイ�?,
   "slug": "responsive-images",
-  "description": "レスポンシブ画像ガイ�?の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>レスポンシブ画像ガイ�?/strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-07T09:19:43.744Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Responsive Images",
+  "description": "A comprehensive guide to Responsive Images.",
+  "content": "<h2>Introduction</h2><p>About <strong>Responsive Images</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

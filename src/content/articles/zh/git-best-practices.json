@@ -1,13 +1,13 @@
 {
   "id": "zh-21",
-  "title": "Git最佳实�?,
   "slug": "git-best-practices",
-  "description": "关于 Git最佳实�?的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>Git最佳实�?/strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-13T09:19:43.658Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Git Best Practices",
+  "description": "A comprehensive guide to Git Best Practices.",
+  "content": "<h2>Introduction</h2><p>About <strong>Git Best Practices</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

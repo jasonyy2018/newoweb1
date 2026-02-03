@@ -1,13 +1,13 @@
 {
   "id": "ja-6",
-  "title": "Webパフォーマンスの最適化",
   "slug": "optimizing-web-performance",
-  "description": "Webパフォーマンスの最適化 の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>Webパフォーマンスの最適化</strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-28T09:19:43.727Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Optimizing Web Performance",
+  "description": "A comprehensive guide to Optimizing Web Performance.",
+  "content": "<h2>Introduction</h2><p>About <strong>Optimizing Web Performance</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

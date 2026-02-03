@@ -1,13 +1,13 @@
 {
   "id": "zh-37",
-  "title": "面向对象编程(OOP)",
   "slug": "oop-patterns",
-  "description": "关于 面向对象编程(OOP) 的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>面向对象编程(OOP)</strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-28T09:19:43.672Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "OOP Patterns",
+  "description": "A comprehensive guide to OOP Patterns.",
+  "content": "<h2>Introduction</h2><p>About <strong>OOP Patterns</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

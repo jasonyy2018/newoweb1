@@ -1,13 +1,13 @@
 {
   "id": "zh-47",
-  "title": "2026年边缘计�?,
   "slug": "edge-computing",
-  "description": "关于 2026年边缘计�?的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>2026年边缘计�?/strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-18T09:19:43.680Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Edge Computing",
+  "description": "A comprehensive guide to Edge Computing.",
+  "content": "<h2>Introduction</h2><p>About <strong>Edge Computing</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

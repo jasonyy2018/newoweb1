@@ -1,13 +1,13 @@
 {
   "id": "ja-33",
-  "title": "エンジニア面接対�?,
   "slug": "engineering-interviews",
-  "description": "エンジニア面接対�?の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>エンジニア面接対�?/strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-01T09:19:43.748Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Engineering Interviews",
+  "description": "A comprehensive guide to Engineering Interviews.",
+  "content": "<h2>Introduction</h2><p>About <strong>Engineering Interviews</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

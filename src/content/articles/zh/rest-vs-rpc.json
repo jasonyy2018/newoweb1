@@ -1,13 +1,13 @@
 {
   "id": "zh-43",
-  "title": "REST与RPC对比",
   "slug": "rest-vs-rpc",
-  "description": "关于 REST与RPC对比 的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>REST与RPC对比</strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-22T09:19:43.676Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "REST vs RPC",
+  "description": "A comprehensive guide to REST vs RPC.",
+  "content": "<h2>Introduction</h2><p>About <strong>REST vs RPC</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

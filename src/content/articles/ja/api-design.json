@@ -1,13 +1,13 @@
 {
   "id": "ja-42",
-  "title": "API設計ベストプラクティ�?,
   "slug": "api-design",
-  "description": "API設計ベストプラクティ�?の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>API設計ベストプラクティ�?/strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-23T09:19:43.753Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "API Design",
+  "description": "A comprehensive guide to API Design.",
+  "content": "<h2>Introduction</h2><p>About <strong>API Design</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

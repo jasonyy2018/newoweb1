@@ -1,13 +1,13 @@
 {
   "id": "zh-33",
-  "title": "软件工程师面试准�?,
   "slug": "engineering-interviews",
-  "description": "关于 软件工程师面试准�?的综合指南�?,
-  "content": "<h2>介绍</h2><p>关于2026年的 <strong>软件工程师面试准�?/strong>...</p><p>这就是详细内容�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-01T09:19:43.669Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Engineering Interviews",
+  "description": "A comprehensive guide to Engineering Interviews.",
+  "content": "<h2>Introduction</h2><p>About <strong>Engineering Interviews</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

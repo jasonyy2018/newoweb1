@@ -1,13 +1,13 @@
 {
   "id": "ja-47",
-  "title": "エッジコンピューティング 2026",
   "slug": "edge-computing",
-  "description": "エッジコンピューティング 2026 の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>エッジコンピューティング 2026</strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-12-18T09:19:43.758Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Edge Computing",
+  "description": "A comprehensive guide to Edge Computing.",
+  "content": "<h2>Introduction</h2><p>About <strong>Edge Computing</strong> in 2026...</p><p>This is the detailed content.</p>"
 }

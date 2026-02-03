@@ -1,13 +1,13 @@
 {
   "id": "ja-17",
-  "title": "アクセシビリティチェックリス�?,
   "slug": "accessibility-checklist",
-  "description": "アクセシビリティチェックリス�?の包括的なガイド�?,
-  "content": "<h2>はじめに</h2><p>2026年の <strong>アクセシビリティチェックリス�?/strong> について...</p><p>これが詳細な内容です�?/p>",
   "author": "Tech Team",
-  "date": "2026-01-17T09:19:43.736Z",
+  "date": "2026-02-03T08:55:00.000Z",
   "tags": [
     "Tech",
     "Dev"
-  ]
+  ],
+  "title": "Accessibility Checklist",
+  "description": "A comprehensive guide to Accessibility Checklist.",
+  "content": "<h2>Introduction</h2><p>About <strong>Accessibility Checklist</strong> in 2026...</p><p>This is the detailed content.</p>"
 }
