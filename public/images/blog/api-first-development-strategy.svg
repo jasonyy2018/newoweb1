@@ -1,0 +1,13 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg6)" rx="8"/>
+  <rect x="0" y="0" width="400" height="300" fill="black" opacity="0.15" rx="8"/>
+  <circle cx="200" cy="155" r="25" fill="none" stroke="#ffffff" stroke-width="3"/><circle cx="200" cy="155" r="10" fill="#ffffff"/>
+  <text x="200" y="250" text-anchor="middle" font-size="13" font-family="Arial, sans-serif" fill="#ffffff" opacity="0.9">Winning with an API-First Development...</text>
+  <text x="200" y="275" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" fill="#ffffff" opacity="0.6">WSAI Tech Blog</text>
+</svg>

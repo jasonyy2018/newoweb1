@@ -14,7 +14,10 @@
         "blog": "Blog",
         "pricing": "Pricing",
         "refund": "Refund Policy",
-        "hero_desc": "Professional AI solutions tailored to your business needs, driving growth and value creation."
+        "hero_desc": "Professional AI solutions tailored to your business needs, driving growth and value creation.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "allRightsReserved": "All Rights Reserved."
     },
     "Index": {
         "hero_title": "AI Driven Digital Transformation",
@@ -239,6 +242,294 @@
                     "Time-series Anomaly Detection",
                     "Intelligent Scheduling",
                     "Digital Twin Viz"
+                ]
+            },
+            "fintech-risk-assessment": {
+                "title": "AI-Driven FinTech Risk Assessment",
+                "category": "FinTech",
+                "desc": "Improving loan approval accuracy and speed using deep learning on alternative data.",
+                "full_desc": "Implemented a deep learning framework for a leading digital bank to assess credit risk using non-traditional data points, achieving faster approvals and lower default rates.",
+                "client": "Global Digital Bank",
+                "challenge": "High manual overhead in credit scoring and rising default rates among new-to-credit customers.",
+                "solution": "Neural network models analyzing transactional behavior and social graphs, integrated with existing banking core.",
+                "results": [
+                    {
+                        "label": "Default Rate",
+                        "value": "-15%",
+                        "desc": "Significant improvement in portfolio quality"
+                    },
+                    {
+                        "label": "Approval Time",
+                        "value": "30s",
+                        "desc": "Near-instant credit decisions"
+                    },
+                    {
+                        "label": "Data Depth",
+                        "value": "10x",
+                        "desc": "Analyzed over 1,000 behavior signals"
+                    }
+                ],
+                "features": [
+                    "Deep Neural Networks",
+                    "Real-time Credit Scoring",
+                    "Explainable AI (XAI)",
+                    "Fraud Detection"
+                ]
+            },
+            "logistics-route-optimization": {
+                "title": "Intelligent Logistics Route Optimization",
+                "category": "Logistics",
+                "desc": "Reducing fuel consumption and delivery times with AI-powered dynamic routing.",
+                "full_desc": "Developed a dynamic routing engine for a national logistics provider, utilizing real-time traffic data and weather patterns to optimize vehicle paths.",
+                "client": "National Logistics & Express Co.",
+                "challenge": "Rising fuel costs and customer demands for shorter delivery windows in urban areas.",
+                "solution": "Genetic algorithms and reinforcement learning models deployed on the edge for drivers.",
+                "results": [
+                    {
+                        "label": "Fuel Saved",
+                        "value": "20%",
+                        "desc": "Reduced annual operational expenses"
+                    },
+                    {
+                        "label": "On-time Rate",
+                        "value": "98%",
+                        "desc": "Improved customer satisfaction"
+                    },
+                    {
+                        "label": "Mileage",
+                        "value": "-12%",
+                        "desc": "Shortened average delivery path"
+                    }
+                ],
+                "features": [
+                    "Dynamic Routing",
+                    "Traffic Flux Prediction",
+                    "Geo-fencing",
+                    "Edge Computing"
+                ]
+            },
+            "precision-agriculture-yield": {
+                "title": "Precision Agriculture AI for Crop Yield",
+                "category": "Agriculture",
+                "desc": "Using satellite imagery and AI to optimize fertilizer usage and predict harvests.",
+                "full_desc": "An end-to-side AI system monitoring crop health via multi-spectral satellite imagery to provide precision farming prescriptions.",
+                "client": "Agricultural Cooperative Union",
+                "challenge": "Unclear soil health variations leading to over-fertilization and inconsistent yields.",
+                "solution": "Computer vision models identifying early signs of pests and nutrient deficiencies from orbit.",
+                "results": [
+                    {
+                        "label": "Yield Increase",
+                        "value": "18%",
+                        "desc": "Higher output per hectare"
+                    },
+                    {
+                        "label": "Water Savings",
+                        "value": "30%",
+                        "desc": "Optimized irrigation patterns"
+                    },
+                    {
+                        "label": "Chemicals",
+                        "value": "-25%",
+                        "desc": "Reduced environmental impact"
+                    }
+                ],
+                "features": [
+                    "Satellite Image Analysis",
+                    "Soil Sensing IoT",
+                    "Yield Prediction",
+                    "Pest Detection"
+                ]
+            },
+            "smart-education-personalized": {
+                "title": "AI-Powered Personalized Learning",
+                "category": "Education",
+                "desc": "Adaptive learning platform tailor-making education paths for K-12 students.",
+                "full_desc": "Creating a customized learning environment that adjusts difficulty and content based on individual student performance and engagement metrics.",
+                "client": "National E-Learning Provider",
+                "challenge": "One-size-fits-all curriculum leading to low engagement and uneven learning outcomes.",
+                "solution": "Knowledge graph-based recommendation engine tracking micro-competencies.",
+                "results": [
+                    {
+                        "label": "Test Scores",
+                        "value": "+22%",
+                        "desc": "Improved student performance"
+                    },
+                    {
+                        "label": "Engagement",
+                        "value": "2.5x",
+                        "desc": "Time spent on platform doubled"
+                    },
+                    {
+                        "label": "Completion",
+                        "value": "90%",
+                        "desc": "Course finish rate increased"
+                    }
+                ],
+                "features": [
+                    "Knowledge Graphs",
+                    "Adaptive Testing",
+                    "Sentiment Analysis",
+                    "Content Generation"
+                ]
+            },
+            "smart-grid-management": {
+                "title": "Smart Energy Grid Management",
+                "category": "Utilities",
+                "desc": "AI forecasting for load balancing and renewable energy integration.",
+                "full_desc": "Implementing a demand-side management system for a metropolitan power grid to stabilize load during peak hours using predictive AI.",
+                "client": "City Power & Water Bureau",
+                "challenge": "Grid instability due to fluctuating solar/wind input and unpredictable EV charging loads.",
+                "solution": "Ensemble time-series models for short-term load forecasting and automated battery dispatch.",
+                "results": [
+                    {
+                        "label": "Peak Load",
+                        "value": "-12%",
+                        "desc": "Reduced stress on grid infrastructure"
+                    },
+                    {
+                        "label": "Renewable Use",
+                        "value": "+40%",
+                        "desc": "Better integration of green energy"
+                    },
+                    {
+                        "label": "Outages",
+                        "value": "-20%",
+                        "desc": "Improved power reliability"
+                    }
+                ],
+                "features": [
+                    "Load Forecasting",
+                    "Grid Stability ML",
+                    "VPP Integration",
+                    "EV Management"
+                ]
+            },
+            "real-estate-valuation-ai": {
+                "title": "CV-Based Real Estate Valuation",
+                "category": "Real Estate",
+                "desc": "Automating property appraisal with computer vision and market trend analysis.",
+                "full_desc": "System analyzing street-view and indoor photos to estimate property value with human-level accuracy for insurance and mortgage providers.",
+                "client": "Leading Property Insurance Group",
+                "challenge": "Expensive and slow manual appraisals; high variance in subjective valuations.",
+                "solution": "Multi-modal model combining image features with geographic and topological data.",
+                "results": [
+                    {
+                        "label": "Appraisal Cost",
+                        "value": "-80%",
+                        "desc": "Massive saving on physical visits"
+                    },
+                    {
+                        "label": "Margin of Error",
+                        "value": "<3%",
+                        "desc": "Highly consistent valuations"
+                    },
+                    {
+                        "label": "Turnaround",
+                        "value": "Minutes",
+                        "desc": "Instant appraisal reports"
+                    }
+                ],
+                "features": [
+                    "Property Image Analysis",
+                    "Market Regression Models",
+                    "Object Feature Extraction",
+                    "PDF Report Generation"
+                ]
+            },
+            "media-sentiment-analysis": {
+                "title": "AI Sentiment Analysis for Global Media",
+                "category": "Media",
+                "desc": "Real-time tracking of brand perception across multiple languages and platforms.",
+                "full_desc": "Natural Language Processing (NLP) system monitoring thousands of news sources and social media streams to detect emerging public opinion shifts.",
+                "client": "Fortune 500 Consumer Brands",
+                "challenge": "Unable to keep up with the volume of global discourse; delayed response to PR crises.",
+                "solution": "Multi-lingual BERT models with entity-level sentiment tracking and anomaly alerting.",
+                "results": [
+                    {
+                        "label": "Response Time",
+                        "value": "15m",
+                        "desc": "Faster crisis identification"
+                    },
+                    {
+                        "label": "Accuracy",
+                        "value": "94%",
+                        "desc": "Precise sentiment detection"
+                    },
+                    {
+                        "label": "Channels",
+                        "value": "10k+",
+                        "desc": "Vast data coverage"
+                    }
+                ],
+                "features": [
+                    "Multi-lingual NLP",
+                    "Entity Tracking",
+                    "Crisis Alerting",
+                    "Clustering Algorithms"
+                ]
+            },
+            "hotel-guest-experience": {
+                "title": "Smart Hotel Guest Experience Automation",
+                "category": "Hospitality",
+                "desc": "AI concierge and room automation for premium guest satisfaction.",
+                "full_desc": "Deployment of AI-powered conversational systems and IoT room controls for a luxury hotel chain to personalize stay experiences.",
+                "client": "Elite Global Resorts",
+                "challenge": "Labor shortages in hospitality and rising guest expectations for digital-first service.",
+                "solution": "Voice-enabled AI concierge integrated with PMS and smart home devices in-room.",
+                "results": [
+                    {
+                        "label": "Staff Requests",
+                        "value": "-45%",
+                        "desc": "Automated basic inquiries"
+                    },
+                    {
+                        "label": "Guest Rating",
+                        "value": "4.9/5",
+                        "desc": "Record high satisfaction"
+                    },
+                    {
+                        "label": "Upsell Rev",
+                        "value": "+18%",
+                        "desc": "AI-driven service recommendations"
+                    }
+                ],
+                "features": [
+                    "Conversational AI",
+                    "IoT Control",
+                    "PMS Integration",
+                    "Contextual Marketing"
+                ]
+            },
+            "drone-powerline-inspection": {
+                "title": "Autonomous Drone Inspection for Power Lines",
+                "category": "Energy",
+                "desc": "AI-guided drones detecting damage in high-voltage grids without human control.",
+                "full_desc": "A fully autonomous edge-AI system for BVLOS (Beyond Visual Line of Sight) inspection of transmission towers and cables.",
+                "client": "Regional Power Transmission Co.",
+                "challenge": "Dangerous and expensive helicopter/manual tower climbs; large inspection backlog.",
+                "solution": "Edge deep learning on NVIDIA Orin, real-time defect detection for insulators and dampers.",
+                "results": [
+                    {
+                        "label": "Inspection Speed",
+                        "value": "5x",
+                        "desc": "Covers more grid in less time"
+                    },
+                    {
+                        "label": "Worker Accidents",
+                        "value": "Zero",
+                        "desc": "Eliminated high-altitude risk"
+                    },
+                    {
+                        "label": "Detection Rate",
+                        "value": "97%",
+                        "desc": "Found minor cracks early"
+                    }
+                ],
+                "features": [
+                    "Edge AI",
+                    "BVLOS Navigation",
+                    "Defect Segmentation",
+                    "Auto Flight Paths"
                 ]
             }
         }
@@ -572,5 +863,94 @@
                 "address": "1F, Building 10, Lane 4718, Gonghexin Road, Jing'an District, Shanghai"
             }
         }
+    },
+    "About": {
+        "hero_title": "Who We Are",
+        "hero_subtitle": "From AI vision to real-world impact — learn what drives WSAI forward.",
+        "story_label": "Our Story",
+        "story_title": "Building the Future of Enterprise AI Since 2019",
+        "story_p1": "Shanghai Weicheng Info Tech (WSAI) was founded in 2019 with a clear mission: make powerful AI accessible to every business. Starting from a small office in Jing'an District, our founding team — a group of AI researchers and seasoned enterprise architects — saw a gap between cutting-edge research and practical business applications.",
+        "story_p2": "Today, WSAI serves clients across manufacturing, finance, retail, logistics, and more. We have delivered over 50 successful AI projects, helped enterprises reduce operational costs by an average of 35%, and built long-term partnerships rooted in trust and measurable results.",
+        "story_p3": "We are not just a technology vendor. We are strategic partners who understand your industry, speak your language, and stay with you from initial consultation through deployment and beyond.",
+        "values_label": "Core Values",
+        "values_title": "The Principles That Guide Everything We Do",
+        "values": {
+            "innovation": {
+                "title": "Relentless Innovation",
+                "desc": "We invest heavily in R&D and continuously push the boundaries of what AI can achieve for businesses."
+            },
+            "trust": {
+                "title": "Trust & Transparency",
+                "desc": "We believe in honest communication, clear pricing, and sharing both the possibilities and the limitations of AI."
+            },
+            "impact": {
+                "title": "Measurable Impact",
+                "desc": "Every project we take on is measured by real KPIs — cost savings, efficiency gains, revenue growth. No vanity metrics."
+            },
+            "partnership": {
+                "title": "Long-term Partnership",
+                "desc": "We don't just deliver and leave. We maintain, optimize, and evolve our solutions as your business grows."
+            }
+        },
+        "team_label": "Leadership",
+        "team_title": "Meet the Team Behind WSAI",
+        "team_desc": "Our leadership brings together deep AI expertise, enterprise consulting experience, and a passion for solving real-world problems.",
+        "team": [
+            {
+                "name": "Jason Yu",
+                "role": "Founder & CEO",
+                "bio": "Serial entrepreneur with 10+ years in enterprise tech. Previously led AI product teams at major tech firms."
+            },
+            {
+                "name": "Dr. Li Wei",
+                "role": "Chief AI Scientist",
+                "bio": "PhD in Machine Learning from Fudan University. Published 20+ papers in top-tier AI conferences."
+            },
+            {
+                "name": "Sarah Chen",
+                "role": "VP of Engineering",
+                "bio": "15 years of experience building scalable cloud platforms. Former senior engineer at leading cloud providers."
+            },
+            {
+                "name": "Michael Wang",
+                "role": "Head of Business Development",
+                "bio": "Deep expertise in digital transformation strategy across manufacturing, finance, and retail sectors."
+            }
+        ],
+        "milestones_label": "Journey",
+        "milestones_title": "Key Milestones in Our Growth",
+        "milestones": [
+            {
+                "year": "2019",
+                "event": "WSAI founded in Shanghai Jing'an District"
+            },
+            {
+                "year": "2020",
+                "event": "First enterprise AI project delivered — smart manufacturing QC system"
+            },
+            {
+                "year": "2021",
+                "event": "Expanded to 3 industry verticals; team grew to 15 members"
+            },
+            {
+                "year": "2022",
+                "event": "Launched NLP and predictive analytics product lines"
+            },
+            {
+                "year": "2023",
+                "event": "50+ successful projects delivered; established Japan market presence"
+            },
+            {
+                "year": "2024",
+                "event": "Released proprietary AI platform for enterprise deployment"
+            },
+            {
+                "year": "2025",
+                "event": "Strategic partnerships with leading cloud providers; 98% client satisfaction rate"
+            }
+        ],
+        "cta_title": "Ready to Work With Us?",
+        "cta_desc": "Whether you're exploring AI for the first time or looking to scale an existing initiative, we'd love to hear from you.",
+        "cta_button": "Get in Touch"
     }
 }

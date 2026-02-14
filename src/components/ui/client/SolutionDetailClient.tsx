@@ -15,6 +15,7 @@ export default function SolutionDetailClient({
         desc: string;
         benefit: string;
         features: string[];
+        image: string;
     };
 }) {
     const t = useTranslations('Solutions');
@@ -24,26 +25,39 @@ export default function SolutionDetailClient({
         <main className="min-h-screen">
             {/* Hero Section */}
             <section className="bg-dark pt-32 pb-24 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/10 blur-[120px] rounded-full -mr-20 -mt-20"></div>
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full -mr-20 -mt-20"></div>
                 <div className="container mx-auto px-4 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="max-w-3xl"
-                    >
-                        <Link
-                            href="/solutions"
-                            className="text-primary font-medium mb-6 flex items-center hover:underline"
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="max-w-3xl"
                         >
-                            ← {tCommon('solutions')}
-                        </Link>
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                            {solution.title}
-                        </h1>
-                        <p className="text-xl text-gray-300 leading-relaxed">
-                            {solution.desc}
-                        </p>
-                    </motion.div>
+                            <Link
+                                href="/solutions"
+                                className="text-primary font-medium mb-6 flex items-center hover:underline"
+                            >
+                                ← {tCommon('solutions')}
+                            </Link>
+                            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                                {solution.title}
+                            </h1>
+                            <p className="text-xl text-gray-300 leading-relaxed">
+                                {solution.desc}
+                            </p>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="relative rounded-3xl overflow-hidden shadow-2xl aspect-4/3 border border-white/10"
+                        >
+                            <img
+                                src={solution.image}
+                                alt={solution.title}
+                                className="w-full h-full object-cover"
+                            />
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 

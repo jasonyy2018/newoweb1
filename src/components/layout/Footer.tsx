@@ -4,6 +4,7 @@ import { Link } from '@/i18n/routing';
 export default function Footer() {
     const tCommon = useTranslations('Common');
     const tContact = useTranslations('Contact');
+    const tSolutions = useTranslations('Solutions');
 
     return (
         <footer className="bg-dark text-white py-16">
@@ -28,10 +29,10 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-bold mb-6">{tCommon('solutions')}</h4>
                         <ul className="space-y-4">
-                            <li><Link href="/solutions/data-analytics" className="text-gray-400 hover:text-primary transition-colors">智能数据分析</Link></li>
-                            <li><Link href="/solutions/nlp" className="text-gray-400 hover:text-primary transition-colors">自然语言处理</Link></li>
-                            <li><Link href="/solutions/computer-vision" className="text-gray-400 hover:text-primary transition-colors">计算机视觉</Link></li>
-                            <li><Link href="/solutions/predictive-analytics" className="text-gray-400 hover:text-primary transition-colors">预测性分析</Link></li>
+                            <li><Link href="/solutions/data-analytics" className="text-gray-400 hover:text-primary transition-colors">{tSolutions('items.data-analytics.title')}</Link></li>
+                            <li><Link href="/solutions/nlp" className="text-gray-400 hover:text-primary transition-colors">{tSolutions('items.nlp.title')}</Link></li>
+                            <li><Link href="/solutions/computer-vision" className="text-gray-400 hover:text-primary transition-colors">{tSolutions('items.computer-vision.title')}</Link></li>
+                            <li><Link href="/solutions/predictive-analytics" className="text-gray-400 hover:text-primary transition-colors">{tSolutions('items.predictive-analytics.title')}</Link></li>
                         </ul>
                     </div>
 
@@ -56,18 +57,18 @@ export default function Footer() {
 
                 <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
                     <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
-                        <p>© {new Date().getFullYear()} WSAI. All Rights Reserved.</p>
+                        <p>© {new Date().getFullYear()} WSAI. {tCommon('allRightsReserved')}</p>
                         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                             沪ICP备19026127号-1
                         </a>
                     </div>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
-                        <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
-                        <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
-                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-                        <Link href="/refund" className="hover:text-white transition-colors">Refund Policy</Link>
+                        <Link href="/about" className="hover:text-white transition-colors">{tCommon('about')}</Link>
+                        <Link href="/contact" className="hover:text-white transition-colors">{tCommon('contact')}</Link>
+                        <Link href="/pricing" className="hover:text-white transition-colors">{tCommon('pricing')}</Link>
+                        <Link href="/privacy" className="hover:text-white transition-colors">{tCommon('privacy')}</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">{tCommon('terms')}</Link>
+                        <Link href="/refund" className="hover:text-white transition-colors">{tCommon('refund')}</Link>
                     </div>
                 </div>
             </div>

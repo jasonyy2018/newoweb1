@@ -9,13 +9,35 @@ export default function CaseStudiesPage() {
     const t = useTranslations('Cases');
     const tCommon = useTranslations('Common');
 
-    const caseKeys = ['manufacturing-quality-control', 'smart-retail-recommendation', 'predictive-maintenance-wind-farm'];
+    const caseKeys = [
+        'manufacturing-quality-control',
+        'smart-retail-recommendation',
+        'predictive-maintenance-wind-farm',
+        'fintech-risk-assessment',
+        'logistics-route-optimization',
+        'precision-agriculture-yield',
+        'smart-education-personalized',
+        'smart-grid-management',
+        'real-estate-valuation-ai',
+        'media-sentiment-analysis',
+        'hotel-guest-experience',
+        'drone-powerline-inspection'
+    ];
 
     const cases = caseKeys.map(slug => {
         let image = '';
-        if (slug.includes('manufacturing')) image = '/cases-manufacturing.png';
-        else if (slug.includes('retail')) image = '/cases-retail.png';
-        else if (slug.includes('wind')) image = '/cases-wind.png';
+        if (slug === 'manufacturing-quality-control') image = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'smart-retail-recommendation') image = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'predictive-maintenance-wind-farm') image = 'https://images.unsplash.com/photo-1548337138-e87d889cc369?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'fintech-risk-assessment') image = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'logistics-route-optimization') image = 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'precision-agriculture-yield') image = 'https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'smart-education-personalized') image = 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'smart-grid-management') image = 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'real-estate-valuation-ai') image = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'media-sentiment-analysis') image = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'hotel-guest-experience') image = 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80';
+        else if (slug === 'drone-powerline-inspection') image = 'https://images.unsplash.com/photo-1506941433945-99a2aa4bd50a?auto=format&fit=crop&w=800&q=80';
 
         return {
             slug,
@@ -51,7 +73,7 @@ export default function CaseStudiesPage() {
                                 transition={{ delay: index * 0.1 }}
                                 className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all group border border-gray-100 h-full flex flex-col"
                             >
-                                <div className="aspect-[4/3] overflow-hidden relative text-left">
+                                <div className="aspect-4/3 overflow-hidden relative text-left">
                                     <img
                                         src={item.image}
                                         alt={item.title}
@@ -63,11 +85,11 @@ export default function CaseStudiesPage() {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="p-8 text-left flex flex-col flex-grow">
+                                <div className="p-8 text-left flex flex-col grow">
                                     <h3 className="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors">
                                         {item.title}
                                     </h3>
-                                    <p className="text-gray-500 mb-8 line-clamp-3 leading-relaxed flex-grow">
+                                    <p className="text-gray-500 mb-8 line-clamp-3 leading-relaxed grow">
                                         {item.desc}
                                     </p>
                                     <Link

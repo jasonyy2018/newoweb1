@@ -36,7 +36,7 @@ export default function Header() {
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex space-x-8">
                     <Link href="/" className="text-white hover:text-secondary transition-colors">{t('home')}</Link>
-                    <Link href="/#about" className="text-white hover:text-secondary transition-colors">{t('about')}</Link>
+                    <Link href="/about" className="text-white hover:text-secondary transition-colors">{t('about')}</Link>
                     <Link href="/solutions" className="text-white hover:text-secondary transition-colors">{t('solutions')}</Link>
                     <Link href="/case-studies" className="text-white hover:text-secondary transition-colors">{t('cases')}</Link>
                     <Link href="/blog" className="text-white hover:text-secondary transition-colors">{t('blog')}</Link>
@@ -61,7 +61,7 @@ export default function Header() {
             <div className={`md:hidden bg-dark transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 py-4' : 'max-h-0 opacity-0'}`}>
                 <nav className="flex flex-col space-y-4 px-4 pb-4">
                     <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('home')}</Link>
-                    <Link href="/#about" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('about')}</Link>
+                    <Link href="/about" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('about')}</Link>
                     <Link href="/solutions" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('solutions')}</Link>
                     <Link href="/case-studies" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('cases')}</Link>
                     <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('blog')}</Link>

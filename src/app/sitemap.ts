@@ -44,5 +44,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
         });
     });
 
+    // Dynamic case study pages
+    const caseKeys = [
+        'manufacturing-quality-control',
+        'smart-retail-recommendation',
+        'predictive-maintenance-wind-farm',
+        'fintech-risk-assessment',
+        'logistics-route-optimization',
+        'precision-agriculture-yield',
+        'smart-education-personalized',
+        'smart-grid-management',
+        'real-estate-valuation-ai',
+        'media-sentiment-analysis',
+        'hotel-guest-experience',
+        'drone-powerline-inspection'
+    ];
+
+    locales.forEach((locale) => {
+        caseKeys.forEach((slug) => {
+            sitemapEntries.push({
+                url: `${baseUrl}/${locale}/case-studies/${slug}`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly',
+                priority: 0.7,
+            });
+        });
+    });
+
+    // Dynamic solution pages
+    const solutionKeys = [
+        'data-analytics',
+        'nlp',
+        'computer-vision',
+        'predictive-analytics',
+        'intelligent-automation',
+        'custom-ai-models'
+    ];
+
+    locales.forEach((locale) => {
+        solutionKeys.forEach((slug) => {
+            sitemapEntries.push({
+                url: `${baseUrl}/${locale}/solutions/${slug}`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly',
+                priority: 0.8,
+            });
+        });
+    });
+
     return sitemapEntries;
 }
