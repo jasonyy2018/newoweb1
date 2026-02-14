@@ -40,11 +40,12 @@ export default function Header() {
                     <Link href="/solutions" className="text-white hover:text-secondary transition-colors">{t('solutions')}</Link>
                     <Link href="/case-studies" className="text-white hover:text-secondary transition-colors">{t('cases')}</Link>
                     <Link href="/blog" className="text-white hover:text-secondary transition-colors">{t('blog')}</Link>
-                    <Link href="/#contact" className="text-white hover:text-secondary transition-colors">{t('contact')}</Link>
+                    <Link href="/pricing" className="text-white hover:text-secondary transition-colors">{t('pricing')}</Link>
+                    <Link href="/contact" className="text-white hover:text-secondary transition-colors">{t('contact')}</Link>
                 </nav>
 
                 <div className="hidden md:flex items-center space-x-6">
-                    <Link href="/#contact" className="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-secondary hover:text-white transition-all shadow-lg">
+                    <Link href="/contact" className="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-secondary hover:text-white transition-all shadow-lg">
                         {t('consult')}
                     </Link>
                     <LanguageSwitcher />
@@ -64,6 +65,7 @@ export default function Header() {
                     <Link href="/solutions" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('solutions')}</Link>
                     <Link href="/case-studies" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('cases')}</Link>
                     <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('blog')}</Link>
+                    <Link href="/pricing" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('pricing')}</Link>
                     <Link href="/#contact" onClick={() => setIsMenuOpen(false)} className="text-white py-2 border-b border-white/10">{t('contact')}</Link>
                     <div className="flex justify-between items-center pt-2">
                         <LanguageSwitcher />

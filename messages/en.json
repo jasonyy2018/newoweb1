@@ -11,7 +11,10 @@
         "submit": "Submit",
         "success": "Success",
         "cases_title": "Cases",
-        "blog": "Blog"
+        "blog": "Blog",
+        "pricing": "Pricing",
+        "refund": "Refund Policy",
+        "hero_desc": "Professional AI solutions tailored to your business needs, driving growth and value creation."
     },
     "Index": {
         "hero_title": "AI Driven Digital Transformation",
@@ -261,5 +264,313 @@
                 "content": "Professional, innovative, and highly reliable. WSAI is our go-to partner for complex AI and IoT integration projects."
             }
         ]
+    },
+    "Privacy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last Updated",
+        "sections": {
+            "intro": {
+                "title": "Introduction",
+                "content": "WSAI (\"we\", \"our\", or \"us\") respects your privacy and is committed to protecting your personal data. This privacy policy informs you how we look after your personal data when you visit our website and tells you about your privacy rights and how the law protects you."
+            },
+            "collection": {
+                "title": "Data We Collect",
+                "content": "We may collect, use, store and transfer different kinds of personal data about you, including:",
+                "items": {
+                    "personal": "Identity data: Name, username or similar identifier.",
+                    "usage": "Usage data: Information about how you use our website, products and services.",
+                    "device": "Technical data: IP address, browser type and version, time zone setting, operating system and platform.",
+                    "cookies": "Marketing and communications data: Your preferences in receiving marketing from us."
+                }
+            },
+            "usage": {
+                "title": "How We Use Your Data",
+                "content": "We use your data only for purposeful business operations:",
+                "items": {
+                    "services": "To provide and manage our AI solutions and services.",
+                    "communication": "To communicate regarding inquiries or support.",
+                    "improvement": "To improve our website functionality and user experience.",
+                    "analytics": "To analyze usage patterns for business optimization.",
+                    "legal": "To comply with legal obligations."
+                }
+            },
+            "cookies": {
+                "title": "Cookies and Tracking",
+                "content": "We use cookies and similar tracking technologies to track the activity on our service and hold certain information.",
+                "items": {
+                    "essential": "Essential cookies: Required for the website to function properly.",
+                    "analytics": "Analytics cookies: To understand visitor behavior.",
+                    "advertising": "Advertising cookies: To deliver relevant advertisements and measure effectiveness.",
+                    "preferences": "Preference cookies: To remember your settings."
+                },
+                "manage": "You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent."
+            },
+            "advertising": {
+                "title": "Advertising Partners",
+                "content": "We work with Google AdSense and other partners to display advertisements. These partners may use cookies to serve ads based on your previous visits to our website or other websites.",
+                "optOut": "You may opt out of personalized advertising by visiting Google's Ads Settings."
+            },
+            "sharing": {
+                "title": "Sharing Data",
+                "content": "We do not sell your personal data. We may share data with:",
+                "items": {
+                    "serviceProviders": "Trusted service providers who assist our operations.",
+                    "legal": "Legal authorities if required by law.",
+                    "business": "Relevant parties during business transfers or mergers.",
+                    "consent": "Any other party with your explicit consent."
+                }
+            },
+            "retention": {
+                "title": "Data Retention",
+                "content": "We will only retain your personal data for as long as necessary to fulfill the purposes we collected it for, including for the purposes of satisfying any legal, accounting, or reporting requirements."
+            },
+            "security": {
+                "title": "Data Security",
+                "content": "We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way."
+            },
+            "rights": {
+                "title": "Your Legal Rights",
+                "content": "Under certain circumstances, you have rights under data protection laws in relation to your personal data:",
+                "items": {
+                    "access": "Right to request access to your data.",
+                    "correction": "Right to request correction of your data.",
+                    "deletion": "Right to request erasure of your data.",
+                    "optOut": "Right to object to processing of your data.",
+                    "portability": "Right to request transfer of your data."
+                }
+            },
+            "children": {
+                "title": "Children's Privacy",
+                "content": "Our website is not intended for children, and we do not knowingly collect data relating to children."
+            },
+            "international": {
+                "title": "International Transfers",
+                "content": "Your information may be transferred to and maintained on computers located outside of your state or country where the data protection laws may differ."
+            },
+            "changes": {
+                "title": "Changes to Policy",
+                "content": "We may update our privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page."
+            },
+            "contact": {
+                "title": "Contact Us",
+                "content": "For any questions about this privacy policy, please contact us:",
+                "company": "Company",
+                "addressLabel": "Address",
+                "address": "1F, Building 10, Lane 4718, Gonghexin Road, Jing'an District, Shanghai"
+            }
+        }
+    },
+    "Terms": {
+        "title": "Terms of Service",
+        "lastUpdated": "Last Updated",
+        "sections": {
+            "acceptance": {
+                "title": "Acceptance of Terms",
+                "content": "By accessing or using our website and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services."
+            },
+            "services": {
+                "title": "Our Services",
+                "content": "We provide AI-driven digital transformation solutions, including but not limited to:",
+                "items": {
+                    "ai": "Artificial Intelligence solutions and model development.",
+                    "iot": "IoT system integration and support.",
+                    "software": "Custom software development.",
+                    "consulting": "IT consulting and strategy services."
+                }
+            },
+            "accounts": {
+                "title": "Account Responsibilities",
+                "content": "If you create an account, you are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer."
+            },
+            "intellectual": {
+                "title": "Intellectual Property",
+                "content": "All content on this website, including text, graphics, logos, and software, is the property of WSAI and protected by international copyright laws."
+            },
+            "license": {
+                "title": "Usage License",
+                "content": "We grant you a limited, non-exclusive, non-transferable license to access and use our website for personal or internal business purposes. You may not:",
+                "items": {
+                    "modify": "Modify or copy the materials.",
+                    "commercial": "Use the materials for any commercial purpose without consent.",
+                    "reverse": "Attempt to decompile or reverse engineer any software.",
+                    "reproduce": "Reproduce or bypass any technological measures."
+                }
+            },
+            "advertising": {
+                "title": "Advertisements",
+                "content": "Our services may include advertisements, which may be targeted to the content or information on the services, queries made through the services, or other information."
+            },
+            "prohibited": {
+                "title": "Prohibited Activities",
+                "content": "You agree not to engage in any of the following prohibited activities:",
+                "items": {
+                    "illegal": "Using services for any illegal purpose.",
+                    "infringe": "Infringing upon the rights of others.",
+                    "interfere": "Interfering with or disrupting the services.",
+                    "scrape": "Using automated systems to scrape data.",
+                    "malware": "Uploading viruses or harmful code."
+                }
+            },
+            "disclaimer": {
+                "title": "Disclaimer of Warranties",
+                "content": "Our services are provided \"AS IS\" and \"AS AVAILABLE\" without any warranties of any kind, express or implied."
+            },
+            "liability": {
+                "title": "Limitation of Liability",
+                "content": "In no event shall WSAI be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of the services."
+            },
+            "indemnification": {
+                "title": "Indemnification",
+                "content": "You agree to indemnify and hold WSAI harmless from any claims, losses, or damages resulting from your breach of these terms."
+            },
+            "thirdParty": {
+                "title": "Third-Party Links",
+                "content": "Our service may contain links to third-party websites that are not owned or controlled by WSAI. We have no control over their content or policies."
+            },
+            "governing": {
+                "title": "Governing Law",
+                "content": "These terms shall be governed by and construed in accordance with the laws of the People's Republic of China, without regard to its conflict of law provisions."
+            },
+            "changes": {
+                "title": "Changes into Terms",
+                "content": "We reserve the right to modify these terms at any time. Your continued use of the services after changes indicates your acceptance."
+            },
+            "contact": {
+                "title": "Contact Us",
+                "content": "If you have any questions about these Terms, please contact us:",
+                "company": "Company",
+                "addressLabel": "Address",
+                "address": "1F, Building 10, Lane 4718, Gonghexin Road, Jing'an District, Shanghai"
+            }
+        }
+    },
+    "Pricing": {
+        "title": "Pencil Pen Importer",
+        "subtitle": "Seamlessly import .pen design files into Figma. Preserve layers, styles, and layouts with pixel-perfect accuracy.",
+        "features": {
+            "title": "Why Pencil Pen Importer?",
+            "subtitle": "Bridge the gap between Pencil and Figma with a powerful, reliable import tool.",
+            "items": {
+                "import": {
+                    "title": "One-Click Import",
+                    "desc": "Import .pen files directly into Figma with a single click. No manual recreation needed."
+                },
+                "styles": {
+                    "title": "Style Preservation",
+                    "desc": "Colors, gradients, typography, and effects are accurately mapped to Figma equivalents."
+                },
+                "layout": {
+                    "title": "Layout Fidelity",
+                    "desc": "Auto-layout, constraints, and component hierarchy are maintained during import."
+                }
+            }
+        },
+        "plans": {
+            "title": "Simple, Transparent Pricing",
+            "subtitle": "Choose the plan that fits your workflow. Start free, upgrade when you need more.",
+            "free": {
+                "name": "Starter",
+                "price": "$0",
+                "desc": "Perfect for trying out the plugin and small projects.",
+                "features": {
+                    "f1": "Import up to 5 files per month",
+                    "f2": "Basic layer and style preservation",
+                    "f3": "Community support"
+                },
+                "cta": "Install Free on Figma"
+            },
+            "pro": {
+                "badge": "MOST POPULAR",
+                "name": "Pro",
+                "price": "$9",
+                "period": "/ month",
+                "desc": "For professionals and teams who need unlimited power.",
+                "features": {
+                    "f1": "Unlimited file imports",
+                    "f2": "Full style & layout preservation",
+                    "f3": "Component instance mapping",
+                    "f4": "Batch import support",
+                    "f5": "Priority email support"
+                },
+                "cta": "Get Pro — Start Free Trial"
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "items": {
+                "q1": {
+                    "q": "What is a .pen file?",
+                    "a": ".pen is the native file format used by Pencil, a modern UI design tool. The Pencil Pen Importer allows you to bring these designs into Figma without losing any detail."
+                },
+                "q2": {
+                    "q": "Can I cancel my subscription at any time?",
+                    "a": "Yes. You can cancel your Pro subscription at any time. You'll continue to have access until the end of your current billing period. See our Refund Policy for details."
+                },
+                "q3": {
+                    "q": "Is the free plan limited?",
+                    "a": "The Starter plan includes 5 file imports per month with basic style preservation. For unlimited imports and advanced features, consider upgrading to Pro."
+                },
+                "q4": {
+                    "q": "How do I install the plugin?",
+                    "a": "Click the 'Install Free on Figma' button to visit the Figma Community page. From there, click 'Try it out' to add the plugin to your Figma workspace."
+                }
+            }
+        }
+    },
+    "Refund": {
+        "title": "Refund Policy",
+        "lastUpdated": "Last Updated",
+        "sections": {
+            "intro": {
+                "title": "Overview",
+                "content": "At WSAI, we strive to ensure your satisfaction with our products and services. This Refund Policy outlines how refunds are handled for digital products purchased through our platform, including subscriptions to the Pencil Pen Importer Figma plugin."
+            },
+            "eligibility": {
+                "title": "Refund Eligibility",
+                "content": "You may request a refund under the following conditions:",
+                "items": {
+                    "timeframe": "The refund request is submitted within 14 days of the original purchase date.",
+                    "reason": "The product does not function as described or there is a significant technical issue we cannot resolve.",
+                    "usage": "The product or service has not been substantially consumed or used."
+                }
+            },
+            "nonRefundable": {
+                "title": "Non-Refundable Items",
+                "content": "The following are not eligible for refunds:",
+                "items": {
+                    "expired": "Requests made more than 14 days after purchase.",
+                    "violation": "Accounts terminated for violation of our Terms of Service.",
+                    "consumed": "Services that have been fully delivered or consumed (e.g., one-time consulting sessions)."
+                }
+            },
+            "process": {
+                "title": "How to Request a Refund",
+                "content": "To request a refund, please follow these steps:",
+                "steps": {
+                    "step1": "Email us at jyu@wisdomitc.com with the subject line \"Refund Request\" and include your order details.",
+                    "step2": "Our team will review your request within 3 business days and may ask for additional information.",
+                    "step3": "If approved, the refund will be processed to your original payment method."
+                }
+            },
+            "timeline": {
+                "title": "Refund Timeline",
+                "content": "Once approved, refunds are typically processed within 5–10 business days. The exact timing depends on your payment provider. You will receive email confirmation once the refund has been issued."
+            },
+            "cancellation": {
+                "title": "Subscription Cancellations",
+                "content": "You may cancel your subscription at any time. Upon cancellation, you will retain access to the service until the end of your current billing period. No partial refunds are issued for unused portions of a billing cycle, unless required by applicable law."
+            },
+            "changes": {
+                "title": "Changes to This Policy",
+                "content": "We reserve the right to update this Refund Policy at any time. Any changes will be posted on this page with an updated revision date. Continued use of our services after changes constitutes acceptance of the revised policy."
+            },
+            "contact": {
+                "title": "Contact Us",
+                "content": "If you have any questions about this Refund Policy, please contact us:",
+                "company": "Company",
+                "addressLabel": "Address",
+                "address": "1F, Building 10, Lane 4718, Gonghexin Road, Jing'an District, Shanghai"
+            }
+        }
     }
 }

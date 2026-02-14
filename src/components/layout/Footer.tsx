@@ -62,8 +62,12 @@ export default function Footer() {
                         </a>
                     </div>
                     <div className="flex space-x-6 mt-4 md:mt-0">
+                        <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
+                        <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+                        <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+                        <Link href="/refund" className="hover:text-white transition-colors">Refund Policy</Link>
                     </div>
                 </div>
             </div>

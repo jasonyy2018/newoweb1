@@ -80,8 +80,8 @@ export default async function LocaleLayout({
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "WSAI",
-        "url": "https://www.wsai.example.com",
-        "logo": "https://www.wsai.example.com/logo.png",
+        "url": "https://www.wisdomitc.com",
+        "logo": "https://www.wisdomitc.com/logo.png",
         "description": "Artificial Intelligence Powered Digital Transformation Expert",
         "address": {
             "@type": "PostalAddress",
