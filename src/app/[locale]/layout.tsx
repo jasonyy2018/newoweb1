@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import Script from 'next/script';
+import AiChatWidget from '@/components/chat/AiChatWidget';
 import ConditionalLayout from '@/components/layout/ConditionalLayout';
 import type { Metadata, Viewport } from 'next';
 
@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             : "WSAI提供专业的人工智能解决方案、IoT系统集成及定制化软件开发，助力企业实现智慧数字化转型。";
 
     return {
+        metadataBase: new URL('https://www.wisdomitc.com'),
         title,
         description,
         keywords: ["AI solutions", "Digital Transformation", "IoT", "Software Development", "Artificial Intelligence", "人工智能", "数字化转型", "物联网"],
@@ -109,10 +110,7 @@ export default async function LocaleLayout({
             <main>{children}</main>
 
             <ConditionalLayout excludePaths={['/admin']}>
-                <Script
-                    src="http://156.238.249.149:8082/chat/api/embed?protocol=http&host=156.238.249.149:8082&token=dfacb5320257c918"
-                    strategy="afterInteractive"
-                />
+                <AiChatWidget />
                 <Footer />
             </ConditionalLayout>
         </NextIntlClientProvider>

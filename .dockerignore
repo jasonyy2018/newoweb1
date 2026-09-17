@@ -1,39 +1,30 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Distribution / packaging
-.Python
+# Next.js build output & cache
+.next/
+out/
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual environment
-.venv/
-venv/
-ENV/
-env/
+# Version control
+.git/
+.gitignore
+.gitattributes
 
-# IDE files
-.idea/
-.vscode/
-*.swp
-*.swo
+# Environment & local secret files
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# OS generated files
+# Operating System & IDE
 .DS_Store
 .DS_Store?
 ._*
@@ -41,22 +32,15 @@ env/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Git files
-.git/
-
-# Flask development files
-.flaskenv
-
-# CodeBuddy files
+.idea/
+.vscode/
+*.swp
+*.swo
 .codebuddy/
+.qoder/
 
-# Log files
+# Logs & temporary files
 *.log
 logs/
-
-# Data files
-data/
-
-# Environment files
-.env
+reports/
+*.tsbuildinfo

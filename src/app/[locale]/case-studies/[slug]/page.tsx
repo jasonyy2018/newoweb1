@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import CaseDetailClient from '@/components/ui/client/CaseDetailClient';
+import EnterpriseJsonLd from '@/components/geo/EnterpriseJsonLd';
 
 export async function generateMetadata({
     params
@@ -67,8 +68,29 @@ export default async function CaseDetail({ params }: { params: Promise<{ locale:
     }
 
     return (
-        <CaseDetailClient
-            caseData={caseData}
-        />
+        <>
+            <EnterpriseJsonLd
+                type="case-study"
+                breadcrumbs={[
+                    { name: 'Home', url: `/${locale}` },
+                    { name: tCommon('case_studies'), url: `/${locale}/case-studies` },
+                    { name: caseData.title, url: `/${locale}/case-studies/${slug}` },
+                ]}
+                caseStudy={{
+                    title: caseData.title,
+                    client: caseData.client,
+                    industry: caseData.category,
+                    challenge: caseData.challenge,
+                    solution: caseData.solution,
+                    url: `/${locale}/case-studies/${slug}`,
+                    image: caseData.image,
+                    results: caseData.results,
+                }}
+            />
+            <CaseDetailClient
+                caseData={caseData}
+                locale={locale}
+            />
+        </>
     );
 }

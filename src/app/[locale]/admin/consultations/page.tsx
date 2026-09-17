@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers';
 import { redirect } from '@/i18n/routing';
 import prisma from '@/lib/prisma/client';
-import { adminLogout } from '@/app/actions/auth';
 import { updateConsultationStatus, deleteConsultation } from '@/app/actions/consultation';
-import { LogOut, Mail, Phone, Building2, Calendar, MessageSquare, CheckCircle, Trash2, Clock, Users, PlusCircle } from 'lucide-react';
+import { Mail, Phone, Building2, Calendar, MessageSquare, CheckCircle, Trash2, Clock, Users, PlusCircle } from 'lucide-react';
+import AdminNav from '@/components/admin/AdminNav';
 
 interface Consultation {
     id: number;
@@ -48,29 +48,8 @@ export default async function AdminConsultationsPage({
 
     return (
         <div className="min-h-screen bg-slate-50">
-
             {/* 顶部导航栏 */}
-            <nav className="bg-white/80 backdrop-blur-md shadow-sm border-b sticky top-0 z-30">
-                <div className="container mx-auto px-4 h-16 flex justify-between items-center">
-                    <div className="flex items-center space-x-2">
-                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
-                            <span className="font-bold text-sm">A</span>
-                        </div>
-                        <h1 className="text-xl font-extrabold text-slate-800 tracking-tight">
-                            咨询管理 <span className="text-slate-400 font-medium text-sm ml-1">Dashboard</span>
-                        </h1>
-                    </div>
-                    <form action={async () => {
-                        'use server';
-                        await adminLogout(locale);
-                    }}>
-                        <button className="flex items-center space-x-2 px-4 py-2 text-slate-500 hover:text-red-500 hover:bg-red-50 transition-all rounded-lg font-semibold text-sm">
-                            <LogOut size={18} />
-                            <span>退出登录</span>
-                        </button>
-                    </form>
-                </div>
-            </nav>
+            <AdminNav currentTab="consultations" locale={locale} />
 
             <main className="container mx-auto px-4 py-8">
                 {/* 统计仪表面板 */}

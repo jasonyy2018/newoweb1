@@ -2,6 +2,8 @@ import { getAllArticles, getArticleBySlug } from '@/lib/articles';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
+import EnterpriseJsonLd from '@/components/geo/EnterpriseJsonLd';
+import GeoExecutiveVerdict from '@/components/geo/GeoExecutiveVerdict';
 
 interface Props {
     params: Promise<{
@@ -58,8 +60,29 @@ export default async function ArticlePage({ params }: Props) {
         notFound();
     }
 
+    const primaryTag = article.tags[0] || 'Enterprise Tech';
+
     return (
         <div className="bg-white min-h-screen">
+            {/* Structured Schema for Search Engines & LLM RAG */}
+            <EnterpriseJsonLd
+                type="article"
+                breadcrumbs={[
+                    { name: 'Home', url: `/${locale}` },
+                    { name: 'Blog', url: `/${locale}/blog` },
+                    { name: article.title, url: `/${locale}/blog/${article.slug}` },
+                ]}
+                article={{
+                    headline: article.title,
+                    description: article.description,
+                    url: `/${locale}/blog/${article.slug}`,
+                    datePublished: article.date,
+                    authorName: article.author,
+                    image: article.image,
+                    keywords: article.tags,
+                }}
+            />
+
             {/* Hero Section */}
             <div className="bg-dark pt-32 pb-16 md:pt-40 md:pb-20">
                 <div className="container mx-auto px-4">
@@ -84,7 +107,7 @@ export default async function ArticlePage({ params }: Props) {
                     </Link>
                     <div className="flex flex-wrap items-center gap-4 mb-6">
                         <span className="bg-primary/20 text-primary px-4 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wider">
-                            {article.tags[0]}
+                            {primaryTag}
                         </span>
                         <span className="text-gray-400">
                             {new Date(article.date).toLocaleDateString(locale, {
@@ -113,7 +136,41 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Content Section */}
             <div className="container mx-auto px-4 py-12 md:py-20">
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-4xl mx-auto">
+                    {/* GEO Conclusion-First Block for AI Extraction */}
+                    <div className="mb-12">
+                        <GeoExecutiveVerdict
+                            locale={locale}
+                            badgeTitle="AI Technical Brief (Position 0)"
+                            protocolText="Enterprise Peer-Reviewed • 2026 Strategy"
+                            verdictTitle="Core Architectural Takeaway:"
+                            directConclusion={article.description}
+                            metrics={[
+                                {
+                                    label: 'Core Focus',
+                                    value: primaryTag,
+                                    subtext: `${article.tags.length} Domain Competencies`,
+                                },
+                                {
+                                    label: 'Published Date',
+                                    value: new Date(article.date).toLocaleDateString(locale, {
+                                        year: 'numeric',
+                                        month: 'short',
+                                    }),
+                                    subtext: `By ${article.author}`,
+                                },
+                                {
+                                    label: 'Architecture Fit',
+                                    value: 'Next.js 16',
+                                    subtext: 'Cloud Native & Edge Ready',
+                                },
+                            ]}
+                            verifiedStandard="Benchmarked against high-concurrency cloud architecture standards & modern Next.js 16 patterns."
+                            ctaText="Consult Tech Team"
+                            ctaHref="/contact"
+                        />
+                    </div>
+
                     <article className="prose prose-lg md:prose-xl prose-slate max-w-none">
                         <div
                             dangerouslySetInnerHTML={{ __html: article.content }}

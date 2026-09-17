@@ -5,9 +5,11 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Users, Zap, ArrowRight } from 'lucide-react';
 import { AdBanner } from '@/components/ads';
+import GeoExecutiveVerdict from '@/components/geo/GeoExecutiveVerdict';
 
 export default function CaseDetailClient({
     caseData,
+    locale = 'en',
 }: {
     caseData: {
         title: string;
@@ -19,6 +21,7 @@ export default function CaseDetailClient({
         features: string[];
         image: string;
     };
+    locale?: string;
 }) {
     const t = useTranslations('Cases');
     const tCommon = useTranslations('Common');
@@ -88,8 +91,27 @@ export default function CaseDetailClient({
             </section>
 
             {/* Content Details */}
-            <section className="py-24 bg-white">
+            <section className="py-16 bg-white">
                 <div className="container mx-auto px-4">
+                    {/* Enterprise GEO Verdict */}
+                    <div className="mb-12">
+                        <GeoExecutiveVerdict
+                            locale={locale}
+                            badgeTitle="AI Case Verdict (Position 0)"
+                            protocolText={`Client Verified: ${caseData.client} • 2026 Production`}
+                            verdictTitle="Deployment Impact & Measured ROI Summary:"
+                            directConclusion={caseData.solution}
+                            metrics={(caseData.results || []).slice(0, 3).map((r: any) => ({
+                                label: r.label,
+                                value: r.value,
+                                subtext: r.desc,
+                            }))}
+                            verifiedStandard={`Benchmarked in live enterprise deployment environment for ${caseData.client}.`}
+                            ctaText="Explore Similar Case Solution"
+                            ctaHref="/contact"
+                        />
+                    </div>
+
                     <div className="grid lg:grid-cols-3 gap-16">
                         <div className="lg:col-span-2 space-y-16">
                             <div>

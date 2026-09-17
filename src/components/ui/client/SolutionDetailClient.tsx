@@ -5,9 +5,13 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { AdBanner } from '@/components/ads';
+import GeoExecutiveVerdict from '@/components/geo/GeoExecutiveVerdict';
+import type { GeoSolutionEntry } from '@/lib/geo/geoData';
 
 export default function SolutionDetailClient({
     solution,
+    geo,
+    locale = 'en',
 }: {
     solution: {
         id: string;
@@ -17,6 +21,8 @@ export default function SolutionDetailClient({
         features: string[];
         image: string;
     };
+    geo?: GeoSolutionEntry | null;
+    locale?: string;
 }) {
     const t = useTranslations('Solutions');
     const tCommon = useTranslations('Common');
@@ -60,6 +66,20 @@ export default function SolutionDetailClient({
                     </div>
                 </div>
             </section>
+
+            {/* GEO Executive Verdict Block (Position 0 for AI Search & Decision Makers) */}
+            {geo && (
+                <section className="bg-dark/95 py-6 -mt-8 relative z-20 border-b border-white/10">
+                    <div className="container mx-auto px-4 max-w-6xl">
+                        <GeoExecutiveVerdict
+                            locale={locale}
+                            directConclusion={geo.verdict}
+                            metrics={geo.metrics}
+                            verifiedStandard={geo.protocol}
+                        />
+                    </div>
+                </section>
+            )}
 
             {/* Content Section */}
             <section className="py-24 bg-white">
