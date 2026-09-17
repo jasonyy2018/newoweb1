@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
         minimumCacheTTL: 60 * 60 * 24, // 24小时缓存
     },
 
+    // 反向代理 AI 客服服务，彻底解决线上 HTTPS 域名下 iframe 混合内容 (Mixed Content) 拦截问题
+    async rewrites() {
+        return [
+            {
+                source: '/chat/:path*',
+                destination: 'http://156.238.249.149:8082/chat/:path*',
+            },
+        ];
+    },
+
     // HTTP headers 优化
     async headers() {
         return [
@@ -28,7 +38,7 @@ const nextConfig: NextConfig = {
                     },
                     {
                         key: 'X-Frame-Options',
-                        value: 'DENY',
+                        value: 'SAMEORIGIN',
                     },
                     {
                         key: 'X-XSS-Protection',

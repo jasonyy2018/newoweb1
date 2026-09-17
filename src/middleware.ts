@@ -8,6 +8,7 @@ export const config = {
     // - /api (API routes)
     // - /_next (Next.js internals)
     // - /static (Inside /public)
+    // - /chat (AI Chatbot proxy)
     // - /.*\\..* (Files)
-    matcher: ['/((?!api|_next|static|.*\\..*).*)']
+    matcher: ['/((?!api|_next|static|chat|.*\\..*).*)']
 };

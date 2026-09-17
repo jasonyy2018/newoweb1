@@ -1,10 +1,11 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Bot, X, MessageSquare, RotateCw, Maximize2, Minimize2, Sparkles, ChevronLeft, EyeOff } from 'lucide-react';
 
-const CHAT_IFRAME_URL = 'http://156.238.249.149:8082/chat/dfacb5320257c918?mode=embed';
+const CHAT_IFRAME_URL = '/chat/dfacb5320257c918?mode=embed';
+const FALLBACK_DIRECT_URL = 'http://156.238.249.149:8082/chat/dfacb5320257c918?mode=embed';
 
 export default function AiChatWidget() {
     const pathname = usePathname();
@@ -14,6 +15,7 @@ export default function AiChatWidget() {
     const [showTip, setShowTip] = useState(true);
     const [iframeKey, setIframeKey] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const [isTimeout, setIsTimeout] = useState(false);
 
     // Auto dismiss tip after 10s if not interacted
     useEffect(() => {
@@ -22,6 +24,18 @@ export default function AiChatWidget() {
         }, 10000);
         return () => clearTimeout(timer);
     }, []);
+
+    // If iframe takes >6s to load, show helper fallback
+    useEffect(() => {
+        if (isOpen && isLoading) {
+            const t = setTimeout(() => {
+                setIsTimeout(true);
+            }, 6000);
+            return () => clearTimeout(t);
+        } else {
+            setIsTimeout(false);
+        }
+    }, [isOpen, isLoading, iframeKey]);
 
     // NEVER render in backend admin pages
     if (pathname && pathname.includes('/admin')) {
@@ -163,9 +177,35 @@ export default function AiChatWidget() {
                             {/* Iframe Body with Loading State */}
                             <div className="relative flex-1 w-full bg-slate-50 overflow-hidden">
                                 {isLoading && (
-                                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 text-slate-500 gap-3 z-10">
-                                        <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin" />
-                                        <span className="text-xs font-medium">正在接入 葳澄简小助理...</span>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 text-slate-500 p-6 gap-3 z-10 text-center">
+                                        {!isTimeout ? (
+                                            <>
+                                                <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin" />
+                                                <span className="text-xs font-medium text-slate-600">正在接入 葳澄简小助理...</span>
+                                            </>
+                                        ) : (
+                                            <div className="space-y-3 max-w-xs">
+                                                <p className="text-xs text-slate-600">
+                                                    客服加载耗时较长，可能正在初始化服务或网络受限
+                                                </p>
+                                                <div className="flex items-center justify-center gap-2">
+                                                    <button
+                                                        onClick={handleReload}
+                                                        className="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors"
+                                                    >
+                                                        重新连接
+                                                    </button>
+                                                    <a
+                                                        href={FALLBACK_DIRECT_URL}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="px-3 py-1.5 bg-slate-200 text-slate-700 text-xs font-medium rounded-lg hover:bg-slate-300 transition-colors"
+                                                    >
+                                                        新窗口打开
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                                 <iframe
