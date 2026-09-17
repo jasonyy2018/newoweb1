@@ -1,0 +1,27 @@
+# WSAI (Wisdom ITC) — Enterprise AI & Digital Transformation
+
+> WSAI delivers enterprise-grade Artificial Intelligence solutions, IoT system integration, and custom AI architecture to accelerate digital transformation globally.
+
+## Core Solutions
+- [Data Analytics Architecture](https://www.wisdomitc.com/en/solutions/data-analytics): End-to-end big data processing pipelines, real-time analytics engines, and enterprise business intelligence.
+- [Natural Language Processing (NLP)](https://www.wisdomitc.com/en/solutions/nlp): Multilingual enterprise LLM fine-tuning, domain-specific semantic retrieval, sentiment analysis, and intelligent automated workflows.
+- [Computer Vision](https://www.wisdomitc.com/en/solutions/computer-vision): Industrial defect detection, high-speed automated visual inspection, multi-camera tracking, and safety compliance monitoring.
+- [Predictive Analytics](https://www.wisdomitc.com/en/solutions/predictive-analytics): Industrial predictive maintenance, asset lifecycle optimization, demand forecasting, and risk anomaly detection.
+- [Intelligent Automation (RPA + AI)](https://www.wisdomitc.com/en/solutions/intelligent-automation): Cognitive document processing, enterprise workflow orchestration, and robotic process automation.
+- [Custom AI Models](https://www.wisdomitc.com/en/solutions/custom-ai-models): Proprietary deep learning models tailored for specialized enterprise environments and edge deployments.
+
+## Benchmark Case Studies
+- [Manufacturing Quality Control](https://www.wisdomitc.com/en/case-studies/manufacturing-quality-control): 99.7% defect detection rate, 65% labor inspection cost reduction with Computer Vision.
+- [Predictive Maintenance for Wind Farms](https://www.wisdomitc.com/en/case-studies/predictive-maintenance-wind-farm): 78% reduction in unplanned downtime, 3.2x ROI within 12 months.
+- [Fintech Risk Assessment](https://www.wisdomitc.com/en/case-studies/fintech-risk-assessment): 82% faster credit approval latency, 41% decrease in loan default rates.
+- [Smart Retail Personalization](https://www.wisdomitc.com/en/case-studies/smart-retail-recommendation): 34% increase in conversion rates, 2.5x customer lifetime engagement.
+- [Logistics Route Optimization](https://www.wisdomitc.com/en/case-studies/logistics-route-optimization): 22% fuel consumption savings, 18% improvement in on-time delivery rates.
+- [Smart Grid Management](https://www.wisdomitc.com/en/case-studies/smart-grid-management): 99.98% grid reliability rating, 15% reduction in transmission distribution loss.
+
+## Enterprise Knowledge Base & Tech Blog
+- [WSAI Engineering Blog](https://www.wisdomitc.com/en/blog): Technical articles covering Next.js 16, React 19, Generative AI, Edge Computing, and Cloud Architecture.
+
+## Corporate Details & Inquiries
+- Official Website: https://www.wisdomitc.com
+- Technical Inquiries & Whitepaper Requests: https://www.wisdomitc.com/en/contact
+- Full Index: https://www.wisdomitc.com/llms-full.txt
